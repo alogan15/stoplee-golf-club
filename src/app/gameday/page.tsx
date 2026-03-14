@@ -1,6 +1,7 @@
 "use client"
 
 import { useState } from "react"
+import { supabase } from "../../lib/supabase"
 
 export default function RoundsPage() {
 
@@ -34,6 +35,28 @@ export default function RoundsPage() {
   function sum(arr:number[]){
     return arr.reduce((a,b)=>a+b,0)
   }
+
+  async function saveRound(){
+
+  const { data, error } = await supabase
+    .from("rounds")
+    .insert([
+      {
+        course,
+        date,
+        players: playerNames,
+        scores,
+        pars
+      }
+    ])
+
+if(error){
+  console.error(error)
+  alert(error.message)
+}
+}
+
+
 
   return (
 
@@ -197,6 +220,8 @@ export default function RoundsPage() {
         </tbody>
 
       </table>
+
+      <button onClick={saveRound}>Save Round</button>
 
     </div>
 
