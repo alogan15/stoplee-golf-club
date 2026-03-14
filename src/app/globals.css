@@ -1,0 +1,18 @@
+table {
+  width: 100%;
+}
+
+th, td {
+  text-align: center;
+  border: 1px solid #444;
+}
+
+input {
+  text-align: center;
+}
+
+@media print {
+  button {
+    display: none;
+  }
+}

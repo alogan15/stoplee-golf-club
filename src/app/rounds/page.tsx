@@ -4,117 +4,202 @@ import { useState } from "react"
 
 export default function RoundsPage() {
 
-  const [scores, setScores] = useState(Array(18).fill(""))
-  const [pars] = useState([
-    4,4,3,5,4,4,3,4,5,
-    4,3,4,4,5,3,4,4,5
-  ])
+  const players = 4
 
-  const handleScoreChange = (index:number, value:string) => {
-    const newScores = [...scores]
-    newScores[index] = value
-    setScores(newScores)
+  const [course,setCourse] = useState("")
+  const [date,setDate] = useState("")
+
+  const [pars,setPars] = useState(Array(18).fill(4))
+
+  const [playerNames,setPlayerNames] = useState(
+    Array(players).fill("")
+  )
+
+  const [scores,setScores] = useState(
+    Array(players).fill(null).map(()=>Array(18).fill(""))
+  )
+
+  function stableford(score:number, par:number){
+
+    const diff = score - par
+
+    if(diff === -3) return 20
+    if(diff === -2) return 14
+    if(diff === -1) return 5
+    if(diff === 0) return 3
+    if(diff === 1) return 1
+    return 0
   }
 
-  const frontNine = scores.slice(0,9).reduce((a,b)=>a + Number(b||0),0)
-  const backNine = scores.slice(9).reduce((a,b)=>a + Number(b||0),0)
-  const total = frontNine + backNine
-
-  const stableford = scores.map((score,index)=>{
-    const s = Number(score)
-    const par = pars[index]
-
-    if(!s) return 0
-
-    const diff = par - s
-
-    if(diff === 0) return 3
-    if(diff === 1) return 5
-    if(diff === 2) return 14
-    if(diff >= 3) return 20
-    if(diff === -1) return 1
-
-    return 0
-  })
-
-  const stablefordTotal = stableford.reduce((a,b)=>a+b,0)
+  function sum(arr:number[]){
+    return arr.reduce((a,b)=>a+b,0)
+  }
 
   return (
-    <div style={{padding:"20px"}}>
 
-      <h1>Round Scorecard</h1>
+    <div>
 
-      <table border={1} cellPadding={8}>
+      <h1>Stoplee League Scorecard</h1>
+
+      <div>
+        <input
+          placeholder="Course"
+          value={course}
+          onChange={(e)=>setCourse(e.target.value)}
+        />
+
+        <input
+          type="date"
+          value={date}
+          onChange={(e)=>setDate(e.target.value)}
+        />
+      </div>
+
+      <table border="1">
 
         <thead>
+
           <tr>
             <th>Hole</th>
 
-            {Array.from({length:18},(_,i)=>(
+            {[...Array(9)].map((_,i)=>(
               <th key={i}>{i+1}</th>
             ))}
 
             <th>OUT</th>
-            <th>IN</th>
-            <th>TOTAL</th>
-          </tr>
-        </thead>
 
-        <tbody>
-
-          {/* PAR ROW */}
-
-          <tr>
-            <td>Par</td>
-
-            {pars.map((p,i)=>(
-              <td key={i}>{p}</td>
+            {[...Array(9)].map((_,i)=>(
+              <th key={i}>{i+10}</th>
             ))}
 
-            <td></td>
-            <td></td>
-            <td></td>
+            <th>IN</th>
+            <th>TOTAL</th>
+            <th>STABLEFORD</th>
           </tr>
 
-          {/* SCORE ROW */}
-
           <tr>
-            <td>Score</td>
 
-            {scores.map((score,index)=>(
-              <td key={index}>
+            <td>Par</td>
+
+            {pars.slice(0,9).map((par,i)=>(
+              <td key={i}>
                 <input
                   type="number"
-                  value={score}
-                  style={{width:"40px"}}
-                  onChange={(e)=>handleScoreChange(index,e.target.value)}
+                  value={par}
+                  onChange={(e)=>{
+                    const p=[...pars]
+                    p[i]=Number(e.target.value)
+                    setPars(p)
+                  }}
+                  style={{width:"35px"}}
                 />
               </td>
             ))}
 
-            <td>{frontNine}</td>
-            <td>{backNine}</td>
-            <td>{total}</td>
-          </tr>
+            <td>{sum(pars.slice(0,9))}</td>
 
-          {/* STABLEFORD ROW */}
-
-          <tr>
-            <td>Stableford</td>
-
-            {stableford.map((points,i)=>(
-              <td key={i}>{points}</td>
+            {pars.slice(9).map((par,i)=>(
+              <td key={i}>
+                <input
+                  type="number"
+                  value={par}
+                  onChange={(e)=>{
+                    const p=[...pars]
+                    p[i+9]=Number(e.target.value)
+                    setPars(p)
+                  }}
+                  style={{width:"35px"}}
+                />
+              </td>
             ))}
 
+            <td>{sum(pars.slice(9))}</td>
+            <td>{sum(pars)}</td>
             <td></td>
-            <td></td>
-            <td>{stablefordTotal}</td>
+
           </tr>
+
+        </thead>
+
+        <tbody>
+
+          {playerNames.map((name,playerIndex)=>{
+
+            const playerScores = scores[playerIndex].map(s=>Number(s)||0)
+
+            const front = sum(playerScores.slice(0,9))
+            const back = sum(playerScores.slice(9))
+            const total = sum(playerScores)
+
+            const stableTotal = playerScores.reduce((acc,score,i)=>{
+              if(!score) return acc
+              return acc + stableford(score,pars[i])
+            },0)
+
+            return(
+
+              <tr key={playerIndex}>
+
+                <td>
+                  <input
+                    placeholder="Player"
+                    value={name}
+                    onChange={(e)=>{
+                      const n=[...playerNames]
+                      n[playerIndex]=e.target.value
+                      setPlayerNames(n)
+                    }}
+                  />
+                </td>
+
+                {playerScores.slice(0,9).map((score,i)=>(
+                  <td key={i}>
+                    <input
+                      type="number"
+                      value={scores[playerIndex][i]}
+                      onChange={(e)=>{
+                        const s=[...scores]
+                        s[playerIndex][i]=e.target.value
+                        setScores(s)
+                      }}
+                      style={{width:"35px"}}
+                    />
+                  </td>
+                ))}
+
+                <td>{front}</td>
+
+                {playerScores.slice(9).map((score,i)=>(
+                  <td key={i}>
+                    <input
+                      type="number"
+                      value={scores[playerIndex][i+9]}
+                      onChange={(e)=>{
+                        const s=[...scores]
+                        s[playerIndex][i+9]=e.target.value
+                        setScores(s)
+                      }}
+                      style={{width:"35px"}}
+                    />
+                  </td>
+                ))}
+
+                <td>{back}</td>
+                <td>{total}</td>
+                <td>{stableTotal}</td>
+
+              </tr>
+
+            )
+
+          })}
 
         </tbody>
 
       </table>
 
     </div>
+
   )
+
 }
