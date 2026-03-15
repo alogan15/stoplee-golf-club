@@ -2,6 +2,8 @@
 
 import { useEffect, useState } from "react"
 import { supabase } from "../../lib/supabase"
+import { calculateRoundPoints } from "../../lib/scoring"
+
 
 export default function Leaderboard() {
 
@@ -20,18 +22,17 @@ export default function Leaderboard() {
   return hole
 }
 
-    function getCurrentHole(scores){
-  let hole = 0
 
-  scores.forEach(player=>{
-    player.forEach((score,i)=>{
-      if(score !== "" && i > hole){
-        hole = i
-      }
-    })
-  })
+function formatThru(scores:number[]){
 
-  return hole + 1
+  const holesPlayed = scores.filter(score => score && score > 0).length
+
+  if(holesPlayed === 18){
+    return "F"
+  }
+
+  return `THRU ${holesPlayed}`
+
 }
 
   async function loadRounds(){
@@ -81,41 +82,19 @@ rounds.forEach(round=>{
 
     const scores = round.scores[i]
     const pars = round.pars
-
-    let total = 0
-
-    scores.forEach((score:number,hole:number)=>{
-
-      const par = pars[hole]
-      const diff = par - score
-
-      if(score === 1){
-        total += 20
-      }
-      else if(diff >= 2){
-        total += 14
-      }
-      else if(diff === 1){
-        total += 5
-      }
-      else if(diff === 0){
-        total += 3
-      }
-      else if(diff === -1){
-        total += 1
-      }
-
-    })
+    const total = calculateRoundPoints(scores, pars)
 
     if(!leaderboard[player]){
       leaderboard[player] = {
         points:0,
-        hole:0
+        hole:0,
+        scores:[]
       }
     }
 
     leaderboard[player].points += total
     leaderboard[player].hole = getPlayerHole(scores)
+    leaderboard[player].scores = scores
 
   })
 
@@ -134,29 +113,29 @@ return (
 
       <h1>League Leaderboard</h1>
 
-      <table border="10">
+      <table style={{borderCollapse:"collapse", width:"420px"}}>
 
-        <thead>
-          <tr>
-            <th>Rank</th>
-            <th>Player</th>
-            <th>Points</th>
-            <th>Hole</th>
-          </tr>
-        </thead>
+      <thead>
+      <tr>
+      <th style={{textAlign:"left"}}>Rank</th>
+      <th style={{textAlign:"left"}}>Player</th>
+      <th style={{textAlign:"left"}}>Points</th>
+      <th style={{textAlign:"left"}}>Hole</th>
+      </tr>
+      </thead>
 
-        <tbody>
+      <tbody>
 
-            {sortedLeaderboard.map(([player,data]:any,i:number)=>(
-            <tr key={i}>
-            <td>{i+1}</td>
-            <td>{player}</td>
-            <td>{data.points}</td>
-            <td>{data.hole}</td>
-            </tr>
-            ))}
+      {sortedLeaderboard.map(([player,data]:any,i:number)=>(
+      <tr key={i}>
+      <td style={{padding:"6px"}}>{i+1}</td>
+      <td style={{padding:"6px"}}>{player}</td>
+      <td style={{padding:"6px"}}>{data.points}</td>
+      <td style={{padding:"6px"}}>{formatThru(data.scores)}</td>
+      </tr>
+      ))}
 
-        </tbody>
+      </tbody>
 
       </table>
 

@@ -14,6 +14,7 @@ export default function Navbar() {
         <Link href="/around-the-league">Around The League</Link>
         <Link href="/leaderboard">Leaderboard</Link>
         <Link href="/events">Schedule</Link>
+        <Link href="/champions">Champions</Link>
       </div>
     </nav>
   )
