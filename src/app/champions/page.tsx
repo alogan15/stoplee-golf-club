@@ -5,65 +5,74 @@ import { supabase } from "../../lib/supabase"
 
 export default function Champions(){
 
-  const [champions,setChampions] = useState<any[]>([])
-  const [loading,setLoading] = useState(true)
+const [events,setEvents] = useState<any[]>([])
+const [loading,setLoading] = useState(true)
+    
 
-  async function loadChampions(){
+  async function loadTournaments(){
 
     const { data, error } = await supabase
-      .from("champions")
-      .select("*")
-      .order("season",{ascending:false})
+    .from("events")
+    .select("*")
+    .order("event_date",{ascending:true})
 
     if(error){
-      console.error(error)
+    console.error(error)
     }else{
-      setChampions(data)
+    setEvents(data)
     }
 
     setLoading(false)
 
-  }
+}
 
-  useEffect(()=>{
-    loadChampions()
-  },[])
+        useEffect(()=>{
+        loadTournaments()
+        },[])
+
+
+
 
   if(loading){
-    return <div>Loading champions...</div>
-  }
+    return <div>Loading events...</div>
+}
 
-  return(
+return(
+            <div>
 
-    <div>
+            {events.map((tournament:any) => (
 
-      <h1>The Champions Chamber</h1>
+            <div key={tournament.id} className="tournamentCard">
 
-      {champions.map(champ =>(
+            <p>Tournament Name</p>
+            <h3>{tournament.tournament_name}</h3>
 
-        <div
-          key={champ.id}
-          style={{
-            border:"1px solid #ddd",
-            borderRadius:"10px",
-            padding:"20px",
-            marginBottom:"20px",
-            width:"350px"
-          }}
-        >
+            <p>Course Name</p>
+            <h4>{tournament.course}</h4>
 
-          <h2>{champ.name}</h2>
+            <p>Location</p>
+            <h4>{tournament.location}</h4>
 
-          <p>Season: {champ.season}</p>
+            <p>Length</p>
+            <h4>{tournament.length}</h4>
 
-          <p>{champ.points} points</p>
+            <p>Rating/Slope</p>
+            <h4>{tournament.rating} / {tournament.slope}</h4>
 
-        </div>
+            <p>Date</p>
+            <h4>{tournament.event_date}</h4>
 
-      ))}
+            <p>Winner</p>
+            <h4>{tournament.winner || "-"}</h4>
 
-    </div>
+            <p>Points</p>
+            <h4>{tournament.points}</h4>
 
-  )
+            </div>
+
+            ))}
+
+            </div>
+            )
 
 }

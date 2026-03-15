@@ -10,30 +10,28 @@ export default function Leaderboard() {
   const [rounds,setRounds] = useState<any[]>([])
   const [loading,setLoading] = useState(true)
 
-  function getPlayerHole(scores:any[]){
-  let hole = 0
+    function getPlayerHole(scores:number[]){
+      let hole = 0
 
-  scores.forEach((score,i)=>{
-    if(score !== "" && score !== null){
-      hole = i + 1
+      scores.forEach((score,i)=>{
+        if(score && score > 0){
+          hole = i + 1
+        }
+      })
+
+      return hole
     }
-  })
-
-  return hole
-}
 
 
-function formatThru(scores:number[]){
+      function formatThru(scores:number[]){
+        const holesPlayed = scores.filter(score => score > 0).length
 
-  const holesPlayed = scores.filter(score => score && score > 0).length
+        if(holesPlayed === 18){
+          return "F"
+        }
 
-  if(holesPlayed === 18){
-    return "F"
-  }
-
-  return `THRU ${holesPlayed}`
-
-}
+        return `THRU ${holesPlayed}`
+      }
 
   async function loadRounds(){
 

@@ -6,7 +6,7 @@ import Link from "next/link"
 
 export default function Events(){
 
-  const [events,setEvents] = useState<any[]>([])
+  const [schedule,setSchedule] = useState<any[]>([])
   const [loading,setLoading] = useState(true)
 
   async function loadEvents(){
@@ -19,7 +19,7 @@ export default function Events(){
     if(error){
       console.error(error)
     } else {
-      setEvents(data)
+      setSchedule(data)
     }
 
     setLoading(false)
@@ -70,9 +70,9 @@ function formatThru(scores:number[]){
 
       <h1>League Schedule</h1>
 
-      {events.map(event=>(
+      {schedule.map(schedule=>(
               <div 
-        key={event.id} 
+        key={schedule.id} 
         style={{
           border:"1px solid #ddd",
           borderRadius:"8px",
@@ -82,13 +82,16 @@ function formatThru(scores:number[]){
         }}
 >
 
-        <h3>{event.course}</h3>
+     <h4>{schedule.course}</h4>
+      <p>Location: {schedule.location}</p>
+      <p>{schedule.length} yards</p>
+      <p>{schedule.rating} Rating / {schedule.slope} Slope</p>
 
         <p>
-        {formatDate(event.event_date)}
+        {formatDate(schedule.event_date)}
         </p>
 
-        {isToday(event.event_date) && (
+        {isToday(schedule.event_date) && (
           <span style={{
             color:"white",
             background:"red",
@@ -100,7 +103,7 @@ function formatThru(scores:number[]){
           </span>
         )}
 
-          <Link href={`/events/${event.id}`}>
+          <Link href={`/events/${schedule.id}`}>
           View Event →
           </Link>
 

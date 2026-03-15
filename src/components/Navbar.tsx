@@ -13,7 +13,7 @@ export default function Navbar() {
         <Link href="/gameday">Game Day</Link>
         <Link href="/around-the-league">Around The League</Link>
         <Link href="/leaderboard">Leaderboard</Link>
-        <Link href="/events">Schedule</Link>
+        <Link href="/schedule">Schedule</Link>
         <Link href="/champions">Champions</Link>
       </div>
     </nav>

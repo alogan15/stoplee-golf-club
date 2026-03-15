@@ -2,6 +2,7 @@
 
 import { useState } from "react"
 import { supabase } from "../../lib/supabase"
+import { calculateRoundPoints } from "../../lib/scoring"
 
 export default function RoundsPage() {
 
@@ -20,21 +21,7 @@ export default function RoundsPage() {
     Array(players).fill(null).map(()=>Array(18).fill(""))
   )
 
-  function stableford(score:number, par:number){
 
-    const diff = score - par
-
-    if(diff === -3) return 20
-    if(diff === -2) return 14
-    if(diff === -1) return 5
-    if(diff === 0) return 3
-    if(diff === 1) return 1
-    return 0
-  }
-
-  function sum(arr:number[]){
-    return arr.reduce((a,b)=>a+b,0)
-  }
 
   async function saveRound(){
 
@@ -149,15 +136,10 @@ if(error){
           {playerNames.map((name,playerIndex)=>{
 
             const playerScores = scores[playerIndex].map(s=>Number(s)||0)
-
             const front = sum(playerScores.slice(0,9))
             const back = sum(playerScores.slice(9))
             const total = sum(playerScores)
-
-            const stableTotal = playerScores.reduce((acc,score,i)=>{
-              if(!score) return acc
-              return acc + stableford(score,pars[i])
-            },0)
+            const stableTotal = calculateRoundPoints(playerScores, pars)
 
             return(
 
