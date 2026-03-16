@@ -21,33 +21,29 @@ export default function RoundsPage() {
     Array(players).fill(null).map(()=>Array(18).fill(""))
   )
 
-  function sum(arr:number[]){
-  return arr.reduce((a,b)=>a+b,0)
+  console.log("scores:", scores)
+  console.log("playerNames:", playerNames)
+
+function sum(arr:number[]){
+ return arr.reduce((a,b)=>a+b,0)
 }
 
+async function saveRound(){
 
+ const { data, error } = await supabase
+ .from("rounds")
+ .upsert([
+ {
+   event_id: "a7a67b05-4997-42f3-893c-0dc82fbe2c5c",
+   course,
+   date,
+   players: playerNames,
+   scores,
+   pars
+ }
+ ])
 
-  async function saveRound(){
-
-  const { data, error } = await supabase
-    .from("rounds")
-    .insert([
-      {
-        course,
-        date,
-        players: playerNames,
-        scores,
-        pars
-      }
-    ])
-
-if(error){
-  console.error(error)
-  alert(error.message)
 }
-}
-
-
 
   return (
 
@@ -137,17 +133,16 @@ if(error){
 
         <tbody>
 
-          {playerNames.map((name,playerIndex)=>{
+                {playerNames.map((name,playerIndex)=>{
 
-            const playerScores = scores[playerIndex].map(s=>Number(s)||0)
-            const front = sum(playerScores.slice(0,9))
-            const back = sum(playerScores.slice(9))
-            const total = sum(playerScores)
-            const stableTotal = calculateRoundPoints(playerScores, pars)
+                const playerScores = (scores[playerIndex] || []).map(s => Number(s) || 0)
+                const front = sum(playerScores.slice(0,9))
+                const back = sum(playerScores.slice(9))
+                const total = sum(playerScores)
+                const stableTotal = calculateRoundPoints(playerScores, pars)
 
-            return(
-
-              <tr key={playerIndex}>
+                return (
+        <tr key={playerIndex}>
 
                 <td>
                   <input
@@ -167,9 +162,10 @@ if(error){
                       type="number"
                       value={scores[playerIndex][i]}
                       onChange={(e)=>{
-                        const s=[...scores]
-                        s[playerIndex][i]=e.target.value
-                        setScores(s)
+                      const s = [...scores]
+                      s[playerIndex] = [...s[playerIndex]]
+                      s[playerIndex][i] = e.target.value
+                      setScores(s)
                       }}
                       style={{width:"35px"}}
                     />
