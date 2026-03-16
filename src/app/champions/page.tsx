@@ -5,21 +5,21 @@ import { supabase } from "../../lib/supabase"
 
 export default function Champions(){
 
-const [events,setEvents] = useState<any[]>([])
+const [champions,setChampions] = useState<any[]>([])
 const [loading,setLoading] = useState(true)
     
 
   async function loadTournaments(){
 
     const { data, error } = await supabase
-    .from("events")
+    .from("champions")
     .select("*")
-    .order("event_date",{ascending:true})
+    .order("season",{ascending:false})
 
     if(error){
     console.error(error)
     }else{
-    setEvents(data)
+    setChampions(data)
     }
 
     setLoading(false)
@@ -34,39 +34,23 @@ const [loading,setLoading] = useState(true)
 
 
   if(loading){
-    return <div>Loading events...</div>
+    return <div>Loading champions...</div>
 }
 
 return(
             <div>
 
-            {events.map((tournament:any) => (
+            {champions.map((champ:any) => (
 
-            <div key={tournament.id} className="tournamentCard">
+            <div key={champ.id} className="tournamentCard">
 
-            <p>Tournament Name</p>
-            <h3>{tournament.tournament_name}</h3>
+            <h3>{champ.season} Champion</h3>
 
-            <p>Course Name</p>
-            <h4>{tournament.course}</h4>
+            
+            <h4>{champ.winner}</h4>
 
-            <p>Location</p>
-            <h4>{tournament.location}</h4>
-
-            <p>Length</p>
-            <h4>{tournament.length}</h4>
-
-            <p>Rating/Slope</p>
-            <h4>{tournament.rating} / {tournament.slope}</h4>
-
-            <p>Date</p>
-            <h4>{tournament.event_date}</h4>
-
-            <p>Winner</p>
-            <h4>{tournament.winner || "-"}</h4>
-
-            <p>Points</p>
-            <h4>{tournament.points}</h4>
+            <p>Total Points</p>
+            <h4>{champ.points}</h4>
 
             </div>
 

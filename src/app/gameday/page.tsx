@@ -21,6 +21,10 @@ export default function RoundsPage() {
     Array(players).fill(null).map(()=>Array(18).fill(""))
   )
 
+  function sum(arr:number[]){
+  return arr.reduce((a,b)=>a+b,0)
+}
+
 
 
   async function saveRound(){
