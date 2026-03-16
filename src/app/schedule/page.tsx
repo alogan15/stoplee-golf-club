@@ -103,9 +103,9 @@ function formatThru(scores:number[]){
           </span>
         )}
 
-          <Link href={`/events/${schedule.id}`}>
+        <Link href={`/schedule/${schedule.id}`}>
           View Event →
-          </Link>
+        </Link>
 
         </div>
       ))}

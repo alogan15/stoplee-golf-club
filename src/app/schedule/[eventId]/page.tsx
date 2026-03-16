@@ -5,8 +5,8 @@ import { supabase } from "../../../lib/supabase"
 import { calculateRoundPoints } from "../../../lib/scoring"
 
 export default function EventPage({ params }: { params: Promise<{ eventId: string }> }) {
-const { eventId } = use( params )
 
+const { eventId } = use(params)
 const [rounds,setRounds] = useState<any[]>([])
 const [loading,setLoading] = useState(true)
 
@@ -27,10 +27,11 @@ function getPlayerHole(scores:number[]){
     const { data, error } = await supabase
       .from("rounds")
       .select("*")
-      .eq("event_id",eventId)
+      .eq("event_id", String(eventId))
 
     if(error){
-      console.error("Supabase error:", error)
+      console.error(error)
+
     } else {
       setRounds(data)
     }
