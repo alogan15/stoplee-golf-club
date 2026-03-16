@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { supabase } from "../../lib/supabase"
 import { calculateRoundPoints } from "../../lib/scoring"
 
@@ -9,9 +9,46 @@ export default function RoundsPage() {
   const players = 4
 
   const [course,setCourse] = useState("")
+  const [courses,setCourses] = useState<any[]>([])
   const [date,setDate] = useState("")
+  const [pars, setPars] = useState(Array(18).fill(4))
 
-  const [pars,setPars] = useState(Array(18).fill(4))
+      useEffect(()=>{
+
+      async function loadCourses(){
+
+      const { data } = await supabase
+      .from("courses")
+      .select("*")
+console.log("COURSES:", data)
+      setCourses(data || [])
+
+      }
+
+      loadCourses()
+
+      },[])
+
+      
+      useEffect(()=>{
+
+      if(!course) return
+
+      async function loadCourse(){
+
+      const { data } = await supabase
+      .from("courses")
+      .select("pars")
+      .eq("name",course)
+      .single()
+
+      setPars(data?.pars || Array(18).fill(4))
+
+      }
+
+      loadCourse()
+
+      },[course])
 
   const [playerNames,setPlayerNames] = useState(
     Array(players).fill("")
@@ -21,8 +58,6 @@ export default function RoundsPage() {
     Array(players).fill(null).map(()=>Array(18).fill(""))
   )
 
-  console.log("scores:", scores)
-  console.log("playerNames:", playerNames)
 
 function sum(arr:number[]){
  return arr.reduce((a,b)=>a+b,0)
@@ -52,11 +87,20 @@ async function saveRound(){
       <h1>Stoplee League Scorecard</h1>
 
       <div>
-        <input
-          placeholder="Course"
-          value={course}
-          onChange={(e)=>setCourse(e.target.value)}
-        />
+        <select
+        value={course}
+        onChange={(e)=>setCourse(e.target.value)}
+        >
+
+        <option value="">Select Course</option>
+
+        {courses.map((c)=>(
+          <option key={c.id} value={c.name}>
+            {c.name}
+          </option>
+        ))}
+
+        </select>
 
         <input
           type="date"
