@@ -28,11 +28,12 @@ export default function RootLayout({
 <div style={{
   marginLeft:"20px",
   padding:"6px 12px",
-  background:"#f4f4f4",
+  background:"#f9f9f9",
+  border:"1px solid #ddd",
   borderRadius:"4px",
   fontStyle:"italic"
 }}>
-⛳ In Memory of Eric “StopLee” Logan
+In Memory of Eric “StopLee” Logan
 </div>
 
 </div>

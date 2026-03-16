@@ -38,25 +38,43 @@ const [loading,setLoading] = useState(true)
 }
 
 return(
-            <div>
 
-            {champions.map((champ:any) => (
+  <div>
 
-            <div key={champ.id} className="tournamentCard">
+    <h1>🏆 Champions Chamber </h1>
 
-            <h3>{champ.season} Champion</h3>
+    {champions.map((c,i)=>(
+      <div key={c.id} style={{
+        display:"flex",
+        alignItems:"center",
+        gap:"20px",
+        border:"1px solid #ddd",
+        padding:"12px",
+        marginBottom:"12px",
+        borderRadius:"6px"
+      }}>
 
-            
-            <h4>{champ.winner}</h4>
+        <img
+          src={c.image_url}
+          alt={c.winner}
+          style={{
+            width:"300px",
+            height:"300px",
+            objectFit:"cover",
+            borderRadius:"6px"
+          }}
+        />
 
-            <p>Total Points</p>
-            <h4>{champ.points}</h4>
+        <div>
+          <h3>{c.season} Champion</h3>
+          <strong>{c.winner}</strong>
+          <div>{c.points}</div>
+        </div>
 
-            </div>
+      </div>
+    ))}
 
-            ))}
-
-            </div>
-            )
+  </div>
+)
 
 }
