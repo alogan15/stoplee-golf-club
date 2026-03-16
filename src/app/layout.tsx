@@ -7,10 +7,41 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body>
-          <Navbar />
-        {children}
-      </body>
+<body>
+
+<div style={{
+  display: "flex",
+  alignItems: "center",
+  gap: "15px",
+  padding: "10px",
+  borderBottom: "1px solid #ccc"
+}}>
+
+<img
+  src="/logo.png"
+  alt="Stoplee Golf Club"
+  style={{height:"40px"}}
+/>
+
+<h1 style={{margin:0}}>Stoplee Golf Club</h1>
+
+<div style={{
+  marginLeft:"20px",
+  padding:"6px 12px",
+  background:"#f4f4f4",
+  borderRadius:"4px",
+  fontStyle:"italic"
+}}>
+⛳ In Memory of Eric “StopLee” Logan
+</div>
+
+</div>
+
+<Navbar />
+
+{children}
+
+</body>
     </html>
   )
 }

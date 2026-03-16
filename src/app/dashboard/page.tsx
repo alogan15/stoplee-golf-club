@@ -1,7 +1,7 @@
 export default function DashboardPage() {
   return (
     <div style={{ padding: "20px" }}>
-      <h1>Dashboard</h1>
+      <h1>Stoplee Golf Club Dashboard</h1>
 
       <h2>Player Stats</h2>
 
