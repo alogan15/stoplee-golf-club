@@ -100,37 +100,39 @@ rounds.forEach(round => {
 
       <h1>Live Event Leaderboard 🔴</h1>
 
-          <table
-            style={{
+            <div style={{marginBottom:"15px"}}>
+            <h2 style={{margin:0}}>Broad Run Golf Course</h2>
+            <p style={{margin:5}}>April 18, 2026</p>
+            </div>
+
+            <table
+              style={{
               borderCollapse:"collapse",
               width:"420px",
-              fontFamily:"Arial"
-            }}
-          >
+              fontFamily:"Arial",
+              tableLayout:"fixed"
+              }}
+            >
+            <thead>
 
-          <thead>
-          <h2>Broad Run Golf Course</h2>
-          <p>April 18, 2026</p>
-          <tr style={{borderBottom:"2px solid black"}}>
-
-          <th>POS</th>
-          <th>PLAYER</th>
-          <th>PTS</th>
-          <th>THRU</th>
-
-          </tr>
-
-          </thead>
+            <tr style={{borderBottom:"2px solid black"}}>
+            <th style={{width:"50px", textAlign:"center"}}>POS</th>
+            <th style={{width:"150px", textAlign:"left"}}>PLAYER</th>
+            <th style={{width:"80px", textAlign:"center"}}>PTS</th>
+            <th style={{width:"80px", textAlign:"center"}}>THRU</th>
+            </tr>
+            </thead>
+          
 
           <tbody>
 
           {sortedLeaderboard.map(([player,data]:any,i:number)=>(
 
-          <tr key={i} style={{borderBottom:"1px solid #ddd"}}>
-          <td>{i+1}</td>
-          <td style={{fontWeight:"bold"}}>{player}</td>
-          <td>{data.points}</td>
-          <td>{getPlayerHole(data.scores) === 18 ? "F" : getPlayerHole(data.scores)}</td>
+          <tr key={player} style={{borderBottom:"1px solid #ccc"}}>
+          <td style={{textAlign:"center"}}>{i + 1}</td>
+          <td style={{textAlign:"left"}}>{player}</td>
+          <td style={{textAlign:"center"}}>{data.points}</td>
+          <td style={{textAlign:"center"}}>{data.hole}</td>
           </tr>
 
           ))}

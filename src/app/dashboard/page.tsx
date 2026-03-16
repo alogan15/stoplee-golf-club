@@ -1,6 +1,6 @@
 "use client"
 
-import { useEffect } from "react"
+import { useEffect, useState } from "react"
 import { useRouter } from "next/navigation"
 import { supabase } from "../../lib/supabase"
 
@@ -8,28 +8,107 @@ export default function Dashboard(){
 
 const router = useRouter()
 
+const [user,setUser] = useState<any | null>(null)
+const [rounds,setRounds] = useState<any[]>([])
+const [loading,setLoading] = useState(true)
+
     useEffect(()=>{
 
-        async function checkUser(){
+        async function loadDashboard(){
 
-        const { data } = await supabase.auth.getUser()
+        const { data: userData } = await supabase.auth.getUser()
 
-        if (!data.user) {
+        if(!userData.user){
         router.push("/login")
+        return
         }
+
+        setUser(userData.user)
+
+        const { data: roundsData } = await supabase
+        .from("rounds")
+        .select("*")
+        .eq("player_id", userData.user.id)
+
+        setRounds(roundsData || [])
+
+        setLoading(false)
 
         }
 
-        checkUser()
+        loadDashboard()
 
         },[])
 
-        return(
 
-        <div>
-        <h1>Dashboard</h1>
-        </div>
+
+                const roundsPlayed = rounds.length
+
+                const totalPoints = rounds.reduce((sum,r)=> sum + (r.points || 0),0)
+
+                const averageScore = roundsPlayed
+                ? Math.round(rounds.reduce((sum,r)=> sum + (r.score || 0),0) / roundsPlayed)
+                : 0
+
+                const lastRound = rounds.length ? rounds[rounds.length - 1].score : "-"
+
+
+                let birdies = 0
+                let pars = 0
+                let bogeys = 0
+
+                rounds.forEach((round)=>{
+
+                if(!round.scores) return
+
+                round.scores.forEach((score:number,i:number)=>{
+
+                const par = round.pars?.[i] || 4
+                const diff = score - par
+
+                if(diff === -1) birdies++
+                if(diff === 0) pars++
+                if(diff === 1) bogeys++
+
+})
+
+})
+
+
+
+    if(loading){
+    return <div>Loading dashboard...</div>
+    }
+
+    return(
+
+            <div style={{padding:"20px"}}>
+
+            <h1>Dashboard</h1>
+
+            <h2>Welcome {user?.user_metadata?.name || "Golfer"}</h2>
+
+            <div style={{marginTop:"20px"}}>
+
+            <h3>Your Stats</h3>
+
+            <div style={{display:"grid",gridTemplateColumns:"repeat(2,200px)",gap:"10px"}}>
+
+            <div>Rounds Played: {roundsPlayed}</div>
+            <div>Total Points: {totalPoints}</div>
+
+            <div>Average Score: {averageScore}</div>
+            <div>Last Round: {lastRound}</div>
+
+            <div>Birdies: {birdies}</div>
+            <div>Pars: {pars}</div>
+
+            <div>Bogeys: {bogeys}</div>
+            </div>
+
+    </div>
+
+    </div>
 
 )
-
 }
