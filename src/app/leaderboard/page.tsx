@@ -118,7 +118,6 @@ return (
       <th style={{textAlign:"left"}}>Rank</th>
       <th style={{textAlign:"left"}}>Player</th>
       <th style={{textAlign:"left"}}>Points</th>
-      <th style={{textAlign:"left"}}>Hole</th>
       </tr>
       </thead>
 
@@ -129,7 +128,6 @@ return (
       <td style={{padding:"6px"}}>{i+1}</td>
       <td style={{padding:"6px"}}>{player}</td>
       <td style={{padding:"6px"}}>{data.points}</td>
-      <td style={{padding:"6px"}}>{formatThru(data.scores)}</td>
       </tr>
       ))}
 

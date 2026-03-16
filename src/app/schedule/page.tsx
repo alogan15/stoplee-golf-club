@@ -33,17 +33,9 @@ export default function Events(){
     return <div>Loading events...</div>
   }
 
-    function formatDate(date:string){
-
-    const d = new Date(date)
-
-    return d.toLocaleDateString("en-US",{
-      weekday:"long",
-      month:"short",
-      day:"numeric"
-    })
-
-}
+  function formatDate(date:string){
+  return new Date(date + "T00:00:00").toLocaleDateString()
+  }
 
   function isToday(date:string){
 

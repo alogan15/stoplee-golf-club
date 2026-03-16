@@ -10,18 +10,21 @@ const { eventId } = use(params)
 const [rounds,setRounds] = useState<any[]>([])
 const [loading,setLoading] = useState(true)
 
-function getPlayerHole(scores:number[]){
-  let hole = 0
 
-  scores.forEach(score=>{
-    if(score && score > 0){
-      hole++
-    }
-  })
 
-  return hole
+function getPlayerHole(scores:number[] | undefined){
+ if(!scores) return 0
+
+ let hole = 0
+
+ scores.forEach(score=>{
+  if(score && score > 0){
+   hole++
+  }
+ })
+
+ return hole
 }
-
   async function loadRounds(){
 
     const { data, error } = await supabase
@@ -95,7 +98,7 @@ rounds.forEach(round => {
 
     <div>
 
-      <h1>Live Event Leaderboard</h1>
+      <h1>Live Event Leaderboard 🔴</h1>
 
           <table
             style={{
@@ -106,7 +109,8 @@ rounds.forEach(round => {
           >
 
           <thead>
-
+          <h2>Broad Run Golf Course</h2>
+          <p>April 18, 2026</p>
           <tr style={{borderBottom:"2px solid black"}}>
 
           <th>POS</th>
@@ -123,15 +127,10 @@ rounds.forEach(round => {
           {sortedLeaderboard.map(([player,data]:any,i:number)=>(
 
           <tr key={i} style={{borderBottom:"1px solid #ddd"}}>
-
           <td>{i+1}</td>
-
           <td style={{fontWeight:"bold"}}>{player}</td>
-
           <td>{data.points}</td>
-
-          <td>{formatThru(data.scores)}</td>
-
+          <td>{getPlayerHole(data.scores) === 18 ? "F" : getPlayerHole(data.scores)}</td>
           </tr>
 
           ))}
@@ -144,4 +143,4 @@ rounds.forEach(round => {
 
   )
 
-}
+} 
