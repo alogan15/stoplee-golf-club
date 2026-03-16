@@ -1,8 +1,10 @@
 "use client"
 
 import { useState, useEffect } from "react"
+import { useRouter } from "next/navigation"
 import { supabase } from "../../lib/supabase"
 import { calculateRoundPoints } from "../../lib/scoring"
+
 
 export default function RoundsPage() {
 
@@ -13,6 +15,27 @@ export default function RoundsPage() {
   const [date,setDate] = useState("")
   const [pars, setPars] = useState(Array(18).fill(4))
 
+
+const router = useRouter()
+
+useEffect(()=>{
+
+async function checkUser(){
+
+const { data } = await supabase.auth.getUser()
+
+if (!data.user) {
+router.push("/login")
+}
+
+}
+
+checkUser()
+
+},[])
+
+
+
       useEffect(()=>{
 
       async function loadCourses(){
@@ -20,7 +43,6 @@ export default function RoundsPage() {
       const { data } = await supabase
       .from("courses")
       .select("*")
-console.log("COURSES:", data)
       setCourses(data || [])
 
       }

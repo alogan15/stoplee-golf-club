@@ -1,6 +1,7 @@
 "use client"
 
 import { useEffect, useState } from "react"
+import { useRouter } from "next/navigation"
 import { supabase } from "../../lib/supabase"
 import { calculateRoundPoints } from "../../lib/scoring"
 
@@ -9,6 +10,24 @@ export default function Leaderboard() {
 
   const [rounds,setRounds] = useState<any[]>([])
   const [loading,setLoading] = useState(true)
+
+  const router = useRouter()
+
+    useEffect(()=>{
+
+    async function checkUser(){
+
+    const { data } = await supabase.auth.getUser()
+
+    if (!data.user) {
+    router.push("/login")
+    }
+
+}
+
+checkUser()
+
+},[])
 
     function getPlayerHole(scores:number[]){
       let hole = 0

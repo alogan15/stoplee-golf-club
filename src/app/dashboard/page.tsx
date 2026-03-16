@@ -1,23 +1,35 @@
-export default function DashboardPage() {
-  return (
-    <div style={{ padding: "20px" }}>
-      <h1>Stoplee Golf Club Dashboard</h1>
+"use client"
 
-      <h2>Player Stats</h2>
+import { useEffect } from "react"
+import { useRouter } from "next/navigation"
+import { supabase } from "../../lib/supabase"
 
-      <div>
-        <p>Rounds Played: 12</p>
-        <p>Average Score: 88</p>
-        <p>Handicap: 14</p>
-      </div>
+export default function Dashboard(){
 
-      <h2>Recent Rounds</h2>
+const router = useRouter()
 
-      <ul>
-        <li>West Course — 90</li>
-        <li>River Club — 85</li>
-        <li>East Course — 89</li>
-      </ul>
-    </div>
-  )
+    useEffect(()=>{
+
+        async function checkUser(){
+
+        const { data } = await supabase.auth.getUser()
+
+        if (!data.user) {
+        router.push("/login")
+        }
+
+        }
+
+        checkUser()
+
+        },[])
+
+        return(
+
+        <div>
+        <h1>Dashboard</h1>
+        </div>
+
+)
+
 }
