@@ -4,12 +4,25 @@ import Link from "next/link"
 import { supabase } from "../lib/supabase"
 import { useRouter } from "next/navigation"
 import { useEffect, useState } from "react"
+import { FaHome, FaTrophy, FaCalendarAlt, FaUser, FaSignOutAlt, FaGolfBall } from "react-icons/fa"
+import { FaC, FaH } from "react-icons/fa6"
+import { link } from "fs"
 
 export default function Navbar() {
 
   const router = useRouter()
   const [user,setUser] = useState<any>(null)
   const [open, setOpen] = useState(false)
+
+  const linkStyle = {
+  display: "flex",
+  alignItems: "center",
+  gap: "10px",
+  textDecoration: "none",
+  color: "#1a1a1a",
+  padding: "10px",
+  borderRadius: "6px"
+}
 
 
 
@@ -41,7 +54,7 @@ export default function Navbar() {
             }}>
 
         {user && (
-          <div style={{ marginTop: "15px"}}>
+          <div style={{ marginTop: "15px", color:"navy"}}>
             Welcome {user.user_metadata?.name}
           </div>
         )}
@@ -56,13 +69,34 @@ export default function Navbar() {
           {!user && <Link href="/signup">Signup</Link>}
           {!user && <Link href="/login">Login</Link>}
 
-          <Link href="/">Home</Link>
-          <Link href="/dashboard">Dashboard</Link>
-          <Link href="/gameday">Game Day</Link>
-          <Link href="/around-the-league">Around The League</Link>
-          <Link href="/leaderboard">Leaderboard</Link>
-          <Link href="/schedule">Schedule</Link>
-          <Link href="/champions">Champions</Link>
+       <Link href="/" style={linkStyle}>
+          <FaHome /> Home
+        </Link>
+
+        <Link href="/dashboard" style={linkStyle}>
+          <FaUser/> Dashboard
+        </Link>
+
+        <Link href="/gameday" style={linkStyle}>
+          <FaGolfBall /> Game Day
+        </Link>
+
+          
+        <Link href="/around-the-league" style={linkStyle}>
+          <FaTrophy /> Around The League
+        </Link>
+          
+        <Link href="/leaderboard" style={linkStyle}>
+          <FaTrophy /> Leaderboard
+        </Link>
+          
+        <Link href="/schedule" style={linkStyle}>
+          <FaCalendarAlt /> Schedule
+        </Link>
+          
+        <Link href="/champions" style={linkStyle}>
+          🏆 Champions
+        </Link>
 
           {user && (
             <button   onClick={handleLogout}

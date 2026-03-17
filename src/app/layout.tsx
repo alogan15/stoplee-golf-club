@@ -23,7 +23,7 @@ export default function RootLayout({
   style={{height:"40px"}}
 />
 
-<h1 style={{margin:0}}>SLGC</h1>
+<h1 style={{margin:0, color: "darkgreen"}}>SLGC</h1>
 
 <div style={{
   marginLeft:"20px",
@@ -31,7 +31,8 @@ export default function RootLayout({
   background:"#f9f9f9",
   border:"1px solid #ddd",
   borderRadius:"4px",
-  fontStyle:"italic"
+  fontStyle:"italic",
+  color:"darkgreen"
 }}>
 In Memory of Eric “StopLee” Logan
 </div>
