@@ -4,13 +4,12 @@ import { useState } from "react"
 import { supabase } from "../../lib/supabase"
 import { useRouter } from "next/navigation"
 
-export default function SignupPage(){
+export default function SignupPageg(){
 
 const router = useRouter()
 
 const [email,setEmail] = useState("")
 const [password,setPassword] = useState("")
-const [name,setName] = useState("")
 const [error,setError] = useState("")
 
 const buttonStyle = {
@@ -25,71 +24,145 @@ const buttonStyle = {
   cursor: "pointer"
 }
 
-async function handleSignup(e:any){
-e.preventDefault()
+async function handleLogin(e:any){
+        e.preventDefault()
 
-const { error } = await supabase.auth.signUp({
-email,
-password,
-options:{
-data:{
-name:name
-}
-}
-})
+        const { error } = await supabase.auth.signInWithPassword({
+        email,
+        password
+        })
 
-if(error){
-setError(error.message)
-return
+        if(error){
+        setError(error.message)
+        return
+        }
+
+        router.push("/dashboard")
 }
 
-router.push("/dashboard")
+async function handleSignup() {
+  const { error } = await supabase.auth.signUp({
+    email,
+    password
+  })
+
+  if (error) {
+    setError(error.message)
+    return
+  }
+
+  alert("Account created! You can now log in.")
+  router.push("/login")
 }
+
 
 return(
 
-    <div style={{
-        padding: "16px",
-        maxWidth: "600px",
-        margin: "0 auto"
-        }}>
+<div style={{
+  minHeight: "100vh",
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "center",
+  padding: "16px",
+  background: "#f5f5f5"
+}}>
+  <div style={{
+    width: "100%",
+    maxWidth: "400px",
+    background: "white",
+    padding: "24px",
+    borderRadius: "16px",
+    boxShadow: "0 4px 12px rgba(0,0,0,0.08)",
+    textAlign: "center"
+  }}>
 
-            <div style={{maxWidth:"400px",margin:"40px auto"}}>
+    {/* 🔥 YOUR IMAGE */}
+    <img
+      src="/logo.png" // <-- put your image in /public folder
+      alt="Stoplee Golfer"
+      style={{
+        width: "100%",
+        maxWidth: "200px",
+        marginBottom: "20px"
+      }}
+    />
 
-            <h1 style={{ fontSize: "24px", fontWeight: "bold", marginBottom: "16px" }}>Members Only</h1>
+    {/* TITLE */}
+    <h1 style={{
+      fontSize: "22px",
+      fontWeight: "bold",
+       color: "black",
+      marginBottom: "8px"
+    }}>
+      Become a Member of Stoplee Golf Club
+    </h1>
 
-            <form onSubmit={handleSignup}>
 
-            <input
-            placeholder="Name"
-            value={name}
-            onChange={(e)=>setName(e.target.value)}
-            style={{display:"block",marginBottom:"10px",width:"100%"}}
-            />
 
-            <input
-            placeholder="Email"
-            value={email}
-            onChange={(e)=>setEmail(e.target.value)}
-            style={{display:"block",marginBottom:"10px",width:"100%"}}
-            />
+    {/* INPUTS */}
+    <input
+      type="email"
+      placeholder="Email"
+        value={email}
+        onChange={(e) => setEmail(e.target.value)}
+      style={{
+        width: "100%",
+        padding: "12px",
+        marginBottom: "12px",
+        borderRadius: "8px",
+        border: "1px solid #ddd"
+      }}
+    />
 
-            <input
-            type="password"
-            placeholder="Password"
-            value={password}
-            onChange={(e)=>setPassword(e.target.value)}
-            style={{display:"block",marginBottom:"10px",width:"100%"}}
-            />
+    <input
+      type="password"
+      placeholder="Password"
+       value={password}
+        onChange={(e) => setPassword(e.target.value)}
+      style={{
+        width: "100%",
+        padding: "12px",
+        marginBottom: "16px",
+        borderRadius: "8px",
+        border: "1px solid #ddd"
+      }}
+    />
 
-            <button style={buttonStyle} type="submit">Create Account</button>
+        {error && (
+          <p style={{ color: "red", fontSize: "12px", marginBottom: "10px" }}>
+            {error}
+          </p>
+        )}
 
-            </form>
+    {/* BUTTON */}
+    <button 
+    onClick={handleSignup}
+    style={{
+      width: "100%",
+      padding: "14px",
+      borderRadius: "10px",
+      border: "none",
+      background: "#1d4ed8",
+      color: "white",
+      fontWeight: "bold",
+      fontSize: "16px",
+      cursor: "pointer"
+    }}>
+      Submit
+    </button>
 
-            {error && <p style={{color:"red", fontSize: "14px"}}>{error}</p>}
 
-            </div>
-            </div>
+
+    <p style={{
+    fontSize: "12px",
+    color: "#888",
+    marginTop: "12px"
+    }}>
+    “Play like a champion.”
+    </p>
+
+  </div>
+</div>
 
 )
 

@@ -5,6 +5,7 @@ import { supabase } from "../lib/supabase"
 import { useRouter, usePathname } from "next/navigation"
 import { useEffect, useState } from "react"
 import { FaHome, FaTrophy, FaCalendarAlt, FaUser, FaSignOutAlt, FaGolfBall } from "react-icons/fa"
+import { FiLogIn, FiUserPlus } from "react-icons/fi"
 import { FaC, FaH } from "react-icons/fa6"
 import { link } from "fs"
 
@@ -16,17 +17,23 @@ export default function Navbar() {
   const pathname = usePathname()
   const isActive = (path: string) => pathname === path
 
-const linkStyle = (path: string) => ({
-  display: "flex",
-  alignItems: "center",
-  gap: "10px",
-  textDecoration: "none",
-  padding: "10px",
-  borderRadius: "6px",
-  backgroundColor: pathname.startsWith(path) ? "#1d4ed8" : "transparent",
-  color: pathname.startsWith(path) ? "white" : "#1a1a1a",
-  transition: "all 0.2s ease"
-})
+const linkStyle = (path: string) => {
+  const isHome = path === "/"
+
+  const active = isHome
+    ? pathname === "/"
+    : pathname.startsWith(path)
+return {
+    display: "flex",
+    alignItems: "center",
+    gap: "10px",
+    textDecoration: "none",
+    padding: "10px",
+    borderRadius: "6px",
+    backgroundColor: pathname.startsWith(path) ? "#1d4ed8" : "transparent",
+    color: pathname.startsWith(path) ? "white" : "#1a1a1a",
+    transition: "all 0.2s ease"
+}}
 
 const buttonStyle = {
   width: "50%",
@@ -47,14 +54,23 @@ const buttonStyle = {
     router.push("/")
   }
 
-  useEffect(()=>{
-    async function getUser(){
-      const { data } = await supabase.auth.getUser()
-      setUser(data.user)
-    }
+useEffect(() => {
+  // get initial user
+  supabase.auth.getUser().then(({ data }) => {
+    setUser(data.user)
+  })
 
-    getUser()
-  },[])
+  // listen for login/logout
+  const { data: listener } = supabase.auth.onAuthStateChange(
+    (_event, session) => {
+      setUser(session?.user || null)
+    }
+  )
+
+  return () => {
+    listener.subscription.unsubscribe()
+  }
+}, [])
 
   return (
 
@@ -82,10 +98,9 @@ const buttonStyle = {
             marginTop: "10px"
           }}>
 
-          {!user && <Link href="/signup">Signup</Link>}
-          {!user && <Link href="/login">Login</Link>}
 
-
+          {!user && <Link href="/signup" style={linkStyle("/signup")}> <FiUserPlus /> Signup</Link> }
+          {!user && <Link href="/login" style={linkStyle("/login")}> <FiLogIn /> Login</Link>}
           <Link href="/" style={linkStyle("/")}> <FaHome /> Home</Link>
           <Link href="/dashboard" style={linkStyle("/dashboard")}> <FaUser /> Dashboard</Link>
           <Link href="/gameday" style={linkStyle("/gameday")}> <FaGolfBall /> Game Day</Link>
@@ -93,9 +108,6 @@ const buttonStyle = {
           <Link href="/leaderboard" style={linkStyle("/leaderboard")}> <FaTrophy /> Leaderboard</Link>
           <Link href="/schedule" style={linkStyle("/schedule")}> <FaCalendarAlt /> Schedule</Link>
           <Link href="/champions" style={linkStyle("/champions")}> 🏆 Champions</Link>
-
-
-
           {user && (
             <button onClick={handleLogout}
                 style={buttonStyle}>

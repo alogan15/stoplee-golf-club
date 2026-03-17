@@ -15,6 +15,7 @@ players.map(()=>Array(18).fill(""))
 const buttonStyle = {
   width: "50%",
   padding: "15px",
+  marginTop: "16px",
   borderRadius: "100px",
   border: "none",
   background: "#1d4ed8",
@@ -59,7 +60,7 @@ return (
 
 <div>
 
-            <h2 style={{ fontSize: "18px", fontWeight: "600", marginBottom: "10px" }}>Live Round</h2>
+            <h2 style={{ fontSize: "18px", fontWeight: "600", marginBottom: "10px" }}>Live Round 🔴</h2>
 
             <div style={{ overflowX: "auto" }}>
             <table style={{minWidth: "500px", width: "100%"}} border="10">
@@ -100,9 +101,16 @@ return (
             </table>
             </div>
 
-            <button style={buttonStyle} onClick={saveLive}>
-            Save Live Round
-            </button>
+
+                  <div style={{ position:"sticky",
+                                bottom: 0,
+                                background: "white",
+                                paddingTop: "12px",
+                                marginTop: "20px" }}>
+                    <button style={buttonStyle} onClick={saveLive}>
+                    Save Live Round 
+                    </button>
+                </div>
 
             </div>
             </div>

@@ -136,7 +136,7 @@ return (
 
       <h1 style={{ fontSize: "24px", fontWeight: "bold", marginBottom: "16px" }}>League Leaderboard</h1>
 
-       <div style={{ overflowX: "auto"}}>
+       <div style={{ overflowX: "auto", paddingBottom: "8px"}}>
 
       <table style={{borderCollapse:"collapse", minWidth: "300px", width:"100px"}}>
 

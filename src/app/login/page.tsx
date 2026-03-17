@@ -24,60 +24,175 @@ const buttonStyle = {
   cursor: "pointer"
 }
 
-async function handleLogin(e:any){
-        e.preventDefault()
+async function handleLogin() {
+  const { error } = await supabase.auth.signInWithPassword({
+    email,
+    password
+  })
 
-        const { error } = await supabase.auth.signInWithPassword({
-        email,
-        password
-        })
+  if (error) {
+    setError(error.message)
+    return
+  }
 
-        if(error){
-        setError(error.message)
-        return
-        }
+  router.push("/dashboard")
+  console.log("EMAIL:", email)
+console.log("PASSWORD:", password)
+}
 
-        router.push("/dashboard")
+async function handleResetPassword() {
+  if (!email) {
+    alert("Enter your email first")
+    return
+  }
+
+  const { error } = await supabase.auth.resetPasswordForEmail(email, {
+    redirectTo: "http://localhost:3000/update-password"
+  })
+
+  if (error) {
+    alert(error.message)
+  } else {
+    alert("Check your email for reset link")
+  }
 }
 
 return(
 
-    <div style={{
-        padding: "16px",
-        maxWidth: "600px",
-        margin: "0 auto"
+<div style={{
+  minHeight: "100vh",
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "center",
+  padding: "16px",
+  background: "#f5f5f5"
+}}>
+  <div style={{
+    width: "100%",
+    maxWidth: "400px",
+    background: "white",
+    padding: "24px",
+    borderRadius: "16px",
+    boxShadow: "0 4px 12px rgba(0,0,0,0.08)",
+    textAlign: "center"
+  }}>
+
+    {/* 🔥 YOUR IMAGE */}
+    <img
+      src="/logo.png" // <-- put your image in /public folder
+      alt="Stoplee Golfer"
+      style={{
+        width: "100%",
+        maxWidth: "200px",
+        marginBottom: "20px"
+      }}
+    />
+
+    {/* TITLE */}
+    <h1 style={{
+      fontSize: "22px",
+      fontWeight: "bold",
+      marginBottom: "8px"
+    }}>
+      Members Only
+    </h1>
+
+    {/* SUBTEXT */}
+    <p style={{
+      fontSize: "13px",
+      color: "#666",
+      marginBottom: "20px"
+    }}>
+      Welcome to Stoplee Golf Club
+    </p>
+
+    {/* INPUTS */}
+    <input
+      type="email"
+      placeholder="Email"
+      value={email}
+      onChange={(e) => setEmail(e.target.value)}
+      style={{
+        width: "100%",
+        padding: "12px",
+        marginBottom: "12px",
+        borderRadius: "8px",
+        border: "1px solid #ddd"
+      }}
+    />
+
+    <input
+      type="password"
+      placeholder="Password"
+        value={password}
+        onChange={(e) => setPassword(e.target.value)}
+      style={{
+        width: "100%",
+        padding: "12px",
+        marginBottom: "16px",
+        borderRadius: "8px",
+        border: "1px solid #ddd"
+      }}
+    />
+
+    <p 
+        onClick={handleResetPassword}
+        style={{
+        fontSize: "12px",
+        color: "#1d4ed8",
+        textAlign: "right",
+        marginBottom: "16px",
+        cursor: "pointer"
+        }}
+        onMouseEnter={(e) => (e.currentTarget.style.opacity = "0.6")}
+        onMouseLeave={(e) => (e.currentTarget.style.opacity = "1")}
+        >
+        Forgot password?
+    </p>
+
+    {/* BUTTON */}
+    <button 
+        onClick={handleLogin}
+        style={{
+      width: "100%",
+      padding: "14px",
+      borderRadius: "10px",
+      border: "none",
+      background: "#1d4ed8",
+      color: "white",
+      fontWeight: "bold",
+      fontSize: "16px",
+      cursor: "pointer"
+    }}>
+      Login
+    </button>
+
+    <p 
+        onClick={() => router.push("/signup")}
+        style={{
+        fontSize: "13px",
+        marginTop: "16px"
         }}>
+        Don’t have an account?{" "}
+        <span style={{ color: "#1d4ed8", cursor: "pointer", fontWeight: "600" 
+        }}
+        onMouseEnter={(e) => (e.currentTarget.style.opacity = "0.6")}
+        onMouseLeave={(e) => (e.currentTarget.style.opacity = "1")}
+        >
+            Sign up
+        </span>
+    </p>
 
-            <div style={{maxWidth:"400px",margin:"40px auto"}}>
+    <p style={{
+    fontSize: "12px",
+    color: "#888",
+    marginTop: "12px"
+    }}>
+    “Play like a champion.”
+    </p>
 
-            <h1 style={{ fontSize: "24px", fontWeight: "bold", marginBottom: "16px" }}>Members Only</h1>
-
-            <form onSubmit={handleLogin}>
-
-            <input
-            placeholder="Email"
-            value={email}
-            onChange={(e)=>setEmail(e.target.value)}
-            style={{display:"block",marginBottom:"10px",width:"100%"}}
-            />
-
-            <input
-            type="password"
-            placeholder="Password"
-            value={password}
-            onChange={(e)=>setPassword(e.target.value)}
-            style={{display:"block",marginBottom:"10px",width:"100%"}}
-            />
-
-            <button style={buttonStyle} type="submit">Login</button>
-
-            </form>
-
-            {error && <p style={{color:"red", fontSize: "14px" }}>{error}</p>}
-
-            </div>
-
-    </div>
+  </div>
+</div>
 
 )
 

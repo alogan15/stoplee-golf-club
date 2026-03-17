@@ -111,7 +111,7 @@ rounds.forEach(round => {
             <p style={{margin:5, fontSize: "14px"}}>April 18, 2026</p>
             </div>
 
-      <div style={{ overflowX: "auto" }}>
+      <div style={{ overflowX: "auto", paddingBottom: "8px" }}>
             <table
               style={{
               borderCollapse:"collapse",

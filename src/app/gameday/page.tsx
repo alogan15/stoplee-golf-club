@@ -19,6 +19,7 @@ export default function RoundsPage() {
   width: "50%",
   padding: "15px",
   borderRadius: "100px",
+  marginTop: "16px",
   border: "none",
   background: "#1d4ed8",
   color: "white",
@@ -152,7 +153,7 @@ async function saveRound(){
       </div>
       </div>
 
-<div style={{ overflowX: "auto" }}>
+<div style={{ overflowX: "auto", paddingBottom: "8px" }}>
       <table style={{ minWidth: "500px", width: "100%" }} border="1">
 
         <thead>
@@ -292,7 +293,15 @@ async function saveRound(){
       </table>
       </div>
 
-      <button style={buttonStyle} onClick={saveRound}>Save Round</button>
+        <div style={{ position:"sticky",
+                                bottom: 0,
+                                background: "white",
+                                paddingTop: "12px",
+                                marginTop: "20px" }}>
+        <button style={buttonStyle} onClick={saveRound}>
+          Save Round
+        </button>
+      </div>
 
     </div>
     </div>
