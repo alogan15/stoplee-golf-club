@@ -7,6 +7,15 @@ export default function Champions(){
 
 const [champions,setChampions] = useState<any[]>([])
 const [loading,setLoading] = useState(true)
+
+const cardStyle = {
+  background: "white",
+  padding: "14px",
+  borderRadius: "12px",
+  boxShadow: "0 2px 8px rgba(0,0,0,0.05)",
+  marginBottom: "16px",
+  overflow: "hidden"
+}
     
 
   async function loadTournaments(){
@@ -39,41 +48,47 @@ const [loading,setLoading] = useState(true)
 
 return(
 
-  <div>
-
-    <h1>🏆 Champions Chamber </h1>
-
-    {champions.map((c,i)=>(
-      <div key={c.id} style={{
-        display:"flex",
-        alignItems:"center",
-        gap:"20px",
-        border:"1px solid #ddd",
-        padding:"12px",
-        marginBottom:"12px",
-        borderRadius:"6px"
+  <div style={{
+        padding: "16px",
+        maxWidth: "600px",
+        margin: "0 auto"
       }}>
 
+  <div>
+
+    <h1 style={{ fontSize: "24px", fontWeight: "bold", marginBottom: "16px" }}>🏆 Champions Chamber </h1>
+
+    {champions.map((c,i)=>(
+      <div key={c.id} style={cardStyle}>
+        
         <img
           src={c.image_url}
           alt={c.winner}
           style={{
-            width:"300px",
-            height:"300px",
-            objectFit:"cover",
-            borderRadius:"6px"
+            width: "100%",
+            height: "320px",
+            objectFit: "cover",
+            borderRadius: "10px",
+            marginBottom: "12px"
           }}
         />
 
-        <div>
-          <h3>{c.season} Champion</h3>
-          <strong>{c.winner}</strong>
-          <div>{c.points}</div>
-        </div>
+        <h3 style={{ margin: "0 0 6px 0" }}>
+          {c.season} Champion
+        </h3>
+
+        <strong style={{ display: "block", marginBottom: "4px" }}>
+          {c.winner}
+        </strong>
+
+        <p style={{ margin: 0, fontSize: "14px", color: "#555" }}>
+          {c.points} pts
+        </p>
 
       </div>
     ))}
 
+  </div>
   </div>
 )
 

@@ -13,6 +13,18 @@ const [password,setPassword] = useState("")
 const [name,setName] = useState("")
 const [error,setError] = useState("")
 
+const buttonStyle = {
+  width: "50%",
+  padding: "15px",
+  borderRadius: "100px",
+  border: "none",
+  background: "#1d4ed8",
+  color: "white",
+  fontWeight: "bold",
+  fontSize: "16px",
+  cursor: "pointer"
+}
+
 async function handleSignup(e:any){
 e.preventDefault()
 
@@ -36,41 +48,48 @@ router.push("/dashboard")
 
 return(
 
-<div style={{maxWidth:"400px",margin:"40px auto"}}>
+    <div style={{
+        padding: "16px",
+        maxWidth: "600px",
+        margin: "0 auto"
+        }}>
 
-<h1>Members Only</h1>
+            <div style={{maxWidth:"400px",margin:"40px auto"}}>
 
-<form onSubmit={handleSignup}>
+            <h1 style={{ fontSize: "24px", fontWeight: "bold", marginBottom: "16px" }}>Members Only</h1>
 
-<input
-placeholder="Name"
-value={name}
-onChange={(e)=>setName(e.target.value)}
-style={{display:"block",marginBottom:"10px",width:"100%"}}
-/>
+            <form onSubmit={handleSignup}>
 
-<input
-placeholder="Email"
-value={email}
-onChange={(e)=>setEmail(e.target.value)}
-style={{display:"block",marginBottom:"10px",width:"100%"}}
-/>
+            <input
+            placeholder="Name"
+            value={name}
+            onChange={(e)=>setName(e.target.value)}
+            style={{display:"block",marginBottom:"10px",width:"100%"}}
+            />
 
-<input
-type="password"
-placeholder="Password"
-value={password}
-onChange={(e)=>setPassword(e.target.value)}
-style={{display:"block",marginBottom:"10px",width:"100%"}}
-/>
+            <input
+            placeholder="Email"
+            value={email}
+            onChange={(e)=>setEmail(e.target.value)}
+            style={{display:"block",marginBottom:"10px",width:"100%"}}
+            />
 
-<button type="submit">Create Account</button>
+            <input
+            type="password"
+            placeholder="Password"
+            value={password}
+            onChange={(e)=>setPassword(e.target.value)}
+            style={{display:"block",marginBottom:"10px",width:"100%"}}
+            />
 
-</form>
+            <button style={buttonStyle} type="submit">Create Account</button>
 
-{error && <p style={{color:"red"}}>{error}</p>}
+            </form>
 
-</div>
+            {error && <p style={{color:"red", fontSize: "14px"}}>{error}</p>}
+
+            </div>
+            </div>
 
 )
 

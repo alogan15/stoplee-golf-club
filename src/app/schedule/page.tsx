@@ -9,6 +9,15 @@ export default function Events(){
   const [schedule,setSchedule] = useState<any[]>([])
   const [loading,setLoading] = useState(true)
 
+  const cardStyle = {
+  background: "white",
+  padding: "14px",
+  borderRadius: "12px",
+  boxShadow: "0 2px 8px rgba(0,0,0,0.05)",
+  marginBottom: "16px",
+  overflow: "hidden"
+}
+
   async function loadEvents(){
 
     const { data, error } = await supabase
@@ -57,29 +66,28 @@ function formatThru(scores:number[]){
 }
 
   return (
+    <div style={{
+      padding: "16px",
+      maxWidth: "600px",
+      margin: "0 auto"
+    }}>
 
     <div>
 
-      <h1>League Schedule</h1>
+      <h1 style={{ fontSize: "24px", fontWeight: "bold", marginBottom: "16px" }}>League Schedule</h1>
 
       {schedule.map(schedule=>(
               <div 
         key={schedule.id} 
-        style={{
-          border:"1px solid #ddd",
-          borderRadius:"8px",
-          padding:"15px",
-          marginBottom:"15px",
-          width:"350px"
-        }}
+        style={cardStyle}
 >
 
      <h4>{schedule.course}</h4>
-      <p>Location: {schedule.location}</p>
-      <p>{schedule.length} yards</p>
-      <p>{schedule.rating} Rating / {schedule.slope} Slope</p>
+      <p style={{ fontSize: "14px" }}>Location: {schedule.location}</p>
+      <p style={{ fontSize: "14px" }}>{schedule.length} yards</p>
+      <p style={{ fontSize: "14px" }}>{schedule.rating} Rating / {schedule.slope} Slope</p>
 
-        <p>
+        <p style={{ fontSize: "14px" }}>
         {formatDate(schedule.event_date)}
         </p>
 
@@ -102,6 +110,7 @@ function formatThru(scores:number[]){
         </div>
       ))}
 
+    </div>
     </div>
 
   )

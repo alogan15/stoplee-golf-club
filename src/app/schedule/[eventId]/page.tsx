@@ -95,17 +95,23 @@ rounds.forEach(round => {
         .sort((a:any,b:any)=>b[1].points-a[1].points)
 
   return (
+    <div style={{
+        padding: "16px",
+        maxWidth: "600px",
+        margin: "0 auto"
+      }}>
 
     <div>
 
-      <h1>Live Event Leaderboard 🔴</h1>
+      <h1 style={{ fontSize: "24px", fontWeight: "bold", marginBottom: "16px" }}>Live Event Leaderboard 🔴</h1>
 
             <div style={{overflowX: "auto"}}>
             <div style={{marginBottom:"15px"}}>
-            <h2 style={{margin:0}}>Broad Run Golf Course</h2>
-            <p style={{margin:5}}>April 18, 2026</p>
+            <h2 style={{margin:0, fontSize: "18px", fontWeight: "600", marginBottom: "10px"}}>Broad Run Golf Course</h2>
+            <p style={{margin:5, fontSize: "14px"}}>April 18, 2026</p>
             </div>
 
+      <div style={{ overflowX: "auto" }}>
             <table
               style={{
               borderCollapse:"collapse",
@@ -141,8 +147,10 @@ rounds.forEach(round => {
           </tbody>
 
           </table>
+        </div>
 
     </div>
+</div>
 </div>
   )
 

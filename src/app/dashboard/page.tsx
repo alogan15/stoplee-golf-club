@@ -82,11 +82,17 @@ const [loading,setLoading] = useState(true)
 
     return(
 
+        <div style={{
+            padding: "16px",
+            maxWidth: "600px",
+            margin: "0 auto"
+            }}>
+
             <div style={{padding:"20px"}}>
 
-            <h1>Dashboard</h1>
+            <h1 style={{ fontSize: "24px", fontWeight: "bold", marginBottom: "16px" }}>Dashboard</h1>
 
-            <h2>Welcome {user?.user_metadata?.name || "Golfer"}</h2>
+            <h2 style={{ fontSize: "18px", fontWeight: "600", marginBottom: "10px" }}>Welcome {user?.user_metadata?.name || "Golfer"}</h2>
 
             <div style={{marginTop:"20px"}}>
 
@@ -108,6 +114,7 @@ const [loading,setLoading] = useState(true)
 
     </div>
 
+    </div>
     </div>
 
 )

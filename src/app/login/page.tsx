@@ -12,52 +12,72 @@ const [email,setEmail] = useState("")
 const [password,setPassword] = useState("")
 const [error,setError] = useState("")
 
-async function handleLogin(e:any){
-e.preventDefault()
-
-const { error } = await supabase.auth.signInWithPassword({
-email,
-password
-})
-
-if(error){
-setError(error.message)
-return
+const buttonStyle = {
+  width: "50%",
+  padding: "15px",
+  borderRadius: "100px",
+  border: "none",
+  background: "#1d4ed8",
+  color: "white",
+  fontWeight: "bold",
+  fontSize: "16px",
+  cursor: "pointer"
 }
 
-router.push("/dashboard")
+async function handleLogin(e:any){
+        e.preventDefault()
+
+        const { error } = await supabase.auth.signInWithPassword({
+        email,
+        password
+        })
+
+        if(error){
+        setError(error.message)
+        return
+        }
+
+        router.push("/dashboard")
 }
 
 return(
 
-<div style={{maxWidth:"400px",margin:"40px auto"}}>
+    <div style={{
+        padding: "16px",
+        maxWidth: "600px",
+        margin: "0 auto"
+        }}>
 
-<h1>Members Only</h1>
+            <div style={{maxWidth:"400px",margin:"40px auto"}}>
 
-<form onSubmit={handleLogin}>
+            <h1 style={{ fontSize: "24px", fontWeight: "bold", marginBottom: "16px" }}>Members Only</h1>
 
-<input
-placeholder="Email"
-value={email}
-onChange={(e)=>setEmail(e.target.value)}
-style={{display:"block",marginBottom:"10px",width:"100%"}}
-/>
+            <form onSubmit={handleLogin}>
 
-<input
-type="password"
-placeholder="Password"
-value={password}
-onChange={(e)=>setPassword(e.target.value)}
-style={{display:"block",marginBottom:"10px",width:"100%"}}
-/>
+            <input
+            placeholder="Email"
+            value={email}
+            onChange={(e)=>setEmail(e.target.value)}
+            style={{display:"block",marginBottom:"10px",width:"100%"}}
+            />
 
-<button type="submit">Login</button>
+            <input
+            type="password"
+            placeholder="Password"
+            value={password}
+            onChange={(e)=>setPassword(e.target.value)}
+            style={{display:"block",marginBottom:"10px",width:"100%"}}
+            />
 
-</form>
+            <button style={buttonStyle} type="submit">Login</button>
 
-{error && <p style={{color:"red"}}>{error}</p>}
+            </form>
 
-</div>
+            {error && <p style={{color:"red", fontSize: "14px" }}>{error}</p>}
+
+            </div>
+
+    </div>
 
 )
 

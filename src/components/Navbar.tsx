@@ -2,7 +2,7 @@
 
 import Link from "next/link"
 import { supabase } from "../lib/supabase"
-import { useRouter } from "next/navigation"
+import { useRouter, usePathname } from "next/navigation"
 import { useEffect, useState } from "react"
 import { FaHome, FaTrophy, FaCalendarAlt, FaUser, FaSignOutAlt, FaGolfBall } from "react-icons/fa"
 import { FaC, FaH } from "react-icons/fa6"
@@ -13,15 +13,31 @@ export default function Navbar() {
   const router = useRouter()
   const [user,setUser] = useState<any>(null)
   const [open, setOpen] = useState(false)
+  const pathname = usePathname()
+  const isActive = (path: string) => pathname === path
 
-  const linkStyle = {
+const linkStyle = (path: string) => ({
   display: "flex",
   alignItems: "center",
   gap: "10px",
   textDecoration: "none",
-  color: "#1a1a1a",
   padding: "10px",
-  borderRadius: "6px"
+  borderRadius: "6px",
+  backgroundColor: pathname.startsWith(path) ? "#1d4ed8" : "transparent",
+  color: pathname.startsWith(path) ? "white" : "#1a1a1a",
+  transition: "all 0.2s ease"
+})
+
+const buttonStyle = {
+  width: "50%",
+  padding: "15px",
+  borderRadius: "100px",
+  border: "none",
+  background: "#1d4ed8",
+  color: "white",
+  fontWeight: "bold",
+  fontSize: "16px",
+  cursor: "pointer"
 }
 
 
@@ -69,49 +85,20 @@ export default function Navbar() {
           {!user && <Link href="/signup">Signup</Link>}
           {!user && <Link href="/login">Login</Link>}
 
-       <Link href="/" style={linkStyle}>
-          <FaHome /> Home
-        </Link>
 
-        <Link href="/dashboard" style={linkStyle}>
-          <FaUser/> Dashboard
-        </Link>
+          <Link href="/" style={linkStyle("/")}> <FaHome /> Home</Link>
+          <Link href="/dashboard" style={linkStyle("/dashboard")}> <FaUser /> Dashboard</Link>
+          <Link href="/gameday" style={linkStyle("/gameday")}> <FaGolfBall /> Game Day</Link>
+          <Link href="/around-the-league" style={linkStyle("/around-the-league")}> <FaTrophy /> Around The League</Link>
+          <Link href="/leaderboard" style={linkStyle("/leaderboard")}> <FaTrophy /> Leaderboard</Link>
+          <Link href="/schedule" style={linkStyle("/schedule")}> <FaCalendarAlt /> Schedule</Link>
+          <Link href="/champions" style={linkStyle("/champions")}> 🏆 Champions</Link>
 
-        <Link href="/gameday" style={linkStyle}>
-          <FaGolfBall /> Game Day
-        </Link>
 
-          
-        <Link href="/around-the-league" style={linkStyle}>
-          <FaTrophy /> Around The League
-        </Link>
-          
-        <Link href="/leaderboard" style={linkStyle}>
-          <FaTrophy /> Leaderboard
-        </Link>
-          
-        <Link href="/schedule" style={linkStyle}>
-          <FaCalendarAlt /> Schedule
-        </Link>
-          
-        <Link href="/champions" style={linkStyle}>
-          🏆 Champions
-        </Link>
 
           {user && (
-            <button   onClick={handleLogout}
-                    style={{
-                marginTop: "15px",
-                padding: "12px",
-                width: "30%",
-                border: "none",
-                borderRadius: "8px",
-                background: "navy",
-                color: "white",
-                fontWeight: "bold",
-                fontSize: "16px",
-                cursor: "pointer"
-              }}>
+            <button onClick={handleLogout}
+                style={buttonStyle}>
               Logout
             </button>
           )}

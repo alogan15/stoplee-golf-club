@@ -15,6 +15,18 @@ export default function RoundsPage() {
   const [date,setDate] = useState("")
   const [pars, setPars] = useState(Array(18).fill(4))
 
+  const buttonStyle = {
+  width: "50%",
+  padding: "15px",
+  borderRadius: "100px",
+  border: "none",
+  background: "#1d4ed8",
+  color: "white",
+  fontWeight: "bold",
+  fontSize: "16px",
+  cursor: "pointer"
+}
+
 
 const router = useRouter()
 
@@ -104,9 +116,15 @@ async function saveRound(){
 
   return (
 
+    <div style={{
+        padding: "16px",
+        maxWidth: "600px",
+        margin: "0 auto"
+      }}>
+
     <div>
 
-      <h1>Stoplee League Scorecard</h1>
+      <h1 style={{ fontSize: "24px", fontWeight: "bold", marginBottom: "16px" }}>Stoplee League Scorecard</h1>
 
       <div style={{ overflowX: "auto"}}>
 
@@ -134,7 +152,8 @@ async function saveRound(){
       </div>
       </div>
 
-      <table border="1">
+<div style={{ overflowX: "auto" }}>
+      <table style={{ minWidth: "500px", width: "100%" }} border="1">
 
         <thead>
 
@@ -210,8 +229,8 @@ async function saveRound(){
                 const total = sum(playerScores)
                 const stableTotal = calculateRoundPoints(playerScores, pars)
 
-                return (
-        <tr key={playerIndex}>
+        return (
+                <tr key={playerIndex}>
 
                 <td>
                   <input
@@ -271,9 +290,11 @@ async function saveRound(){
         </tbody>
 
       </table>
+      </div>
 
-      <button onClick={saveRound}>Save Round</button>
+      <button style={buttonStyle} onClick={saveRound}>Save Round</button>
 
+    </div>
     </div>
 
   )

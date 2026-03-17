@@ -12,6 +12,18 @@ const [scores,setScores] = useState(
 players.map(()=>Array(18).fill(""))
 )
 
+const buttonStyle = {
+  width: "50%",
+  padding: "15px",
+  borderRadius: "100px",
+  border: "none",
+  background: "#1d4ed8",
+  color: "white",
+  fontWeight: "bold",
+  fontSize: "16px",
+  cursor: "pointer"
+}
+
 function updateScore(player:number,hole:number,value:number){
 
 const newScores = [...scores]
@@ -38,52 +50,62 @@ pars
 
 return (
 
+<div style={{
+        padding: "16px",
+        maxWidth: "600px",
+        margin: "0 auto"
+        }}>
+
+
 <div>
 
-<h2>Live Round</h2>
+            <h2 style={{ fontSize: "18px", fontWeight: "600", marginBottom: "10px" }}>Live Round</h2>
 
-<table border="10">
+            <div style={{ overflowX: "auto" }}>
+            <table style={{minWidth: "500px", width: "100%"}} border="10">
 
-<thead>
-<tr>
-<th>Player</th>
-{Array.from({length:18}).map((_,i)=>(
-<th key={i}>{i+1}</th>
-))}
-</tr>
-</thead>
+            <thead>
+                <tr>
+                <th>Player</th>
+                {Array.from({length:18}).map((_,i)=>(
+                <th key={i}>{i+1}</th>
+                ))}
+                </tr>
+            </thead>
 
-<tbody>
+            <tbody>
 
-{players.map((player,pIndex)=>(
-<tr key={pIndex}>
+                    {players.map((player,pIndex)=>(
+                    <tr key={pIndex}>
 
-<td>{player}</td>
+                    <td>{player}</td>
 
-{scores[pIndex].map((score,hole)=>(
-<td key={hole}>
+                    {scores[pIndex].map((score,hole)=>(
+                    <td key={hole}>
 
-<input
-type="number"
-value={score}
-onChange={(e)=>updateScore(pIndex,hole,Number(e.target.value))}
-/>
+                    <input
+                    type="number"
+                    value={score}
+                    onChange={(e)=>updateScore(pIndex,hole,Number(e.target.value))}
+                    />
 
-</td>
-))}
+                    </td>
+                    ))}
 
-</tr>
-))}
+                    </tr>
+            ))}
 
-</tbody>
+            </tbody>
 
-</table>
+            </table>
+            </div>
 
-<button onClick={saveLive}>
-Save Live Round
-</button>
+            <button style={buttonStyle} onClick={saveLive}>
+            Save Live Round
+            </button>
 
-</div>
+            </div>
+            </div>
 
 )
 }
