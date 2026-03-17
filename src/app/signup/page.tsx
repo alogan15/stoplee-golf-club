@@ -8,6 +8,7 @@ export default function SignupPageg(){
 
 const router = useRouter()
 
+const [name, setName] = useState("")
 const [email,setEmail] = useState("")
 const [password,setPassword] = useState("")
 const [error,setError] = useState("")
@@ -29,7 +30,7 @@ async function handleLogin(e:any){
 
         const { error } = await supabase.auth.signInWithPassword({
         email,
-        password
+        password,        
         })
 
         if(error){
@@ -43,7 +44,12 @@ async function handleLogin(e:any){
 async function handleSignup() {
   const { error } = await supabase.auth.signUp({
     email,
-    password
+    password,
+      options: {
+    data: {
+      name: name
+    }
+  }
   })
 
   if (error) {
@@ -97,6 +103,20 @@ return(
       Become a Member of Stoplee Golf Club
     </h1>
 
+
+    <input
+    type="text"
+    placeholder="Full Name"
+    value={name}
+    onChange={(e) => setName(e.target.value)}
+    style={{
+        width: "100%",
+        padding: "12px",
+        marginBottom: "12px",
+        borderRadius: "8px",
+        border: "1px solid #ddd"
+    }}
+    />
 
 
     {/* INPUTS */}

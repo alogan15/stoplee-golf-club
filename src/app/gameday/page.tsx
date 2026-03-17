@@ -1,7 +1,7 @@
 "use client"
 
 import { useState, useEffect } from "react"
-import { useRouter } from "next/navigation"
+import { useRouter, useSearchParams } from "next/navigation"
 import { supabase } from "../../lib/supabase"
 import { calculateRoundPoints } from "../../lib/scoring"
 
@@ -14,6 +14,49 @@ export default function RoundsPage() {
   const [courses,setCourses] = useState<any[]>([])
   const [date,setDate] = useState("")
   const [pars, setPars] = useState(Array(18).fill(4))
+  const searchParams = useSearchParams()
+  const eventId = searchParams.get("eventId")
+
+
+async function saveRound() {
+  if (!eventId) {
+    alert("No event selected")
+    return
+    
+  }
+
+
+const { data: userData } = await supabase.auth.getUser()
+
+    if (!userData?.user) {
+      alert("Not logged in")
+      return
+    }
+
+    const name =
+      userData.user.user_metadata?.name ||
+      userData.user.email ||
+      "Player"
+
+
+  const rows = playerNames.map((playerName, i) => ({
+      event_id: eventId,
+      course,
+      date,
+      player_id: playerName || `player-${i}`, // temp ID
+      player_name: playerName || `Player ${i + 1}`,
+      scores: (scores[i] || []).map((s: any) => Number(s) || 0),      
+      pars
+}))
+
+const { error } = await supabase.from("rounds").upsert(rows)
+
+if (error) {
+  console.error("SAVE ERROR:", error)
+  alert(error.message)
+} else {
+  alert("Round saved")
+}}
 
   const buttonStyle = {
   width: "50%",
@@ -49,11 +92,11 @@ checkUser()
 
 
 
-      useEffect(()=>{
+    useEffect(()=>{
 
-      async function loadCourses(){
+    async function loadCourses(){
 
-      const { data } = await supabase
+    const { data } = await supabase
       .from("courses")
       .select("*")
       setCourses(data || [])
@@ -65,13 +108,13 @@ checkUser()
       },[])
 
       
-      useEffect(()=>{
+    useEffect(()=>{
 
       if(!course) return
 
-      async function loadCourse(){
+    async function loadCourse(){
 
-      const { data } = await supabase
+    const { data } = await supabase
       .from("courses")
       .select("pars")
       .eq("name",course)
@@ -94,26 +137,10 @@ checkUser()
   )
 
 
-function sum(arr:number[]){
- return arr.reduce((a,b)=>a+b,0)
-}
+    function sum(arr:number[]){
+        return arr.reduce((a,b)=>a+b,0)
+    }
 
-async function saveRound(){
-
- const { data, error } = await supabase
- .from("rounds")
- .upsert([
- {
-   event_id: "a7a67b05-4997-42f3-893c-0dc82fbe2c5c",
-   course,
-   date,
-   players: playerNames,
-   scores,
-   pars
- }
- ])
-
-}
 
   return (
 
