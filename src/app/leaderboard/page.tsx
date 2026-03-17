@@ -130,6 +130,8 @@ return (
 
       <h1>League Leaderboard</h1>
 
+       <div style={{ overflowX: "auto"}}>
+
       <table style={{borderCollapse:"collapse", width:"420px"}}>
 
       <thead>
@@ -153,6 +155,7 @@ return (
       </tbody>
 
       </table>
+      </div>
 
     </div>
 

@@ -100,6 +100,7 @@ rounds.forEach(round => {
 
       <h1>Live Event Leaderboard 🔴</h1>
 
+            <div style={{overflowX: "auto"}}>
             <div style={{marginBottom:"15px"}}>
             <h2 style={{margin:0}}>Broad Run Golf Course</h2>
             <p style={{margin:5}}>April 18, 2026</p>
@@ -142,7 +143,7 @@ rounds.forEach(round => {
           </table>
 
     </div>
-
+</div>
   )
 
 } 

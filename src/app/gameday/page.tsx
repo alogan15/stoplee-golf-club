@@ -108,6 +108,8 @@ async function saveRound(){
 
       <h1>Stoplee League Scorecard</h1>
 
+      <div style={{ overflowX: "auto"}}>
+
       <div>
         <select
         value={course}
@@ -129,6 +131,7 @@ async function saveRound(){
           value={date}
           onChange={(e)=>setDate(e.target.value)}
         />
+      </div>
       </div>
 
       <table border="1">

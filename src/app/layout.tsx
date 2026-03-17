@@ -23,7 +23,7 @@ export default function RootLayout({
   style={{height:"40px"}}
 />
 
-<h1 style={{margin:0}}>Stoplee Golf Club</h1>
+<h1 style={{margin:0}}>SLGC</h1>
 
 <div style={{
   marginLeft:"20px",
