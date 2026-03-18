@@ -38,7 +38,7 @@ async function handleLogin(e:any){
         return
         }
 
-        router.push("/dashboard")
+        router.push("/")
 }
 
 async function handleSignup() {

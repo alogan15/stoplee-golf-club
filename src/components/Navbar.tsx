@@ -98,15 +98,15 @@ useEffect(() => {
           }}>
 
 
-          {!user && <Link href="/signup" style={linkStyle("/signup")}> <FiUserPlus /> Signup</Link> }
-          {!user && <Link href="/login" style={linkStyle("/login")}> <FiLogIn /> Login</Link>}
-          <Link href="/" style={linkStyle("/")}> <FaHome /> Home</Link>
-          <Link href="/dashboard" style={linkStyle("/dashboard")}> <FaUser /> Dashboard</Link>
-          <Link href="/gameday" style={linkStyle("/gameday")}> <FaGolfBall /> Game Day</Link>
-          <Link href="/around-the-league" style={linkStyle("/around-the-league")}> <FaTrophy /> Around The League</Link>
-          <Link href="/leaderboard" style={linkStyle("/leaderboard")}> <FaTrophy /> Leaderboard</Link>
-          <Link href="/schedule" style={linkStyle("/schedule")}> <FaCalendarAlt /> Schedule</Link>
-          <Link href="/champions" style={linkStyle("/champions")}> 🏆 Champions</Link>
+          {!user && <Link href="/signup" onClick={() => setOpen(false)} style={linkStyle("/signup")}> <FiUserPlus /> Signup</Link> }
+          {!user && <Link href="/login" onClick={() => setOpen(false)} style={linkStyle("/login")}> <FiLogIn /> Login</Link>}
+          <Link href="/" onClick={() => setOpen(false)} style={linkStyle("/")}> <FaHome /> Home</Link>
+          <Link href="/dashboard" onClick={() => setOpen(false)} style={linkStyle("/dashboard")}> <FaUser /> Dashboard</Link>
+          <Link href="/gameday" onClick={() => setOpen(false)} style={linkStyle("/gameday")}> <FaGolfBall /> Game Day</Link>
+          {/* <Link href="/around-the-league" onClick={() => setOpen(false)} style={linkStyle("/around-the-league")}> <FaTrophy /> Around The League</Link> */}
+          <Link href="/leaderboard" onClick={() => setOpen(false)} style={linkStyle("/leaderboard")}> <FaTrophy /> Leaderboard</Link>
+          <Link href="/schedule" onClick={() => setOpen(false)} style={linkStyle("/schedule")}> <FaCalendarAlt /> Schedule</Link>
+          <Link href="/champions" onClick={() => setOpen(false)} style={linkStyle("/champions")}> 🏆 Champions</Link>
           {user && (
             <button onClick={handleLogout}
                 style={buttonStyle}>

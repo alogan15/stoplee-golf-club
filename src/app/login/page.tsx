@@ -35,7 +35,7 @@ async function handleLogin() {
     return
   }
 
-  router.push("/dashboard")
+  router.push("/")
   console.log("EMAIL:", email)
 console.log("PASSWORD:", password)
 }

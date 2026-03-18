@@ -1,9 +1,9 @@
 "use client"
 
 import { useState, useEffect } from "react"
-import { useRouter, useSearchParams } from "next/navigation"
-import { supabase } from "../../lib/supabase"
-import { calculateRoundPoints } from "../../lib/scoring"
+import { useRouter, useParams } from "next/navigation"
+import { supabase } from "../../../lib/supabase"
+import { calculateRoundPoints } from "../../../lib/scoring"
 
 
 export default function RoundsPage() {
@@ -12,11 +12,12 @@ export default function RoundsPage() {
 
   const [course,setCourse] = useState("")
   const [courses,setCourses] = useState<any[]>([])
-  const [date,setDate] = useState("")
+  const [date, setDate] = useState(
+  new Date().toISOString().split("T")[0]
+)
   const [pars, setPars] = useState(Array(18).fill(4))
-  const searchParams = useSearchParams()
-  const eventId = searchParams.get("eventId")
-
+  const params = useParams()
+  const eventId = params.eventId
 
 async function saveRound() {
   if (!eventId) {
@@ -81,8 +82,7 @@ async function checkUser(){
 const { data } = await supabase.auth.getUser()
 
 if (!data.user) {
-router.push("/login")
-}
+router.push(`/gameday/${eventId}`)}
 
 }
 
@@ -156,7 +156,11 @@ checkUser()
 
       <div style={{ overflowX: "auto"}}>
 
-      <div>
+      <div style={{
+        display: "flex",
+        gap: "10px",
+        marginBottom: "10px"
+        }}>
         <select
         value={course}
         onChange={(e)=>setCourse(e.target.value)}
@@ -173,15 +177,19 @@ checkUser()
         </select>
 
         <input
-          type="date"
-          value={date}
-          onChange={(e)=>setDate(e.target.value)}
+        type="date"
+        value={date}
+        onChange={(e)=>setDate(e.target.value)}
+        style={{
+        display: "flex",
+        gap: "10px"
+        }}
         />
       </div>
       </div>
 
-<div style={{ overflowX: "auto", paddingBottom: "8px" }}>
-      <table style={{ minWidth: "500px", width: "100%" }} border="1">
+        <div style={{ overflowX: "auto", paddingBottom: "8px" }}>
+            <table style={{ width: "100%" }} border="1">
 
         <thead>
 
