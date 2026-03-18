@@ -18,22 +18,21 @@ export default function Navbar() {
   const isActive = (path: string) => pathname === path
 
 const linkStyle = (path: string) => {
-  const isHome = path === "/"
+  const active =
+    path === "/" ? pathname === "/" : pathname.startsWith(path)
 
-  const active = isHome
-    ? pathname === "/"
-    : pathname.startsWith(path)
-return {
+  return {
     display: "flex",
     alignItems: "center",
     gap: "10px",
     textDecoration: "none",
     padding: "10px",
     borderRadius: "6px",
-    backgroundColor: pathname.startsWith(path) ? "#1d4ed8" : "transparent",
-    color: pathname.startsWith(path) ? "white" : "#1a1a1a",
+    backgroundColor: active ? "#1d4ed8" : "transparent",
+    color: active ? "white" : "#1a1a1a",
     transition: "all 0.2s ease"
-}}
+  }
+}
 
 const buttonStyle = {
   width: "50%",

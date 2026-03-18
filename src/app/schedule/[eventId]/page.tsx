@@ -3,10 +3,13 @@
 import { useEffect, useState, use } from "react"
 import { supabase } from "../../../lib/supabase"
 import { calculateRoundPoints } from "../../../lib/scoring"
+import { useParams } from "next/navigation"
 
-export default function EventPage({ params }: { params: Promise<{ eventId: string }> }) {
+export default function EventPage() {
 
-const { eventId } = use(params)
+const params = useParams()
+const eventId = params.eventId
+
 const [rounds,setRounds] = useState<any[]>([])
 const [loading,setLoading] = useState(true)
 
@@ -31,6 +34,7 @@ function getPlayerHole(scores:number[] | undefined){
       .from("rounds")
       .select("*")
       .eq("event_id", String(eventId))
+console.log("ROUNDS:", data)
 
     if(error){
       console.error(error)
@@ -66,33 +70,36 @@ return ()=>{
     return <div>Loading leaderboard...</div>
   }
 
-  const leaderboard:any = {}
+const leaderboard: any = {}
 
-rounds.forEach(round => {
+rounds.forEach((round) => {
+  const playerId = round.player_id
+  const name = round.player_name || playerId
 
-  round.players.forEach((player:string,i:number)=>{
+  if (!playerId) return
 
-    const scores = round.scores[i]
-    const pars = round.pars
+  const scores = (round.scores || []).map((s: any) => Number(s) || 0)
+  const pars = (round.pars || []).map((p: any) => Number(p) || 0)
 
-    const total = calculateRoundPoints(scores, pars)
+  const total = calculateRoundPoints(scores, pars)
+  const hole = getPlayerHole(scores)
 
-    if(!leaderboard[player]){
-      leaderboard[player] = {
-        points:0,
-        hole:0
-      }
+  if (!leaderboard[playerId]) {
+    leaderboard[playerId] = {
+      name,
+      points: 0,
+      hole: 0
     }
+  }
 
-    leaderboard[player].points += total
-    leaderboard[player].hole = getPlayerHole(scores)
-
-  })
-
+  leaderboard[playerId].points += total
+  leaderboard[playerId].hole = hole
 })
 
-        const sortedLeaderboard = Object.entries(leaderboard)
-        .sort((a:any,b:any)=>b[1].points-a[1].points)
+
+
+    const sortedLeaderboard = Object.values(leaderboard)
+      .sort((a: any, b: any) => b.points - a.points)
 
   return (
     <div style={{
@@ -107,8 +114,8 @@ rounds.forEach(round => {
 
             <div style={{overflowX: "auto"}}>
             <div style={{marginBottom:"15px"}}>
-            <h2 style={{margin:0, fontSize: "18px", fontWeight: "600", marginBottom: "10px"}}>Broad Run Golf Course</h2>
-            <p style={{margin:5, fontSize: "14px"}}>April 18, 2026</p>
+            <h2 style={{margin:0, fontSize: "18px", fontWeight: "600", marginBottom: "10px"}}>Queenstown Harbor Golf Course</h2>
+            <p style={{margin:5, fontSize: "14px"}}>March 22, 2026</p>
             </div>
 
       <div style={{ overflowX: "auto", paddingBottom: "8px" }}>
@@ -133,15 +140,15 @@ rounds.forEach(round => {
 
           <tbody>
 
-          {sortedLeaderboard.map(([player,data]:any,i:number)=>(
-
-          <tr key={player} style={{borderBottom:"1px solid #ccc"}}>
-          <td style={{textAlign:"center"}}>{i + 1}</td>
-          <td style={{textAlign:"left"}}>{player}</td>
-          <td style={{textAlign:"center"}}>{data.points}</td>
-          <td style={{textAlign:"center"}}>{data.hole}</td>
-          </tr>
-
+          {sortedLeaderboard.map((player: any, i: number) => (
+            <tr key={player.name}>
+              <td style={{ textAlign: "center" }}>{i + 1}</td>
+              <td style={{ textAlign: "left" }}>{player.name}</td>
+              <td style={{ textAlign: "center" }}>{player.points}</td>
+              <td style={{ textAlign: "center" }}>
+                {player.hole === 18 ? "F" : `THRU ${player.hole}`}
+              </td>
+            </tr>
           ))}
 
           </tbody>
@@ -154,4 +161,4 @@ rounds.forEach(round => {
 </div>
   )
 
-} 
+}

@@ -135,6 +135,8 @@ if(loading){
   return <div>Loading leaderboard...</div>
 }
 
+
+
 return (
 
   <div style={{
@@ -160,15 +162,26 @@ return (
       </thead>
 
       <tbody>
+        {sortedLeaderboard.map((player: any, i: number) => (
+          <tr
+            key={player.player_id}
+            style={{
+              backgroundColor: i === 0 ? "#fef9c3" : "transparent"
+            }}
+          >
+            <td style={{ padding: "12px" }}>{i + 1}</td>
 
-    {sortedLeaderboard.map((player: any, i: number) => (
-      <tr key={player.player_id}>
-        <td style={{ padding: "15px" }}>{i + 1}</td>
-        <td style={{ padding:"10px" }}>{player.player_name || player.player_id}</td>
-        <td style={{ padding: "10px" }}>{player.points}</td>
-      </tr>
-    ))}
+            <td style={{ padding: "12px" }}>
+              {player.player_name ?? "Player"}
+            </td>
 
+            <td style={{ padding: "12px" }}>
+              {player.points} pts
+              <div style={{ fontSize: "12px", color: "gray" }}>
+              </div>
+            </td>
+          </tr>
+        ))}
       </tbody>
 
       </table>

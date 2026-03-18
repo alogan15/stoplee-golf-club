@@ -50,7 +50,7 @@ return(
 
   <div style={{
         padding: "16px",
-        maxWidth: "600px",
+        maxWidth: "300px",
         margin: "0 auto"
       }}>
 

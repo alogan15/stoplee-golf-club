@@ -8,15 +8,31 @@ export default function Events(){
 
   const [schedule,setSchedule] = useState<any[]>([])
   const [loading,setLoading] = useState(true)
+  const [winners, setWinners] = useState<any>({})
 
-  const cardStyle = {
-  background: "white",
-  padding: "14px",
-  borderRadius: "12px",
-  boxShadow: "0 2px 8px rgba(0,0,0,0.05)",
-  marginBottom: "16px",
-  overflow: "hidden"
-}
+    useEffect(()=>{
+    loadEvents()
+  },[])
+
+  useEffect(() => {
+  async function loadWinners() {
+    const result: any = {}
+
+    for (const event of schedule) {
+      const winner = await getEventWinner(event.id)
+
+      if (winner) {
+        result[event.id] = winner
+      }
+    }
+
+    setWinners(result)
+  }
+
+  if (schedule.length > 0) {
+    loadWinners()
+  }
+}, [schedule])
 
   async function loadEvents(){
 
@@ -24,6 +40,7 @@ export default function Events(){
       .from("events")
       .select("*")
       .order("event_date",{ascending:true})
+
 
     if(error){
       console.error(error)
@@ -34,9 +51,7 @@ export default function Events(){
     setLoading(false)
   }
 
-  useEffect(()=>{
-    loadEvents()
-  },[])
+
 
   if(loading){
     return <div>Loading events...</div>
@@ -65,6 +80,53 @@ function formatThru(scores:number[]){
   return `THRU ${holesPlayed}`
 }
 
+async function getEventWinner(eventId: string) {
+  const { data, error } = await supabase
+    .from("rounds")
+    .select("*")
+    .eq("event_id", eventId)
+
+  if (error || !data || data.length === 0) return null
+
+  const leaderboard: any = {}
+
+  data.forEach((round) => {
+    const playerId = round.player_id
+    const name = round.player_name || round.player_id
+
+    const scores = (round.scores || []).map((s: any) => Number(s) || 0)
+
+    const total = scores.reduce((sum: number, s: number) => sum + s, 0)
+
+    if (!leaderboard[playerId]) {
+      leaderboard[playerId] = {
+        name,
+        total: 0
+      }
+    }
+
+    leaderboard[playerId].total += total
+  })
+
+  const sorted = Object.values(leaderboard).sort(
+    (a: any, b: any) => a.total - b.total
+  )
+
+  return sorted[0] || null
+}
+
+
+
+
+  const cardStyle = {
+  background: "white",
+  padding: "14px",
+  borderRadius: "12px",
+  boxShadow: "0 2px 8px rgba(0,0,0,0.05)",
+  marginBottom: "16px",
+  overflow: "hidden"
+}
+
   return (
     <div style={{
       padding: "16px",
@@ -86,6 +148,15 @@ function formatThru(scores:number[]){
       <p style={{ fontSize: "14px" }}>Location: {schedule.location}</p>
       <p style={{ fontSize: "14px" }}>{schedule.length} yards</p>
       <p style={{ fontSize: "14px" }}>{schedule.rating} Rating / {schedule.slope} Slope</p>
+      {schedule.winner ? (
+        <div style={{ marginTop: "8px", fontWeight: "bold" }}>
+          🏆 {schedule.winner} — {schedule.winning_score}
+        </div>
+      ) : (
+        <div style={{ marginTop: "8px", color: "gray" }}>
+          No results yet
+        </div>
+      )}
 
         <p style={{ fontSize: "14px" }}>
         {formatDate(schedule.event_date)}
