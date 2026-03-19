@@ -1,7 +1,7 @@
 "use client"
 
 import { useEffect, useState } from "react"
-import { useRouter, useSearchParams } from "next/navigation"
+import { useRouter, useParams } from "next/navigation"
 import { supabase } from "../../lib/supabase"
 import { calculateRoundPoints } from "../../lib/scoring"
 
@@ -11,8 +11,9 @@ export const dynamic = "force-dynamic"
 export default function Leaderboard() {
   const [rounds,setRounds] = useState<any[]>([])
   const [loading,setLoading] = useState(true)
-  const searchParams = useSearchParams()
-  const eventId = searchParams.get("eventId")
+
+  const params = useParams()
+  const eventId = params?.eventId
 
 
 
@@ -133,7 +134,8 @@ const sortedLeaderboard = Object.values(leaderboard)
   .sort((a: any, b: any) => b.points - a.points)
 
 if(loading){
-  return <div>Loading leaderboard...</div>
+  return 
+  <div>Loading leaderboard...</div>
 }
 
 
