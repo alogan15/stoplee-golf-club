@@ -5,9 +5,10 @@ import { useRouter, useSearchParams } from "next/navigation"
 import { supabase } from "../../lib/supabase"
 import { calculateRoundPoints } from "../../lib/scoring"
 
+export const dynamic = "force-dynamic"
+
 
 export default function Leaderboard() {
-
   const [rounds,setRounds] = useState<any[]>([])
   const [loading,setLoading] = useState(true)
   const searchParams = useSearchParams()
@@ -101,7 +102,7 @@ const { data, error } = await supabase
 
 const leaderboard: any = {}
 
-rounds.forEach((round) => {
+rounds?.forEach((round) => {
   const playerId = round.player_id || round.player_id
   const playerName = round.player_name || playerId
 
