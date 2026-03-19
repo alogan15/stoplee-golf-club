@@ -18,7 +18,7 @@ export default function RootLayout({
 }}>
 
 <img
-  src="/logo.png"
+  src="/Logo.png"
   alt="Stoplee Golf Club"
   style={{height:"40px"}}
 />
