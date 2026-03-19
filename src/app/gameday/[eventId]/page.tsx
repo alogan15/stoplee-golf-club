@@ -191,7 +191,7 @@ checkUser()
       </div>
 
         <div style={{ overflowX: "auto", paddingBottom: "8px" }}>
-            <table style={{ width: "100%" }} border="1">
+            <table style={{ width: "100%" }} border={1}>
 
         <thead>
 
