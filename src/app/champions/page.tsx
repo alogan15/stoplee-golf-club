@@ -56,7 +56,7 @@ return(
 
   <div>
 
-    <h1 style={{ fontSize: "24px", fontWeight: "bold", marginBottom: "16px" }}>🏆 Champions Chamber </h1>
+    <h1 style={{ fontSize: "24px", fontWeight: "bold", marginBottom: "16px" }}>🏆 Champions Chamber 🏆 </h1>
 
     {champions.map((c,i)=>(
       <div key={c.id} style={cardStyle}>

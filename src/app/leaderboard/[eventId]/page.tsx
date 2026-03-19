@@ -1,14 +1,16 @@
 "use client"
 
-import { useEffect, useState, use } from "react"
+import { useEffect, useState } from "react"
 import { supabase } from "../../../lib/supabase"
 import { calculateRoundPoints } from "../../../lib/scoring"
 import { useParams } from "next/navigation"
+import Link from "next/link"
+
 
 export default function EventPage() {
 
 const params = useParams()
-const eventId = params.eventId
+const eventId = String(params?.eventId || "")
 
 const [rounds,setRounds] = useState<any[]>([])
 const [loading,setLoading] = useState(true)
@@ -30,11 +32,14 @@ function getPlayerHole(scores:number[] | undefined){
 }
   async function loadRounds(){
 
+    console.log("EVENT ID:", eventId)
+
     const { data, error } = await supabase
       .from("rounds")
       .select("*")
-      .eq("event_id", String(eventId))
-console.log("ROUNDS:", data)
+      .eq("event_id", eventId)
+console.log("LEADERBOARD DATA:", data)
+console.log("FILTER CHECK:", data?.map(r => r.event_id))
 
     if(error){
       console.error(error)
@@ -52,7 +57,7 @@ console.log("ROUNDS:", data)
         .channel("event-live")
         .on(
         "postgres_changes",
-        { event: "*", schema: "public", table: "rounds" },
+        { event: "*", schema: "public", table: "rounds", filter: `event_id=eq.${eventId}` },
         payload => {
             loadRounds()
         }
@@ -70,13 +75,13 @@ return ()=>{
     return <div>Loading leaderboard...</div>
   }
 
-const leaderboard: any = {}
+const leaderboard: Record<string, any> = {}
 
 rounds.forEach((round) => {
   const playerId = round.player_id
   const name = round.player_name || playerId
 
-  if (!playerId) return
+  if (!round || !playerId) return
 
   const scores = (round.scores || []).map((s: any) => Number(s) || 0)
   const pars = (round.pars || []).map((p: any) => Number(p) || 0)
@@ -110,7 +115,8 @@ rounds.forEach((round) => {
 
     <div>
 
-      <h1 style={{ fontSize: "24px", fontWeight: "bold", marginBottom: "16px" }}>Live Event Leaderboard 🔴</h1>
+
+
 
             <div style={{overflowX: "auto"}}>
             <div style={{marginBottom:"15px"}}>
@@ -119,6 +125,11 @@ rounds.forEach((round) => {
             </div>
 
       <div style={{ overflowX: "auto", paddingBottom: "8px" }}>
+
+            <h1 style={{ fontSize: "24px", fontWeight: "bold", marginBottom: "16px" }}>View Live Leaderboard 🔴</h1>
+
+
+
             <table
               style={{
               borderCollapse:"collapse",

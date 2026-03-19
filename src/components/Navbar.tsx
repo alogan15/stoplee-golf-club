@@ -4,10 +4,9 @@ import Link from "next/link"
 import { supabase } from "../lib/supabase"
 import { useRouter, usePathname } from "next/navigation"
 import { useEffect, useState } from "react"
-import { FaHome, FaTrophy, FaCalendarAlt, FaUser, FaSignOutAlt, FaGolfBall } from "react-icons/fa"
+import { FaHome, FaTrophy, FaCalendarAlt, FaUser, FaGolfBall } from "react-icons/fa"
 import { FiLogIn, FiUserPlus } from "react-icons/fi"
-import { FaC, FaH } from "react-icons/fa6"
-import { link } from "fs"
+
 
 export default function Navbar() {
 

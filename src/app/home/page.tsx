@@ -12,6 +12,8 @@ export default function signUp() {
     <div>
 
       <h1 style={{ fontSize: "24px", fontWeight: "bold", marginBottom: "16px" }}>Home</h1>
+
+      <p>BLOG PAGE!!!</p>
       
     </div>
     </div>

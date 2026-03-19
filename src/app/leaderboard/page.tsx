@@ -24,7 +24,7 @@ export default function Leaderboard() {
     const { data } = await supabase.auth.getUser()
 
     if (!data.user) {
-    router.push("/login")
+    router.push(`/leaderboard/${eventId}`)
     }
 
 }
@@ -62,7 +62,7 @@ checkUser()
 const { data, error } = await supabase
   .from("rounds")
   .select("*")
-  .eq("event_id", eventId)
+  .eq("event_id", "test123")
   .order("created_at", { ascending: false })
 
     if(error){
@@ -82,10 +82,10 @@ const { data, error } = await supabase
   loadRounds()
 
   const channel = supabase
-  .channel("rounds-live")
+  .channel("event-live")
   .on(
     "postgres_changes",
-    { event:"*", schema:"public", table:"rounds" },
+    { event:"*", schema:"public", table:"rounds", filter: `event_id=eq.${eventId}` },
     () => {
       loadRounds()
     }
@@ -102,7 +102,7 @@ const { data, error } = await supabase
 const leaderboard: any = {}
 
 rounds.forEach((round) => {
-  const playerId = round.player_id
+  const playerId = round.player_id || round.player_id
   const playerName = round.player_name || playerId
 
   if (!playerId) return

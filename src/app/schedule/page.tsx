@@ -4,9 +4,11 @@ import { useEffect, useState } from "react"
 import { supabase } from "../../lib/supabase"
 import Link from "next/link"
 
+
 export default function Events(){
 
   const [schedule,setSchedule] = useState<any[]>([])
+
   const [loading,setLoading] = useState(true)
   const [winners, setWinners] = useState<any>({})
 
@@ -14,25 +16,24 @@ export default function Events(){
     loadEvents()
   },[])
 
-  useEffect(() => {
-  async function loadWinners() {
-    const result: any = {}
+//   useEffect(() => {
+//   async function loadWinners() {
+//     const results = await Promise.all(
+//       schedule.map(event => getWinner(event.id))
+//     )
 
-    for (const event of schedule) {
-      const winner = await getEventWinner(event.id)
+//       if (winner) {
+//         result[event.id] = winner
+//       }
+//     }
 
-      if (winner) {
-        result[event.id] = winner
-      }
-    }
+//     setWinners(result)
+//   }
 
-    setWinners(result)
-  }
-
-  if (schedule.length > 0) {
-    loadWinners()
-  }
-}, [schedule])
+//   if (schedule.length > 0) {
+//     loadWinners()
+//   }
+// }, [schedule])
 
   async function loadEvents(){
 
@@ -80,40 +81,40 @@ function formatThru(scores:number[]){
   return `THRU ${holesPlayed}`
 }
 
-async function getEventWinner(eventId: string) {
-  const { data, error } = await supabase
-    .from("rounds")
-    .select("*")
-    .eq("event_id", eventId)
+// async function getEventWinner(eventId: string) {
+//   const { data, error } = await supabase
+//     .from("rounds")
+//     .select("*")
+//     .eq("event_id", eventId)
 
-  if (error || !data || data.length === 0) return null
+//   if (error || !data || data.length === 0) return null
 
-  const leaderboard: any = {}
+//   const leaderboard: any = {}
 
-  data.forEach((round) => {
-    const playerId = round.player_id
-    const name = round.player_name || round.player_id
+//   data.forEach((round) => {
+//     const playerId = round.player_id
+//     const name = round.player_name || round.player_id
 
-    const scores = (round.scores || []).map((s: any) => Number(s) || 0)
+//     const scores = (round.scores || []).map((s: any) => Number(s) || 0)
 
-    const total = scores.reduce((sum: number, s: number) => sum + s, 0)
+//     const total = scores.reduce((sum: number, s: number) => sum + s, 0)
 
-    if (!leaderboard[playerId]) {
-      leaderboard[playerId] = {
-        name,
-        total: 0
-      }
-    }
+//     if (!leaderboard[playerId]) {
+//       leaderboard[playerId] = {
+//         name,
+//         total: 0
+//       }
+//     }
 
-    leaderboard[playerId].total += total
-  })
+//     leaderboard[playerId].total += total
+//   })
 
-  const sorted = Object.values(leaderboard).sort(
-    (a: any, b: any) => a.total - b.total
-  )
+//   const sorted = Object.values(leaderboard).sort(
+//     (a: any, b: any) => a.total - b.total
+//   )
 
-  return sorted[0] || null
-}
+//   return sorted[0] || null
+// }
 
 
 
@@ -138,19 +139,19 @@ async function getEventWinner(eventId: string) {
 
       <h1 style={{ fontSize: "24px", fontWeight: "bold", marginBottom: "16px" }}>League Schedule</h1>
 
-      {schedule.map(schedule=>(
+      {schedule.map(event=>(
               <div 
-        key={schedule.id} 
+        key={event.id} 
         style={cardStyle}
 >
 
-     <h4>{schedule.course}</h4>
-      <p style={{ fontSize: "14px" }}>Location: {schedule.location}</p>
-      <p style={{ fontSize: "14px" }}>{schedule.length} yards</p>
-      <p style={{ fontSize: "14px" }}>{schedule.rating} Rating / {schedule.slope} Slope</p>
-      {schedule.winner ? (
+     <h4>{event.course}</h4>
+      <p style={{ fontSize: "14px" }}>Location: {event.location}</p>
+      <p style={{ fontSize: "14px" }}>{event.length} yards</p>
+      <p style={{ fontSize: "14px" }}>{event.rating} Rating / {event.slope} Slope</p>
+      {event.winner ? (
         <div style={{ marginTop: "8px", fontWeight: "bold" }}>
-          🏆 {schedule.winner} — {schedule.winning_score}
+          🏆 {event.winner} — {event.winning_score}
         </div>
       ) : (
         <div style={{ marginTop: "8px", color: "gray" }}>
@@ -159,10 +160,10 @@ async function getEventWinner(eventId: string) {
       )}
 
         <p style={{ fontSize: "14px" }}>
-        {formatDate(schedule.event_date)}
+        {formatDate(event.event_date)}
         </p>
 
-        {isToday(schedule.event_date) && (
+        {isToday(event.event_date) && (
           <span style={{
             color:"white",
             background:"red",
@@ -174,8 +175,14 @@ async function getEventWinner(eventId: string) {
           </span>
         )}
 
-        <Link href={`/schedule/${schedule.id}`}>
-          View Event →
+        <Link href={`/leaderboard/${event.id}`}>
+          Live Leaderboard 🔴
+        </Link>
+
+        <br />
+
+        <Link href={`/gameday/${event.id}`}>
+          Enter Scores
         </Link>
 
         </div>

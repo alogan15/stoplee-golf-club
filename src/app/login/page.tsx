@@ -36,8 +36,6 @@ async function handleLogin() {
   }
 
   router.push("/")
-  console.log("EMAIL:", email)
-console.log("PASSWORD:", password)
 }
 
 async function handleResetPassword() {

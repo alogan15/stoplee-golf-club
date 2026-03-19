@@ -58,7 +58,7 @@ async function handleSignup() {
   }
 
   alert("Account created! You can now log in.")
-  router.push("/login")
+  router.push("/")
 }
 
 

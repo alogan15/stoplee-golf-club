@@ -90,9 +90,7 @@ const [loading,setLoading] = useState(true)
 
             <div style={{padding:"20px"}}>
 
-            <h1 style={{ fontSize: "24px", fontWeight: "bold", marginBottom: "16px" }}>Dashboard</h1>
-
-            <h2 style={{ fontSize: "18px", fontWeight: "600", marginBottom: "10px" }}>Welcome {user?.user_metadata?.name || "Golfer"}</h2>
+            <h1 style={{ fontSize: "24px", fontWeight: "bold", marginBottom: "16px" }}>Player Profile</h1>
 
             <div style={{marginTop:"20px"}}>
 

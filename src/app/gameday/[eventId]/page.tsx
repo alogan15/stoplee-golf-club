@@ -17,7 +17,7 @@ export default function RoundsPage() {
 )
   const [pars, setPars] = useState(Array(18).fill(4))
   const params = useParams()
-  const eventId = params.eventId
+  const eventId = String(params?.eventId || "")
 
 async function saveRound() {
   if (!eventId) {
@@ -25,7 +25,6 @@ async function saveRound() {
     return
     
   }
-
 
 const { data: userData } = await supabase.auth.getUser()
 
@@ -49,8 +48,11 @@ const { data: userData } = await supabase.auth.getUser()
       scores: (scores[i] || []).map((s: any) => Number(s) || 0),      
       pars
 }))
+console.log("SCORES STATE:", scores)
+console.log("ROWS BEING SAVED:", rows)
 
-const { error } = await supabase.from("rounds").upsert(rows)
+const { error } = await supabase.from("rounds")
+.upsert(rows, {onConflict: "event_id, player_id"})
 
 if (error) {
   console.error("SAVE ERROR:", error)
@@ -81,8 +83,8 @@ async function checkUser(){
 
 const { data } = await supabase.auth.getUser()
 
-if (!data.user) {
-router.push(`/gameday/${eventId}`)}
+if (!data.user && eventId) {
+router.push(`/leaderboard/${eventId}`)}
 
 }
 
@@ -247,6 +249,8 @@ checkUser()
               </td>
             ))}
 
+            
+
             <td>{sum(pars.slice(9))}</td>
             <td>{sum(pars)}</td>
             <td></td>
@@ -284,11 +288,11 @@ checkUser()
                   <td key={i}>
                     <input
                       type="number"
-                      value={scores[playerIndex][i]}
+                      value={scores[playerIndex][i] ?? ""}
                       onChange={(e)=>{
                       const s = [...scores]
                       s[playerIndex] = [...s[playerIndex]]
-                      s[playerIndex][i] = e.target.value
+                      s[playerIndex][i] = e.target.value === "" ? "" : Number(e.target.value)
                       setScores(s)
                       }}
                       style={{width:"35px"}}
@@ -302,10 +306,11 @@ checkUser()
                   <td key={i}>
                     <input
                       type="number"
-                      value={scores[playerIndex][i+9]}
+                      value={scores[playerIndex][i+9] ?? ""}
                       onChange={(e)=>{
                         const s=[...scores]
-                        s[playerIndex][i+9]=e.target.value
+                        s[playerIndex] = [...s[playerIndex]]
+                        s[playerIndex][i+9]=e.target.value === "" ? "" : Number(e.target.value)
                         setScores(s)
                       }}
                       style={{width:"35px"}}

@@ -1,4 +1,6 @@
+
 export function calculateRoundPoints(scores:number[], pars:number[]){
+  
 
   let total = 0
 
@@ -31,3 +33,5 @@ export function calculateRoundPoints(scores:number[], pars:number[]){
   return total
 
 }
+
+
