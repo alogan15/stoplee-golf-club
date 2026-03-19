@@ -63,7 +63,7 @@ return (
             <h2 style={{ fontSize: "18px", fontWeight: "600", marginBottom: "10px" }}>Live Round 🔴</h2>
 
             <div style={{ overflowX: "auto" }}>
-            <table style={{minWidth: "500px", width: "100%"}} border="10">
+            <table style={{minWidth: "500px", width: "100%"}} border={10}>
 
             <thead>
                 <tr>
