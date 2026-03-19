@@ -116,35 +116,52 @@ rounds?.forEach((round) => {
     <div>
 
 
+             <div style={{overflowX: "auto"}}>
+              <div style={{marginBottom:"15px"}}>
 
+                  <h2 style={{margin:0, fontSize: "20px", fontWeight: "600", marginBottom: "10px"}}>Queenstown Harbor Golf Course</h2>
 
-            <div style={{overflowX: "auto"}}>
-            <div style={{marginBottom:"15px"}}>
-            <h2 style={{margin:0, fontSize: "18px", fontWeight: "600", marginBottom: "10px"}}>Queenstown Harbor Golf Course</h2>
-            <p style={{margin:5, fontSize: "14px"}}>March 22, 2026</p>
-            </div>
+                  <p style={{margin:5, fontSize: "16px"}}>March 22, 2026</p>
+              </div>
 
-      <div style={{ overflowX: "auto", paddingBottom: "8px" }}>
-
-            <h1 style={{ fontSize: "24px", fontWeight: "bold", marginBottom: "16px" }}>View Live Leaderboard 🔴</h1>
-
-
-
-            <table
+            <h1
               style={{
-              borderCollapse:"collapse",
-              width:"420px",
-              fontFamily:"Arial",
-              tableLayout:"fixed"
+                fontSize: "26px",
+                fontWeight: "700",
+                marginBottom: "16px",
+                textAlign: "center"
               }}
             >
+              🔴 Live Leaderboard 
+            </h1>
+           
+        <div
+          style={{
+            padding: "16px",
+            maxWidth: "500px",
+            margin: "0 auto",
+            fontFamily: "Arial, sans-serif"
+          }}
+        >
+
+
+          <table
+            style={{
+              borderCollapse: "collapse",
+              width: "100%",
+              backgroundColor: "white",
+              borderRadius: "12px",
+              overflow: "hidden",
+              boxShadow: "0 4px 12px rgba(0,0,0,0.08)"
+            }}
+          >
             <thead>
 
-            <tr style={{borderBottom:"2px solid black"}}>
-            <th style={{width:"50px", textAlign:"center"}}>POS</th>
-            <th style={{width:"150px", textAlign:"left"}}>PLAYER</th>
-            <th style={{width:"80px", textAlign:"center"}}>PTS</th>
-            <th style={{width:"80px", textAlign:"center"}}>THRU</th>
+            <tr style={{borderBottom:"2px solid black", backgroundColor:"#f4f4f4"}}>
+            <th style={{width:"50px", padding:"10px", textAlign:"center"}}>POS</th>
+            <th style={{width:"150px", padding:"10px",textAlign:"left"}}>PLAYER</th>
+            <th style={{width:"80px", padding:"10px", textAlign:"center"}}>PTS</th>
+            <th style={{width:"80px", padding:"10px", textAlign:"center"}}>THRU</th>
             </tr>
             </thead>
           
@@ -152,10 +169,18 @@ rounds?.forEach((round) => {
           <tbody>
 
           {sortedLeaderboard.map((player: any, i: number) => (
-            <tr key={player.name}>
-              <td style={{ textAlign: "center" }}>{i + 1}</td>
-              <td style={{ textAlign: "left" }}>{player.name}</td>
-              <td style={{ textAlign: "center" }}>{player.points}</td>
+            <tr key={player.name}
+                style={{
+                  backgroundColor:
+                  i === 0 ? "#d4edda" : i % 2 === 0 ? "#ffffff" : "#f9f9f9",
+                  fontWeight: i === 0 ? "bold" : "normal"
+                }}
+            >
+              <td style={{ textAlign: "center", padding: "10px" }}>
+                {i === 0 ? "🥇" : i === 1 ? "🥈" : i === 2 ? "🥉" : i + 1}
+              </td>
+              <td style={{ textAlign: "left", padding:"10px" }}>{player.name}</td>
+              <td style={{ textAlign: "center", padding:"10px" }}>{player.points}</td>
               <td style={{ textAlign: "center" }}>
                 {player.hole === 18 ? "F" : `THRU ${player.hole}`}
               </td>

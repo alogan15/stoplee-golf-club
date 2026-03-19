@@ -159,66 +159,111 @@ checkUser()
       <div style={{ overflowX: "auto"}}>
 
       <div style={{
-        display: "flex",
-        gap: "10px",
-        marginBottom: "10px"
-        }}>
-        <select
-        value={course}
-        onChange={(e)=>setCourse(e.target.value)}
-        >
+              display: "flex",
+              gap: "10px",
+              marginBottom: "10px"
+              }}>
+            <select
+              value={course}
+              onChange={(e)=>setCourse(e.target.value)}
+              style={{
+                padding: "10px 14px",
+                borderRadius: "999px",
+                border: "1px solid #ddd",
+                fontSize: "14px",
+                fontWeight: "500",
+                background: "#f1f5f9"
+              }}
+            >
 
-        <option value="">Select Course</option>
+                <option value="">Select Course</option>
 
-        {courses.map((c)=>(
-          <option key={c.id} value={c.name}>
-            {c.name}
-          </option>
-        ))}
+                {courses.map((c)=>(
+                <option key={c.id} value={c.name}>
+                 {c.name}
+              </option>
+               ))}
 
         </select>
 
-        <input
-        type="date"
-        value={date}
-        onChange={(e)=>setDate(e.target.value)}
-        style={{
-        display: "flex",
-        gap: "10px"
-        }}
-        />
+          <input
+            type="date"
+            value={date}
+            onChange={(e)=>setDate(e.target.value)}
+            style={{
+              padding: "10px 14px",
+              borderRadius: "999px",
+              border: "1px solid #ddd",
+              fontSize: "14px",
+              fontWeight: "500",
+              background: "#f1f5f9"
+            }}
+          />
       </div>
       </div>
 
-        <div style={{ overflowX: "auto", paddingBottom: "8px" }}>
-            <table style={{ width: "100%" }} border={1}>
+        <div 
+        style={{
+          overflowX: "auto",
+          paddingBottom: "16px"
+        }}>
+          <div 
+          style={{
+            background: "#ffffff",
+            borderRadius: "16px",
+            padding: "12px",
+            boxShadow: "0 4px 16px rgba(0,0,0,0.08)"
+          }}>
+          <table
+            style={{
+              width: "max-content",
+              borderCollapse: "collapse",
+              fontFamily: "Arial"
+            }}
+          >
 
         <thead>
 
-          <tr>
-            <th>Hole</th>
+          <tr style={{
+            backgroundColor: "#f1f5f9",
+            borderBottom: "2px solid #e5e7eb"
+          }}>            
+          <th style={{
+            padding: "6px",
+            fontSize: "15px",
+            fontWeight: "600",
+            color: "#555"
+          }}>Hole</th>
 
             {[...Array(9)].map((_,i)=>(
               <th key={i}>{i+1}</th>
             ))}
 
-            <th>OUT</th>
+            <th style={{ borderRight: "2px solid #ccc" }}>OUT</th>
 
             {[...Array(9)].map((_,i)=>(
               <th key={i}>{i+10}</th>
             ))}
 
-            <th>IN</th>
-            <th>TOTAL</th>
-            <th>STABLEFORD</th>
+            <th style={{ minWidth: "60px" }}>IN</th>
+            <th style={{ minWidth: "70px" }}>TOTAL</th>
+            <th style={{ minWidth: "90px" }}>STABLEFORD</th>
           </tr>
 
           <tr>
 
-            <td>Par</td>
+            <td style={{ 
+              padding:"4px", 
+              fontSize: "20px",
+              fontWeight: "600",
+              textAlign:"center",
+              color: "black"
+            }}
+              >Par</td>
 
             {pars.slice(0,9).map((par,i)=>(
-              <td key={i}>
+              <td style={{ padding:"4px"}} 
+              key={i}>
                 <input
                   type="number"
                   value={par}
@@ -227,15 +272,24 @@ checkUser()
                     p[i]=Number(e.target.value)
                     setPars(p)
                   }}
-                  style={{width:"35px"}}
+            style={{
+              width: "42px",
+              height: "42px",
+              borderRadius: "10px",
+              border: "1px solid #ddd",
+              textAlign: "center",
+              fontSize: "16px",
+              background: "#fafafa"
+            }}
                 />
               </td>
             ))}
 
-            <td>{sum(pars.slice(0,9))}</td>
+            <td style={{ padding:"4px"}} >{sum(pars.slice(0,9))}</td>
 
             {pars.slice(9).map((par,i)=>(
-              <td key={i}>
+              <td style={{ padding:"4px"}}  
+              key={i}>
                 <input
                   type="number"
                   value={par}
@@ -244,15 +298,23 @@ checkUser()
                     p[i+9]=Number(e.target.value)
                     setPars(p)
                   }}
-                  style={{width:"35px"}}
+            style={{
+              width: "42px",
+              height: "42px",
+              borderRadius: "10px",
+              border: "1px solid #ddd",
+              textAlign: "center",
+              fontSize: "16px",
+              background: "#fafafa"
+            }}
                 />
               </td>
             ))}
 
             
 
-            <td>{sum(pars.slice(9))}</td>
-            <td>{sum(pars)}</td>
+            <td style={{ padding:"4px"}} >{sum(pars.slice(9))}</td>
+            <td style={{ padding:"4px"}} >{sum(pars)}</td>
             <td></td>
 
           </tr>
@@ -270,11 +332,25 @@ checkUser()
                 const stableTotal = calculateRoundPoints(playerScores, pars)
 
         return (
-                <tr key={playerIndex}>
+                <tr
+                    key={playerIndex}
+                    style={{
+                      backgroundColor:
+                        playerIndex % 2 === 0 ? "#ffffff" : "#f9f9f9"
+                    }}
+                  >
 
-                <td>
+                <td style={{ padding:"4px"}} >
                   <input
-                    placeholder="Player"
+                    placeholder="Player Name"
+                    style={{
+                    width: "120px",
+                    padding: "10px",
+                    borderRadius: "10px",
+                    border: "1px solid #ddd",
+                    fontSize: "16px",
+                    fontWeight: "500"
+                    }}
                     value={name}
                     onChange={(e)=>{
                       const n=[...playerNames]
@@ -285,7 +361,8 @@ checkUser()
                 </td>
 
                 {playerScores.slice(0,9).map((score,i)=>(
-                  <td key={i}>
+                  <td style={{ padding:"4px"}}  
+                  key={i}>
                     <input
                       type="number"
                       value={scores[playerIndex][i] ?? ""}
@@ -295,15 +372,31 @@ checkUser()
                       s[playerIndex][i] = e.target.value === "" ? "" : Number(e.target.value)
                       setScores(s)
                       }}
-                      style={{width:"35px"}}
-                    />
+                      style={{
+                          width: "42px",
+                          height: "42px",
+                          borderRadius: "10px",
+                          border: "1px solid #ddd",
+                          textAlign: "center",
+                          fontSize: "16px",
+                          background: "#fafafa"
+                      }}                    />
                   </td>
                 ))}
 
-                <td>{front}</td>
-
+                  <td style={{
+                    borderRight: "3px solid #ccc",
+                    paddingLeft: "10px",
+                    paddingRight: "10px",
+                    textAlign: "center",
+                    fontWeight: "600",
+                    background: "#f8fafc"
+                  }}>
+                    {front}
+                  </td>
                 {playerScores.slice(9).map((score,i)=>(
-                  <td key={i}>
+                  <td style={{ padding:"4px"}}  
+                  key={i}>
                     <input
                       type="number"
                       value={scores[playerIndex][i+9] ?? ""}
@@ -313,14 +406,43 @@ checkUser()
                         s[playerIndex][i+9]=e.target.value === "" ? "" : Number(e.target.value)
                         setScores(s)
                       }}
-                      style={{width:"35px"}}
-                    />
+                        style={{
+                          width: "42px",
+                          height: "42px",
+                          borderRadius: "10px",
+                          border: "1px solid #ddd",
+                          textAlign: "center",
+                          fontSize: "16px",
+                          background: "#fafafa"
+                        }}                    />
                   </td>
                 ))}
 
-                <td>{back}</td>
-                <td>{total}</td>
-                <td>{stableTotal}</td>
+<td style={{
+  minWidth: "60px",
+  textAlign: "center",
+  fontSize: "16px"
+}}>
+  {back}
+</td>
+                    
+<td style={{
+  minWidth: "70px",
+  textAlign: "center",
+  fontWeight: "bold",
+  fontSize: "16px"
+}}>
+  {total}
+</td>
+
+<td style={{
+  minWidth: "90px",
+  textAlign: "center",
+  fontWeight: "bold",
+  fontSize: "16px"
+}}>
+  {stableTotal}
+</td>
 
               </tr>
 
@@ -332,15 +454,46 @@ checkUser()
 
       </table>
       </div>
+      </div>
 
-        <div style={{ position:"sticky",
-                                bottom: 0,
-                                background: "white",
-                                paddingTop: "12px",
-                                marginTop: "20px" }}>
-        <button style={buttonStyle} onClick={saveRound}>
-          Save Round
-        </button>
+        <div style={{ 
+              position: "sticky",
+              bottom: 0,
+              background: "#fff",
+              padding: "12px",
+              borderTop: "1px solid #eee" 
+              }}>
+            <button
+              onClick={saveRound}
+              style={{
+                width: "100%",
+                padding: "14px",
+                backgroundColor: "#1e7e34",
+                color: "white",
+                border: "none",
+                borderRadius: "10px",
+                fontWeight: "bold",
+                fontSize: "16px"
+              }}
+            >
+              Save Round
+            </button>
+
+            <button
+              onClick={() => window.location.href = `/leaderboard/${eventId}`}
+              style={{
+                width: "100%",
+                padding: "12px",
+                marginTop: "10px",
+                fontSize:"16px",
+                backgroundColor: "black",
+                color: "white",
+                border: "none",
+                borderRadius: "10px"
+              }}
+            >
+              🔴 View Live Leaderboard
+            </button>
       </div>
 
     </div>
