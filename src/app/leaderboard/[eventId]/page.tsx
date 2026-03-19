@@ -77,7 +77,7 @@ return ()=>{
 
 const leaderboard: Record<string, any> = {}
 
-rounds.forEach((round) => {
+rounds?.forEach((round) => {
   const playerId = round.player_id
   const name = round.player_name || playerId
 
