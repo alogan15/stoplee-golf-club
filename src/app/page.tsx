@@ -12,7 +12,7 @@ useEffect(() => {
     const { data } = await supabase.auth.getUser()
 
     if (!data.user) {
-      router.push("/login")
+      router.push("/dashboard")
       return
     }
 

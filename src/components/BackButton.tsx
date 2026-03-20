@@ -7,7 +7,7 @@ export default function BackButton() {
 
   return (
     <button
-      onClick={() => router.back()}
+      onClick={() => router.push("/dashboard")}
       style={{
         marginBottom: "20px",
         padding: "10px 16px",
