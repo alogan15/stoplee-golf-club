@@ -1,5 +1,6 @@
 import Navbar from "../components/Navbar"
 
+
 export default function RootLayout({
   children,
 }: {
@@ -29,12 +30,11 @@ export default function RootLayout({
   marginLeft:"20px",
   padding:"6px 12px",
   background:"#f9f9f9",
-  border:"1px solid #ddd",
   borderRadius:"4px",
   fontStyle:"italic",
   color:"darkgreen"
 }}>
-In Memory of Eric “StopLee” Logan
+ In Memory of Eric “StopLee” Logan  🛑 
 </div>
 
 </div>

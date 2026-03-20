@@ -4,7 +4,7 @@ import Link from "next/link"
 import { supabase } from "../lib/supabase"
 import { useRouter, usePathname } from "next/navigation"
 import { useEffect, useState } from "react"
-import { FaHome, FaTrophy, FaCalendarAlt, FaUser, FaGolfBall } from "react-icons/fa"
+import { FaHome, FaTrophy, FaCalendarAlt, FaUser, FaGolfBall, FaBars } from "react-icons/fa"
 import { FiLogIn, FiUserPlus } from "react-icons/fi"
 
 
@@ -73,9 +73,20 @@ useEffect(() => {
   return (
 
     <nav style={{ padding:"15px", borderBottom:"1px solid gray" }}>
-                <button onClick={() => setOpen(!open)}>
-                  ☰
-                </button>
+          <button
+            onClick={() => setOpen(!open)}
+            style={{
+              padding: "12px",
+              borderRadius: "10px",
+              background: "#f1f5f9",
+              border: "none",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center"
+            }}
+          >
+            <FaBars size={24} />
+          </button>
 
           <div style={{
               display: "flex",
