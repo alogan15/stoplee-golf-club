@@ -81,6 +81,8 @@ export default function HomePage() {
       </div>
 
       {/* POSTS */}
+ 
+
 <div style={{ display: "flex", flexDirection: "column", gap: "28px" }}>
   {posts.map((post) => (
     <div
@@ -125,6 +127,7 @@ export default function HomePage() {
   ))}
 </div>
       </div>
+      
 
    
   )

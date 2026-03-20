@@ -31,7 +31,7 @@ async function handleLogin() {
   })
 
   if (error) {
-    setError(error.message)
+    setError("Invalid email or password")
     return
   }
 
@@ -147,6 +147,12 @@ return(
         >
         Forgot password?
     </p>
+
+        {error && (
+      <p style={{ color: "red", marginBottom: "12px" }}>
+        {error}
+      </p>
+    )}
 
     {/* BUTTON */}
     <button 

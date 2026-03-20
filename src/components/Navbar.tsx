@@ -110,7 +110,7 @@ useEffect(() => {
 
           {!user && <Link href="/signup" onClick={() => setOpen(false)} style={linkStyle("/signup")}> <FiUserPlus /> Signup</Link> }
           {!user && <Link href="/login" onClick={() => setOpen(false)} style={linkStyle("/login")}> <FiLogIn /> Login</Link>}
-          <Link href="/" onClick={() => setOpen(false)} style={linkStyle("/")}> <FaHome /> Home</Link>
+          <Link href="/home" onClick={() => setOpen(false)} style={linkStyle("/home")}><FaHome /> Home </Link>          
           <Link href="/dashboard" onClick={() => setOpen(false)} style={linkStyle("/dashboard")}> <FaUser /> Dashboard</Link>
           <Link href="/gameday" onClick={() => setOpen(false)} style={linkStyle("/gameday")}> <FaGolfBall /> Game Day</Link>
           {/* <Link href="/around-the-league" onClick={() => setOpen(false)} style={linkStyle("/around-the-league")}> <FaTrophy /> Around The League</Link> */}

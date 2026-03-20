@@ -7,17 +7,25 @@ import { supabase } from "../lib/supabase"
 export default function LandingPage() {
   const router = useRouter()
 
-  useEffect(() => {
-    async function checkUser() {
-      const { data } = await supabase.auth.getUser()
+useEffect(() => {
+  async function checkUser() {
+    const { data } = await supabase.auth.getUser()
 
-      if (!data.user) {
-        router.push("/login")
-      }
+    if (!data.user) {
+      router.push("/login")
+      return
     }
 
-    checkUser()
-  }, [])
+    // 👇 NEW LOGIC
+    const hasVisited = localStorage.getItem("visited")
+
+    if (hasVisited) {
+      router.replace("/home")
+    }
+  }
+
+  checkUser()
+}, [])
 
 
   return (
@@ -70,7 +78,10 @@ export default function LandingPage() {
       </p>
 
       <button
-        onClick={() => router.push("/home")}
+        onClick={() => {
+          localStorage.setItem("visited", "true")
+          router.push("/home")
+        }}
         style={{
           marginTop: "30px",
           padding: "12px 30px",
