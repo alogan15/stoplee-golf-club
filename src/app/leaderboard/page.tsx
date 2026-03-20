@@ -101,7 +101,7 @@ const scores = (round.scores || []).map((s: any) => Number(s) || 0)
 const pars = (round.pars || []).map((p: any) => Number(p) || 0)
 
 const total = calculateRoundPoints(scores, pars)
-const strokeTotal = scores.reduce((sum, s) => sum + s, 0)
+const strokeTotal = scores.reduce((sum: number, s: number) => sum + s, 0)
 const event = round.course
 
 
