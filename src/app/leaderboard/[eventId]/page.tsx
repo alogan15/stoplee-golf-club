@@ -4,8 +4,7 @@ import { useEffect, useState } from "react"
 import { supabase } from "../../../lib/supabase"
 import { calculateRoundPoints } from "../../../lib/scoring"
 import { useParams } from "next/navigation"
-import Link from "next/link"
-
+import { useRouter } from "next/navigation"
 
 export default function EventPage() {
 
@@ -14,6 +13,8 @@ const eventId = String(params?.eventId || "")
 
 const [rounds,setRounds] = useState<any[]>([])
 const [loading,setLoading] = useState(true)
+
+const router = useRouter()
 
 
 
@@ -106,6 +107,8 @@ rounds?.forEach((round) => {
     const sortedLeaderboard = Object.values(leaderboard)
       .sort((a: any, b: any) => b.points - a.points)
 
+      const eventInfo = rounds?.[0]
+
   return (
     <div style={{
         padding: "16px",
@@ -115,14 +118,33 @@ rounds?.forEach((round) => {
 
     <div>
 
+      <button
+        onClick={() => router.back()}
+        style={{
+          marginBottom: "16px",
+          padding: "8px 16px",
+          borderRadius: "8px",
+          background: "#f1f5f9",
+          border: "none",
+          cursor: "pointer"
+        }}
+      >
+        ← Back to Scorecard
+      </button>
+
 
              <div style={{overflowX: "auto"}}>
-              <div style={{marginBottom:"15px"}}>
+                  <h2 style={{ margin: 0, fontSize: "20px", fontWeight: "600", marginBottom: "10px" }}>
+                    {rounds.length === 0
+                      ? "No course selected yet"
+                      : eventInfo?.course}                  
+                  </h2>
 
-                  <h2 style={{margin:0, fontSize: "20px", fontWeight: "600", marginBottom: "10px"}}>Queenstown Harbor Golf Course</h2>
-
-                  <p style={{margin:5, fontSize: "16px"}}>March 22, 2026</p>
-              </div>
+                  <p style={{ margin: 5, fontSize: "16px" }}>
+                    {eventInfo?.date
+                      ? new Date(eventInfo.date).toLocaleDateString()
+                      : ""}
+                  </p>
 
             <h1
               style={{
