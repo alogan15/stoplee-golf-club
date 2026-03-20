@@ -153,9 +153,9 @@ leaderboard[playerId].scores = scores
 const sortedLeaderboard = Object.values(leaderboard)
   .sort((a: any, b: any) => b.points - a.points)
 
-const leaderboardWithAvg = sortedLeaderboard.map(player => {
-  const roundsPlayed = Object.values(player.events || {})
-    .filter((pts: any) => pts > 0).length
+const leaderboardWithAvg = sortedLeaderboard.map((player: any) => {
+const roundsPlayed = (Object.values(player.events || {}) as number[])
+  .filter((pts) => pts > 0).length
 
   const avg =
     roundsPlayed > 0
