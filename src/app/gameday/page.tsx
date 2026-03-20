@@ -62,7 +62,7 @@ export default function GameDayHome() {
         {/* BUTTON */}
         <button
           onClick={() => {
-            const id = crypto.randomUUID()
+            const id = Math.random().toString(36).substring(2, 10)
             router.push(`/gameday/${id}`)
           }}
           style={{
