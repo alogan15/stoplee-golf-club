@@ -215,7 +215,7 @@ events.forEach(event => {
   let lowest = Infinity
   let winner = null
 
-  sortedLeaderboard.forEach(player => {
+  sortedLeaderboard.forEach((player: any ) => {
     const strokes = player.strokes?.[event]
     if (strokes && strokes < lowest) {
       lowest = strokes
