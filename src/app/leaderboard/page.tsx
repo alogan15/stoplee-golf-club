@@ -153,26 +153,32 @@ leaderboard[playerId].scores = scores
 const sortedLeaderboard = Object.values(leaderboard)
   .sort((a: any, b: any) => b.points - a.points)
 
+const leaderboardWithAvg = sortedLeaderboard.map(player => {
+  const roundsPlayed = Object.values(player.events || {})
+    .filter((pts: any) => pts > 0).length
+
+  const avg =
+    roundsPlayed > 0
+      ? (player.points / roundsPlayed).toFixed(1)
+      : "-"
+
+  return {
+    ...player,
+    avg
+  }
+})
+
+
 if(loading){
   return 
   <div>Loading leaderboard...</div>
 }
 
-// const events = [
-//   "twp-opener",
-//   "stoplee-classic",
-//   "juneteenth",
-//   "la-fiesta",
-//   "augusta",
-//   "championship"
-// ]
 
-// const events = Array.from(
-//   new Set(rounds.map(r => r.course))
-// )
+
 
 const seasonOrder = [
-  "Queenstown Harbor(Lakes)",
+  "Queenstown Harbor(preseason)",
   "Broad Run",
   "Rock Manor",
   "Moccasin Run",
@@ -181,9 +187,7 @@ const seasonOrder = [
   "Town & Country"
 ]
 
-const events = seasonOrder.filter(event =>
-  rounds.some(r => r.course === event)
-)
+const events = seasonOrder
 
 const thStyle: React.CSSProperties = {
   padding: "12px",
@@ -253,7 +257,7 @@ return (
       <table style={{
         borderCollapse: "collapse",
         width: "100%",
-        minWidth: "600px"
+        minWidth: "800px"
       }}>
 
         {/* ✅ HEADER ONLY */}
@@ -265,7 +269,17 @@ return (
         }}>
           <tr>
             <th style={thStyle}>Rank</th>
-            <th style={thStyle}>Player</th>
+            <th
+                style={{
+                  ...thStyle,
+                  position: "sticky",
+                  left: 0,
+                  background: "#f9fafb",
+                  zIndex: 3
+                }}
+              >
+                Player
+              </th>
 
             {events.map((event) => (
               <th key={event} style={thStyle}>
@@ -274,21 +288,27 @@ return (
             ))}
 
             <th style={thStyle}>Total</th>
+            <th style={thStyle}>AVG</th>
           </tr>
         </thead>
 
         <tbody>
-          {sortedLeaderboard.map((player: any, i: number) => (
+          {leaderboardWithAvg.map((player, i) => (
             <tr
               key={player.player_id}
               style={{
-                backgroundColor:
-                  i === 0 ? "#fff8e1" :
-                  i === 1 ? "#f1f5f9" :
-                  i === 2 ? "#fef2f2" :
-                  i % 2 === 0 ? "#fafafa" : "white",
-                fontWeight: i === 0 ? "600" : "normal",
-                cursor: "pointer",
+                background:
+                  i === 0
+                    ? "linear-gradient(90deg, #fff8e1, #ffffff)"
+                    : i === 1
+                    ? "#f1f5f9"
+                    : i === 2
+                    ? "#fef2f2"
+                    : i % 2 === 0
+                    ? "#fafafa"
+                    : "white",
+                fontWeight: i === 0 ? "700" : "normal",
+                borderLeft: i === 0 ? "4px solid gold" : "none",
                 transition: "0.2s ease"
               }}
               onMouseEnter={(e) => {
@@ -304,7 +324,13 @@ return (
               <td style={tdCenter}>{i + 1}</td>
 
               {/* Player */}
-              <td style={tdLeft}>
+              <td   style={{
+                  ...tdLeft,
+                  position: "sticky",
+                  left: 0,
+                  background: "white",
+                  zIndex: 2
+                }}>
                 {i === 0 && "🥇 "}
                 {i === 1 && "🥈 "}
                 {i === 2 && "🥉 "}
@@ -328,7 +354,7 @@ return (
                     <div style={{ fontWeight: "600" }}>
                       {player.events[event]}
                     </div>
-                    <div style={{ fontSize: "11px", color: "#666" }}>
+                    <div style={{ fontSize: "12px", color: "#999" }}>
                       ({player.strokes?.[event]})
                     </div>
                   </div>
@@ -343,6 +369,9 @@ return (
                 fontSize: "15px"
               }}>
                 {player.points}
+              </td>
+              <td style={tdCenter}>
+                {player.avg}
               </td>
 
             </tr>

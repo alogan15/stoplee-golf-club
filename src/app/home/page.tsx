@@ -142,7 +142,7 @@ const posts = [
   {
     slug: "season-recap-2025",
     title: "2025 Season Recap",
-    image: "/group.png",
+    image: "blog/group.png",
     description: "Last year wasn’t a season... it was a proving ground. In 2025, this tour became...",
     date: "Jan 22, 2026",
     readTime: "4 min read"
@@ -150,7 +150,7 @@ const posts = [
   {
     slug: "rivalries-2026",
     title: "2026 Rivalry",
-    image: "/rivalry.png",
+    image: "blog/rivalry.png",
     description: "Jamar vs. Andre Control vs. Pressure. Jay vs. Erik Consistency vs. Opportunity. Malcolm vs. Everyone Ceiling vs. Control",
     date: "Jan 22, 2026",
     readTime: "5 min read"
@@ -158,7 +158,7 @@ const posts = [
   {
     slug: "jamar-threepeat",
     title: "Watch The Throne",
-    image: "/Jamar2025.png",
+    image: "blog/Jamar2025.png",
     description: "The two-time champ isn’t chasing anymore — he’s the one being hunted.",
     date: "Jan 22, 2026",
     readTime: "4 min read"
@@ -166,7 +166,7 @@ const posts = [
     {
     slug: "rookies-2025",
     title: "Rookie Class of 2025",
-    image: "/rookies.png",
+    image: "blog/rookies.png",
     description: "Rookie of the Year: Malcolm Total Points: 67 | Avg: 13 per round",
     date: "Jan 22, 2026",
     readTime: "3 min read"
