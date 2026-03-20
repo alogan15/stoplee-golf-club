@@ -7,11 +7,15 @@ export default function HomePage() {
   const router = useRouter()
   
   return (
+
+
+
     <div style={{
       padding: "16px",
       maxWidth: "700px",
       margin: "0 auto"
     }}>
+
 
       {/* HERO */}
       <div style={{ textAlign: "center", marginBottom: "24px" }}>

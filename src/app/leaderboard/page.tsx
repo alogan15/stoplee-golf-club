@@ -4,6 +4,7 @@ import { useEffect, useState } from "react"
 import { useRouter, useParams } from "next/navigation"
 import { supabase } from "../../lib/supabase"
 import { calculateRoundPoints } from "../../lib/scoring"
+import BackButton from "@/src/components/BackButton"
 
 export const dynamic = "force-dynamic"
 
@@ -147,6 +148,9 @@ return (
       maxWidth: "600px",
       margin: "0 auto"
     }}>
+
+
+      <BackButton />
 
     <div>
 

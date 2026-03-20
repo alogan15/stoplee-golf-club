@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react"
 import { supabase } from "../../lib/supabase"
+import BackButton from "@/src/components/BackButton"
 
 export default function Champions(){
 
@@ -53,6 +54,8 @@ return(
         maxWidth: "300px",
         margin: "0 auto"
       }}>
+
+        <BackButton />
 
   <div>
 

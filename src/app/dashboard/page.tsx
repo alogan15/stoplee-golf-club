@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react"
 import { useRouter } from "next/navigation"
 import { supabase } from "../../lib/supabase"
+import PlayerSelector from "@/src/components/PlayerSelector"
 
 export default function Dashboard(){
 
@@ -88,11 +89,30 @@ const [loading,setLoading] = useState(true)
             margin: "0 auto"
             }}>
 
+                <PlayerSelector />
+
             <div style={{padding:"20px"}}>
 
             <h1 style={{ fontSize: "24px", fontWeight: "bold", marginBottom: "16px" }}>Player Profile</h1>
 
             <div style={{marginTop:"20px"}}>
+
+                <div style={{
+                display: "grid",
+                gridTemplateColumns: "1fr 1fr",
+                gap: "12px",
+                marginBottom: "30px"
+                }}>
+
+                <ActionCard title="🏌🏽 Start Round" onClick={() => router.push("/gameday")} />
+                
+                <ActionCard title="🏆 Leaderboard" onClick={() => router.push("/leaderboard")} />
+
+                <ActionCard title="👤 Players" onClick={() => router.push("/players/jamar")} />
+
+                <ActionCard title="📍 Courses" onClick={() => router.push("/courses")} />
+
+                </div>
 
             <h3>Your Stats</h3>
 
@@ -116,4 +136,24 @@ const [loading,setLoading] = useState(true)
     </div>
 
 )
+
+function ActionCard({ title, onClick }: { title: string, onClick: () => void }) {
+        return (
+                <div
+                onClick={onClick}
+                style={{
+                    background: "white",
+                    padding: "20px",
+                    borderRadius: "12px",
+                    textAlign: "center",
+                    cursor: "pointer",
+                    boxShadow: "0 4px 10px rgba(0,0,0,0.08)",
+                    fontWeight: "bold"
+                }}
+                >
+                {title}
+                </div>
+  )
+}
+
 }

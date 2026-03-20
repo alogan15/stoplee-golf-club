@@ -6,6 +6,7 @@ export default function GameDayHome() {
   const router = useRouter()
 
   return (
+
     <div
       style={{
         minHeight: "100vh",
@@ -16,6 +17,8 @@ export default function GameDayHome() {
         padding: "20px",
       }}
     >
+
+
       <div
         style={{
           textAlign: "center",
@@ -27,6 +30,8 @@ export default function GameDayHome() {
           width: "100%",
         }}
       >
+
+       
         {/* 🔥 LOGO */}
         <img
           src="/logo.png"
