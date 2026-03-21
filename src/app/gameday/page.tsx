@@ -34,7 +34,7 @@ export default function GameDayHome() {
        
         {/* 🔥 LOGO */}
         <img
-          src="/logo.png"
+          src="/Logo.png"
           alt="SLGC Logo"
           style={{
             width: "300px",
