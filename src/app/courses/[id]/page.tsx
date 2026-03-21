@@ -66,7 +66,7 @@ export default function CourseDetail() {
     }
   ]
 
-const course = courses.find(c => c.id === id)
+const course = courses.find((c: any) => c.id === id)
 
   if (!course) {
     return <div style={{ padding: "20px" }}>Course not found</div>
