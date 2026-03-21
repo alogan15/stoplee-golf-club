@@ -84,7 +84,7 @@ return(
 
     {/* 🔥 YOUR IMAGE */}
     <img
-      src="blog/Logo.png" // <-- put your image in /public folder
+      src="Logo.png" // <-- put your image in /public folder
       alt="Stoplee Golfer"
       style={{
         width: "100%",

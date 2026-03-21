@@ -10,45 +10,59 @@ export default function CourseDetail() {
   const courses: any = [
     {
       id: "queenstown-harbor",
-      name: "Queenstown Harbor",
-      location: "MD",
-      image: "queens.jpg",
+      name: "Queenstown Harbor Golf Course",
+      location: "Queenstown, MD",
+      image: "/courses/queens.jpg",
+      description: "Queenstown Harbor Golf features two world-class golf courses, a newly upgraded driving range, and top-tier practice facilities – all open to the public. Perfect for both amateur and seasoned golfers seeking a premier golf experience, our courses feature an environmentally friendly design and are maintained year-round for pristine playing conditions in the Mid-Atlantic Region.",
       link: "https://qgolf.com/"
     },
     {
       id: "broad-run",
-      name: "Broad Run",
-      location: "PA",
-      image: "courses/broadrun.jpg",
+      name: "Broad Run Golf Course",
+      location: "West Chester, PA",
+      image: "/courses/broadrun.jpg",
+      description:"A Rees Jones Masterpiece best of chester county Broad Run Golfer's Club is located amidst the Amish Pennsylvania countryside. With an enormous 372 acre canvas, world-renowned golf course designer Rees Jones carefully sculpted this stunning masterpiece. Broad Run Golfer's Club offers premier playing conditions, tranquil beauty, and unsurpassed customer service. Stretching 6,751 yards with a par 72, the majestic layout takes full advantage of dramatic elevation changes and skillful design features, presenting a worthy challenge to golfers of all levels. As well as a beautifully maintained course, Broad Run also offers a full practice area, expert instructors for both group and individual lessons, and a clubhouse available year-round for private events. Open to the public, but offering membership plans & extensive benefits.",
       link: "https://www.broadrungc.com/golf/tee-times"
     },
     {
       id: "rock-manor",
-      name: "Rock Manor",
-      location: "DE",
-      image: "courses/therock.jpg",
+      name: "Rock Manor Golf Course",
+      location: "Wilmington, DE",
+      image: "/courses/therock.jpg",
+      description: "Located in Wilmington, Delaware, our 18-hole redesigned and lengthened golf course, designed by renowned golf course architect Lester George, is considered a ‘must play’ in the greater Philadelphia area. Completely redesigned, Rock Manor has been lengthened from 5,779 yards to an 18-hole 6,405-yard championship design by renowned golf course architect Lester George. Additionally, the course boasts new tee boxes, greens, bunkers and fairways. A state-of-the-art irrigation system makes for top playing conditions all season long. Come play the voted “Best Public Course in Delaware” by Delaware Today. ",
       link: "https://www.rockmanorgolf.com/book-a-tee-time"
     },
     {
       id: "moccasin-run",
-      name: "Moccasin Run",
-      location: "PA",
-      image: "courses/moccasin.jpg",
+      name: "Moccasin Run Golf Club",
+      location: "Atglen, PA",
+      image: "/courses/moccasin.jpg",
+      description: "Moccasin Run Golf Club, located in Atglen, PA is a peaceful escape into the countryside, providing the perfect retreat for a day of golf. This Chester County course is open to the public, known for pristine playing conditions, and named for the Shawnee and Nanticoke Indians who once occupied the area. Visit our million-dollar renovated clubhouse for dining, drinks, live entertainment, and a delicious menu of American-fare cuisine. We're your home away from home. Family-owned by Curt and Grace King, the 100-acre property is championship rated and treasured by lifelong players and visitors alike. Onsite, you'll find the King family working on the greens, advising golfers, and organizing activities in the clubhouse. Golf Pro Rodney King gives encouragement and guidance to improve your game. Reasonable prices, refreshments, and a challenging course will make this an experience you'll remember and crave often.",
       link: "https://www.moccasinrun.com/golf/tee-times"
     },
     {
       id: "mercer-oaks",
-      name: "Mercer Oaks",
-      location: "NJ",
-      image: "courses/mercer.jpg",
+      name: "Mercer Oaks Golf Course",
+      location: "West Windsor Twp, NJ",
+      image: "/courses/mercer.jpg",
+      description: "Mercer Oaks offers two championship courses at the West Windsor location both open year round (weather permitting). This site provides visitors with amenities second to none for a daily fee facility. Mercer Oaks West is an 18-hole championship golf course which was opened to the public in 1991. The course was built in a traditional style with tree lined fairways, ample bunkers, and challenging greens. The course is a part of the landscape of Mercer County Park and Lake Mercer. It has large greens and bunkers. Through strategic design and careful placement of bunkers and other hazards, the course provides a good test of golf. From the championship tees, the course measures over 7,000 yards with a par of 72. Although part of Mercer Oaks, the links-style East and traditional-style West offer two completely different course challenges for players of all levels. Mercer Oaks Golf Courses require that all golf carts be returned to the clubhouse by sunset each day.",
       link: "https://foreupsoftware.com/index.php/booking/20965/63187"
     },
      {
-      id: "architects",
-      name: "The Architects",
-      location: "NJ",
-      image: "courses/architects.jpg",
+      id: "the-architects",
+      name: "The Architects Golf Club",
+      location: "Stewartsville, NJ",
+      image: "/courses/architects.jpg",
+      description: "Explore each of our course’s 18 holes and the legendary architects they pay homage to. Each hole reflects the philosophy, style, and influence of golf’s greatest designers — blending classic strategy with modern playability. From bold risk-reward layouts to subtle strategic nuances, every hole offers a unique challenge rooted in the traditions of the game.",
       link: "https://architectsgolf.totalintegrated.com/"
+    },
+    { 
+      id:"town-country",
+      name: "Town & Country Golf Links", 
+      image:"/courses/town.jpg",
+      description: "Prepare yourself for an unparalleled golfing experience. Our course is a pleasure for golfers of any skill Town & Country Golf Links offers a traditional links-style front nine featuring generous fairways and wide greens, and a more challenging back nine favoring accuracy and geared towards shot makers. All 18 holes are rye grass fairways and bent grass greens lined with deep rough and tall fescue. The links-style layout also invites the elements – wind, water and sand – to present occasional obstacles. Seven ponds and numerous bunkers are strategically placed throughout the course, providing both scenic splendor and considerable challenges.",
+      location: "Woodstown, NJ",
+      link: "https://foreupsoftware.com/index.php/booking/20899/6135#/teetimes"
     }
   ]
 
@@ -88,10 +102,34 @@ const course = courses.find(c => c.id === id)
       />
 
       {/* 📍 INFO */}
-      <h1 style={{ marginTop: "15px" }}>{course.name}</h1>
+      <h1 style={{ marginTop: "15px", textAlign: "center"}}>{course.name}</h1>
+
+      <div style={{
+          display: "flex",
+          gap: "16px",
+          margin: "12px 0",
+          fontSize: "14px",
+          color: "#555"
+        }}>
+          <span>⛳ 18 Holes</span>
+          <span>🌲 Scenic Views</span>
+          <span>🏌🏾‍♂️ Public Course</span>
+        </div>
       <p style={{ color: "#666", marginBottom: "20px" }}>
         {course.location}
       </p>
+      <p style={{ color: "black", marginBottom: "20px" }}>
+        {course.description}
+      </p>
+
+
+
+      <h3 style={{ marginTop: "20px" }}>Why Play Here</h3>
+        <ul style={{ paddingLeft: "16px", lineHeight: "1.6" }}>
+          <li>Beautiful waterfront holes with strategic bunkering</li>
+          <li>Perfect balance of challenge and playability</li>
+          <li>Great for league play and competitive rounds</li>
+        </ul>
 
       {/* ⛳ CTA BUTTON */}
       <a
@@ -100,7 +138,7 @@ const course = courses.find(c => c.id === id)
         style={{
           display: "block",
           padding: "16px",
-          background: "#2d6cdf",
+          background: "darkgreen",
           color: "white",
           textAlign: "center",
           borderRadius: "12px",
