@@ -46,7 +46,7 @@ export default function HomePage() {
       }}>
 
         <img
-          src="blog/logo.png"
+          src="blog/Logo.png"
           style={{
             width: "100%",
             borderRadius: "12px",
