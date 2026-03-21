@@ -7,46 +7,52 @@ export default function CourseDetail() {
   const router = useRouter()
   const id = params.id
 
-  const courses: any = {
-    "queenstown-harbor": {
+  const courses: any = [
+    {
+      id: "queenstown-harbor",
       name: "Queenstown Harbor",
       location: "MD",
-      image: "/queens.jpg",
+      image: "queens.jpg",
       link: "https://qgolf.com/"
     },
-    "broad-run": {
+    {
+      id: "broad-run",
       name: "Broad Run",
       location: "PA",
-      image: "/broadrun.jpg",
+      image: "courses/broadrun.jpg",
       link: "https://www.broadrungc.com/golf/tee-times"
     },
-    "rock-manor": {
+    {
+      id: "rock-manor",
       name: "Rock Manor",
       location: "DE",
-      image: "/therock.jpg",
+      image: "courses/therock.jpg",
       link: "https://www.rockmanorgolf.com/book-a-tee-time"
     },
-    "moccasin-run": {
+    {
+      id: "moccasin-run",
       name: "Moccasin Run",
       location: "PA",
-      image: "/moccasin.jpg",
+      image: "courses/moccasin.jpg",
       link: "https://www.moccasinrun.com/golf/tee-times"
     },
-    "mercer-oaks": {
+    {
+      id: "mercer-oaks",
       name: "Mercer Oaks",
       location: "NJ",
-      image: "/mercer.jpg",
+      image: "courses/mercer.jpg",
       link: "https://foreupsoftware.com/index.php/booking/20965/63187"
     },
-    "architects": {
+     {
+      id: "architects",
       name: "The Architects",
       location: "NJ",
-      image: "/architects.jpg",
+      image: "courses/architects.jpg",
       link: "https://architectsgolf.totalintegrated.com/"
     }
-  }
+  ]
 
-  const course = courses[id as string]
+const course = courses.find(c => c.id === id)
 
   if (!course) {
     return <div style={{ padding: "20px" }}>Course not found</div>

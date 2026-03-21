@@ -8,49 +8,49 @@ export default function CoursesPage() {
 
   const courses = [
         { 
-            id: "queenstown-harbor",
+      id: "queenstown-harbor",
       name: "Queenstown Harbor", 
       location: "MD",
-      image:"courses/queens.jpg",
+      image:"/courses/queens.jpg",
       link: "https://qhgolf.com/"
     },
     { 
-        id: "broad-run",
+      id: "broad-run",
       name: "Broad Run", 
       image:"courses/broadrun.jpg",
       location: "PA",
       link: "https://www.broadrungc.com/golf/tee-times"
     },
     { 
-        id:"rock-manor",
+      id:"rock-manor",
       name: "Rock Manor", 
       image:"courses/therock.jpg",
       location: "DE",
       link: "https://www.rockmanorgolf.com/book-a-tee-time/"
     },
     { 
-        id:"moccasin-run",
+      id:"moccasin-run",
       name: "Moccasin Run", 
       image:"courses/moccasin.jpg",
       location: "PA",
       link: "https://www.moccasinrun.com/golf/tee-times"
     },
       { 
-        id:"mercer-oaks",
+      id:"mercer-oaks",
       name: "Mercer Oaks", 
       image:"courses/mercer.jpg",
       location: "NJ",
       link: "https://foreupsoftware.com/index.php/booking/20965/6318?_gl=1*av9pvr*_gcl_au*MTQ3NTQxMzIwNy4xNzc0MDE0MzEx*_ga*NDc1MDcyMzM2LjE3NzQwMTQzMTE.*_ga_HQM4YYQE0J*czE3NzQwMTQzMTAkbzEkZzAkdDE3NzQwMTQzMTAkajYwJGwwJGgw&_ga=2.33499389.298083775.1774014311-475072336.1774014311#teetimes"
     },
       { 
-        id:"the-architects",
+      id:"the-architects",
       name: "The Architects", 
       image:"courses/architects.jpg",
       location: "NJ",
       link: "https://architectsgolf.totaleintegrated.com/"
     },
       { 
-        id:"town-country",
+      id:"town-country",
       name: "Town & Country", 
       image:"courses/town.jpg",
       location: "NJ",
