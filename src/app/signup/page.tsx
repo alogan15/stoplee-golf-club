@@ -38,7 +38,7 @@ async function handleLogin(e:any){
         return
         }
 
-        router.push("/")
+        router.push("/home")
 }
 
 async function handleSignup() {
@@ -58,7 +58,7 @@ async function handleSignup() {
   }
 
   alert("Account created! You can now log in.")
-  router.push("/")
+  router.push("/home")
 }
 
 

@@ -19,6 +19,42 @@ export default function RoundsPage() {
   const params = useParams()
   const eventId = String(params?.eventId || "")
 
+  useEffect(() => {
+  if (eventId && course) {
+    localStorage.setItem("activeRound", JSON.stringify({
+      eventId,
+      course
+    }))
+  }
+}, [eventId, course])
+
+useEffect(() => {
+  async function loadSavedRound() {
+    if (!eventId) return
+
+    const { data } = await supabase
+      .from("rounds")
+      .select("*")
+      .eq("event_id", eventId)
+
+    if (!data || data.length === 0) return
+
+    // 🧠 restore players + scores
+    const names = data.map(r => r.player_name)
+    const scoresArr = data.map(r => r.scores)
+
+    setPlayerNames(names)
+    setScores(scoresArr)
+
+    // OPTIONAL (if you want course restored too)
+    if (data[0]?.course) {
+      setCourse(data[0].course)
+    }
+  }
+
+  loadSavedRound()
+}, [eventId])
+
 async function saveRound() {
   if (!eventId) {
     alert("No event selected")
@@ -59,6 +95,12 @@ if (error) {
   alert(error.message)
 } else {
   alert("Round saved")
+
+  // ✅ SAVE ACTIVE ROUND
+  localStorage.setItem("activeRound", JSON.stringify({
+    eventId,
+    course
+  }))
 }}
 
   const buttonStyle = {

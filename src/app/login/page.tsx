@@ -35,7 +35,7 @@ async function handleLogin() {
     return
   }
 
-  router.push("/")
+  router.push("/home")
 }
 
 async function handleResetPassword() {
