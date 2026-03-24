@@ -15,6 +15,7 @@ export default function RoundsPage() {
   const [date, setDate] = useState(
   new Date().toISOString().split("T")[0]
 )
+  const [editingPars, setEditingPars] = useState(false)
   const [pars, setPars] = useState(Array(18).fill(4))
   const params = useParams()
   const eventId = String(params?.eventId || "")
@@ -27,6 +28,17 @@ export default function RoundsPage() {
     }))
   }
 }, [eventId, course])
+
+function updatePar(index: number, value: string) {
+  const newPars = [...pars]
+  newPars[index] = Number(value)
+  setPars(newPars)
+}
+
+function resetRound() {
+  localStorage.removeItem("roundData")
+  location.reload()
+}
 
 useEffect(() => {
   async function loadSavedRound() {
@@ -97,10 +109,13 @@ if (error) {
   alert("Round saved")
 
   // ✅ SAVE ACTIVE ROUND
-  localStorage.setItem("activeRound", JSON.stringify({
-    eventId,
-    course
-  }))
+localStorage.setItem("roundData", JSON.stringify({
+  eventId,
+  course,
+  pars,
+  scores,
+  playerNames
+}))
 }}
 
   const buttonStyle = {
@@ -119,6 +134,20 @@ if (error) {
 
 const router = useRouter()
 
+useEffect(() => {
+  const saved = localStorage.getItem("roundData")
+  if (!saved) return
+
+  const data = JSON.parse(saved)
+
+  if (data.eventId !== eventId) return
+
+  setCourse(data.course || "")
+  setPars(data.pars || Array(18).fill(4))
+  setScores(data.scores || Array(players).fill(null).map(() => Array(18).fill("")))
+  setPlayerNames(data.playerNames || Array(players).fill(""))
+}, [eventId])
+
 useEffect(()=>{
 
 async function checkUser(){
@@ -133,6 +162,8 @@ router.push(`/leaderboard/${eventId}`)}
 checkUser()
 
 },[])
+
+
 
 
 
@@ -152,25 +183,27 @@ checkUser()
       },[])
 
       
-    useEffect(()=>{
+useEffect(() => {
+  if (!course) return
 
-      if(!course) return
+  const saved = localStorage.getItem("roundData")
+  if (saved) {
+    const data = JSON.parse(saved)
+    if (data.eventId === eventId && data.pars) return // 🛑 DON'T overwrite
+  }
 
-    async function loadCourse(){
-
+  async function loadCourse(){
     const { data } = await supabase
       .from("courses")
       .select("pars")
-      .eq("name",course)
+      .eq("name", course)
       .single()
 
-      setPars(data?.pars || Array(18).fill(4))
+    setPars(data?.pars || Array(18).fill(4))
+  }
 
-      }
-
-      loadCourse()
-
-      },[course])
+  loadCourse()
+}, [course, eventId])
 
   const [playerNames,setPlayerNames] = useState(
     Array(players).fill("")
@@ -179,6 +212,21 @@ checkUser()
   const [scores,setScores] = useState(
     Array(players).fill(null).map(()=>Array(18).fill(""))
   )
+
+  useEffect(() => {
+  if (!eventId) return
+
+  const data = {
+    eventId,
+    course,
+    pars,
+    scores,
+    playerNames
+  }
+
+  localStorage.setItem("roundData", JSON.stringify(data))
+}, [eventId, course, pars, scores, playerNames])
+
 
 
     function sum(arr:number[]){
@@ -197,6 +245,7 @@ checkUser()
     <div>
 
       <h1 style={{ fontSize: "24px", fontWeight: "bold", marginBottom: "16px" }}>Stoplee League Scorecard</h1>
+
 
       <div style={{ overflowX: "auto"}}>
 
@@ -241,8 +290,63 @@ checkUser()
               background: "#f1f5f9"
             }}
           />
+
+
       </div>
       </div>
+<button
+  onClick={() => setEditingPars(!editingPars)}
+  style={{
+    marginBottom: "10px",
+    padding: "8px 12px",
+    borderRadius: "8px",
+    border: "none",
+    background: "#1d4ed8",
+    color: "white",
+    cursor: "pointer"
+  }}
+>
+  {editingPars ? "Done Editing" : "Edit Pars"}
+</button>
+
+<div
+  style={{
+    display: "grid",
+    gridTemplateColumns: "repeat(9, 1fr)",
+    gap: "8px",
+    marginBottom: "16px"
+  }}
+>
+  {pars.map((par, i) => (
+    <div
+      key={i}
+      style={{
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center"
+      }}
+    >
+      {/* HOLE NUMBER */}
+      <span style={{ fontSize: "12px", marginBottom: "4px" }}>
+        {i + 1}
+      </span>
+
+      {/* INPUT */}
+      <input
+        type="number"
+        value={par}
+        onChange={(e) => updatePar(i, e.target.value)}
+        style={{
+          width: "100%",
+          padding: "6px",
+          borderRadius: "6px",
+          border: "1px solid #ddd",
+          textAlign: "center"
+        }}
+      />
+    </div>
+  ))}
+</div>
 
         <div 
         style={{
@@ -536,10 +640,31 @@ checkUser()
             >
               🔴 View Live Leaderboard
             </button>
+
+            <button
+              onClick={() => {
+                if (confirm("Reset round? This will erase all scores.")) {
+                  localStorage.removeItem("roundData")
+                  location.reload()
+                }
+              }}
+              style={{
+                marginTop: "10px",
+                padding: "10px",
+                borderRadius: "8px",
+                background: "red",
+                color: "white",
+                border: "none",
+                cursor: "pointer"
+              }}
+            >
+              Reset Round
+            </button>
       </div>
 
     </div>
     </div>
+    
 
   )
 

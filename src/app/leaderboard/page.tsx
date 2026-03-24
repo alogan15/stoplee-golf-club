@@ -5,6 +5,7 @@ import { useRouter, useParams } from "next/navigation"
 import { supabase } from "../../lib/supabase"
 import { calculateRoundPoints } from "../../lib/scoring"
 import BackButton from "@/src/components/BackButton"
+import ResumeRound from "@/src/components/ResumeRound"
 
 export const dynamic = "force-dynamic"
 
@@ -380,6 +381,7 @@ return (
 
       </table>
     </div>
+    <ResumeRound />
   </div>
 )
 }

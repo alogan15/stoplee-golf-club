@@ -17,24 +17,6 @@ export default function Events(){
     loadEvents()
   },[])
 
-//   useEffect(() => {
-//   async function loadWinners() {
-//     const results = await Promise.all(
-//       schedule.map(event => getWinner(event.id))
-//     )
-
-//       if (winner) {
-//         result[event.id] = winner
-//       }
-//     }
-
-//     setWinners(result)
-//   }
-
-//   if (schedule.length > 0) {
-//     loadWinners()
-//   }
-// }, [schedule])
 
   async function loadEvents(){
 

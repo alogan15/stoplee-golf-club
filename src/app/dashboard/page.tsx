@@ -4,6 +4,7 @@ import { useEffect, useState } from "react"
 import { useRouter } from "next/navigation"
 import { supabase } from "../../lib/supabase"
 import PlayerSelector from "@/src/components/PlayerSelector"
+import ResumeRound from "@/src/components/ResumeRound"
 
 export default function Dashboard(){
 
@@ -88,6 +89,7 @@ const [loading,setLoading] = useState(true)
             maxWidth: "600px",
             margin: "0 auto"
             }}>
+               
 
                 <PlayerSelector />
 
@@ -133,6 +135,7 @@ const [loading,setLoading] = useState(true)
     </div>
 
     </div>
+     <ResumeRound />
     </div>
 
 )

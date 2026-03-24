@@ -1,23 +1,13 @@
 "use client"
 
 import { useRouter } from "next/navigation"
+import ResumeRound from "@/src/components/ResumeRound"
 
 export default function HomePage() {
 
   const router = useRouter()
 
-  function handleResumeRound() {
-  const saved = localStorage.getItem("activeRound")
 
-  if (!saved) {
-    alert("No active round found")
-    return
-  }
-
-  const { eventId } = JSON.parse(saved)
-
-  router.push(`/gameday/${eventId}`)
-}
   
   return (
 
@@ -29,22 +19,8 @@ export default function HomePage() {
       margin: "0 auto"
     }}>
 
-      <button
-  onClick={handleResumeRound}
-  style={{
-    width: "100%",
-    padding: "14px",
-    marginTop: "16px",
-    background: "#1d4ed8",
-    color: "white",
-    border: "none",
-    borderRadius: "10px",
-    fontWeight: "bold",
-    cursor: "pointer"
-  }}
->
-  ⛳ Resume Round
-</button>
+
+<ResumeRound />
 
 
       {/* HERO */}
