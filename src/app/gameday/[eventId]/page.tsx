@@ -11,23 +11,23 @@ export default function RoundsPage() {
   const players = 4
 
   const [course,setCourse] = useState("")
-  const [courses,setCourses] = useState<any[]>([])
-  const [date, setDate] = useState(
+  const [newCourseName, setNewCourseName] = useState("")
+  const [savingCourse, setSavingCourse] = useState(false)
+  const [showCourseModal, setShowCourseModal] = useState(false)
+    type Course = {
+      name: string
+      pars: number[]
+    }
+
+    const [courses, setCourses] = useState<Course[]>([])  
+    const [date, setDate] = useState(
   new Date().toISOString().split("T")[0]
 )
-  const [editingPars, setEditingPars] = useState(false)
   const [pars, setPars] = useState(Array(18).fill(4))
   const params = useParams()
   const eventId = String(params?.eventId || "")
 
-  useEffect(() => {
-  if (eventId && course) {
-    localStorage.setItem("activeRound", JSON.stringify({
-      eventId,
-      course
-    }))
-  }
-}, [eventId, course])
+
 
 function updatePar(index: number, value: string) {
   const newPars = [...pars]
@@ -39,6 +39,53 @@ function resetRound() {
   localStorage.removeItem("roundData")
   location.reload()
 }
+
+async function saveCourse() {
+  if (!newCourseName.trim()) {
+    alert("Enter a course name")
+    return
+  }
+
+  setSavingCourse(true)
+
+  const { data, error } = await supabase
+    .from("courses")
+    .insert([
+      {
+        name: newCourseName,
+        pars
+      }
+    ])
+    .select()
+
+  setSavingCourse(false)
+
+  if (error) {
+    console.error("SUPABASE ERROR:", error)
+    alert(error.message)
+    return
+  }
+
+  if (!data || data.length === 0) {
+    alert("No data returned")
+    return
+  }
+
+  const newCourse = data[0]
+
+  // ✅ update dropdown
+  setCourses(prev => [...prev, newCourse])
+
+  // ✅ auto select
+  setCourse(newCourse.name)
+
+  // ✅ clear input
+  setNewCourseName("")
+
+  // ✅ close modal
+  setShowCourseModal(false)
+}
+
 
 useEffect(() => {
   async function loadSavedRound() {
@@ -134,19 +181,6 @@ localStorage.setItem("roundData", JSON.stringify({
 
 const router = useRouter()
 
-useEffect(() => {
-  const saved = localStorage.getItem("roundData")
-  if (!saved) return
-
-  const data = JSON.parse(saved)
-
-  if (data.eventId !== eventId) return
-
-  setCourse(data.course || "")
-  setPars(data.pars || Array(18).fill(4))
-  setScores(data.scores || Array(players).fill(null).map(() => Array(18).fill("")))
-  setPlayerNames(data.playerNames || Array(players).fill(""))
-}, [eventId])
 
 useEffect(()=>{
 
@@ -187,9 +221,12 @@ useEffect(() => {
   if (!course) return
 
   const saved = localStorage.getItem("roundData")
+
   if (saved) {
     const data = JSON.parse(saved)
-    if (data.eventId === eventId && data.pars) return // 🛑 DON'T overwrite
+
+    // 🛑 STOP if we already have pars for this event
+    if (data?.eventId === eventId && data?.pars) return
   }
 
   async function loadCourse(){
@@ -213,8 +250,17 @@ useEffect(() => {
     Array(players).fill(null).map(()=>Array(18).fill(""))
   )
 
-  useEffect(() => {
+useEffect(() => {
   if (!eventId) return
+
+  // 🛑 DON'T SAVE EMPTY / DEFAULT STATE
+  const isEmptyScores = scores.every(player =>
+    player.every(score => score === "" || score === null)
+  )
+
+  const isDefaultPars = pars.every(p => p === 4)
+
+  if (isEmptyScores && isDefaultPars) return
 
   const data = {
     eventId,
@@ -256,8 +302,17 @@ useEffect(() => {
               }}>
             <select
               value={course}
-              onChange={(e)=>setCourse(e.target.value)}
-              style={{
+                onChange={(e) => {
+                  const value = e.target.value
+
+                  if (value === "__new__") {
+                    setShowCourseModal(true)
+                    return
+                  }
+
+                  setCourse(value)
+                }}             
+                style={{
                 padding: "10px 14px",
                 borderRadius: "999px",
                 border: "1px solid #ddd",
@@ -268,14 +323,16 @@ useEffect(() => {
             >
 
                 <option value="">Select Course</option>
+          <option value="__new__">+ Add New Course</option>
 
                 {courses.map((c)=>(
-                <option key={c.id} value={c.name}>
+                <option key={c.name} value={c.name}>
                  {c.name}
               </option>
                ))}
-
         </select>
+
+
 
           <input
             type="date"
@@ -290,24 +347,9 @@ useEffect(() => {
               background: "#f1f5f9"
             }}
           />
-
-
       </div>
       </div>
-<button
-  onClick={() => setEditingPars(!editingPars)}
-  style={{
-    marginBottom: "10px",
-    padding: "8px 12px",
-    borderRadius: "8px",
-    border: "none",
-    background: "#1d4ed8",
-    color: "white",
-    cursor: "pointer"
-  }}
->
-  {editingPars ? "Done Editing" : "Edit Pars"}
-</button>
+
 
 <div
   style={{
@@ -317,35 +359,7 @@ useEffect(() => {
     marginBottom: "16px"
   }}
 >
-  {pars.map((par, i) => (
-    <div
-      key={i}
-      style={{
-        display: "flex",
-        flexDirection: "column",
-        alignItems: "center"
-      }}
-    >
-      {/* HOLE NUMBER */}
-      <span style={{ fontSize: "12px", marginBottom: "4px" }}>
-        {i + 1}
-      </span>
 
-      {/* INPUT */}
-      <input
-        type="number"
-        value={par}
-        onChange={(e) => updatePar(i, e.target.value)}
-        style={{
-          width: "100%",
-          padding: "6px",
-          borderRadius: "6px",
-          border: "1px solid #ddd",
-          textAlign: "center"
-        }}
-      />
-    </div>
-  ))}
 </div>
 
         <div 
@@ -564,31 +578,31 @@ useEffect(() => {
                   </td>
                 ))}
 
-<td style={{
-  minWidth: "60px",
-  textAlign: "center",
-  fontSize: "16px"
-}}>
-  {back}
-</td>
-                    
-<td style={{
-  minWidth: "70px",
-  textAlign: "center",
-  fontWeight: "bold",
-  fontSize: "16px"
-}}>
-  {total}
-</td>
+              <td style={{
+                minWidth: "60px",
+                textAlign: "center",
+                fontSize: "16px"
+              }}>
+                {back}
+              </td>
+                                  
+              <td style={{
+                minWidth: "70px",
+                textAlign: "center",
+                fontWeight: "bold",
+                fontSize: "16px"
+              }}>
+                {total}
+              </td>
 
-<td style={{
-  minWidth: "90px",
-  textAlign: "center",
-  fontWeight: "bold",
-  fontSize: "16px"
-}}>
-  {stableTotal}
-</td>
+              <td style={{
+                minWidth: "90px",
+                textAlign: "center",
+                fontWeight: "bold",
+                fontSize: "16px"
+              }}>
+                {stableTotal}
+              </td>
 
               </tr>
 
@@ -640,6 +654,79 @@ useEffect(() => {
             >
               🔴 View Live Leaderboard
             </button>
+
+            {showCourseModal && (
+  <div style={{
+    position: "fixed",
+    top: 0,
+    left: 0,
+    width: "100%",
+    height: "100%",
+    background: "rgba(0,0,0,0.5)",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    zIndex: 999
+  }}>
+    <div style={{
+      background: "#fff",
+      padding: "20px",
+      borderRadius: "16px",
+      width: "90%",
+      maxWidth: "400px"
+    }}>
+      <h3 style={{ marginBottom: "12px" }}>Add New Course</h3>
+
+      <input
+        type="text"
+        placeholder="Course name"
+        value={newCourseName}
+        onChange={(e) => setNewCourseName(e.target.value)}
+        style={{
+            width: "100%",
+            padding: "12px",
+            borderRadius: "10px",
+            border: "1px solid #ddd",
+            fontSize: "16px",
+            marginBottom: "16px",
+            boxSizing: "border-box" // ✅ THIS IS THE KEY FIX
+        }}
+      />
+
+      <div style={{ padding: "0 16px" }}>
+        <button
+          onClick={saveCourse}
+          style={{
+            width: "100%",
+            padding: "14px",
+            background: "#1d8e43",
+            color: "white",
+            border: "none",
+            borderRadius: "12px",
+            fontWeight: "bold",
+            fontSize: "16px"
+          }}
+        >
+          Save Course
+        </button>
+      </div>
+
+      <button
+        onClick={() => setShowCourseModal(false)}
+        style={{
+          width: "100%",
+          padding: "10px",
+          marginTop: "8px",
+          background: "transparent",
+          border: "none",
+          color: "#666"
+        }}
+      >
+        Cancel
+      </button>
+    </div>
+  </div>
+)}
 
             <button
               onClick={() => {
