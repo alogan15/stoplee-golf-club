@@ -12,7 +12,7 @@ export default function RoundsPage() {
 
   const [course,setCourse] = useState("")
   const [newCourseName, setNewCourseName] = useState("")
-  const [savingCourse, setSavingCourse] = useState(false)
+  const [currentHole, setCurrentHole] = useState(0)
   const [showCourseModal, setShowCourseModal] = useState(false)
     type Course = {
       name: string
@@ -388,12 +388,18 @@ useEffect(() => {
             backgroundColor: "#f1f5f9",
             borderBottom: "2px solid #e5e7eb"
           }}>            
-          <th style={{
-            padding: "6px",
-            fontSize: "15px",
-            fontWeight: "600",
-            color: "#555"
-          }}>Hole</th>
+            <th style={{
+              position: "sticky",
+              left: 0,
+              zIndex: 3,
+              background: "#f1f5f9",
+              padding: "6px",
+              fontSize: "15px",
+              fontWeight: "600",
+              color: "#555"
+            }}>
+              Hole
+            </th>
 
             {[...Array(9)].map((_,i)=>(
               <th key={i}>{i+1}</th>
@@ -412,24 +418,32 @@ useEffect(() => {
 
           <tr>
 
-            <td style={{ 
-              padding:"4px", 
+            <td style={{
+              position: "sticky",
+              left: 0,
+              zIndex: 2,
+              background: "#fff",
+              padding: "4px",
               fontSize: "20px",
               fontWeight: "600",
-              textAlign:"center",
+              textAlign: "center",
               color: "black"
-            }}
-              >Par</td>
+            }}>
+              Par
+            </td>
 
             {pars.slice(0,9).map((par,i)=>(
-              <td style={{ padding:"4px"}} 
+              <td style={{  padding: "4px",
+                            background: currentHole === i ? "#e6f4ea" : undefined
+                          }} 
               key={i}>
                 <input
                   type="number"
                   value={par}
-                  onChange={(e)=>{
-                    const p=[...pars]
-                    p[i]=Number(e.target.value)
+                  onFocus={() => setCurrentHole(i)}
+                  onChange={(e) => {
+                    const p = [...pars]
+                    p[i] = Number(e.target.value)
                     setPars(p)
                   }}
             style={{
@@ -448,14 +462,17 @@ useEffect(() => {
             <td style={{ padding:"4px"}} >{sum(pars.slice(0,9))}</td>
 
             {pars.slice(9).map((par,i)=>(
-              <td style={{ padding:"4px"}}  
+              <td style={{ padding: "4px",
+                          background: currentHole === i + 9 ? "#e6f4ea" : undefined
+                        }}  
               key={i}>
                 <input
                   type="number"
                   value={par}
-                  onChange={(e)=>{
-                    const p=[...pars]
-                    p[i+9]=Number(e.target.value)
+                  onFocus={() => setCurrentHole(i + 9)}
+                  onChange={(e) => {
+                    const p = [...pars]
+                    p[i] = Number(e.target.value)
                     setPars(p)
                   }}
             style={{
@@ -470,8 +487,6 @@ useEffect(() => {
                 />
               </td>
             ))}
-
-            
 
             <td style={{ padding:"4px"}} >{sum(pars.slice(9))}</td>
             <td style={{ padding:"4px"}} >{sum(pars)}</td>
@@ -495,21 +510,31 @@ useEffect(() => {
                 <tr
                     key={playerIndex}
                     style={{
-                      backgroundColor:
+                      background:
                         playerIndex % 2 === 0 ? "#ffffff" : "#f9f9f9"
                     }}
                   >
 
-                <td style={{ padding:"4px"}} >
-                  <input
-                    placeholder="Player Name"
+              <td style={{
+                position: "sticky",
+                left: 0,
+                zIndex: 0,
+                background: playerIndex % 2 === 0 ? "#ffffff" : "#f9f9f9",
+                padding: "4px",
+                boxShadow: "2px 0 6px rgba(0,0,0,0.05)",
+                width: "140px",        
+                minWidth: "140px"      
+              }}>
+                <input
+                  placeholder="Player Name"
                     style={{
-                    width: "120px",
+                    width: "70%",
                     padding: "10px",
                     borderRadius: "10px",
                     border: "1px solid #ddd",
                     fontSize: "16px",
-                    fontWeight: "500"
+                    fontWeight: "500",
+                    boxShadow: "3px 0 8px rgba(0,0,0,0.08)"
                     }}
                     value={name}
                     onChange={(e)=>{
@@ -521,7 +546,9 @@ useEffect(() => {
                 </td>
 
                 {playerScores.slice(0,9).map((score,i)=>(
-                  <td style={{ padding:"4px"}}  
+                  <td style={{ padding:"4px" ,
+                              background: currentHole === i ? "#e6f4ea" : undefined
+                  }}  
                   key={i}>
                     <input
                       type="number"
@@ -555,7 +582,9 @@ useEffect(() => {
                     {front}
                   </td>
                 {playerScores.slice(9).map((score,i)=>(
-                  <td style={{ padding:"4px"}}  
+                  <td style={{ padding:"4px",
+                                background: currentHole === i ? "#e6f4ea" : undefined
+                  }}  
                   key={i}>
                     <input
                       type="number"
@@ -621,7 +650,9 @@ useEffect(() => {
               bottom: 0,
               background: "#fff",
               padding: "12px",
-              borderTop: "1px solid #eee" 
+              borderTop: "1px solid #eee",
+                zIndex: 10, // ✅ ADD THIS
+  boxShadow: "0 -4px 10px rgba(0,0,0,0.08)" // optional 🔥
               }}>
             <button
               onClick={saveRound}
