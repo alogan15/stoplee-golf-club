@@ -46,7 +46,6 @@ async function saveCourse() {
     return
   }
 
-  setSavingCourse(true)
 
   const { data, error } = await supabase
     .from("courses")
@@ -58,7 +57,6 @@ async function saveCourse() {
     ])
     .select()
 
-  setSavingCourse(false)
 
   if (error) {
     console.error("SUPABASE ERROR:", error)
