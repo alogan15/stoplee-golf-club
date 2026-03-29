@@ -7,6 +7,31 @@ export default function HomePage() {
 
   const router = useRouter()
 
+  const styles = {
+  text: {
+    fontSize: "14px",
+    color: "#555",
+    marginTop: "6px",
+    lineHeight: "1.5",
+  },
+  title: {
+    fontSize: "20px",
+    fontWeight: "600",
+    marginTop: "10px",
+  },
+  card: {
+    background: "#fff",
+    borderRadius: "16px",
+    padding: "16px",
+    marginBottom: "20px",
+    boxShadow: "0 4px 12px rgba(0,0,0,0.08)",
+  },
+  image: {
+    width: "100%",
+    borderRadius: "12px",
+  },
+}
+
 
   
   return (
@@ -94,7 +119,7 @@ export default function HomePage() {
  
 
 <div style={{ display: "flex", flexDirection: "column", gap: "28px" }}>
-  {posts.map((post) => (
+  {/* {posts.map((post) => (
     <div
       key={post.slug}
       onClick={() => router.push(`/news/${post.slug}`)}
@@ -134,7 +159,25 @@ export default function HomePage() {
         {post.description}
       </p>
     </div>
-  ))}
+  ))} */}
+
+  {posts.map((post) => (
+  <div key={post.id} 
+        onClick={() => router.push(`/news/${post.slug}`)}
+        style={styles.card}>
+    
+    <img src={post.image} alt={post.title} style={styles.image} />
+
+    <h3 style={styles.title}>{post.title}</h3>
+
+    <p style={styles.text}>{post.description}</p>
+
+    <p style={{ ...styles.text, color: "#1d4ed8", cursor: "pointer" }}>
+      {post.readMore}
+    </p>
+
+  </div>
+))}
 </div>
       </div>
       
@@ -146,35 +189,38 @@ export default function HomePage() {
 
 const posts = [
   {
+    id: 1,
     slug: "season-recap-2025",
     title: "2025 Season Recap",
     image: "/blog/group.png",
     description: "Last year wasn’t a season... it was a proving ground. In 2025, this tour became...",
-    date: "Jan 22, 2026",
-    readTime: "4 min read"
+    readMore:"Read More..."
   },
   {
+    id: 2,
     slug: "rivalries-2026",
     title: "2026 Rivalry",
     image: "/blog/rivalry.png",
     description: "Jamar vs. Andre Control vs. Pressure. Jay vs. Erik Consistency vs. Opportunity. Malcolm vs. Everyone Ceiling vs. Control",
-    date: "Jan 22, 2026",
-    readTime: "5 min read"
+    readMore:"Read More..."
+
   },
   {
+    id: 3,
     slug: "jamar-threepeat",
     title: "Watch The Throne",
     image: "/blog/Jamar2025.png",
     description: "The two-time champ isn’t chasing anymore — he’s the one being hunted.",
-    date: "Jan 22, 2026",
-    readTime: "4 min read"
+    readMore:"Read More..."
+
   },
     {
+    id: 4,
     slug: "rookies-2025",
     title: "Rookie Class of 2025",
     image: "/blog/rookies.png",
     description: "Rookie of the Year: Malcolm Total Points: 67 | Avg: 13 per round",
-    date: "Jan 22, 2026",
-    readTime: "3 min read"
+    readMore:"Read More..."
+
   },
 ]

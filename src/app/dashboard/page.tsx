@@ -101,7 +101,9 @@ const [loading,setLoading] = useState(true)
             <div style={{padding:"20px"}}>
 
             {/* <h1 style={{ fontSize: "24px", fontWeight: "bold", marginBottom: "16px" }}>Player Profile</h1> */}
-            <h1 style={{ fontSize: "28px", fontWeight: "extra bold", marginBottom: "16px", letterSpacing: "-0.5px" }}> {user?.user_metadata?.name}'s Clubhouse</h1>
+            {/* <h1 style={{ fontSize: "28px", fontWeight: "extra bold", marginBottom: "16px", letterSpacing: "-0.5px" }}> {user?.user_metadata?.name}'s Clubhouse</h1> */}
+            <h1 style={{ fontSize: "28px", fontWeight: "extra bold", marginBottom: "16px", letterSpacing: "-0.5px" }}> Clubhouse</h1>
+
 
 
             <div style={{marginTop:"20px"}}>

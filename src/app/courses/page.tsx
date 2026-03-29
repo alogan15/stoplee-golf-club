@@ -1,5 +1,6 @@
 "use client"
 import { useRouter } from "next/navigation"
+import { title } from "process"
 
 export default function CoursesPage() {
     const router = useRouter()
@@ -12,43 +13,43 @@ export default function CoursesPage() {
       id: "broad-run",
       name: "Broad Run Golf Course", 
       image:"/courses/broadrun.jpg",
+      title:"Twp Opener",
       location: "West Chester, PA",
-      link: "https://www.broadrungc.com/golf/tee-times"
     },
     { 
       id:"rock-manor",
       name: "Rock Manor Golf Course", 
       image:"/courses/therock.jpg",
+      title:"Stoplee Classic",
       location: "Wilmington, DE",
-      link: "https://www.rockmanorgolf.com/book-a-tee-time/"
     },
     { 
       id:"moccasin-run",
       name: "Moccasin Run Golf Club", 
       image:"/courses/moccasin.jpg",
+      title: "La Fiesta",
       location: "Atglen, PA",
-      link: "https://www.moccasinrun.com/golf/tee-times"
     },
       { 
       id:"mercer-oaks",
       name: "Mercer Oaks Golf Course", 
       image:"/courses/mercer.jpg",
+      title:"Juneteenth Classic",
       location: "West Windsor Twp, NJ",
-      link: "https://foreupsoftware.com/index.php/booking/20965/6318?_gl=1*av9pvr*_gcl_au*MTQ3NTQxMzIwNy4xNzc0MDE0MzEx*_ga*NDc1MDcyMzM2LjE3NzQwMTQzMTE.*_ga_HQM4YYQE0J*czE3NzQwMTQzMTAkbzEkZzAkdDE3NzQwMTQzMTAkajYwJGwwJGgw&_ga=2.33499389.298083775.1774014311-475072336.1774014311#teetimes"
     },
       { 
       id:"the-architects",
       name: "The Architects Golf Club", 
       image:"/courses/architects.jpg",
+      title:"Augusta in Augusta",
       location: "Stewartsville, NJ",
-      link: "https://architectsgolf.totaleintegrated.com/"
     },
       { 
       id:"town-country",
       name: "Town & Country Golf Links", 
       image:"/courses/town.jpg",
+      title:"Tour Championship",
       location: "Woodstown, NJ",
-      link: "https://foreupsoftware.com/index.php/booking/20899/6135#/teetimes"
     }
   ]
 
@@ -116,7 +117,7 @@ export default function CoursesPage() {
 
         {/* CONTENT */}
         <div style={{ padding: "15px" }}>
-          {/* <h3 style={{ marginBottom: "5px" }}>{course.name}</h3> */}
+          <h3 style={{ marginBottom: "5px" }}>{course.title}</h3>
           <p style={{ color: "#666" }}>{course.location}</p>
 
           <div style={{ marginTop: "10px" }}>

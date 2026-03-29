@@ -12,6 +12,9 @@ export default function CourseDetail() {
     {
       id: "broad-run",
       name: "Broad Run Golf Course",
+      holes: 18,
+      type: "Public Course",
+      vibe: "18-hole public course that rewards smart decision-making and punishes careless swings.",
       yards: "6751",
       rating: "73.4",
       slope: "139",
@@ -23,6 +26,9 @@ export default function CourseDetail() {
     {
       id: "rock-manor",
       name: "Rock Manor Golf Course",
+      holes: 18,
+      type: "Public Course",
+      vibe: "18-hole public course built for competition with a layout that rewards accuracy and smart play.",
       yards: "6405",
       rating: "71.1",
       slope: "135",
@@ -34,6 +40,9 @@ export default function CourseDetail() {
     {
       id: "moccasin-run",
       name: "Moccasin Run Golf Club",
+      holes: 18,
+      type: "Public Course",
+      vibe: "18-hole public course with a precision-driven layout where every shot demands focus.",
       yards: "6509",
       rating: "71.1",
       slope: "135",
@@ -45,28 +54,37 @@ export default function CourseDetail() {
     {
       id: "mercer-oaks",
       name: "Mercer Oaks Golf Course",
+      holes: 18,
+      type: "Public Course",
+      vibe: "18-hole public course with tight fairways and strategic greens that test total control",
       yards: "7182",
       rating: "74.0",
       slope: "131",
       location: "West Windsor Twp, NJ",
       image: "/courses/mercer.jpg",
       description: "Mercer Oaks offers two championship courses at the West Windsor location both open year round (weather permitting). This site provides visitors with amenities second to none for a daily fee facility. Mercer Oaks West is an 18-hole championship golf course which was opened to the public in 1991. The course was built in a traditional style with tree lined fairways, ample bunkers, and challenging greens. The course is a part of the landscape of Mercer County Park and Lake Mercer. It has large greens and bunkers. Through strategic design and careful placement of bunkers and other hazards, the course provides a good test of golf. From the championship tees, the course measures over 7,000 yards with a par of 72. Although part of Mercer Oaks, the links-style East and traditional-style West offer two completely different course challenges for players of all levels. Mercer Oaks Golf Courses require that all golf carts be returned to the clubhouse by sunset each day.",
-      link: "https://foreupsoftware.com/index.php/booking/20965/63187"
+      link: "https://golfmercercounty.com/mercer-oaks/"
     },
      {
       id: "the-architects",
       name: "The Architects Golf Club",
+      holes: 18,
+      type: "Public Course",
+      vibe: "18-hole public but balanced course that challenges both power and accuracy.",
       yards: "6863",
       rating: "72.9",
       slope: "134",
       location: "Stewartsville, NJ",
       image: "/courses/architects.jpg",
       description: "Explore each of our course’s 18 holes and the legendary architects they pay homage to. Each hole reflects the philosophy, style, and influence of golf’s greatest designers — blending classic strategy with modern playability. From bold risk-reward layouts to subtle strategic nuances, every hole offers a unique challenge rooted in the traditions of the game.",
-      link: "https://architectsgolf.totalintegrated.com/"
+      link: "https://www.thearchitectsclub.com/"
     },
     { 
       id:"town-country",
       name: "Town & Country Golf Links", 
+      holes: 18,
+      type: "Public Course",
+      vibe: "18-hole public course designed to separate consistent players from the rest of the field.",
       yards: "6659",
       rating: "71.0",
       slope: "125",
@@ -115,18 +133,21 @@ const course = courses.find((c: any) => c.id === id)
       {/* 📍 INFO */}
       <h1 style={{ marginTop: "15px", textAlign: "center"}}>{course.name}</h1>
 
-      <div style={{
-          display: "flex",
-          gap: "16px",
-          margin: "12px 0",
-          fontSize: "14px",
-          color: "#555"
-        }}>
-          <span>⛳ 18 Holes</span>
-          <span>🌲 Scenic Views</span>
-          <span>🏌🏾‍♂️ Public Course</span>
-          
-        </div>
+
+
+        <div style={{
+            display: "flex",
+            gap: "16px",
+            margin: "12px 0",
+            fontSize: "14px",
+            color: "#555"
+          }}>
+          </div>
+
+          <p style={{ color: "#666", fontStyle: "italic" }}>
+            {course.vibe}
+          </p>
+
         <div style={{
           display: "flex",
           gap: "40px",
@@ -134,13 +155,15 @@ const course = courses.find((c: any) => c.id === id)
           fontSize: "15px",
           color: "#555"
         }}>
-          <span><strong>{course.yards}</strong>📏</span>
-          <span><strong>{course.rating}</strong>⭐ </span>
-          <span><strong>{course.slope}</strong>⛰</span>
+          <span><strong>{course.yards}</strong> yds</span>
+          <span><strong>{course.rating}</strong> rtg</span>
+          <span><strong>{course.slope}</strong> slp</span>
         </div>
+
       <p style={{ color: "#666", marginBottom: "20px" }}>
         {course.location}
       </p>
+
       <p style={{ color: "black", marginBottom: "20px" }}>
         {course.description}
       </p>
