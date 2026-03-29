@@ -7,13 +7,7 @@ export default function CoursesPage() {
     
 
   const courses = [
-        { 
-      id: "queenstown-harbor",
-      name: "Queenstown Harbor Golf Course", 
-      location: "Queenstown, MD",
-      image:"/courses/queens.jpg",
-      link: "https://qhgolf.com/"
-    },
+
     { 
       id: "broad-run",
       name: "Broad Run Golf Course", 
@@ -77,7 +71,7 @@ export default function CoursesPage() {
       ← Back
     </button>
 
-    <h1 style={{ marginBottom: "20px" }}>🏌🏾 Courses</h1>
+    <h1 style={{ marginBottom: "20px" }}>🏌🏾 Schedule</h1>
 
     {courses.map((course) => (
       <div

@@ -27,7 +27,16 @@ export default function RoundsPage() {
   const params = useParams()
   const eventId = String(params?.eventId || "")
 
+type Round = {
+  id: string
+  player_id: string
+  player_name: string
+  scores: number[]
+  pars: number[]
+  created_at?: string
+}
 
+const [liveRounds, setLiveRounds] = useState<Round[]>([])
 
 function updatePar(index: number, value: string) {
   const newPars = [...pars]
@@ -39,6 +48,79 @@ function resetRound() {
   localStorage.removeItem("roundData")
   location.reload()
 }
+
+async function loadLiveRounds() {
+  const { data, error } = await supabase
+    .from("rounds")
+    .select("*")
+    .eq("event_id", eventId)
+
+  if (error) {
+    console.error(error)
+  } else {
+    setLiveRounds(data || [])
+  }
+}
+
+useEffect(() => {
+  if (!eventId) return
+
+  loadLiveRounds()
+
+  const channel = supabase
+    .channel("live-rounds")
+    .on(
+      "postgres_changes",
+      {
+        event: "*",
+        schema: "public",
+        table: "rounds",
+        filter: `event_id=eq.${eventId}`
+      },
+      () => {
+        loadLiveRounds()
+      }
+    )
+    .subscribe()
+
+  return () => {
+    supabase.removeChannel(channel)
+  }
+}, [eventId])
+
+const leaderboard: any = {}
+
+liveRounds.forEach((round) => {
+  const playerId = `${round.player_id}-${(round as any).id}`
+  const playerName = round.player_name
+
+  if (!playerId) return
+
+  const scores = (round.scores || []).map((s) => Number(s) || 0)
+  const parsArr = (round.pars || []).map((p) => Number(p) || 0)
+
+  const total = calculateRoundPoints(scores, parsArr)
+  const strokeTotal = scores.reduce((sum: number, s: number) => sum + s, 0)
+
+  // ✅ ensure player exists
+  if (!leaderboard[playerId]) {
+    leaderboard[playerId] = {
+      player_id: playerId, // ✅ USE ROUND DATA
+      player_name: playerName,
+      points: 0,
+      strokes: 0,
+      scores: []
+    }
+  }
+
+  // ✅ accumulate (THIS is what you were missing)
+  leaderboard[playerId].points += total
+  leaderboard[playerId].strokes = strokeTotal
+  leaderboard[playerId].scores = scores
+})
+
+const sorted = Object.values(leaderboard)
+  .sort((a: any, b: any) => b.points - a.points)
 
 async function saveCourse() {
   if (!newCourseName.trim()) {
@@ -132,20 +214,20 @@ const { data: userData } = await supabase.auth.getUser()
       "Player"
 
 
-  const rows = playerNames.map((playerName, i) => ({
-      event_id: eventId,
-      course,
-      date,
-      player_id: playerName || `player-${i}`, // temp ID
-      player_name: playerName || `Player ${i + 1}`,
-      scores: (scores[i] || []).map((s: any) => Number(s) || 0),      
-      pars
+const rows = playerNames.map((playerName, i) => ({
+  event_id: eventId,
+  course,
+  date,
+  player_id: `${eventId}-${userData.user.id}-${i}`,
+  player_name: playerName || `Player ${i + 1}`,
+  scores: (scores[i] || []).map((s: any) => Number(s) || 0),
+  pars
 }))
-console.log("SCORES STATE:", scores)
-console.log("ROWS BEING SAVED:", rows)
+
 
 const { error } = await supabase.from("rounds")
 .upsert(rows, {onConflict: "event_id, player_id"})
+
 
 if (error) {
   console.error("SAVE ERROR:", error)
@@ -649,8 +731,8 @@ useEffect(() => {
               background: "#fff",
               padding: "12px",
               borderTop: "1px solid #eee",
-                zIndex: 10, // ✅ ADD THIS
-  boxShadow: "0 -4px 10px rgba(0,0,0,0.08)" // optional 🔥
+              zIndex: 10, // ✅ ADD THIS
+              boxShadow: "0 -4px 10px rgba(0,0,0,0.08)" // optional 🔥
               }}>
             <button
               onClick={saveRound}

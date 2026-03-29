@@ -6,13 +6,17 @@ import { supabase } from "../../lib/supabase"
 import PlayerSelector from "@/src/components/PlayerSelector"
 import ResumeRound from "@/src/components/ResumeRound"
 
+
+
 export default function Dashboard(){
 
 const router = useRouter()
 
-const [user,setUser] = useState<any | null>(null)
+const [user, setUser] = useState<any | null>(null)
 const [rounds,setRounds] = useState<any[]>([])
 const [loading,setLoading] = useState(true)
+
+
 
     useEffect(()=>{
 
@@ -87,15 +91,18 @@ const [loading,setLoading] = useState(true)
         <div style={{
             padding: "16px",
             maxWidth: "600px",
-            margin: "0 auto"
+            margin: "0 auto",
+            fontFamily: "Inter, sans-serif"
             }}>
                
 
-                <PlayerSelector />
+                {/* <PlayerSelector /> */}
 
             <div style={{padding:"20px"}}>
 
-            <h1 style={{ fontSize: "24px", fontWeight: "bold", marginBottom: "16px" }}>Player Profile</h1>
+            {/* <h1 style={{ fontSize: "24px", fontWeight: "bold", marginBottom: "16px" }}>Player Profile</h1> */}
+            <h1 style={{ fontSize: "28px", fontWeight: "extra bold", marginBottom: "16px", letterSpacing: "-0.5px" }}> {user?.user_metadata?.name}'s Clubhouse</h1>
+
 
             <div style={{marginTop:"20px"}}>
 
@@ -110,13 +117,17 @@ const [loading,setLoading] = useState(true)
                 
                 <ActionCard title="🏆 Leaderboard" onClick={() => router.push("/leaderboard")} />
 
-                <ActionCard title="👤 Players" onClick={() => router.push("/players/jamar")} />
+                <ActionCard title="📊 All-Time Leaders" onClick={() => router.push("/records")} />
 
-                <ActionCard title="📍 Courses" onClick={() => router.push("/courses")} />
+                {/* <ActionCard title="👤 Players" onClick={() => router.push("/players")} /> */}
+
+                <ActionCard title="📍 Schedule" onClick={() => router.push("/courses")} />
+
+                
 
                 </div>
 
-            <h3>Your Stats</h3>
+            {/* <h3>Your Stats</h3>
 
             <div style={{display:"grid",gridTemplateColumns:"repeat(2,200px)",gap:"10px"}}>
 
@@ -130,7 +141,7 @@ const [loading,setLoading] = useState(true)
             <div>Pars: {pars}</div>
 
             <div>Bogeys: {bogeys}</div>
-            </div>
+            </div> */}
 
     </div>
 

@@ -33,14 +33,12 @@ function getPlayerHole(scores:number[] | undefined){
 }
   async function loadRounds(){
 
-    console.log("EVENT ID:", eventId)
 
     const { data, error } = await supabase
       .from("rounds")
       .select("*")
       .eq("event_id", eventId)
-console.log("LEADERBOARD DATA:", data)
-console.log("FILTER CHECK:", data?.map(r => r.event_id))
+
 
     if(error){
       console.error(error)
@@ -89,17 +87,20 @@ rounds?.forEach((round) => {
 
   const total = calculateRoundPoints(scores, pars)
   const hole = getPlayerHole(scores)
+  const strokeTotal = scores.reduce((sum: number, s: number) => sum + s, 0)
 
   if (!leaderboard[playerId]) {
     leaderboard[playerId] = {
       name,
       points: 0,
-      hole: 0
+      hole: 0,
+      strokes: 0
     }
   }
 
   leaderboard[playerId].points += total
   leaderboard[playerId].hole = hole
+  leaderboard[playerId].strokes = strokeTotal
 })
 
 
@@ -183,6 +184,7 @@ rounds?.forEach((round) => {
             <th style={{width:"50px", padding:"10px", textAlign:"center"}}>POS</th>
             <th style={{width:"150px", padding:"10px",textAlign:"left"}}>PLAYER</th>
             <th style={{width:"80px", padding:"10px", textAlign:"center"}}>PTS</th>
+            <th style={{width:"80px", padding:"10px", textAlign:"center"}}>STR</th>
             <th style={{width:"80px", padding:"10px", textAlign:"center"}}>THRU</th>
             </tr>
             </thead>
@@ -201,10 +203,19 @@ rounds?.forEach((round) => {
               <td style={{ textAlign: "center", padding: "10px" }}>
                 {i === 0 ? "🥇" : i === 1 ? "🥈" : i === 2 ? "🥉" : i + 1}
               </td>
-              <td style={{ textAlign: "left", padding:"10px" }}>{player.name}</td>
-              <td style={{ textAlign: "center", padding:"10px" }}>{player.points}</td>
+              <td style={{ textAlign: "left", padding:"10px" }}>
+                {player.name}
+              </td>
+
+              <td style={{ textAlign: "center", padding:"10px" }}>
+                {player.points}
+              </td>
+
+              <td style={{ textAlign: "center", padding:"10px" }}>
+                {player.strokes || "-"}
+              </td>
               <td style={{ textAlign: "center" }}>
-                {player.hole === 18 ? "F" : `THRU ${player.hole}`}
+              {player.hole === 18 ? "F" : `THRU ${player.hole}`}
               </td>
             </tr>
           ))}

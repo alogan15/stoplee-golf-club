@@ -65,7 +65,7 @@ checkUser()
         }
 
         setLoading(false)
-        console.log("ROUNDS:", data)
+        
       }
 
 
@@ -179,7 +179,6 @@ if(loading){
 
 
 const seasonOrder = [
-  "Queenstown Harbor(preseason)",
   "Broad Run",
   "Rock Manor",
   "Moccasin Run",
@@ -227,7 +226,6 @@ events.forEach(event => {
   eventWinners[event] = winner
 })
 
-console.log(Array.from(new Set(rounds.map(r => r.course))))
 
 
 return (
