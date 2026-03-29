@@ -27,17 +27,24 @@ export async function middleware(req: NextRequest) {
 
   const url = req.nextUrl.clone()
 
-  // Not logged in → go to login
-  if (!session && url.pathname !== '/login') {
+  const publicRoutes = ['/login', '/signup']
+  const isPublic = publicRoutes.includes(url.pathname)
+
+  if (!session && !isPublic) {
     url.pathname = '/login'
     return NextResponse.redirect(url)
   }
 
-  // Logged in → skip login
-  if (session && url.pathname === '/login') {
+  if (session && isPublic) {
     url.pathname = '/dashboard'
     return NextResponse.redirect(url)
   }
 
   return res
+}
+
+export const config = {
+  matcher: [
+    '/((?!_next/static|_next/image|favicon.ico|.*\\.(?:png|jpg|jpeg|svg|gif|webp)$).*)',
+  ],
 }
