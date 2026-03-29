@@ -49,7 +49,7 @@ const buttonStyle = {
 
   async function handleLogout(){
     await supabase.auth.signOut()
-    router.push("/")
+    router.replace("/login")
   }
 
 useEffect(() => {

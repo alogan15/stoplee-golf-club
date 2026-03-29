@@ -1,31 +1,9 @@
 "use client"
 
-import { useEffect } from "react"
 import { useRouter } from "next/navigation"
-import { supabase } from "../lib/supabase"
 
-export default function LandingPage() {
+export default function WelcomePage() {
   const router = useRouter()
-
-useEffect(() => {
-  async function checkUser() {
-    const { data } = await supabase.auth.getUser()
-
-    if (!data.user) {
-      router.push("/home")
-      return
-    }
-
-    // 👇 NEW LOGIC
-    const hasVisited = localStorage.getItem("visited")
-
-    if (hasVisited) {
-      router.replace("/home")
-    }
-  }
-
-  checkUser()
-}, [])
 
 
   return (
@@ -79,8 +57,8 @@ useEffect(() => {
 
       <button
         onClick={() => {
-          localStorage.setItem("visited", "true")
-          router.push("/home")
+        document.cookie = "visited=true; path=/"
+          router.push("/dashboard")
         }}
         style={{
           marginTop: "30px",

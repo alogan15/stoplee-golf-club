@@ -38,7 +38,7 @@ async function handleLogin(e:any){
         return
         }
 
-        router.push("/home")
+        router.push("/welcome")
 }
 
 async function handleSignup() {
@@ -57,8 +57,18 @@ async function handleSignup() {
     return
   }
 
-  alert("Account created! You can now log in.")
-  router.push("/home")
+  // Auto-login after signup
+  const { error: loginError } = await supabase.auth.signInWithPassword({
+    email,
+    password
+  })
+
+  if (loginError) {
+    setError(loginError.message)
+    return
+  }
+
+  router.push("/welcome")
 }
 
 
