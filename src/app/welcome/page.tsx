@@ -45,7 +45,7 @@ export default function WelcomePage() {
       <h2 style={{ marginBottom: "20px" }}>Our Mission</h2>
 
       <p style={{ maxWidth: "600px", lineHeight: "1.6" }}>
-        This league was created in honor of Eric "StopLee" Logan, whose love for
+        This league was created in honor of Eric &quot;StopLee&quot; Logan, whose love for
         golf and bringing people together inspired us all. Through this league,
         we celebrate his passion, his kindness, and the joy he found on the
         course.
