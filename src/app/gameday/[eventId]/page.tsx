@@ -227,7 +227,9 @@ const rows = playerNames.map((playerName, i) => ({
 
 const { error } = await supabase
   .from("rounds")
-  .insert(rows)
+  .upsert(rows, {
+    onConflict: "event_id,player_id"
+  })
 
 
 if (error) {
