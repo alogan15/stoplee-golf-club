@@ -114,6 +114,7 @@ useEffect(() => {
           <Link href="/dashboard" onClick={() => setOpen(false)} style={linkStyle("/dashboard")}> <FaUser /> Dashboard</Link>
           <Link href="/gameday" onClick={() => setOpen(false)} style={linkStyle("/gameday")}> <FaGolfBall /> Game Day</Link>
           <Link href="/leaderboard" onClick={() => setOpen(false)} style={linkStyle("/leaderboard")}> <FaTrophy /> Leaderboard</Link>
+          <Link href="/odds" onClick={() => setOpen(false)} style={linkStyle("/odds")}> <FaHandshake /> Odds</Link>
           <Link href="/sponsors" onClick={() => setOpen(false)} style={linkStyle("/sponsors")}> <FaHandshake /> Sponsorship</Link>
           <Link href="/champions" onClick={() => setOpen(false)} style={linkStyle("/champions")}> 🏆 Champions</Link>
           {user && (
