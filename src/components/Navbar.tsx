@@ -4,7 +4,7 @@ import Link from "next/link"
 import { supabase } from "../lib/supabase"
 import { useRouter, usePathname } from "next/navigation"
 import { useEffect, useState } from "react"
-import { FaHome, FaTrophy, FaCalendarAlt, FaUser, FaGolfBall, FaBars } from "react-icons/fa"
+import { FaHome, FaTrophy, FaHandshake, FaUser, FaGolfBall, FaBars } from "react-icons/fa"
 import { FiLogIn, FiUserPlus } from "react-icons/fi"
 
 
@@ -113,9 +113,8 @@ useEffect(() => {
           <Link href="/home" onClick={() => setOpen(false)} style={linkStyle("/home")}><FaHome /> League News </Link>          
           <Link href="/dashboard" onClick={() => setOpen(false)} style={linkStyle("/dashboard")}> <FaUser /> Dashboard</Link>
           <Link href="/gameday" onClick={() => setOpen(false)} style={linkStyle("/gameday")}> <FaGolfBall /> Game Day</Link>
-          {/* <Link href="/around-the-league" onClick={() => setOpen(false)} style={linkStyle("/around-the-league")}> <FaTrophy /> Around The League</Link> */}
           <Link href="/leaderboard" onClick={() => setOpen(false)} style={linkStyle("/leaderboard")}> <FaTrophy /> Leaderboard</Link>
-          {/* <Link href="/schedule" onClick={() => setOpen(false)} style={linkStyle("/schedule")}> <FaCalendarAlt /> Schedule</Link> */}
+          <Link href="/sponsors" onClick={() => setOpen(false)} style={linkStyle("/sponsors")}> <FaHandshake /> Sponsorship</Link>
           <Link href="/champions" onClick={() => setOpen(false)} style={linkStyle("/champions")}> 🏆 Champions</Link>
           {user && (
             <button onClick={handleLogout}

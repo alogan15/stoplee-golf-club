@@ -125,9 +125,12 @@ const [loading,setLoading] = useState(true)
 
                 <ActionCard title="📍 Schedule" onClick={() => router.push("/courses")} />
 
+                <ActionCard title="🤝 Sponsorship" onClick={() => router.push("/sponsors")} />
+
                 
 
                 </div>
+                
 
             {/* <h3>Your Stats</h3>
 
