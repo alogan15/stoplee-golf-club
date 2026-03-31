@@ -4,8 +4,10 @@ import Link from "next/link"
 import { supabase } from "../lib/supabase"
 import { useRouter, usePathname } from "next/navigation"
 import { useEffect, useState } from "react"
-import { FaHome, FaTrophy, FaHandshake, FaUser, FaGolfBall, FaBars } from "react-icons/fa"
+import { FaHome, FaTrophy, FaHandshake, FaUser, FaGolfBall, FaBars, FaChartLine } from "react-icons/fa"
 import { FiLogIn, FiUserPlus } from "react-icons/fi"
+import { BarChart3 } from "lucide-react"
+
 
 
 export default function Navbar() {
@@ -114,7 +116,8 @@ useEffect(() => {
           <Link href="/dashboard" onClick={() => setOpen(false)} style={linkStyle("/dashboard")}> <FaUser /> Dashboard</Link>
           <Link href="/gameday" onClick={() => setOpen(false)} style={linkStyle("/gameday")}> <FaGolfBall /> Game Day</Link>
           <Link href="/leaderboard" onClick={() => setOpen(false)} style={linkStyle("/leaderboard")}> <FaTrophy /> Leaderboard</Link>
-          <Link href="/odds" onClick={() => setOpen(false)} style={linkStyle("/odds")}> <FaHandshake /> Odds</Link>
+          <Link href="/odds" onClick={() => setOpen(false)} style={linkStyle("/odds")}> <FaChartLine /> Odds</Link>
+          <Link href="/power-rankings" onClick={() => setOpen(false)} style={linkStyle("/power-rankings")}> <BarChart3 size={18} /> Power Rankings</Link>
           <Link href="/sponsors" onClick={() => setOpen(false)} style={linkStyle("/sponsors")}> <FaHandshake /> Sponsorship</Link>
           <Link href="/champions" onClick={() => setOpen(false)} style={linkStyle("/champions")}> 🏆 Champions</Link>
           {user && (

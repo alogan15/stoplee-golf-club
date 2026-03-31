@@ -116,37 +116,17 @@ const [loading,setLoading] = useState(true)
                 }}>
 
                 <ActionCard title="🏌🏽 Start Round" onClick={() => router.push("/gameday")} />
-                
                 <ActionCard title="🏆 Leaderboard" onClick={() => router.push("/leaderboard")} />
-
                 <ActionCard title="📊 All-Time Leaders" onClick={() => router.push("/records")} />
-
-                {/* <ActionCard title="👤 Players" onClick={() => router.push("/players")} /> */}
-
                 <ActionCard title="📍 Schedule" onClick={() => router.push("/courses")} />
-
+                <ActionCard title="🎲 Odds" onClick={() => router.push("/odds")} />
+                <ActionCard title="🔥 Power-Rankings" onClick={() => router.push("/power-rankings")} />
                 <ActionCard title="🤝 Sponsorship" onClick={() => router.push("/sponsors")} />
 
                 
 
                 </div>
                 
-
-            {/* <h3>Your Stats</h3>
-
-            <div style={{display:"grid",gridTemplateColumns:"repeat(2,200px)",gap:"10px"}}>
-
-            <div>Rounds Played: {roundsPlayed}</div>
-            <div>Total Points: {totalPoints}</div>
-
-            <div>Average Score: {averageScore}</div>
-            <div>Last Round: {lastRound}</div>
-
-            <div>Birdies: {birdies}</div>
-            <div>Pars: {pars}</div>
-
-            <div>Bogeys: {bogeys}</div>
-            </div> */}
 
     </div>
 

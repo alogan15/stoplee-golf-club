@@ -1,31 +1,44 @@
 "use client"
 
-export default function OddsPage() {
-  const weeklyOdds = [
-    { name: "Andre", odds: -950 },
-    { name: "Jamar", odds: +400 },
-    { name: "Malik", odds: +750 }
-  ]
+import BackButton from "@/src/components/BackButton"
 
-  const seasonOdds = [
-    { name: "Jamar (2x Champ)", odds: -1050 },
-    { name: "Andre", odds: +250 },
-    { name: "Dre", odds: +600 }
-  ]
+export default function OddsPage() {
+const weeklyOdds = [
+  { name: "Jamar", odds: -900 },
+  { name: "Andre", odds: -650 },
+  { name: "Jay", odds: 300 },
+  { name: "Erik", odds: 400 },
+  { name: "Keivon", odds: 900 },
+  { name: "Larry", odds: 1200 },
+  { name: "The Field", odds: 1700}
+]
+
+const seasonOdds = [
+  { name: "Jamar (2x Champ)", odds: -1100 },
+  { name: "Andre", odds: 250 },
+  { name: "Jay", odds: 600 },
+  { name: "Erik", odds: 750 },
+  { name: "Keivon", odds: 1200 },
+  { name: "Larry", odds: 1500 },
+  { name: "Malcolm", odds: 1800 },
+  { name: "The Field", odds: 2200}
+]
 
   const formatOdds = (odds: number) => {
     return odds > 0 ? `+${odds}` : odds
   }
 
   return (
+
     <div style={{ padding: "20px", maxWidth: "600px", margin: "0 auto" }}>
-      <h1 style={{ fontSize: "28px", fontWeight: "bold", marginBottom: "20px" }}>
+         <BackButton />
+      <h1 style={{ textAlign: "center", fontSize: "28px", fontWeight: "bold", marginBottom: "20px" }}>
         📊 SLGC Odds Board
       </h1>
 
       {/* Weekly */}
       <div style={{ marginBottom: "30px" }}>
-        <h2 style={{ marginBottom: "10px" }}>🔥 This Week</h2>
+        <h2 style={{ marginBottom: "10px" }}>🔥 This Month</h2>
 
         {weeklyOdds.map((player, i) => (
           <div
@@ -36,7 +49,8 @@ export default function OddsPage() {
               padding: "12px",
               marginBottom: "8px",
               borderRadius: "10px",
-              background: "#1e293b"
+              background: "#1e293b",
+              color: "#fff"
             }}
           >
             <span>{player.name}</span>
@@ -65,7 +79,8 @@ export default function OddsPage() {
               padding: "12px",
               marginBottom: "8px",
               borderRadius: "10px",
-              background: "#1e293b"
+              background: "#1e293b",
+              color: "#fff"
             }}
           >
             <span>{player.name}</span>
