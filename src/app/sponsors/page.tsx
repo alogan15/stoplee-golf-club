@@ -2,6 +2,7 @@
 
 import { useState } from "react"
 import { supabase } from "../../lib/supabase"
+import BackButton from "@/src/components/BackButton"
 
 export default function SponsorsPage() {
   const [form, setForm] = useState({
@@ -60,6 +61,8 @@ const listStyle = {
 
   return (
     <div style={{ background: "#0f172a", minHeight: "100vh", color: "white" }}>
+
+      <BackButton />
       
       {/* HERO */}
       <div style={{
