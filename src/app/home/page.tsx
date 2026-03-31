@@ -119,47 +119,6 @@ export default function HomePage() {
  
 
 <div style={{ display: "flex", flexDirection: "column", gap: "28px" }}>
-  {/* {posts.map((post) => (
-    <div
-      key={post.slug}
-      onClick={() => router.push(`/news/${post.slug}`)}
-      style={{
-        background: "",
-        padding: "16px",
-        borderRadius: "8px",
-        cursor: "pointer",
-        boxShadow: "0 4px 6px rgba(0,0,0,0.06)",
-      }}
-    >
-      <img
-        src={post.image}
-        alt={post.title}
-        style={{
-          width: "100%",
-          borderRadius: "8px",
-          marginBottom: "10px",
-        }}
-      />
-      <h3
-        style={{
-          fontSize: "18px",
-          fontWeight: "bold",
-        }}
-      >
-        {post.title}
-      </h3>
-      <p
-        style={{
-          fontSize: "14px",
-          color: "#555",
-          marginTop: "6px",
-          lineHeight: "1.5",
-        }}
-      >
-        {post.description}
-      </p>
-    </div>
-  ))} */}
 
   {posts.map((post) => (
   <div key={post.id} 
@@ -181,8 +140,6 @@ export default function HomePage() {
 </div>
       </div>
       
-
-   
   )
 }
 

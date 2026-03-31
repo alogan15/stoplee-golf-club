@@ -102,9 +102,7 @@ const [loading,setLoading] = useState(true)
 
             {/* <h1 style={{ fontSize: "24px", fontWeight: "bold", marginBottom: "16px" }}>Player Profile</h1> */}
             {/* <h1 style={{ fontSize: "28px", fontWeight: "extra bold", marginBottom: "16px", letterSpacing: "-0.5px" }}> {user?.user_metadata?.name}'s Clubhouse</h1> */}
-            <h1 style={{ fontSize: "28px", fontWeight: "extra bold", marginBottom: "16px", letterSpacing: "-0.5px" }}> Clubhouse</h1>
-
-
+            <h1 style={{ textAlign: "center", fontSize: "28px", fontWeight: "extra bold", marginBottom: "16px", letterSpacing: "-0.5px" }}> Clubhouse</h1>
 
             <div style={{marginTop:"20px"}}>
 
@@ -115,16 +113,14 @@ const [loading,setLoading] = useState(true)
                 marginBottom: "30px"
                 }}>
 
+                <ActionCard title="📣 League News" onClick={() => router.push("/home")} />
                 <ActionCard title="🏌🏽 Start Round" onClick={() => router.push("/gameday")} />
                 <ActionCard title="🏆 Leaderboard" onClick={() => router.push("/leaderboard")} />
                 <ActionCard title="📊 All-Time Leaders" onClick={() => router.push("/records")} />
-                <ActionCard title="📍 Schedule" onClick={() => router.push("/courses")} />
                 <ActionCard title="🎲 Odds" onClick={() => router.push("/odds")} />
+                <ActionCard title="📍 Schedule" onClick={() => router.push("/courses")} />
                 <ActionCard title="🔥 Power-Rankings" onClick={() => router.push("/power-rankings")} />
                 <ActionCard title="🤝 Sponsorship" onClick={() => router.push("/sponsors")} />
-
-                
-
                 </div>
                 
 
