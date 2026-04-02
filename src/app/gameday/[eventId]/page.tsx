@@ -8,7 +8,12 @@ import { calculateRoundPoints } from "../../../lib/scoring"
 
 export default function RoundsPage() {
 
-  const players = 4
+  const playerCount = 4
+  const [players, setPlayers] = useState<string[]>([])
+  const [selectedPlayers, setSelectedPlayers] = useState<string[]>(
+  Array(playerCount).fill("")
+)
+
 
   const [course,setCourse] = useState("")
   const [newCourseName, setNewCourseName] = useState("")
@@ -88,13 +93,33 @@ useEffect(() => {
   }
 }, [eventId])
 
+useEffect(() => {
+  async function fetchPlayers() {
+    const { data, error } = await supabase
+      .from("players")
+      .select("name")
+      .order("name")
+
+    if (error) {
+      console.error(error)
+      return
+    }
+
+    setPlayers(data.map(p => p.name))
+  }
+
+  fetchPlayers()
+}, [])
+
 const leaderboard: any = {}
 
-liveRounds.forEach((round) => {
-  const playerId = `${round.player_id}-${(round as any).id}`
-  const playerName = round.player_name
-
-  if (!playerId) return
+liveRounds.forEach((round, i) => {
+  const playerId = round.player_id
+  const playerName =
+    round.player_name ||
+    players?.[i] ||
+    `Player ${i + 1}`
+    if (!playerId) return
 
   const scores = (round.scores || []).map((s) => Number(s) || 0)
   const parsArr = (round.pars || []).map((p) => Number(p) || 0)
@@ -166,6 +191,24 @@ async function saveCourse() {
   setShowCourseModal(false)
 }
 
+useEffect(() => {
+  const saved = localStorage.getItem("roundData")
+  if (!saved) return
+
+  const data = JSON.parse(saved)
+
+  // ✅ restore names
+  if (data.playerNames) {
+    setSelectedPlayers(data.playerNames)
+  }
+
+  // optional (if not already handled)
+  if (data.scores) setScores(data.scores)
+  if (data.pars) setPars(data.pars)
+  if (data.course) setCourse(data.course)
+
+}, [])
+
 
 useEffect(() => {
   async function loadSavedRound() {
@@ -182,7 +225,7 @@ useEffect(() => {
     const names = data.map(r => r.player_name)
     const scoresArr = data.map(r => r.scores)
 
-    setPlayerNames(names)
+    setSelectedPlayers(names)
     setScores(scoresArr)
 
     // OPTIONAL (if you want course restored too)
@@ -214,7 +257,7 @@ const { data: userData } = await supabase.auth.getUser()
       "Player"
 
 
-const rows = playerNames.map((playerName, i) => ({
+const rows = selectedPlayers.map((playerName, i) => ({
   event_id: eventId,
   course,
   date,
@@ -326,24 +369,23 @@ useEffect(() => {
 }, [course, eventId])
 
   const [playerNames,setPlayerNames] = useState(
-    Array(players).fill("")
+    Array(playerCount).fill("")
   )
 
   const [scores,setScores] = useState(
-    Array(players).fill(null).map(()=>Array(18).fill(""))
+    Array(playerCount).fill(null).map(()=>Array(18).fill(""))
   )
 
 useEffect(() => {
   if (!eventId) return
 
-  // 🛑 DON'T SAVE EMPTY / DEFAULT STATE
-  const isEmptyScores = scores.every(player =>
-    player.every(score => score === "" || score === null)
+  // 🚫 prevent overwriting good data with empty names
+  const hasNames = playerNames.some(name => name && name.trim() !== "")
+  const hasScores = scores.some(player =>
+    player.some(score => score !== "" && score !== null)
   )
 
-  const isDefaultPars = pars.every(p => p === 4)
-
-  if (isEmptyScores && isDefaultPars) return
+  if (!hasNames && !hasScores) return
 
   const data = {
     eventId,
@@ -354,6 +396,7 @@ useEffect(() => {
   }
 
   localStorage.setItem("roundData", JSON.stringify(data))
+
 }, [eventId, course, pars, scores, playerNames])
 
 
@@ -608,7 +651,7 @@ useEffect(() => {
                 width: "140px",        
                 minWidth: "140px"      
               }}>
-                <input
+                {/* <input
                   placeholder="Player Name"
                     style={{
                     width: "70%",
@@ -625,7 +668,37 @@ useEffect(() => {
                       n[playerIndex]=e.target.value
                       setPlayerNames(n)
                     }}
-                  />
+                  /> */}
+
+                  <select
+                    value={selectedPlayers[playerIndex] || ""}
+                    onChange={(e) => {
+                      const updated = [...selectedPlayers]
+                      updated[playerIndex] = e.target.value
+                      setSelectedPlayers(updated)
+                    }}
+                    style={{
+                      width: "70%",
+                      padding: "10px",
+                      borderRadius: "10px",
+                      border: "1px solid #ddd",
+                      fontSize: "16px"
+                    }}
+                  >
+                    <option value="">Player</option>
+
+                    {players
+                      .filter((p) => {
+                        const alreadyPicked = selectedPlayers.includes(p)
+                        const isCurrent = p === selectedPlayers[playerIndex]
+                        return !alreadyPicked || isCurrent
+                      })
+                      .map((p) => (
+                        <option key={p} value={p}>
+                          {p}
+                        </option>
+                      ))}
+                  </select>
                 </td>
 
                 {playerScores.slice(0,9).map((score,i)=>(
