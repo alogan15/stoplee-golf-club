@@ -342,6 +342,35 @@ checkUser()
 
       },[])
 
+      async function addNewPlayer(name: string, playerIndex: number) {
+  const trimmed = name.trim()
+  if (!trimmed) return
+
+  // prevent duplicates
+  if (players.includes(trimmed)) {
+    alert("Player already exists")
+    return
+  }
+
+  // save to DB
+  const { error } = await supabase
+    .from("players")
+    .insert([{ name: trimmed }])
+
+  if (error) {
+    alert("Error adding player")
+    return
+  }
+
+  // update dropdown
+  setPlayers(prev => [...prev, trimmed])
+
+  // auto-select in row
+  const updated = [...selectedPlayers]
+  updated[playerIndex] = trimmed
+  setSelectedPlayers(updated)
+}
+
       
 useEffect(() => {
   if (!course) return
@@ -672,11 +701,22 @@ useEffect(() => {
 
                   <select
                     value={selectedPlayers[playerIndex] || ""}
-                    onChange={(e) => {
-                      const updated = [...selectedPlayers]
-                      updated[playerIndex] = e.target.value
-                      setSelectedPlayers(updated)
-                    }}
+                        onChange={(e) => {
+                          const value = e.target.value
+
+                          if (value === "__add_new__") {
+                            const newName = prompt("Enter new player name")
+
+                            if (!newName) return
+
+                            addNewPlayer(newName, playerIndex)
+                            return
+                          }
+
+                          const updated = [...selectedPlayers]
+                          updated[playerIndex] = value
+                          setSelectedPlayers(updated)
+                        }}
                     style={{
                       width: "70%",
                       padding: "10px",
@@ -698,6 +738,7 @@ useEffect(() => {
                           {p}
                         </option>
                       ))}
+                      <option value="__add_new__">➕ Add New Player</option>
                   </select>
                 </td>
 
