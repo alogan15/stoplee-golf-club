@@ -147,6 +147,7 @@ borderRadius: "20px",
                 <ActionCard title="🎲 Odds" onClick={() => router.push("/odds")} />
                 <ActionCard title="🔥 Power-Rankings" onClick={() => router.push("/power-rankings")} />
                 <ActionCard title="📍 Schedule" onClick={() => router.push("/courses")} />
+                <ActionCard title="📜 Rules" onClick={() => router.push("/rules")} />
                 <ActionCard title="🤝 Sponsorship" onClick={() => router.push("/sponsors")} />
                 </div>
                 
