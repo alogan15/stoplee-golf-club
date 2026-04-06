@@ -113,7 +113,7 @@ const listStyle = {
         maxWidth: "800px",
         margin: "0 auto"
       }}>
-        {["20+ Players", "Monthly Events", "Local Audience"].map((stat, i) => (
+        {["20+ Players", "Monthly Events", "Local Audience", "Business Exposure"].map((stat, i) => (
           <div key={i} style={{
             background: "#1e293b",
             padding: "20px",
