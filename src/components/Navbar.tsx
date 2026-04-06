@@ -114,11 +114,8 @@ useEffect(() => {
           {!user && <Link href="/login" onClick={() => setOpen(false)} style={linkStyle("/login")}> <FiLogIn /> Login</Link>}
           <Link href="/home" onClick={() => setOpen(false)} style={linkStyle("/home")}><FaHome /> League News </Link>          
           <Link href="/dashboard" onClick={() => setOpen(false)} style={linkStyle("/dashboard")}> <FaUser /> Dashboard</Link>
-          <Link href="/gameday" onClick={() => setOpen(false)} style={linkStyle("/gameday")}> <FaGolfBall /> Game Day</Link>
           <Link href="/leaderboard" onClick={() => setOpen(false)} style={linkStyle("/leaderboard")}> <FaTrophy /> Leaderboard</Link>
-          <Link href="/odds" onClick={() => setOpen(false)} style={linkStyle("/odds")}> <FaChartLine /> Odds</Link>
           <Link href="/power-rankings" onClick={() => setOpen(false)} style={linkStyle("/power-rankings")}> <BarChart3 size={18} /> Power Rankings</Link>
-          <Link href="/sponsors" onClick={() => setOpen(false)} style={linkStyle("/sponsors")}> <FaHandshake /> Sponsorship</Link>
           <Link href="/champions" onClick={() => setOpen(false)} style={linkStyle("/champions")}> 🏆 Champions</Link>
           {user && (
             <button onClick={handleLogout}
