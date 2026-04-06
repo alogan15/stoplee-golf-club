@@ -72,7 +72,7 @@ export default function CoursesPage() {
       ← Back
     </button>
 
-    <h1 style={{ marginBottom: "20px" }}>🏌🏾 Schedule</h1>
+    <h1 style={{ marginBottom: "20px", textAlign:"center" }}>🏌🏾 Schedule</h1>
 
     {courses.map((course) => (
       <div

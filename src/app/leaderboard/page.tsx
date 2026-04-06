@@ -240,7 +240,8 @@ return (
     <h1 style={{
       fontSize: "28px",
       fontWeight: "700",
-      marginBottom: "20px"
+      marginBottom: "20px",
+      textAlign:"center"
     }}>
       🏆 League Leaderboard
     </h1>
