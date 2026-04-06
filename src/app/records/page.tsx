@@ -14,7 +14,9 @@ export default function RecordsPage() {
     { label: "Best Front 9", value: "-", player: "-" },
     { label: "Best Back 9", value: "-", player: "-" },
     { label: "Hole in One", value: "-", player: "-" },
-    { label: "Winning Streak", value: "-", player: "-" }
+    { label: "Winning Streak", value: "-", player: "-" },
+    { label: "Most Tour Wins", value: "-", player: "-" }
+
   ]
 
   return (
