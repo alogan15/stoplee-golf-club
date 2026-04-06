@@ -2,6 +2,7 @@
 
 import { useRouter } from "next/navigation"
 import ResumeRound from "@/src/components/ResumeRound"
+import BackButton from "@/src/components/BackButton"
 
 export default function HomePage() {
 
@@ -44,8 +45,7 @@ export default function HomePage() {
       margin: "0 auto"
     }}>
 
-
-<ResumeRound />
+      <BackButton />
 
 
       {/* HERO */}

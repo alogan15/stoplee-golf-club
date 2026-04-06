@@ -1,8 +1,12 @@
 "use client"
 
+import BackButton from "@/src/components/BackButton"
+
 export default function RulesPage() {
   return (
     <div style={{ padding: "16px", maxWidth: "700px", margin: "0 auto" }}>
+
+        <BackButton />
       
       <h1 style={{ fontSize: "28px", fontWeight: "bold", marginBottom: "16px", color:"green", textAlign:"center" }}>
         SLGC Rules

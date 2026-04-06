@@ -60,7 +60,13 @@ const listStyle = {
 }
 
   return (
-    <div style={{ background: "#0f172a", minHeight: "100vh", color: "white" }}>
+    <div style={{ background: "#0f172a", 
+                  minHeight: "100vh", 
+                  color: "white",       
+                  padding: "16px",
+                  maxWidth: "600px",
+                  margin: "0 auto" 
+                  }}>
 
       <BackButton />
       

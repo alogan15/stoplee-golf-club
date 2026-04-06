@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react"
 import { supabase } from "../../lib/supabase"
+import BackButton from "@/src/components/BackButton"
 
 type Winner = {
   id: string
@@ -35,7 +36,13 @@ export default function WinnersPage() {
 
   
  return (
-  <div>
+    
+
+    <div style={{
+      padding: "16px",
+      maxWidth: "600px",
+      margin: "0 auto"
+    }}>    <BackButton />
     <h1
       style={{
         fontSize: "28px",
