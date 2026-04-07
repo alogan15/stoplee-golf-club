@@ -3,6 +3,7 @@
 import { useRouter } from "next/navigation"
 import ResumeRound from "@/src/components/ResumeRound"
 import BackButton from "@/src/components/BackButton"
+import { ReadStream } from "fs"
 
 export default function HomePage() {
 
@@ -147,6 +148,14 @@ export default function HomePage() {
 const posts = [
   {
     id: 1,
+    slug:"twp-opener",
+    title:"2026 Twp Opener",
+    image:"/blog/broadrun.jpg",
+    description:"The StopLee Golf Club season kicks off April 18th at Broad Run Golfer’s Club...",
+    ReadMore:"Read More..."
+  },
+  {
+    id: 2,
     slug: "season-recap-2025",
     title: "2025 Season Recap",
     image: "/blog/group.png",
@@ -154,7 +163,7 @@ const posts = [
     readMore:"Read More..."
   },
   {
-    id: 2,
+    id: 3,
     slug: "rivalries-2026",
     title: "2026 Rivalry",
     image: "/blog/rivalry.png",
@@ -163,7 +172,7 @@ const posts = [
 
   },
   {
-    id: 3,
+    id: 4,
     slug: "jamar-threepeat",
     title: "Watch The Throne",
     image: "/blog/Jamar2025.png",
@@ -172,7 +181,7 @@ const posts = [
 
   },
     {
-    id: 4,
+    id: 5,
     slug: "rookies-2025",
     title: "Rookie Class of 2025",
     image: "/blog/rookies.png",

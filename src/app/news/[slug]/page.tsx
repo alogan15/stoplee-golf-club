@@ -8,6 +8,11 @@ export default async function PostPage({
   const { slug } = await params
 
   const posts = [
+    {
+      slug: "twp-opener",
+      title: "2026 Twp Opener",
+      content: "The StopLee Golf Club season kicks off April 18th at Broad Run Golfer’s Club in West Chester, Pennsylvania — a course known for its rolling terrain, elevated tee shots, and fast, unforgiving greens. Designed to challenge every part of a golfer’s game, Broad Run doesn’t offer an easy start. It demands focus from the first swing and punishes anything less than committed play. Five groups. Twenty players. One winner. There’s no easing into the season — this opening round sets the tone for everything that follows. With every shot carrying weight, players will need to manage the course, control their nerves, and stay disciplined through all 18 holes. The pressure is real, and the margin for error is small. This isn’t just about posting a good score — it’s about making a statement. The first name at the top of the leaderboard will carry momentum, confidence, and early bragging rights into the season. The question is simple: who shows up ready, and who will set the tone?"
+    },
   {
     slug: "season-recap-2025",
     title: "2025 Season Recap",
