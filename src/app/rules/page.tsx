@@ -19,6 +19,7 @@ export default function RulesPage() {
           <li>Must play with at least one other league member to record scores.</li>
           <li>One stroke penalty if ball goes OB. Must drop.</li>
           <li><strong>Gimme rule:</strong> Shaft length of putter away from the hole (must be approved by group/partner).</li>
+          <p>You must putt out if its for par or better.</p>
           <li>One mulligan on the front, one on the back (tee shots only).</li>
           <li>Max score per hole is <strong>double par</strong>.</li>
           <p>par 3, max is 6</p>
