@@ -1,6 +1,7 @@
 "use client"
 
 import BackButton from "@/src/components/BackButton"
+import SocialFooter from "@/src/components/Socials"
 
 export default function OddsPage() {
 const weeklyOdds = [
@@ -95,6 +96,7 @@ const seasonOdds = [
           </div>
         ))}
       </div>
+      <SocialFooter />
     </div>
   )
 }

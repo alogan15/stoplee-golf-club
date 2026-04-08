@@ -91,6 +91,11 @@ Or does the chase finally catch him?`
   if (!post) return <div>Post not found</div>
 
   return (
+    <div style={{
+      maxWidth: "700px",
+      margin: "0 auto",
+      padding: "16px"
+    }}>
     <div style={{ padding: "16px", maxWidth: "700px", margin: "0 auto" }}>
         <Link
         href="/home"
@@ -103,14 +108,24 @@ Or does the chase finally catch him?`
         >
         ← Back to News
         </Link>
-      <h1 style={{ fontSize: "28px", fontWeight: "bold" }}>
+      <h1 style={{ fontSize: "32px",
+                  fontWeight: "700",
+                  lineHeight: "1.2",
+                  marginBottom: "12px"
+                      }}>
         {post.title}
       </h1>
 
         <div
-        style={{ marginTop: "16px", lineHeight: "1.6" }}
+        style={{ marginTop: "16px",   
+                fontSize: "18px",
+                lineHeight: "1.8",
+                color: "#222",
+                marginBottom: "20px"
+}}
         dangerouslySetInnerHTML={{ __html: post.content }}
         />
+    </div>
     </div>
   )
 }

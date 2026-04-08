@@ -4,6 +4,7 @@ import { useRouter } from "next/navigation"
 import ResumeRound from "@/src/components/ResumeRound"
 import BackButton from "@/src/components/BackButton"
 import { ReadStream } from "fs"
+import SocialFooter from "@/src/components/Socials"
 
 export default function HomePage() {
 
@@ -139,6 +140,7 @@ export default function HomePage() {
   </div>
 ))}
 </div>
+<SocialFooter/>
       </div>
       
   )

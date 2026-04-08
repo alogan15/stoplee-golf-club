@@ -1,6 +1,7 @@
 "use client"
 
 import BackButton from "@/src/components/BackButton"
+import SocialFooter from "@/src/components/Socials"
 
 export default function RecordsPage() {
   const records = [
@@ -80,7 +81,7 @@ export default function RecordsPage() {
           </div>
         ))}
       </div>
-
+        <SocialFooter />
     </div>
   )
 }

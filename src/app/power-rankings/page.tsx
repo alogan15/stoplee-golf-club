@@ -1,6 +1,7 @@
 "use client"
 
 import BackButton from "@/src/components/BackButton"
+import SocialFooter from "@/src/components/Socials"
 
 export default function PowerRankingsPage() {
 const rankings = [
@@ -98,6 +99,8 @@ function getTrendDisplay(trend: string, change: number) {
             </div>
         )
       })}
+                  <SocialFooter />
+
     </div>
   )
 }
