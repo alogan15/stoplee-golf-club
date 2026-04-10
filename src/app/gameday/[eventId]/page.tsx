@@ -627,7 +627,7 @@ useEffect(() => {
                   onFocus={() => setCurrentHole(i + 9)}
                   onChange={(e) => {
                     const p = [...pars]
-                    p[i] = Number(e.target.value)
+                    p[i + 9] = Number(e.target.value)
                     setPars(p)
                   }}
             style={{
