@@ -143,10 +143,10 @@ borderRadius: "20px",
                 }}>
 
                 <ActionCard title="📣 League News" onClick={() => router.push("/home")} />
+                <ActionCard title="👕 Merch" onClick={() => router.push("/merch")} />
                 <ActionCard title="🏌🏽 Start Round" onClick={() => router.push("/gameday")} />
                 <ActionCard title="🏆 Leaderboard" onClick={() => router.push("/leaderboard")} />
                 <ActionCard title="📊 All-Time Leaders" onClick={() => router.push("/records")} />
-                <ActionCard title="🎲 Odds" onClick={() => router.push("/odds")} />
                 <ActionCard title="🔥 Power-Rankings" onClick={() => router.push("/power-rankings")} />
                 <ActionCard title="📍 Schedule" onClick={() => router.push("/courses")} />
                 <ActionCard title="👑 Tour Winners" onClick={() => router.push("/winners")} />
