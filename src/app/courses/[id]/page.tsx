@@ -15,6 +15,7 @@ export default function CourseDetail() {
       holes: 18,
       type: "Public Course",
       vibe: "18-hole public course that rewards smart decision-making and punishes careless swings.",
+      price: "$129",
       yards: "6080",
       rating: "70.3",
       slope: "132",
@@ -29,6 +30,7 @@ export default function CourseDetail() {
       holes: 18,
       type: "Public Course",
       vibe: "18-hole public course built for competition with a layout that rewards accuracy and smart play.",
+      price:"$98",
       yards: "5980",
       rating: "68.7",
       slope: "131",
@@ -43,6 +45,7 @@ export default function CourseDetail() {
       holes: 18,
       type: "Public Course",
       vibe: "18-hole public course with a precision-driven layout where every shot demands focus.",
+      price:"$89",
       yards: "5876",
       rating: "67.8",
       slope: "119",
@@ -57,6 +60,7 @@ export default function CourseDetail() {
       holes: 18,
       type: "Public Course",
       vibe: "18-hole public course with tight fairways and strategic greens that test total control",
+      price: "$75",
       yards: "5334",
       rating: "68.9",
       slope: "128",
@@ -71,6 +75,7 @@ export default function CourseDetail() {
       holes: 18,
       type: "Public Course",
       vibe: "18-hole public but balanced course that challenges both power and accuracy.",
+      price: "$140",
       yards: "5625",
       rating: "66.7",
       slope: "122",
@@ -85,6 +90,7 @@ export default function CourseDetail() {
       holes: 18,
       type: "Public Course",
       vibe: "18-hole public course designed to separate consistent players from the rest of the field.",
+      price: "$75",
       yards: "5797",
       rating: "68.2",
       slope: "117",
@@ -155,6 +161,7 @@ const course = courses.find((c: any) => c.id === id)
           fontSize: "15px",
           color: "#555"
         }}>
+          <span><strong>{course.price}</strong></span>
           <span><strong>{course.yards}</strong> yds</span>
           <span><strong>{course.rating}</strong> rtg</span>
           <span><strong>{course.slope}</strong> slp</span>
