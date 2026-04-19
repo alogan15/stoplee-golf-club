@@ -120,7 +120,7 @@ const players: Player[] = [
     id: "18",
     name: "Spurg",
     scores: [
-      { event: "Broad Run", stableford:  0 }    ]
+      { event: "Broad Run", stableford:  13 }    ]
   },
     {
     id: "19",
@@ -151,6 +151,12 @@ const players: Player[] = [
     name: "Eric B",
     scores: [
       { event: "Broad Run", stableford: 0 }    ]
+  },
+    {
+    id: "24",
+    name: "Rickey",
+    scores: [
+      { event: "Broad Run", stableford: 5 }    ]
   }
 ]
 
