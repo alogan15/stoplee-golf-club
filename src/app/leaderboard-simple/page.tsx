@@ -42,7 +42,7 @@ const players: Player[] = [
     id: "5",
     name: "Greg",
     scores: [
-      { event: "Broad Run", stableford: 0 }    ]
+      { event: "Broad Run", stableford: 1 }    ]
   },
   {
     id: "6",
