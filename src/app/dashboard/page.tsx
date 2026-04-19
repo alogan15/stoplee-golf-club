@@ -135,9 +135,9 @@ const [loading,setLoading] = useState(true)
                 display: "grid",
                 gridTemplateColumns: "1fr 1fr",
                 gap: "12px",
-background: "linear-gradient(135deg, #166534, #22c55e)",
-padding: "12px",
-borderRadius: "20px",
+                background: "linear-gradient(135deg, #166534, #22c55e)",
+                padding: "12px",
+                borderRadius: "20px",
                 backgroundColor: "black",
                 marginBottom: "30px"
                 }}>
@@ -145,7 +145,7 @@ borderRadius: "20px",
                 <ActionCard title="📣 League News" onClick={() => router.push("/home")} />
                 <ActionCard title="👕 Merch" onClick={() => router.push("/merch")} />
                 <ActionCard title="🏌🏽 Start Round" onClick={() => router.push("/gameday")} />
-                <ActionCard title="🏆 Leaderboard" onClick={() => router.push("/leaderboard")} />
+                <ActionCard title="🏆 Leaderboard" onClick={() => router.push("/leaderboard-simple")} />
                 <ActionCard title="📊 All-Time Leaders" onClick={() => router.push("/records")} />
                 <ActionCard title="🔥 Power-Rankings" onClick={() => router.push("/power-rankings")} />
                 <ActionCard title="📍 Schedule" onClick={() => router.push("/courses")} />

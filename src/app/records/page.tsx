@@ -5,15 +5,15 @@ import SocialFooter from "@/src/components/Socials"
 
 export default function RecordsPage() {
   const records = [
-    { label: "Most Pars", value: "-", player: "-" },
-    { label: "Most Birdies", value: "-", player: "-" },
-    { label: "Most Bogeys", value: "-", player: "-" },
+    { label: "Most Pars", value: "5", date: "4/18/26", course:"Broad Run", player: "-Tyrin Tyson" },
+    { label: "Most Birdies", value: "1", date: "4/18/26", course:"Broad Run", player: "-Tied Aaron, LJ, Jamar, Dre" },
+    { label: "Most Bogeys", value: "9", date: "4/18/26", course:"Broad Run", player: "-Aaron Williams" },
     { label: "Eagle", value: "-", player: "-" },
     { label: "Albatross", value: "-", player: "-" },
-    { label: "Lowest Round", value: "-", player: "-" },
-    { label: "Most Stableford Points", value: "-", player: "-" },
-    { label: "Best Front 9", value: "-", player: "-" },
-    { label: "Best Back 9", value: "-", player: "-" },
+    { label: "Lowest Round", value: "93", date: "4/18/26", course:"Broad Run", player: "-Tyrin Tyson" },
+    { label: "Most Stableford Points", date: "4/18/26", course:"Broad Run", value: "23", player: "-Jamar" },
+    { label: "Best Front 9", value: "47", date: "4/18/26", course:"Broad Run", player: "-Aaron Williams" },
+    { label: "Best Back 9", value: "42", date: "4/18/26", course:"Broad Run", player: "-Tyrin Tyson" },
     { label: "Hole in One", value: "-", player: "-" },
     { label: "Winning Streak", value: "-", player: "-" },
     { label: "Most Tour Wins", value: "-", player: "-" }
@@ -65,12 +65,27 @@ export default function RecordsPage() {
             alignItems: "center",
             boxShadow: "0 4px 12px rgba(0,0,0,0.3)"
           }}>
+
             <div>
               <div style={{ fontWeight: "600" }}>{record.label}</div>
               <div style={{ fontSize: "12px", opacity: 0.6 }}>
                 {record.player}
               </div>
             </div>
+
+            <div>
+            <div style={{
+              fontSize: "15px",
+              fontWeight: "600"
+            }}>
+              {record.course}
+            </div>
+            <div style={{ fontSize: "12px", opacity: 0.6 }}>
+              {record.date}
+            </div>
+            </div>
+
+
 
             <div style={{
               fontSize: "20px",
