@@ -143,22 +143,21 @@ const [loading,setLoading] = useState(true)
                 }}>
 
                 <ActionCard title="📣 League News" onClick={() => router.push("/home")} />
-                <ActionCard title="👕 Merch" onClick={() => router.push("/merch")} />
-                <ActionCard title="🏌🏽 Start Round" onClick={() => router.push("/gameday")} />
                 <ActionCard title="🏆 Leaderboard" onClick={() => router.push("/leaderboard-simple")} />
+                {/* <ActionCard title="🏌🏽 Start Round" onClick={() => router.push("/gameday")} /> */}
                 <ActionCard title="📊 All-Time Leaders" onClick={() => router.push("/records")} />
                 <ActionCard title="🔥 Power-Rankings" onClick={() => router.push("/power-rankings")} />
                 <ActionCard title="📍 Schedule" onClick={() => router.push("/courses")} />
                 <ActionCard title="👑 Tour Winners" onClick={() => router.push("/winners")} />
+                <ActionCard title="👕 Merch" onClick={() => router.push("/merch")} />
                 <ActionCard title="📜 Rules" onClick={() => router.push("/rules")} />
-                <ActionCard title="🤝 Sponsorship" onClick={() => router.push("/sponsors")} />
+                {/* <ActionCard title="🤝 Sponsorship" onClick={() => router.push("/sponsors")} /> */}
                 </div>
                 
 
     </div>
 
     </div>
-     <ResumeRound />
      <div>
      <SocialFooter />
      </div>

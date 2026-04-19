@@ -96,9 +96,10 @@ export default function WinnersPage() {
                 height: "150px",
                 borderRadius: "50%",
                 objectFit: "cover",
-                border: "5px solid gold",
+                objectPosition: "center top", // 🔥 KEY FIX
+                border: "3px solid gold",
                 marginBottom: "12px",
-                boxShadow: "0 0 0 4px rgba(255,215,0,0.3), 0 8px 16px rgba(0,0,0,0.2)"
+                boxShadow: "0 4px 12px rgba(0,0,0,0.3)"
               }}
             />
 

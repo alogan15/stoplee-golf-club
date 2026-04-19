@@ -6,15 +6,15 @@ import SocialFooter from "@/src/components/Socials"
 export default function PowerRankingsPage() {
 const rankings = [
   { name: "Jamar", rank: 1, trend: "up", change: 1 },
-  { name: "Andre", rank: 2, trend: "steady", change: 0 },
-  { name: "Jay", rank: 3, trend: "up", change: 2 },
-  { name: "Erik", rank: 4, trend: "up", change: 1 },
-  { name: "Tyrin", rank: 5, trend: "down", change: -1 },
+  { name: "Tyrin", rank: 2, trend: "steady", change: 0 },
+  { name: "Aaron", rank: 3, trend: "up", change: 2 },
+  { name: "Andre", rank: 4, trend: "up", change: 1 },
+  { name: "Erik", rank: 5, trend: "down", change: -1 },
   { name: "Malcolm", rank: 6, trend: "steady", change: 0 },
-  { name: "Keivon", rank: 7, trend: "steady", change: 0 },
-  { name: "Larry", rank: 8, trend: "steady", change: 0 },
-  { name: "James", rank: 9, trend: "steady", change: 0 },
-  { name: "Spurg", rank: 10, trend: "steady", change: 0 },
+  { name: "Larry", rank: 7, trend: "steady", change: 0 },
+  { name: "LJ", rank: 8, trend: "steady", change: 0 },
+  { name: "Greeco", rank: 9, trend: "steady", change: 0 },
+  { name: "Short", rank: 10, trend: "steady", change: 0 },
 ]
 
 
@@ -35,7 +35,7 @@ function getTrendDisplay(trend: string, change: number) {
   }
 
   if (rank <= 10) {
-    const icons = ["⚔️", "🎯", "🧠", "🏌️"]
+    const icons = ["⚔️", "🎯", "🧠", "🏌🏿‍♂️"]
     return icons[rank - 7]
   }
 
