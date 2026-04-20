@@ -92,11 +92,11 @@ export default function WinnersPage() {
               src={w.image_url || "/default-avatar.png"}
               alt={w.player_name}
               style={{
-                width: "150px",
-                height: "150px",
-                borderRadius: "50%",
+                width: "250px",
+                height: "200px",
+                borderRadius: "0%",
                 objectFit: "cover",
-                objectPosition: "center top", // 🔥 KEY FIX
+                objectPosition: "70% 25%", // 🔥 KEY FIX
                 border: "3px solid gold",
                 marginBottom: "12px",
                 boxShadow: "0 4px 12px rgba(0,0,0,0.3)"

@@ -40,14 +40,14 @@ export default function RecordsPage() {
         fontWeight: "800",
         marginBottom: "8px"
       }}>
-        🏆 SLGC Archives
+        🏆 SLGC 2026 Leaders
       </h1>
 
       <p style={{
         opacity: 0.7,
         marginBottom: "24px"
       }}>
-        All-time league achievements
+        League achievements
       </p>
 
       {/* Records Grid */}

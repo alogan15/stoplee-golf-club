@@ -153,7 +153,7 @@ const posts = [
     slug: "twp-opener-recap",
     title: "Twp-Opener: Built From Loss. Driven By Brotherhood",
     image: "/blog/twp-opener.jpg",
-    description: "Waking up later than I anticipated wasn’t a mistake—it was a result of good fellowship",
+    description: "That day wasn’t just golf; it was legacy. Stop, we think of you. And we’ll keep building—year after year.",
     readMore: "Read More..."
   },
   {
