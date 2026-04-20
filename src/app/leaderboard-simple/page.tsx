@@ -8,7 +8,8 @@ type Player = {
   name: string
   scores: {
     event: string
-    stableford: number
+    points: number
+    strokes: number
   }[]
 }
 
@@ -18,145 +19,145 @@ const players: Player[] = [
     id: "1",
     name: "Andre",
     scores: [
-      { event: "Broad Run", stableford: 17 }    ]
+      { event: "Broad Run", points: 17, strokes: 102 }  ]
   },
   {
     id: "2",
     name: "Malcolm",
     scores: [
-      { event: "Broad Run", stableford: 14 }    ]
+      { event: "Broad Run", points: 14, strokes: 100}    ]
   },
   {
     id: "3",
     name: "Aaron",
     scores: [
-      { event: "Broad Run", stableford:  20 }    ]
+      { event: "Broad Run", points:  20, strokes: 95}    ]
   },
     {
     id: "4",
     name: "Julian",
     scores: [
-      { event: "Broad Run", stableford:  5}    ]
+      { event: "Broad Run", points:  5, strokes: 120}    ]
   },
   {
     id: "5",
     name: "Greg",
     scores: [
-      { event: "Broad Run", stableford: 1 }    ]
+      { event: "Broad Run", points: 1, strokes: 127}    ]
   },
   {
     id: "6",
     name: "LJ",
     scores: [
-      { event: "Broad Run", stableford:  11 }    ]
+      { event: "Broad Run", points:  11, strokes: 113}    ]
   },
     {
     id: "7",
     name: "Steph",
     scores: [
-      { event: "Broad Run", stableford: 9 }    ]
+      { event: "Broad Run", points: 9, strokes: 112}    ]
   },
   {
     id: "8",
     name: "Walt",
     scores: [
-      { event: "Broad Run", stableford: 4 }    ]
+      { event: "Broad Run", points: 4, strokes: 108}    ]
   },
   {
     id: "9",
     name: "James",
     scores: [
-      { event: "Broad Run", stableford:  6 }    ]
+      { event: "Broad Run", points:  6, strokes: 115}    ]
   },
     {
     id: "10",
     name: "Jamar",
     scores: [
-      { event: "Broad Run", stableford: 23 }    ]
+      { event: "Broad Run", points: 23, strokes: 95}    ]
   },
   {
     id: "11",
     name: "Larry",
     scores: [
-      { event: "Broad Run", stableford: 13 }    ]
+      { event: "Broad Run", points: 13, strokes: 104}    ]
   },
   {
     id: "12",
     name: "Greeco",
     scores: [
-      { event: "Broad Run", stableford:  10 }    ]
+      { event: "Broad Run", points:  10, strokes: 119}    ]
   },
     {
     id: "13",
     name: "Danny",
     scores: [
-      { event: "Broad Run", stableford: 4 }    ]
+      { event: "Broad Run", points: 4 , strokes: 122}    ]
   },
   {
     id: "14",
     name: "Erik L",
     scores: [
-      { event: "Broad Run", stableford: 14 }    ]
+      { event: "Broad Run", points: 14, strokes: 106}    ]
   },
   {
     id: "15",
     name: "Isaiah",
     scores: [
-      { event: "Broad Run", stableford:  3 }    ]
+      { event: "Broad Run", points:  3, strokes: 119}    ]
   },
     {
     id: "16",
     name: "Tyrin",
     scores: [
-      { event: "Broad Run", stableford: 21 }    ]
+      { event: "Broad Run", points: 21, strokes: 93}    ]
   },
   {
     id: "17",
     name: "Short",
     scores: [
-      { event: "Broad Run", stableford: 9 }    ]
+      { event: "Broad Run", points: 9, strokes: 110}    ]
   },
   {
     id: "18",
     name: "Spurg",
     scores: [
-      { event: "Broad Run", stableford:  13 }    ]
+      { event: "Broad Run", points:  13, strokes: 0}    ]
   },
     {
     id: "19",
     name: "Cuffy",
     scores: [
-      { event: "Broad Run", stableford: 0 }    ]
+      { event: "Broad Run", points: 0, strokes: 0}    ]
   },
   {
     id: "20",
     name: "Jay",
     scores: [
-      { event: "Broad Run", stableford: 0 }    ]
+      { event: "Broad Run", points: 0, strokes: 0}    ]
   },
   {
     id: "21",
     name: "Keivon",
     scores: [
-      { event: "Broad Run", stableford:  0 }    ]
+      { event: "Broad Run", points:  0, strokes: 0}    ]
   },
     {
     id: "22",
     name: "Anthony",
     scores: [
-      { event: "Broad Run", stableford:  0 }    ]
+      { event: "Broad Run", points:  0, strokes: 0}    ]
   },
   {
     id: "23",
     name: "Eric B",
     scores: [
-      { event: "Broad Run", stableford: 0 }    ]
+      { event: "Broad Run", points: 0, strokes: 0}    ]
   },
     {
     id: "24",
     name: "Rickey",
     scores: [
-      { event: "Broad Run", stableford: 5 }    ]
+      { event: "Broad Run", points: 5, strokes: 0}    ]
   }
 ]
 
@@ -170,8 +171,8 @@ const events = [
   "Town & Country"
 ]
 
-function calculateStableford(stableford: number, par: number) {
-  const diff = stableford - par
+function calculatepoints(points: number, par: number) {
+  const diff = points - par
 
   if (diff <= -3) return 9   // Albatross+
   if (diff === -2) return 7 // Eagle
@@ -193,7 +194,7 @@ const leaderboard = players
     const scoreMap: Record<string, number> = {}
 
     player.scores.forEach(s => {
-      scoreMap[s.event] = s.stableford
+      scoreMap[s.event] = s.points
     })
 
     events.forEach(event => {
@@ -318,11 +319,24 @@ const leaderboardWithRank = leaderboard.map((player, index, arr) => {
                   {player.name}
                 </td>
 
-                {events.map(event => (
-                  <td key={event} style={tdCenter}>
-                    {player.scoreMap[event] ?? "-"}
-                  </td>
-                ))}
+                {events.map(event => {
+                  const scoreObj = player.scores.find(s => s.event === event)
+
+                  return (
+                    <td key={event} style={tdCenter}>
+                      {scoreObj ? (
+                        <div>
+                          <div style={{ fontWeight: "600" }}>
+                            {scoreObj.points}
+                          </div>
+                          <div style={{ fontSize: "12px", color: "#999" }}>
+                            ({scoreObj.strokes ?? "-"})
+                          </div>
+                        </div>
+                      ) : "-"}
+                    </td>
+                  )
+                })}
 
                 <td style={{ ...tdCenter, fontWeight: "700" }}>
                   {player.total}
