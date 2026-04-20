@@ -151,7 +151,7 @@ const [loading,setLoading] = useState(true)
                 <ActionCard title="👑 Tour Winners" onClick={() => router.push("/winners")} />
                 <ActionCard title="👕 Merch" onClick={() => router.push("/merch")} />
                 <ActionCard title="📜 Rules" onClick={() => router.push("/rules")} />
-                {/* <ActionCard title="🤝 Sponsorship" onClick={() => router.push("/sponsors")} /> */}
+                <ActionCard title="🤝 Sponsorship" onClick={() => router.push("/sponsors")} />
                 </div>
                 
 
