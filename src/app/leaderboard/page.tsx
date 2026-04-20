@@ -10,7 +10,7 @@ import ResumeRound from "@/src/components/ResumeRound"
 export const dynamic = "force-dynamic"
 
 
-export default function Leaderboard() {
+export default function LeaderboardSimple() {
   const [rounds,setRounds] = useState<any[]>([])
   const [loading,setLoading] = useState(true)
 

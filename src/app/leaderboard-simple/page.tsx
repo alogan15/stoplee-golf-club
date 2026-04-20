@@ -182,7 +182,7 @@ function calculatepoints(points: number, par: number) {
   return 0                   // Double+
 }
 
-export default function LeaderboardSimple() {
+export default function Leaderboard() {
   
 
 const leaderboard = players
