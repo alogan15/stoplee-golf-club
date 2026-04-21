@@ -10,6 +10,7 @@ type Player = {
     event: string
     points: number
     strokes: number
+    isOfficial: boolean
   }[]
 }
 
@@ -19,145 +20,145 @@ const players: Player[] = [
     id: "1",
     name: "Andre",
     scores: [
-      { event: "Broad Run", points: 17, strokes: 102 }  ]
+      { event: "Broad Run", points: 17, strokes: 102, isOfficial: true }  ]
   },
   {
     id: "2",
     name: "Malcolm",
     scores: [
-      { event: "Broad Run", points: 14, strokes: 100}    ]
+      { event: "Broad Run", points: 14, strokes: 100, isOfficial: true }    ]
   },
   {
     id: "3",
     name: "Aaron",
     scores: [
-      { event: "Broad Run", points:  20, strokes: 95}   ]
+      { event: "Broad Run", points:  20, strokes: 95, isOfficial: true }   ]
   },
     {
     id: "4",
     name: "Julian",
     scores: [
-      { event: "Broad Run", points:  5, strokes: 120}    ]
+      { event: "Broad Run", points:  5, strokes: 120, isOfficial: true }    ]
   },
   {
     id: "5",
     name: "Greg",
     scores: [
-      { event: "Broad Run", points: 1, strokes: 127}    ]
+      { event: "Broad Run", points: 1, strokes: 127, isOfficial: true }    ]
   },
   {
     id: "6",
     name: "LJ",
     scores: [
-      { event: "Broad Run", points:  11, strokes: 113}    ]
+      { event: "Broad Run", points:  11, strokes: 113, isOfficial: true }    ]
   },
     {
     id: "7",
     name: "Steph",
     scores: [
-      { event: "Broad Run", points: 9, strokes: 112}    ]
+      { event: "Broad Run", points: 9, strokes: 112, isOfficial: true }    ]
   },
   {
     id: "8",
     name: "Walt",
     scores: [
-      { event: "Broad Run", points: 4, strokes: 108}    ]
+      { event: "Broad Run", points: 4, strokes: 108, isOfficial: true }    ]
   },
   {
     id: "9",
     name: "James",
     scores: [
-      { event: "Broad Run", points:  6, strokes: 115}    ]
+      { event: "Broad Run", points:  6, strokes: 115, isOfficial: true }    ]
   },
     {
     id: "10",
     name: "Jamar",
     scores: [
-      { event: "Broad Run", points: 23, strokes: 95}    ]
+      { event: "Broad Run", points: 23, strokes: 95, isOfficial: true }    ]
   },
   {
     id: "11",
     name: "Larry",
     scores: [
-      { event: "Broad Run", points: 13, strokes: 104}    ]
+      { event: "Broad Run", points: 13, strokes: 104, isOfficial: true }    ]
   },
   {
     id: "12",
     name: "Greeco",
     scores: [
-      { event: "Broad Run", points:  10, strokes: 119}    ]
+      { event: "Broad Run", points:  10, strokes: 119, isOfficial: true }    ]
   },
     {
     id: "13",
     name: "Danny",
     scores: [
-      { event: "Broad Run", points: 4 , strokes: 122}    ]
+      { event: "Broad Run", points: 4 , strokes: 122, isOfficial: true }    ]
   },
   {
     id: "14",
     name: "Erik L",
     scores: [
-      { event: "Broad Run", points: 14, strokes: 106}    ]
+      { event: "Broad Run", points: 14, strokes: 106, isOfficial: true }    ]
   },
   {
     id: "15",
     name: "Isaiah",
     scores: [
-      { event: "Broad Run", points:  3, strokes: 119}    ]
+      { event: "Broad Run", points:  3, strokes: 119, isOfficial: true }    ]
   },
     {
     id: "16",
     name: "Tyrin",
     scores: [
-      { event: "Broad Run", points: 21, strokes: 93}    ]
+      { event: "Broad Run", points: 21, strokes: 93, isOfficial: true }    ]
   },
   {
     id: "17",
     name: "Short",
     scores: [
-      { event: "Broad Run", points: 9, strokes: 110}    ]
+      { event: "Broad Run", points: 9, strokes: 110, isOfficial: true }    ]
   },
   {
     id: "18",
     name: "Spurg",
     scores: [
-      { event: "Broad Run", points:  13, strokes: 0}    ]
+      { event: "Broad Run", points:  13, strokes: 0, isOfficial: true }    ]
   },
     {
     id: "19",
     name: "Cuffy",
     scores: [
-      { event: "Broad Run", points: 0, strokes: 0}    ]
+      { event: "Broad Run", points: 0, strokes: 0, isOfficial: true }    ]
   },
   {
     id: "20",
     name: "Jay",
     scores: [
-      { event: "Broad Run", points: 0, strokes: 0}    ]
+      { event: "Broad Run", points: 0, strokes: 0, isOfficial: false }    ]
   },
   {
     id: "21",
     name: "Keivon",
     scores: [
-      { event: "Broad Run", points:  0, strokes: 0}    ]
+      { event: "Broad Run", points:  0, strokes: 0, isOfficial: false }    ]
   },
     {
     id: "22",
     name: "Anthony",
     scores: [
-      { event: "Broad Run", points:  0, strokes: 0}    ]
+      { event: "Broad Run", points:  0, strokes: 0, isOfficial: false  }    ]
   },
   {
     id: "23",
     name: "Eric B",
     scores: [
-      { event: "Broad Run", points: 0, strokes: 0}    ]
+      { event: "Broad Run", points: 0, strokes: 0, isOfficial: false  }    ]
   },
     {
     id: "24",
     name: "Rickey",
     scores: [
-      { event: "Broad Run", points: 5, strokes: 0}    ]
+      { event: "Broad Run", points: 5, strokes: 0, isOfficial: true  }    ]
   }
 ]
 
@@ -249,10 +250,13 @@ events.forEach(event => {
   players.forEach(player => {
     const scoreObj = player.scores.find(s => s.event === event)
 
-    // ✅ ignore missing or zero scores
-    if (!scoreObj || !scoreObj.strokes || scoreObj.strokes <= 0) return
+    // ❌ skip if not official round
+    if (!scoreObj || !scoreObj.isOfficial) return
 
-    // ✅ lowest valid strokes wins
+    // ❌ skip invalid strokes
+    if (!scoreObj.strokes || scoreObj.strokes <= 0) return
+
+    // ✅ lowest official score wins
     if (scoreObj.strokes < lowest) {
       lowest = scoreObj.strokes
       winnerId = player.id
