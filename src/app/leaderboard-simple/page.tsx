@@ -31,7 +31,7 @@ const players: Player[] = [
     id: "3",
     name: "Aaron",
     scores: [
-      { event: "Broad Run", points:  20, strokes: 95}    ]
+      { event: "Broad Run", points:  20, strokes: 95}   ]
   },
     {
     id: "4",
@@ -229,11 +229,41 @@ const leaderboardWithRank = leaderboard.map((player, index, arr) => {
   // check if it's a tie
   const isTie = arr.filter(p => p.total === player.total).length > 1
 
+
+
+
+
   return {
     ...player,
     rank: isTie ? `T-${rankNumber}` : `${rankNumber}`
   }
 })
+
+
+const eventWinners: Record<string, string> = {}
+
+events.forEach(event => {
+  let lowest = Infinity
+  let winnerId: string | null = null
+
+  players.forEach(player => {
+    const scoreObj = player.scores.find(s => s.event === event)
+
+    // ✅ ignore missing or zero scores
+    if (!scoreObj || !scoreObj.strokes || scoreObj.strokes <= 0) return
+
+    // ✅ lowest valid strokes wins
+    if (scoreObj.strokes < lowest) {
+      lowest = scoreObj.strokes
+      winnerId = player.id
+    }
+  })
+
+  if (winnerId) {
+    eventWinners[event] = winnerId
+  }
+})
+
 
   return (
     <div style={{
@@ -321,13 +351,14 @@ const leaderboardWithRank = leaderboard.map((player, index, arr) => {
 
                 {events.map(event => {
                   const scoreObj = player.scores.find(s => s.event === event)
+                  const isWinner = eventWinners[event] === player.id
 
                   return (
                     <td key={event} style={tdCenter}>
                       {scoreObj ? (
                         <div>
                           <div style={{ fontWeight: "600" }}>
-                            {scoreObj.points}
+                            {scoreObj.points} {isWinner && "🏆"}
                           </div>
                           <div style={{ fontSize: "12px", color: "#999" }}>
                             ({scoreObj.strokes ?? "-"})
