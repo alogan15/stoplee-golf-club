@@ -69,13 +69,13 @@
     { label: "Most Pars", value: "5", date: "4/18/26", course:"2026 Season", player: "-Tyrin Tyson" },
     { label: "Most Birdies", value: "1", date: "4/18/26", course:"2026 Season", player: "-Tied Aaron, LJ, Jamar, Dre" },
     { label: "Most Bogeys", value: "9", date: "4/18/26", course:"Baroad Run", player: "-Aaron Williams" },
-    { label: "Eagle", value: "-", course:"2026 Season", player: "-" },
-    { label: "Albatross", value: "-", course:"2026 Season", player: "-" },
+    // { label: "Eagle", value: "-", course:"2026 Season", player: "-" },
+    // { label: "Albatross", value: "-", course:"2026 Season", player: "-" },
     { label: "Lowest Round", value: "93", date: "4/18/26", course:"2026 Season", player: "-Tyrin Tyson" },
     { label: "Most Stableford Points", date: "4/18/26", course:"2026 Season", value: "23", player: "-Jamar" },
     { label: "Best Front 9", value: "47", date: "4/18/26", course:"2026 Season", player: "-Aaron Williams" },
     { label: "Best Back 9", value: "42", date: "4/18/26", course:"2026 Season", player: "-Tyrin Tyson" },
-    { label: "Hole in One", value: "-", course:"2026 Season", player: "-" },
-    { label: "Winning Streak", value: "-", course:"2026 Season", player: "-" },
-    { label: "Most Tour Wins", value: "-", course:"2026 Season", player: "-" }
+    // { label: "Hole in One", value: "-", course:"2026 Season", player: "-" },
+    // { label: "Winning Streak", value: "-", course:"2026 Season", player: "-" },
+    // { label: "Most Tour Wins", value: "-", course:"2026 Season", player: "-" }
   ]

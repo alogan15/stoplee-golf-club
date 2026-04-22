@@ -7,7 +7,7 @@ import { allRecords } from "@/src/data/recordsData"
 
 export default function RecordsPage() {
 
-const [view, setView] = useState("Season")
+const [view, setView] = useState("2026 Season")
 
 const courses = ["2026 Season", "Broad Run", "Rock Manor", "Moccasin Run", "Mercer Oaks", "The Architects", "Town & Country"]
 
@@ -29,24 +29,22 @@ const courses = ["2026 Season", "Broad Run", "Rock Manor", "Moccasin Run", "Merc
       margin: "0 auto"
     }}>
 
-        <BackButton />
-
-      {/* Header */}
-      <h1 style={{
-        fontSize: "32px",
-        fontWeight: "800",
-        marginBottom: "8px"
-      }}>
-        🏆 SLGC 2026 Leaders
-      </h1>
+    <div style={{
+      display: "flex",
+      justifyContent: "space-between",
+      alignItems: "center",
+      marginBottom: "20px"
+    }}>
+      <BackButton />
 
       <select
         value={view}
         onChange={(e) => setView(e.target.value)}
         style={{
-          padding: "10px",
-          borderRadius: "8px",
           marginBottom: "20px",
+          padding: "10px 16px",
+          fontSize: "15px",
+          borderRadius: "100px",
           background: "#1e293b",
           color: "white",
           border: "none"
@@ -58,11 +56,25 @@ const courses = ["2026 Season", "Broad Run", "Rock Manor", "Moccasin Run", "Merc
           </option>
         ))}
       </select>
+    </div>
 
-      <p style={{ opacity: 0.7, marginBottom: "24px" }}>
+      {/* Header */}
+      <h1 style={{
+        fontSize: "32px",
+        fontWeight: "800",
+        marginBottom: "8px",
+        textAlign: "center"
+      }}>
+        🏆 SLGC 2026 Leaders
+      </h1>
+
+
+
+      <p style={{ opacity: 0.7, marginBottom: "24px", textAlign:"center"
+      }}>
         {view === "Season"
           ? "Best performances across all courses"
-          : `${view} course records`}
+          : `${view} Course Records`}
       </p>
 
       {/* Records Grid */}
@@ -88,17 +100,6 @@ const courses = ["2026 Season", "Broad Run", "Rock Manor", "Moccasin Run", "Merc
               </div>
             </div>
 
-            <div>
-            <div style={{
-              fontSize: "15px",
-              fontWeight: "600"
-            }}>
-              {record.course}
-            </div>
-            <div style={{ fontSize: "12px", opacity: 0.6 }}>
-              {record.date}
-            </div>
-            </div>
 
 
 
