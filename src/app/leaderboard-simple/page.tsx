@@ -1,11 +1,13 @@
 "use client"
 
 import { useMemo } from "react"
+import { useState } from "react"
 
 
 type Player = {
   id: string
   name: string
+  flight: "A" | "B"
   scores: {
     event: string
     points: number
@@ -19,144 +21,168 @@ const players: Player[] = [
   {
     id: "1",
     name: "Andre",
+    flight: "A",
     scores: [
       { event: "Broad Run", points: 17, strokes: 102, isOfficial: true }  ]
   },
   {
     id: "2",
     name: "Malcolm",
+    flight: "A",
     scores: [
       { event: "Broad Run", points: 14, strokes: 100, isOfficial: true }    ]
   },
   {
     id: "3",
     name: "Aaron",
+    flight: "A",
     scores: [
       { event: "Broad Run", points:  20, strokes: 95, isOfficial: true }   ]
   },
     {
     id: "4",
     name: "Julian",
+    flight: "B",
     scores: [
       { event: "Broad Run", points:  5, strokes: 120, isOfficial: true }    ]
   },
   {
     id: "5",
     name: "Greg",
+    flight: "B",
     scores: [
       { event: "Broad Run", points: 1, strokes: 127, isOfficial: true }    ]
   },
   {
     id: "6",
     name: "LJ",
+    flight: "B",
     scores: [
       { event: "Broad Run", points:  11, strokes: 113, isOfficial: true }    ]
   },
     {
     id: "7",
     name: "Steph",
+    flight: "B",
     scores: [
       { event: "Broad Run", points: 9, strokes: 112, isOfficial: true }    ]
   },
   {
     id: "8",
     name: "Walt",
+    flight: "B",
     scores: [
       { event: "Broad Run", points: 4, strokes: 108, isOfficial: true }    ]
   },
   {
     id: "9",
     name: "James",
+    flight: "A",
     scores: [
       { event: "Broad Run", points:  6, strokes: 115, isOfficial: true }    ]
   },
     {
     id: "10",
     name: "Jamar",
+    flight: "A",
     scores: [
       { event: "Broad Run", points: 23, strokes: 95, isOfficial: true }    ]
   },
   {
     id: "11",
     name: "Larry",
+    flight: "A",
     scores: [
       { event: "Broad Run", points: 13, strokes: 104, isOfficial: true }    ]
   },
   {
     id: "12",
     name: "Greeco",
+    flight: "A",
     scores: [
       { event: "Broad Run", points:  10, strokes: 119, isOfficial: true }    ]
   },
     {
     id: "13",
     name: "Danny",
+    flight: "B",
     scores: [
       { event: "Broad Run", points: 4 , strokes: 122, isOfficial: true }    ]
   },
   {
     id: "14",
     name: "Erik L",
+    flight: "A",
     scores: [
       { event: "Broad Run", points: 14, strokes: 106, isOfficial: true }    ]
   },
   {
     id: "15",
     name: "Isaiah",
+    flight: "B",
     scores: [
       { event: "Broad Run", points:  3, strokes: 119, isOfficial: true }    ]
   },
     {
     id: "16",
     name: "Tyrin",
+    flight: "A",
     scores: [
       { event: "Broad Run", points: 21, strokes: 93, isOfficial: true }    ]
   },
   {
     id: "17",
     name: "Short",
+    flight: "A",
     scores: [
       { event: "Broad Run", points: 9, strokes: 110, isOfficial: true }    ]
   },
   {
     id: "18",
     name: "Spurg",
+    flight: "A",
     scores: [
       { event: "Broad Run", points:  13, strokes: 0, isOfficial: true }    ]
   },
     {
     id: "19",
     name: "Cuffy",
+    flight: "B",
     scores: [
       { event: "Broad Run", points: 0, strokes: 0, isOfficial: true }    ]
   },
   {
     id: "20",
     name: "Jay",
+    flight: "A",
     scores: [
       { event: "Broad Run", points: 0, strokes: 0, isOfficial: false }    ]
   },
   {
     id: "21",
     name: "Keivon",
+    flight: "A",
     scores: [
       { event: "Broad Run", points:  0, strokes: 0, isOfficial: false }    ]
   },
     {
     id: "22",
     name: "Anthony",
+    flight: "B",
     scores: [
       { event: "Broad Run", points:  0, strokes: 0, isOfficial: false  }    ]
   },
   {
     id: "23",
     name: "Eric B",
+    flight: "B",
     scores: [
       { event: "Broad Run", points: 0, strokes: 0, isOfficial: false  }    ]
   },
     {
     id: "24",
     name: "Rickey",
+    flight: "B",
     scores: [
       { event: "Broad Run", points: 5, strokes: 0, isOfficial: true  }    ]
   }
@@ -184,42 +210,43 @@ function calculatepoints(points: number, par: number) {
 }
 
 export default function LeaderboardSimple() {
-  
+  const [flight, setFlight] = useState<"A" | "B">("A")
 
-const leaderboard = players
-  .map(player => {
-    let total = 0
-    let roundsPlayed = 0
+  const filteredPlayers = players.filter(p => p.flight === flight)
 
-    // ✅ convert array → object
-    const scoreMap: Record<string, number> = {}
+  const leaderboard = filteredPlayers
+    .map(player => {
+      let total = 0
+      let roundsPlayed = 0
 
-    player.scores.forEach(s => {
-      scoreMap[s.event] = s.points
-    })
+      const scoreMap: Record<string, number> = {}
 
-    events.forEach(event => {
-      const score = scoreMap[event]
+      player.scores.forEach(s => {
+        scoreMap[s.event] = s.points
+      })
 
-      if (score !== undefined) {
-        total += score
-        roundsPlayed++
+      events.forEach(event => {
+        const score = scoreMap[event]
+
+        if (score !== undefined) {
+          total += score
+          roundsPlayed++
+        }
+      })
+
+      const avg =
+        roundsPlayed > 0
+          ? (total / roundsPlayed).toFixed(1)
+          : "0.0"
+
+      return {
+        ...player,
+        total,
+        avg,
+        scoreMap
       }
     })
-
-    const avg =
-      roundsPlayed > 0
-        ? (total / roundsPlayed).toFixed(1)
-        : "0.0"
-
-    return {
-      ...player,
-      total,
-      avg,
-      scoreMap // ✅ use this in UI
-    }
-  })
-  .sort((a, b) => b.total - a.total)
+    .sort((a, b) => b.total - a.total)
 
 const leaderboardWithRank = leaderboard.map((player, index, arr) => {
   // find first index where this score appears
@@ -281,7 +308,7 @@ events.forEach(event => {
         marginBottom: "20px",
         textAlign: "center"
       }}>
-        🏆 League Leaderboard
+        🏆 Flight {flight} Leaderboard
       </h1>
 
       <div style={{
@@ -291,6 +318,44 @@ events.forEach(event => {
         boxShadow: "0 8px 30px rgba(0,0,0,0.08)",
         overflowX: "auto"
       }}>
+
+        <div style={{
+          display: "flex",
+          justifyContent: "center",
+          gap: "10px",
+          marginBottom: "20px"
+        }}>
+          <button
+            onClick={() => setFlight("A")}
+            style={{
+              padding: "8px 16px",
+              borderRadius: "8px",
+              border: "none",
+              cursor: "pointer",
+              background: flight === "A" ? "#111" : "#e5e7eb",
+              color: flight === "A" ? "white" : "#333",
+              fontWeight: "600"
+            }}
+          >
+            Flight A
+          </button>
+
+          <button
+            onClick={() => setFlight("B")}
+            style={{
+              padding: "8px 16px",
+              borderRadius: "8px",
+              border: "none",
+              cursor: "pointer",
+              background: flight === "B" ? "#111" : "#e5e7eb",
+              color: flight === "B" ? "white" : "#333",
+              fontWeight: "600"
+            }}
+          >
+            Flight B
+          </button>
+        </div>
+
         <table style={{
           borderCollapse: "collapse",
           width: "100%",
@@ -388,6 +453,8 @@ events.forEach(event => {
     </div>
   )
 }
+
+
 
 // 🎨 STYLES
 const thStyle: React.CSSProperties = {
