@@ -1,24 +1,21 @@
 "use client"
 
+import { useState } from "react"
 import BackButton from "@/src/components/BackButton"
 import SocialFooter from "@/src/components/Socials"
+import { allRecords } from "@/src/data/recordsData"
 
 export default function RecordsPage() {
-  const records = [
-    { label: "Most Pars", value: "5", date: "4/18/26", course:"Broad Run", player: "-Tyrin Tyson" },
-    { label: "Most Birdies", value: "1", date: "4/18/26", course:"Broad Run", player: "-Tied Aaron, LJ, Jamar, Dre" },
-    { label: "Most Bogeys", value: "9", date: "4/18/26", course:"Broad Run", player: "-Aaron Williams" },
-    { label: "Eagle", value: "-", player: "-" },
-    { label: "Albatross", value: "-", player: "-" },
-    { label: "Lowest Round", value: "93", date: "4/18/26", course:"Broad Run", player: "-Tyrin Tyson" },
-    { label: "Most Stableford Points", date: "4/18/26", course:"Broad Run", value: "23", player: "-Jamar" },
-    { label: "Best Front 9", value: "47", date: "4/18/26", course:"Broad Run", player: "-Aaron Williams" },
-    { label: "Best Back 9", value: "42", date: "4/18/26", course:"Broad Run", player: "-Tyrin Tyson" },
-    { label: "Hole in One", value: "-", player: "-" },
-    { label: "Winning Streak", value: "-", player: "-" },
-    { label: "Most Tour Wins", value: "-", player: "-" }
 
-  ]
+const [view, setView] = useState("Season")
+
+const courses = ["2026 Season", "Broad Run", "Rock Manor", "Moccasin Run", "Mercer Oaks", "The Architects", "Town & Country"]
+
+
+  const records =
+  view === "Season"
+    ? allRecords
+    : allRecords.filter(r => r.course === view)
 
   return (
 
@@ -43,11 +40,29 @@ export default function RecordsPage() {
         🏆 SLGC 2026 Leaders
       </h1>
 
-      <p style={{
-        opacity: 0.7,
-        marginBottom: "24px"
-      }}>
-        League achievements
+      <select
+        value={view}
+        onChange={(e) => setView(e.target.value)}
+        style={{
+          padding: "10px",
+          borderRadius: "8px",
+          marginBottom: "20px",
+          background: "#1e293b",
+          color: "white",
+          border: "none"
+        }}
+      >
+        {courses.map(course => (
+          <option key={course} value={course}>
+            {course}
+          </option>
+        ))}
+      </select>
+
+      <p style={{ opacity: 0.7, marginBottom: "24px" }}>
+        {view === "Season"
+          ? "Best performances across all courses"
+          : `${view} course records`}
       </p>
 
       {/* Records Grid */}
