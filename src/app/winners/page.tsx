@@ -89,7 +89,7 @@ export default function WinnersPage() {
           {/* Top */}
           <div style={{ textAlign: "center" }}>
             <img
-              src={w.image_url || "/default-avatar.png"}
+              src={w.image_url}
               alt={w.player_name}
               style={{
                 width: "250px",
