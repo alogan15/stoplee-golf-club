@@ -28,6 +28,10 @@ export default function SocialFooter() {
           marginBottom: "30px",
         }}
       >
+        <a href="https://www.facebook.com/groups/6507831649229649" target="_blank">
+          <FaFacebookF size={40} />
+        </a>
+
         <a href="https://instagram.com/stoplee25golfclub" target="_blank">
           <FaInstagram size={40} />
         </a>
@@ -36,9 +40,6 @@ export default function SocialFooter() {
           <FaXTwitter size={40} />
         </a>
 
-        <a href="https://www.facebook.com/groups/6507831649229649" target="_blank">
-          <FaFacebookF size={40} />
-        </a>
       </div>
 
       {/* Text */}
