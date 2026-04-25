@@ -55,20 +55,21 @@ export default function SocialFooter() {
       </p>
 
       {/* Button */}
-      <button
-        style={{
-          backgroundColor: "#166534",
-          color: "white",
-          padding: "12px 24px",
-          borderRadius: "999px",
-          fontSize: "16px",
-          fontWeight: "600",
-          border: "none",
-          cursor: "pointer",
-        }}
-      >
-        Contact Us
-      </button>
+        <a
+          href="mailto:stopleegc@gmail.com?subject=SLGC Inquiry&body=Hi SLGC,"
+          style={{
+            backgroundColor: "#166534",
+            color: "white",
+            padding: "12px 24px",
+            borderRadius: "999px",
+            fontSize: "16px",
+            fontWeight: "600",
+            textDecoration: "none",
+            display: "inline-block",
+          }}
+        >
+          Contact Us
+        </a>
     </div>
   );
 }
