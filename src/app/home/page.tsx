@@ -150,6 +150,14 @@ export default function HomePage() {
 const posts = [
   {
     id: 1,
+    slug: "power-rankings-in-motion",
+    title: "Power Rankings In Motion",
+    image: "/winners/Tyrin.jpeg",
+    description: "Newcomer Tyrin didn’t waste any time making his presence felt...",
+    readMore: "Read More..."
+  },
+  {
+    id: 2,
     slug: "twp-opener-recap",
     title: "Twp-Opener: Built From Loss. Driven By Brotherhood",
     image: "/blog/twp-opener.jpg",
@@ -157,7 +165,7 @@ const posts = [
     readMore: "Read More..."
   },
   {
-    id: 2,
+    id: 3,
     slug:"twp-opener",
     title:"2026 Twp Opener",
     image:"/blog/broadrun.jpg",
@@ -165,7 +173,7 @@ const posts = [
     readMore:"Read More..."
   },
   {
-    id: 3,
+    id: 4,
     slug: "season-recap-2025",
     title: "2025 Season Recap",
     image: "/blog/group.png",
@@ -173,7 +181,7 @@ const posts = [
     readMore:"Read More..."
   },
   {
-    id: 4,
+    id: 5,
     slug: "rivalries-2026",
     title: "2026 Rivalry",
     image: "/blog/rivalry.png",
@@ -182,7 +190,7 @@ const posts = [
 
   },
   {
-    id: 5,
+    id: 6,
     slug: "jamar-threepeat",
     title: "Watch The Throne",
     image: "/blog/Jamar2025.png",
@@ -191,7 +199,7 @@ const posts = [
 
   },
     {
-    id: 6,
+    id: 7,
     slug: "rookies-2025",
     title: "Rookie Class of 2025",
     image: "/blog/rookies.png",

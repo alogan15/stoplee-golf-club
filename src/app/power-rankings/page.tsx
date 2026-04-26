@@ -9,12 +9,12 @@ const rankings = [
   { name: "Tyrin", rank: 2, trend: "steady", change: 0 },
   { name: "Aaron", rank: 3, trend: "up", change: 2 },
   { name: "Andre", rank: 4, trend: "up", change: 1 },
+  { name: "Keivon", rank: 5, trend: "down", change: -1 },
   { name: "Erik", rank: 5, trend: "down", change: -1 },
   { name: "Malcolm", rank: 6, trend: "steady", change: 0 },
   { name: "Spurg", rank: 7, trend: "steady", change: 0 },
   { name: "Larry", rank: 8, trend: "steady", change: 0 },
-  { name: "LJ", rank: 9, trend: "steady", change: 0 },
-  { name: "Greeco", rank: 10, trend: "steady", change: 0 },
+  { name: "LJ", rank: 9, trend: "steady", change: 0 }
 ]
 
 

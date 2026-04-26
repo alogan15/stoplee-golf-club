@@ -9,6 +9,47 @@ export default async function PostPage({
 
   const posts = [
     {
+      slug: "power-rankings-in-motion",
+      title: "Power Rankings In Motion",
+      content: `
+Newcomer <strong>Tyrin </strong> didn’t waste any time making his presence felt, walking away with the lowest stroke play of the day <strong>(93)</strong> the Twp Opener League Trophy and setting the tone for the season. First event, and already putting the league on notice. But that wasn’t the only shake-up. The board looks very different from preseason expectations. Coming into the season, <strong>Andre</strong> held the number 3 spot — but after <strong>Broad Run</strong>, the power rankings have already started shifting as players separate themselves early.
+<strong>Jamar</strong>, the two-time champion, reminded everyone why he is the standard, opening the season right where he left off: at the top. <strong>Consistency. Composure. Championship DNA.</strong>
+
+Then there’s the new wave...
+First season in the league and already making noise:
+• <strong>Tyrin</strong> — winner, #2 in rankings  
+• <strong>Aaron</strong> — right behind at #3  
+New blood. Real pressure.
+
+And then there’s the other side of the board...
+<strong>Jay</strong>... what happened? "Fell from top 10 to not mentioned at all..." - JayZ
+
+It was a tough outing at Broad Run, and it showed on the leaderboard. And just as the season opener was ending <strong>Keivon</strong> found a way to sneak in the top 5 which means <strong>Greeco</strong> spot in the top 10 was short lived. Oh yea, this league doesn’t wait. You either adjust or get left behind. There’s plenty of time to bounce back — but the work starts now.
+
+End of Month Snapshot at Broad Run:
+<strong>
+• Jamar — 23 pts (95) 
+• Tyrin — 21 pts (93)
+• Aaron — 20 pts (95)
+• Andre — 17 pts (102)
+• Keivon - 16 pts (106)
+</strong>
+The gap is tight.
+The competition is real.
+And the message is clear:
+Nobody is safe this season.
+Next stop: <strong>Rock Manor</strong> — where familiarity meets pressure.
+
+Who holds?  
+Who folds?  
+Who rises?
+
+Stay locked in.
+
+<strong>Stoplee Golf Club </strong>is just getting started.
+`
+    },
+    {
       slug: "twp-opener-recap",
       title: "Twp-Opener: Built From Loss. Driven By Brotherhood",
       author: "by: Ralph Shorty Crawford",
@@ -126,13 +167,14 @@ Or does the chase finally catch him?`
       </h4>
 
         <div
+        className="whitespace-pre-line"
         style={{ marginTop: "16px",   
                 fontSize: "18px",
                 lineHeight: "1.8",
                 color: "#222",
                 marginBottom: "20px"
 }}
-        dangerouslySetInnerHTML={{ __html: post.content }}
+        dangerouslySetInnerHTML={{ __html: post.content.replace(/\n/g, "<br />")}}
         />
     </div>
     </div>

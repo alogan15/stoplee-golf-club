@@ -134,13 +134,13 @@ const players: Player[] = [
     id: "20",
     name: "Jay",
     scores: [
-      { event: "Broad Run", points: 0, strokes: 0, isOfficial: false }    ]
+      { event: "Broad Run", points: 6, strokes: 122, isOfficial: false }    ]
   },
   {
     id: "21",
     name: "Keivon",
     scores: [
-      { event: "Broad Run", points:  0, strokes: 0, isOfficial: false }    ]
+      { event: "Broad Run", points:  16, strokes: 106, isOfficial: false }    ]
   },
     {
     id: "22",
@@ -159,7 +159,13 @@ const players: Player[] = [
     name: "Rickey",
     scores: [
       { event: "Broad Run", points: 5, strokes: 0, isOfficial: true  }    ]
-  }
+  },
+    {
+    id: "24",
+    name: "Justin",
+    scores: [
+      { event: "Broad Run", points: 7, strokes: 118, isOfficial: false  }    ]
+  },
 ]
 
 // 🏌️ EVENTS (ORDER MATTERS)
