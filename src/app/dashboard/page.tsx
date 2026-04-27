@@ -148,7 +148,7 @@ const [loading,setLoading] = useState(true)
                 <ActionCard title="📊 2026 Stats" onClick={() => router.push("/records")} />
                 <ActionCard title="🔥 Power-Rankings" onClick={() => router.push("/power-rankings")} />
                 <ActionCard title="📍 Schedule" onClick={() => router.push("/courses")} />
-                {/* <ActionCard title="⛳ Tee Sheet" onClick={() => router.push("/tee-sheet")} /> */}
+                <ActionCard title="⛳ Tee Sheet" onClick={() => router.push("/tee-sheet")} />
                 <ActionCard title="👑 Tour Winners" onClick={() => router.push("/winners")} />
                 <ActionCard title="👕 Merch" onClick={() => router.push("/merch")} />
                 <ActionCard title="📜 Rules" onClick={() => router.push("/rules")} />
