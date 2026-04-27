@@ -152,7 +152,7 @@ const posts = [
     id: 1,
     slug: "power-rankings-in-motion",
     title: "Power Rankings In Motion",
-    image: "/winners/Tyrin.jpeg",
+    image: "/blog/Tyrin.jpeg",
     description: "Newcomer Tyrin didn’t waste any time making his presence felt...",
     readMore: "Read More..."
   },
