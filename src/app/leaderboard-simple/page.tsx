@@ -1,5 +1,6 @@
 "use client"
 
+import BackButton from "@/src/components/BackButton"
 import { useMemo } from "react"
 
 
@@ -281,6 +282,9 @@ events.forEach(event => {
       maxWidth: "1100px",
       margin: "0 auto"
     }}>
+
+      <BackButton />
+      
       <h1 style={{
         fontSize: "28px",
         fontWeight: "700",

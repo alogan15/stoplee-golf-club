@@ -1,3 +1,4 @@
+
 import Navbar from "../components/Navbar"
 
 export const viewport = {
@@ -11,6 +12,8 @@ export default function RootLayout({
 }: {
   children: React.ReactNode
 }) {
+
+
   return (
     <html lang="en">
 <body>

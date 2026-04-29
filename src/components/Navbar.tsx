@@ -16,6 +16,7 @@ export default function Navbar() {
   const [user,setUser] = useState<any>(null)
   const [open, setOpen] = useState(false)
   const pathname = usePathname()
+  if (pathname === "/") return null
   const isActive = (path: string) => pathname === path
 
 const linkStyle = (path: string) => {
@@ -112,11 +113,11 @@ useEffect(() => {
 
           {!user && <Link href="/signup" onClick={() => setOpen(false)} style={linkStyle("/signup")}> <FiUserPlus /> Signup</Link> }
           {!user && <Link href="/login" onClick={() => setOpen(false)} style={linkStyle("/login")}> <FiLogIn /> Login</Link>}
-          <Link href="/home" onClick={() => setOpen(false)} style={linkStyle("/home")}><FaHome /> League News </Link>          
-          <Link href="/dashboard" onClick={() => setOpen(false)} style={linkStyle("/dashboard")}> <FaUser /> Dashboard</Link>
-          <Link href="/leaderboard-simple" onClick={() => setOpen(false)} style={linkStyle("/leaderboard-simple")}> <FaTrophy /> Leaderboard</Link>
-          <Link href="/power-rankings" onClick={() => setOpen(false)} style={linkStyle("/power-rankings")}> <BarChart3 size={18} /> Power Rankings</Link>
-          <Link href="/champions" onClick={() => setOpen(false)} style={linkStyle("/champions")}> 🏆 Champions</Link>
+          {/* <Link href="/home" onClick={() => setOpen(false)} style={linkStyle("/home")}><FaHome /> League News </Link>           */}
+          <Link href="/dashboard" onClick={() => setOpen(false)} style={linkStyle("/dashboard")}> <FaHome /> Dashboard</Link>
+          {/* <Link href="/leaderboard-simple" onClick={() => setOpen(false)} style={linkStyle("/leaderboard-simple")}> <FaTrophy /> Leaderboard</Link> */}
+          {/* <Link href="/power-rankings" onClick={() => setOpen(false)} style={linkStyle("/power-rankings")}> <BarChart3 size={18} /> Power Rankings</Link> */}
+          {/* <Link href="/champions" onClick={() => setOpen(false)} style={linkStyle("/champions")}> 🏆 Champions</Link> */}
           {user && (
             <button onClick={handleLogout}
                 style={buttonStyle}>
