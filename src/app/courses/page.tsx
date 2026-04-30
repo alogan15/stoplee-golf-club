@@ -1,6 +1,5 @@
 "use client"
 import { useRouter } from "next/navigation"
-import { title } from "process"
 
 export default function CoursesPage() {
     const router = useRouter()

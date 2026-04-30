@@ -5,7 +5,6 @@ import { useRouter } from "next/navigation"
 import { supabase } from "../../lib/supabase"
 import PlayerSelector from "@/src/components/PlayerSelector"
 import ResumeRound from "@/src/components/ResumeRound"
-import { BiSolidCircleQuarter } from "react-icons/bi"
 import SocialFooter from "@/src/components/Socials"
 
 

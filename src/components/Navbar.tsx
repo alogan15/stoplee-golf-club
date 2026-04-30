@@ -4,9 +4,8 @@ import Link from "next/link"
 import { supabase } from "../lib/supabase"
 import { useRouter, usePathname } from "next/navigation"
 import { useEffect, useState } from "react"
-import { FaHome, FaTrophy, FaHandshake, FaUser, FaGolfBall, FaBars, FaChartLine } from "react-icons/fa"
+import { FaHome, FaBars } from "react-icons/fa"
 import { FiLogIn, FiUserPlus } from "react-icons/fi"
-import { BarChart3 } from "lucide-react"
 
 
 
@@ -113,11 +112,7 @@ useEffect(() => {
 
           {!user && <Link href="/signup" onClick={() => setOpen(false)} style={linkStyle("/signup")}> <FiUserPlus /> Signup</Link> }
           {!user && <Link href="/login" onClick={() => setOpen(false)} style={linkStyle("/login")}> <FiLogIn /> Login</Link>}
-          {/* <Link href="/home" onClick={() => setOpen(false)} style={linkStyle("/home")}><FaHome /> League News </Link>           */}
           <Link href="/dashboard" onClick={() => setOpen(false)} style={linkStyle("/dashboard")}> <FaHome /> Dashboard</Link>
-          {/* <Link href="/leaderboard-simple" onClick={() => setOpen(false)} style={linkStyle("/leaderboard-simple")}> <FaTrophy /> Leaderboard</Link> */}
-          {/* <Link href="/power-rankings" onClick={() => setOpen(false)} style={linkStyle("/power-rankings")}> <BarChart3 size={18} /> Power Rankings</Link> */}
-          {/* <Link href="/champions" onClick={() => setOpen(false)} style={linkStyle("/champions")}> 🏆 Champions</Link> */}
           {user && (
             <button onClick={handleLogout}
                 style={buttonStyle}>

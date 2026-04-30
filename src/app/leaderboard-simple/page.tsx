@@ -1,7 +1,6 @@
 "use client"
 
 import BackButton from "@/src/components/BackButton"
-import { useMemo } from "react"
 
 
 type Player = {
@@ -284,7 +283,7 @@ events.forEach(event => {
     }}>
 
       <BackButton />
-      
+
       <h1 style={{
         fontSize: "28px",
         fontWeight: "700",
