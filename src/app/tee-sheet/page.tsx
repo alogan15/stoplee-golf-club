@@ -13,7 +13,7 @@ export default function TeeSheetPage() {
     groups: [
       {
         time: "9:00 AM",
-        players: ["Spurg", "Greg", "Ant", "Jamar"]
+        players: ["Spurg", "Isaiah", "Ant", "Jamar"]
       },
       {
         time: "9:10 AM",
