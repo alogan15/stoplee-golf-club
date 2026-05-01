@@ -29,7 +29,7 @@ export default function TeeSheetPage() {
       },
       {
         time: "9:40 AM",
-        players: ["LJ", "Cuffy", "Mike P", "Greg"]
+        players: ["LJ", "Cuffy", "Larry", "Greg"]
       }
     ]
   }
