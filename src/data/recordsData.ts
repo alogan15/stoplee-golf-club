@@ -68,7 +68,7 @@
     //2026 Season
     { label: "Most Pars", value: "5", date: "4/18/26", course:"2026 Season", player: "-Tyrin Tyson" },
     { label: "Most Birdies", value: "1", date: "4/18/26", course:"2026 Season", player: "-Tied Aaron, LJ, Jamar, Dre" },
-    { label: "Most Bogeys", value: "9", date: "4/18/26", course:"Baroad Run", player: "-Aaron Williams" },
+    { label: "Most Bogeys", value: "9", date: "4/18/26", course:"Broad Run", player: "-Aaron Williams" },
     // { label: "Eagle", value: "-", course:"2026 Season", player: "-" },
     // { label: "Albatross", value: "-", course:"2026 Season", player: "-" },
     { label: "Lowest Round", value: "93", date: "4/18/26", course:"2026 Season", player: "-Tyrin Tyson" },
