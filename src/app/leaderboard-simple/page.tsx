@@ -20,7 +20,8 @@ const players: Player[] = [
     id: "1",
     name: "Andre",
     scores: [
-      { event: "Broad Run", points: 17, strokes: 102, isOfficial: true }  ]
+      { event: "Broad Run", points: 17, strokes: 102, isOfficial: true },
+      { event: "Rock Manor", points: 0, strokes: 0, isOfficial: true }  ]
   },
   {
     id: "2",
