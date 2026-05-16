@@ -21,7 +21,7 @@ const players: Player[] = [
     name: "Andre",
     scores: [
       { event: "Broad Run", points: 17, strokes: 102, isOfficial: true },
-      { event: "Rock Manor", points: 0, strokes: 0, isOfficial: true }  ]
+      { event: "Rock Manor", points: 14, strokes: 100, isOfficial: true }  ]
   },
   {
     id: "2",
@@ -42,35 +42,35 @@ const players: Player[] = [
     name: "Julian",
     scores: [
       { event: "Broad Run", points:  5, strokes: 120, isOfficial: true },
-      { event: "Rock Manor", points: 0, strokes: 0, isOfficial: true }     ]
+      { event: "Rock Manor", points: 12, strokes: 102, isOfficial: true }     ]
   },
   {
     id: "5",
     name: "Greg",
     scores: [
       { event: "Broad Run", points: 1, strokes: 127, isOfficial: true },
-      { event: "Rock Manor", points: 0, strokes: 0, isOfficial: true }     ]
+      { event: "Rock Manor", points: 10, strokes: 115, isOfficial: true }     ]
   },
   {
     id: "6",
     name: "LJ",
     scores: [
       { event: "Broad Run", points:  11, strokes: 113, isOfficial: true },
-      { event: "Rock Manor", points: 0, strokes: 0, isOfficial: true }     ]
+      { event: "Rock Manor", points: 11, strokes: 98, isOfficial: true }     ]
   },
     {
     id: "7",
     name: "Steph",
     scores: [
       { event: "Broad Run", points: 9, strokes: 112, isOfficial: true },
-      { event: "Rock Manor", points: 0, strokes: 0, isOfficial: true }     ]
+      { event: "Rock Manor", points: 8, strokes: 108, isOfficial: true }     ]
   },
   {
     id: "8",
     name: "Walt",
     scores: [
       { event: "Broad Run", points: 4, strokes: 108, isOfficial: true },
-      { event: "Rock Manor", points: 0, strokes: 0, isOfficial: true }     ]
+      { event: "Rock Manor", points: 2, strokes: 113, isOfficial: true }     ]
   },
   {
     id: "9",
@@ -84,35 +84,35 @@ const players: Player[] = [
     name: "Jamar",
     scores: [
       { event: "Broad Run", points: 23, strokes: 95, isOfficial: true },
-      { event: "Rock Manor", points: 0, strokes: 0, isOfficial: true }     ]
+      { event: "Rock Manor", points: 15, strokes: 98, isOfficial: true }     ]
   },
   {
     id: "11",
     name: "Larry",
     scores: [
       { event: "Broad Run", points: 13, strokes: 104, isOfficial: true },
-      { event: "Rock Manor", points: 0, strokes: 0, isOfficial: true }     ]
+      { event: "Rock Manor", points: 9, strokes: 104, isOfficial: true }     ]
   },
   {
     id: "12",
     name: "Greeco",
     scores: [
       { event: "Broad Run", points:  10, strokes: 119, isOfficial: true },
-      { event: "Rock Manor", points: 0, strokes: 0, isOfficial: true }     ]
+      { event: "Rock Manor", points: 11, strokes: 109, isOfficial: true }     ]
   },
     {
     id: "13",
     name: "Danny",
     scores: [
       { event: "Broad Run", points: 4 , strokes: 122, isOfficial: true },
-      { event: "Rock Manor", points: 0, strokes: 0, isOfficial: true }     ]
+      { event: "Rock Manor", points: 6, strokes: 115, isOfficial: true }     ]
   },
   {
     id: "14",
     name: "Erik L",
     scores: [
       { event: "Broad Run", points: 14, strokes: 106, isOfficial: true },
-      { event: "Rock Manor", points: 0, strokes: 0, isOfficial: true }     ]
+      { event: "Rock Manor", points: 11, strokes: 99, isOfficial: true }     ]
   },
   {
     id: "15",
@@ -126,21 +126,21 @@ const players: Player[] = [
     name: "Tyrin",
     scores: [
       { event: "Broad Run", points: 21, strokes: 93, isOfficial: true },
-      { event: "Rock Manor", points: 0, strokes: 0, isOfficial: true }     ]
+      { event: "Rock Manor", points: 20, strokes: 95, isOfficial: true }     ]
   },
   {
     id: "17",
     name: "Short",
     scores: [
       { event: "Broad Run", points: 9, strokes: 110, isOfficial: true },
-      { event: "Rock Manor", points: 0, strokes: 0, isOfficial: true }     ]
+      { event: "Rock Manor", points: 10, strokes: 104, isOfficial: true }     ]
   },
   {
     id: "18",
     name: "Spurg",
     scores: [
       { event: "Broad Run", points:  13, strokes: 0, isOfficial: true },
-      { event: "Rock Manor", points: 0, strokes: 0, isOfficial: true }     ]
+      { event: "Rock Manor", points: 15, strokes: 99, isOfficial: true }     ]
   },
     {
     id: "19",
@@ -168,21 +168,21 @@ const players: Player[] = [
     name: "Anthony",
     scores: [
       { event: "Broad Run", points:  0, strokes: 0, isOfficial: false  },
-      { event: "Rock Manor", points: 0, strokes: 0, isOfficial: true }     ]
+      { event: "Rock Manor", points: 7, strokes: 107, isOfficial: true }     ]
   },
   {
     id: "23",
     name: "Eric B",
     scores: [
       { event: "Broad Run", points: 0, strokes: 0, isOfficial: false  },
-      { event: "Rock Manor", points: 0, strokes: 0, isOfficial: true }     ]
+      { event: "Rock Manor", points: 16, strokes: 95, isOfficial: true }     ]
   },
     {
     id: "24",
     name: "Rickey",
     scores: [
       { event: "Broad Run", points: 5, strokes: 0, isOfficial: true  },
-      { event: "Rock Manor", points: 0, strokes: 0, isOfficial: true }     ]
+      { event: "Rock Manor", points: 3, strokes: 118, isOfficial: true }     ]
   },
     {
     id: "24",
