@@ -168,14 +168,14 @@ const players: Player[] = [
     id: "22",
     name: "Anthony",
     scores: [
-      { event: "Broad Run", points:  0, strokes: 0, isOfficial: false, is_winner: false  },
+      { event: "Broad Run", points:  0, strokes: 0, isOfficial: true, is_winner: false  },
       { event: "Rock Manor", points: 7, strokes: 107, isOfficial: true, is_winner: false }     ]
   },
   {
     id: "23",
     name: "Eric B",
     scores: [
-      { event: "Broad Run", points: 0, strokes: 0, isOfficial: false, is_winner: false  },
+      { event: "Broad Run", points: 0, strokes: 0, isOfficial: true, is_winner: false  },
       { event: "Rock Manor", points: 16, strokes: 95, isOfficial: true, is_winner: true }     ]
   },
     {
@@ -377,21 +377,49 @@ events.forEach(event => {
 
                 {events.map(event => {
                   const scoreObj = player.scores.find(s => s.event === event)
-                  console.log(scoreObj)
                   const isWinner = eventWinners[event] === player.id
 
                   return (
                     <td key={event} style={tdCenter}>
-                      {scoreObj ? (
-                        <div>
-                          <div style={{ fontWeight: "600" }}>
-                            {scoreObj.points} {isWinner && "🏆"}
-                          </div>
-                          <div style={{ fontSize: "12px", color: "#999" }}>
-                            ({scoreObj.strokes ?? "-"})
-                          </div>
-                        </div>
-                      ) : "-"}
+{(() => {
+  const eventPlayed = scoreObj && scoreObj.isOfficial
+  const hasScore =
+    scoreObj &&
+    (scoreObj.strokes > 0 || scoreObj.points > 0)
+
+  const isDNP =
+    scoreObj &&
+    scoreObj.isOfficial &&
+    scoreObj.strokes === 0 &&
+    scoreObj.points === 0
+
+  // ✅ Player has a score
+  if (hasScore) {
+    return (
+      <div>
+        <div style={{ fontWeight: "600" }}>
+          {scoreObj.points} {isWinner && "🏆"}
+        </div>
+
+        <div style={{ fontSize: "12px", color: "#999" }}>
+          ({scoreObj.strokes})
+        </div>
+      </div>
+    )
+  }
+
+  // ✅ Official event but player did not play
+  if (isDNP) {
+    return (
+      <div style={{ color: "#999", fontWeight: "500" }}>
+        DNP
+      </div>
+    )
+  }
+
+  // ✅ Future event / unofficial / no score yet
+  return "-"
+})()}
                     </td>
                   )
                 })}
