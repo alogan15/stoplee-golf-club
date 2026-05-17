@@ -198,8 +198,8 @@ const players: Player[] = [
 const events = [
   "Broad Run",
   "Rock Manor",
-  "Moccasin Run",
   "Mercer Oaks(West)",
+  "Moccasin Run",
   "The Architects",
   "Town & Country"
 ]
