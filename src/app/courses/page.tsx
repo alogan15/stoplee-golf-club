@@ -23,19 +23,20 @@ export default function CoursesPage() {
       location: "Wilmington, DE",
     },
     { 
-      id:"moccasin-run",
-      name: "Moccasin Run Golf Club", 
-      image:"/courses/moccasin.jpg",
-      title: "La Fiesta",
-      location: "Atglen, PA",
-    },
-      { 
       id:"mercer-oaks",
       name: "Mercer Oaks Golf Course", 
       image:"/courses/mercer.jpg",
       title:"Juneteenth Classic",
       location: "West Windsor Twp, NJ",
     },
+    { 
+      id:"moccasin-run",
+      name: "Moccasin Run Golf Club", 
+      image:"/courses/moccasin.jpg",
+      title: "La Fiesta",
+      location: "Atglen, PA",
+    },
+
       { 
       id:"the-architects",
       name: "The Architects Golf Club", 
