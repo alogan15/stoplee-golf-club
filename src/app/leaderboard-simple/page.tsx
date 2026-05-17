@@ -11,6 +11,7 @@ type Player = {
     points: number
     strokes: number
     isOfficial: boolean
+    is_winner: boolean
   }[]
 }
 
@@ -20,176 +21,176 @@ const players: Player[] = [
     id: "1",
     name: "Andre",
     scores: [
-      { event: "Broad Run", points: 17, strokes: 102, isOfficial: true },
-      { event: "Rock Manor", points: 14, strokes: 100, isOfficial: true }  ]
+      { event: "Broad Run", points: 17, strokes: 102, isOfficial: true, is_winner: false },
+      { event: "Rock Manor", points: 14, strokes: 100, isOfficial: true, is_winner: false }  ]
   },
   {
     id: "2",
     name: "Malcolm",
     scores: [
-      { event: "Broad Run", points: 14, strokes: 100, isOfficial: true },
-      { event: "Rock Manor", points: 0, strokes: 0, isOfficial: false }     ]
+      { event: "Broad Run", points: 14, strokes: 100, isOfficial: true, is_winner: false },
+      { event: "Rock Manor", points: 0, strokes: 0, isOfficial: false, is_winner: false }     ]
   },
   {
     id: "3",
     name: "Aaron",
     scores: [
-      { event: "Broad Run", points:  20, strokes: 95, isOfficial: true },
-      { event: "Rock Manor", points: 0, strokes: 0, isOfficial: false }    ]
+      { event: "Broad Run", points:  20, strokes: 95, isOfficial: true, is_winner: false },
+      { event: "Rock Manor", points: 0, strokes: 0, isOfficial: false, is_winner: false }    ]
   },
     {
     id: "4",
     name: "Julian",
     scores: [
-      { event: "Broad Run", points:  5, strokes: 120, isOfficial: true },
-      { event: "Rock Manor", points: 12, strokes: 102, isOfficial: true }     ]
+      { event: "Broad Run", points:  5, strokes: 120, isOfficial: true, is_winner: false },
+      { event: "Rock Manor", points: 12, strokes: 102, isOfficial: true, is_winner: false }     ]
   },
   {
     id: "5",
     name: "Greg",
     scores: [
-      { event: "Broad Run", points: 1, strokes: 127, isOfficial: true },
-      { event: "Rock Manor", points: 10, strokes: 115, isOfficial: true }     ]
+      { event: "Broad Run", points: 1, strokes: 127, isOfficial: true, is_winner: false },
+      { event: "Rock Manor", points: 10, strokes: 115, isOfficial: true, is_winner: false }     ]
   },
   {
     id: "6",
     name: "LJ",
     scores: [
-      { event: "Broad Run", points:  11, strokes: 113, isOfficial: true },
-      { event: "Rock Manor", points: 11, strokes: 98, isOfficial: true }     ]
+      { event: "Broad Run", points:  11, strokes: 113, isOfficial: true, is_winner: false },
+      { event: "Rock Manor", points: 11, strokes: 98, isOfficial: true, is_winner: false }     ]
   },
     {
     id: "7",
     name: "Steph",
     scores: [
-      { event: "Broad Run", points: 9, strokes: 112, isOfficial: true },
-      { event: "Rock Manor", points: 8, strokes: 108, isOfficial: true }     ]
+      { event: "Broad Run", points: 9, strokes: 112, isOfficial: true, is_winner: false },
+      { event: "Rock Manor", points: 8, strokes: 108, isOfficial: true, is_winner: false }     ]
   },
   {
     id: "8",
     name: "Walt",
     scores: [
-      { event: "Broad Run", points: 4, strokes: 108, isOfficial: true },
-      { event: "Rock Manor", points: 2, strokes: 113, isOfficial: true }     ]
+      { event: "Broad Run", points: 4, strokes: 108, isOfficial: true, is_winner: false },
+      { event: "Rock Manor", points: 2, strokes: 113, isOfficial: true, is_winner: false }     ]
   },
   {
     id: "9",
     name: "James",
     scores: [
-      { event: "Broad Run", points:  6, strokes: 115, isOfficial: true },
-      { event: "Rock Manor", points: 0, strokes: 0, isOfficial: false }     ]
+      { event: "Broad Run", points:  6, strokes: 115, isOfficial: true, is_winner: false },
+      { event: "Rock Manor", points: 0, strokes: 0, isOfficial: false, is_winner: false }     ]
   },
     {
     id: "10",
     name: "Jamar",
     scores: [
-      { event: "Broad Run", points: 23, strokes: 95, isOfficial: true },
-      { event: "Rock Manor", points: 17, strokes: 98, isOfficial: true }     ]
+      { event: "Broad Run", points: 23, strokes: 95, isOfficial: true, is_winner: false },
+      { event: "Rock Manor", points: 17, strokes: 98, isOfficial: true, is_winner: false }     ]
   },
   {
     id: "11",
     name: "Larry",
     scores: [
-      { event: "Broad Run", points: 13, strokes: 104, isOfficial: true },
-      { event: "Rock Manor", points: 9, strokes: 104, isOfficial: true }     ]
+      { event: "Broad Run", points: 13, strokes: 104, isOfficial: true, is_winner: false },
+      { event: "Rock Manor", points: 9, strokes: 104, isOfficial: true, is_winner: false }     ]
   },
   {
     id: "12",
     name: "Greeco",
     scores: [
-      { event: "Broad Run", points:  10, strokes: 119, isOfficial: true },
-      { event: "Rock Manor", points: 11, strokes: 109, isOfficial: true }     ]
+      { event: "Broad Run", points:  10, strokes: 119, isOfficial: true, is_winner: false },
+      { event: "Rock Manor", points: 11, strokes: 109, isOfficial: true, is_winner: false }     ]
   },
     {
     id: "13",
     name: "Danny",
     scores: [
-      { event: "Broad Run", points: 4 , strokes: 122, isOfficial: true },
-      { event: "Rock Manor", points: 6, strokes: 115, isOfficial: true }     ]
+      { event: "Broad Run", points: 4 , strokes: 122, isOfficial: true, is_winner: false },
+      { event: "Rock Manor", points: 6, strokes: 115, isOfficial: true, is_winner: false }     ]
   },
   {
     id: "14",
     name: "Erik L",
     scores: [
-      { event: "Broad Run", points: 14, strokes: 106, isOfficial: true },
-      { event: "Rock Manor", points: 11, strokes: 99, isOfficial: true }     ]
+      { event: "Broad Run", points: 14, strokes: 106, isOfficial: true, is_winner: false },
+      { event: "Rock Manor", points: 11, strokes: 99, isOfficial: true, is_winner: false }     ]
   },
   {
     id: "15",
     name: "Isaiah",
     scores: [
-      { event: "Broad Run", points:  3, strokes: 119, isOfficial: true },
-      { event: "Rock Manor", points: 0, strokes: 0, isOfficial: true }     ]
+      { event: "Broad Run", points:  3, strokes: 119, isOfficial: true, is_winner: false },
+      { event: "Rock Manor", points: 0, strokes: 0, isOfficial: true, is_winner: false }     ]
   },
     {
     id: "16",
     name: "Tyrin",
     scores: [
-      { event: "Broad Run", points: 21, strokes: 93, isOfficial: true },
-      { event: "Rock Manor", points: 20, strokes: 95, isOfficial: true }     ]
+      { event: "Broad Run", points: 21, strokes: 93, isOfficial: true, is_winner: false },
+      { event: "Rock Manor", points: 20, strokes: 95, isOfficial: true, is_winner: false }     ]
   },
   {
     id: "17",
     name: "Short",
     scores: [
-      { event: "Broad Run", points: 9, strokes: 110, isOfficial: true },
-      { event: "Rock Manor", points: 10, strokes: 104, isOfficial: true }     ]
+      { event: "Broad Run", points: 9, strokes: 110, isOfficial: true, is_winner: false },
+      { event: "Rock Manor", points: 10, strokes: 104, isOfficial: true, is_winner: false }     ]
   },
   {
     id: "18",
     name: "Spurg",
     scores: [
-      { event: "Broad Run", points:  13, strokes: 0, isOfficial: true },
-      { event: "Rock Manor", points: 15, strokes: 99, isOfficial: true }     ]
+      { event: "Broad Run", points:  13, strokes: 0, isOfficial: true, is_winner: false },
+      { event: "Rock Manor", points: 15, strokes: 99, isOfficial: true, is_winner: false }     ]
   },
     {
     id: "19",
     name: "Cuffy",
     scores: [
-      { event: "Broad Run", points: 0, strokes: 0, isOfficial: true },
-      { event: "Rock Manor", points: 0, strokes: 0, isOfficial: true }     ]
+      { event: "Broad Run", points: 0, strokes: 0, isOfficial: true, is_winner: false },
+      { event: "Rock Manor", points: 0, strokes: 0, isOfficial: true, is_winner: false }     ]
   },
   {
     id: "20",
     name: "Jay",
     scores: [
-      { event: "Broad Run", points: 6, strokes: 122, isOfficial: false },
-      { event: "Rock Manor", points: 0, strokes: 0, isOfficial: false }     ]
+      { event: "Broad Run", points: 6, strokes: 122, isOfficial: false, is_winner: false },
+      { event: "Rock Manor", points: 0, strokes: 0, isOfficial: false, is_winner: false }     ]
   },
   {
     id: "21",
     name: "Keivon",
     scores: [
-      { event: "Broad Run", points:  16, strokes: 106, isOfficial: false },
-      { event: "Rock Manor", points: 0, strokes: 0, isOfficial: false }     ]
+      { event: "Broad Run", points:  16, strokes: 106, isOfficial: false, is_winner: false },
+      { event: "Rock Manor", points: 0, strokes: 0, isOfficial: false, is_winner: false }     ]
   },
     {
     id: "22",
     name: "Anthony",
     scores: [
-      { event: "Broad Run", points:  0, strokes: 0, isOfficial: false  },
-      { event: "Rock Manor", points: 7, strokes: 107, isOfficial: true }     ]
+      { event: "Broad Run", points:  0, strokes: 0, isOfficial: false, is_winner: false  },
+      { event: "Rock Manor", points: 7, strokes: 107, isOfficial: true, is_winner: false }     ]
   },
   {
     id: "23",
     name: "Eric B",
     scores: [
-      { event: "Broad Run", points: 0, strokes: 0, isOfficial: false  },
-      { event: "Rock Manor", points: 16, strokes: 95, isOfficial: true }     ]
+      { event: "Broad Run", points: 0, strokes: 0, isOfficial: false, is_winner: false  },
+      { event: "Rock Manor", points: 16, strokes: 95, isOfficial: true, is_winner: true }     ]
   },
     {
     id: "24",
     name: "Rickey",
     scores: [
-      { event: "Broad Run", points: 5, strokes: 0, isOfficial: true  },
-      { event: "Rock Manor", points: 3, strokes: 118, isOfficial: true }     ]
+      { event: "Broad Run", points: 5, strokes: 0, isOfficial: true, is_winner: false  },
+      { event: "Rock Manor", points: 3, strokes: 118, isOfficial: true, is_winner: false }     ]
   },
     {
     id: "24",
     name: "Justin",
     scores: [
-      { event: "Broad Run", points: 7, strokes: 118, isOfficial: false  },
-      { event: "Rock Manor", points: 0, strokes: 0, isOfficial: false }     ]
+      { event: "Broad Run", points: 7, strokes: 118, isOfficial: false, is_winner: false  },
+      { event: "Rock Manor", points: 0, strokes: 0, isOfficial: false, is_winner: false }     ]
   },
 ]
 
@@ -275,28 +276,15 @@ const leaderboardWithRank = leaderboard.map((player, index, arr) => {
 const eventWinners: Record<string, string> = {}
 
 events.forEach(event => {
-  let lowest = Infinity
-  let winnerId: string | null = null
-
   players.forEach(player => {
     const scoreObj = player.scores.find(s => s.event === event)
 
-    // ❌ skip if not official round
     if (!scoreObj || !scoreObj.isOfficial) return
 
-    // ❌ skip invalid strokes
-    if (!scoreObj.strokes || scoreObj.strokes <= 0) return
-
-    // ✅ lowest official score wins
-    if (scoreObj.strokes < lowest) {
-      lowest = scoreObj.strokes
-      winnerId = player.id
+    if ((scoreObj as any).is_winner) {
+      eventWinners[event] = player.id
     }
   })
-
-  if (winnerId) {
-    eventWinners[event] = winnerId
-  }
 })
 
 
@@ -359,7 +347,7 @@ events.forEach(event => {
 
           <tbody>
               {leaderboardWithRank.map((player, i) => (
-                <tr key={player.id} style={{
+                <tr key={`${player.id}-${i}`} style={{
                 background:
                   i === 0
                     ? "#fff8e1"
@@ -389,6 +377,7 @@ events.forEach(event => {
 
                 {events.map(event => {
                   const scoreObj = player.scores.find(s => s.event === event)
+                  console.log(scoreObj)
                   const isWinner = eventWinners[event] === player.id
 
                   return (
