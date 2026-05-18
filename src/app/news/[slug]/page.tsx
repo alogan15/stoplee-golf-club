@@ -1,4 +1,5 @@
 import Link from "next/link"
+import { title } from "process"
 
 export default async function PostPage({
   params,
@@ -8,6 +9,77 @@ export default async function PostPage({
   const { slug } = await params
 
   const posts = [
+    {
+      slug: "baltimore-pressure",
+      title: "🏆 Rock Manor Recap - Birthday, Battles and Baltimore Pressure",
+      content: `
+      
+Round 2 of the 2026 season of <strong>The StopLee Golf Club</strong> is officially in the books, and <strong>Rock Manor</strong> absolutely tested the field from start to finish.
+
+What started as a beautiful day for golf quickly turned into a grind. Rock Manor showed its teeth with fast greens, brutal pin placements, tight landing areas, water hazards, and enough trouble around the course to punish even the smallest mistakes. Players spent the entire round trying to manage speed on the greens while avoiding costly misses around ponds, rough, and tucked pin locations.
+
+And the scores reflected it.
+
+Most of the field finished somewhere between the mid-90s and low-100s, proving that nobody truly had control of the course all day. Momentum came and went in waves. One good hole could immediately be followed by disaster. At different points during the round, it genuinely felt like anybody could walk away with the trophy.
+
+<strong>Eric B.</strong> walked away with the trophy.
+
+After missing the season opener at Broad Run, Eric made his first appearance of the season and immediately made it count, posting a 95 and winning Rock Manor outright on handicap tiebreaker. But the road to victory wasn’t simple.
+
+At the end of the round, <strong>Eric</strong> and <strong>Tyrin</strong> — the Broad Run champion and one of the two Baltimore representatives — both finished tied at 95. The trophy came down to handicap differential, and Eric edged him out to secure the win.
+
+Two months in.
+
+Two trophies.
+
+Both taken home by the Baltimore crew.
+
+The message is officially clear:
+the rest of the league better tighten up.
+
+There was also another layer to the story.
+
+<strong>Eric</strong> and <strong>Andre</strong> came into Rock Manor with unfinished business and a score to settle. Both battled through tough stretches throughout the round, but this time Eric came out on top, handling the pressure late and cashing in when opportunities mattered most.
+
+Meanwhile, one of the biggest surprises of the day came from <strong>LJ</strong>.
+
+LJ came out firing from all cylinders, early and quietly putting together one of the strongest front nines of the entire field. Fairways, bogeys, controlled golf — he stayed steady while others struggled to settle in. While the back nine cooled off a bit, LJ still finished with one of the better stroke-play rounds in the field and showed everybody he’s getting closer to becoming a real factor in this league.
+
+And honestly, that’s what made Rock Manor special.
+
+Everybody had moments.
+
+Some players fought their swings.
+Some players fought the greens.
+Some players fought frustration.
+But the competition stayed alive all day long.
+
+After the round, the league kicked back together with drinks, stories, laughs, and the usual post-round breakdowns of “what should’ve happened” out there on the course.
+
+<strong>Happy Birthday Stop</strong> from the Stoplee Golf Club!
+
+<strong>Honorable Mentions: </strong> (shoutouts)
+Julian — huge improvement from 120 → 102
+Jay — huge improvement from 122 → 99
+Grecco — improved from 119 → 109
+LJ — improved from 113 → 98
+
+Now the focus shifts forward.
+
+Next stop:
+🏆 <strong>The Juneteenth Classic</strong>
+📍 <strong>Mercer Oaks West — Trenton, New Jersey</strong>
+📅 <strong>TBD</strong>
+
+And after what we’ve seen through the first two events, nobody’s safe.
+
+The standings are tightening.
+The rivalries are growing.
+And the season is just getting started.
+
+
+      `
+    },
     {
       slug: "power-rankings-in-motion",
       title: "Power Rankings In Motion",

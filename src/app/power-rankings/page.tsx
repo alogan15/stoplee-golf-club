@@ -5,16 +5,16 @@ import SocialFooter from "@/src/components/Socials"
 
 export default function PowerRankingsPage() {
 const rankings = [
-  { name: "Jamar", rank: 1, trend: "up", change: 1 },
-  { name: "Tyrin", rank: 2, trend: "steady", change: 0 },
-  { name: "Aaron", rank: 3, trend: "up", change: 2 },
-  { name: "Andre", rank: 4, trend: "up", change: 1 },
-  { name: "Keivon", rank: 5, trend: "down", change: -1 },
-  { name: "Erik", rank: 6, trend: "down", change: -1 },
-  { name: "Malcolm", rank: 7, trend: "steady", change: 0 },
-  { name: "Spurg", rank: 8, trend: "steady", change: 0 },
-  { name: "Larry", rank: 9, trend: "steady", change: 0 },
-  { name: "LJ", rank: 10, trend: "steady", change: 0 }
+  { name: "Tyrin", rank: 1, trend: "up", change: 1 },
+  { name: "Jamar", rank: 2, trend: "steady", change: 0 },
+  { name: "Andre", rank: 3, trend: "up", change: 2 },
+  { name: "Keivon", rank: 4, trend: "up", change: 1 },
+  { name: "Eric B", rank: 5, trend: "down", change: -1 },
+  { name: "Erik L", rank: 6, trend: "down", change: -1 },
+  { name: "Spurg", rank: 7, trend: "steady", change: 0 },
+  { name: "LJ", rank: 8, trend: "steady", change: 0 },
+  { name: "Aaron", rank: 9, trend: "steady", change: 0 },
+  { name: "Larry", rank: 10, trend: "steady", change: 0 }
 ]
 
 

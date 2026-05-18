@@ -9,7 +9,7 @@ export default function RecordsPage() {
 
 const [view, setView] = useState("2026 Season")
 
-const courses = ["2026 Season", "Broad Run", "Rock Manor", "Moccasin Run", "Mercer Oaks", "The Architects", "Town & Country"]
+const courses = ["2026 Season", "Broad Run", "Rock Manor", "Mercer Oaks", "Moccasin Run", "The Architects", "Town & Country"]
 
 
   const records =
