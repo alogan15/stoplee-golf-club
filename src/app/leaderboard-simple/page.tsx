@@ -78,7 +78,7 @@ const players: Player[] = [
     name: "James",
     scores: [
       { event: "Broad Run", points:  6, strokes: 115, isOfficial: true, is_winner: false },
-      { event: "Rock Manor", points: 1, strokes: 56, isOfficial: false, is_winner: false }     ]
+      { event: "Rock Manor", points: 8, strokes: 107, isOfficial: false, is_winner: false }     ]
   },
     {
     id: "10",
@@ -155,14 +155,14 @@ const players: Player[] = [
     name: "Jay",
     scores: [
       { event: "Broad Run", points: 6, strokes: 122, isOfficial: false, is_winner: false },
-      { event: "Rock Manor", points: 6, strokes: 50, isOfficial: false, is_winner: false }     ]
+      { event: "Rock Manor", points: 14, strokes: 99, isOfficial: false, is_winner: false }     ]
   },
   {
     id: "21",
     name: "Keivon",
     scores: [
       { event: "Broad Run", points:  16, strokes: 106, isOfficial: false, is_winner: false },
-      { event: "Rock Manor", points: 10, strokes: 52, isOfficial: false, is_winner: false }     ]
+      { event: "Rock Manor", points: 15, strokes: 105, isOfficial: false, is_winner: false }     ]
   },
     {
     id: "22",
@@ -190,7 +190,7 @@ const players: Player[] = [
     name: "Justin",
     scores: [
       { event: "Broad Run", points: 7, strokes: 118, isOfficial: false, is_winner: false  },
-      { event: "Rock Manor", points: 2, strokes: 51, isOfficial: false, is_winner: false }     ]
+      { event: "Rock Manor", points: 5, strokes: 117, isOfficial: false, is_winner: false }     ]
   },
 ]
 
