@@ -5,31 +5,31 @@ import BackButton from "@/src/components/BackButton"
 export default function TeeSheetPage() {
 
   const teeSheet = {
-    event: "Rock Manor Golf Course",
-    date: "May 16, 2026",
-    price: "$98",
+    event: "Mercer Oaks West Course",
+    date: "June 20, 2026",
+    price: "TBD",
     weather: "TBD",
 
     groups: [
       {
-        time: "9:00 AM",
-        players: ["Spurg", "Isaiah", "Ant", "Jamar"]
+        time: "11:00",
+        players: ["Player 1", "Player 2", "Player 3", "Player 4"]
       },
       {
-        time: "9:10 AM",
-        players: ["Erik L", "Walt", "Danny", "Julian"]
+        time: "11:10",
+        players: ["Player 1", "Player 2", "Player 3", "Player 4"]
       },
       {
-        time: "9:20 AM",
-        players: ["Andre", "Grecco", "Eric B", "Short"]
+        time: "11:20",
+        players: ["Player 1", "Player 2", "Player 3", "Player 4"]
       },
       {
-        time: "9:30 AM",
-        players: ["Rickey", "Jay", "Tyrin", "Stephon"]
+        time: "11:30",
+        players: ["Player 1", "Player 2", "Player 3", "Player 4"]
       },
       {
-        time: "9:40 AM",
-        players: ["LJ", "Cuffy", "Larry", "Greg"]
+        time: "11:40",
+        players: ["Player 1", "Player 2", "Player 3", "Player 4"]
       }
     ]
   }
@@ -53,7 +53,7 @@ export default function TeeSheetPage() {
         marginBottom: "10px",
         textAlign: "center"
       }}>
-        🏌🏽 Stoplee Classic
+        🏌🏽 Juneteenth Classic
       </h1>
 
       {/* EVENT CARD */}
