@@ -320,14 +320,19 @@ events.forEach(event => {
         }}>
           <thead>
             <tr>
-              <th style={thStyle}>Rank</th>
+              <th style=  {{...thStyle,
+            position: "sticky",
+            left: 0,
+            background: "#f9fafb",
+            zIndex: 3
+            }}>Rank</th>
 
 
         <th
           style={{
             ...thStyle,
             position: "sticky",
-            left: 0,
+            left: "94px",
             background: "#f9fafb",
             zIndex: 3
           }}
@@ -360,11 +365,33 @@ events.forEach(event => {
                     : "white",
                 fontWeight: i === 0 ? "700" : "normal"
               }}>
-              <td style={tdCenter}>{player.rank}</td>
+       <td
+              style={{
+                ...tdCenter,
+                position: "sticky",
+                left: 0,
+                minWidth: "70px",
+                width: "70px",
+                maxWidth: "70px",
+                background:
+                  i === 0
+                    ? "#fff8e1"
+                    : i === 1
+                    ? "#f1f5f9"
+                    : i === 2
+                    ? "#fef2f2"
+                    : i % 2 === 0
+                    ? "#fafafa"
+                    : "white",
+                zIndex: 3,
+              }}
+            >
+              {player.rank}
+            </td>
                 <td   style={{
                   ...tdLeft,
                   position: "sticky",
-                  left: 0,
+                  left: "94px",
                   background: "white",
                   zIndex: 2,
                   boxShadow: "2px 0 5px rgba(0,0,0,0.05)"
