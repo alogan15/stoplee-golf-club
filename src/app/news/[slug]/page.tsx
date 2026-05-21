@@ -266,17 +266,9 @@ But sometimes the most dangerous player…
 
 Is the one nobody has a scouting report on.
 
-So now the question becomes:
+The Commish, Erik carrying the pressure of being the defending Stop Lee Classic Champion from last year.
 
-What does Eric have to bring to the table?
-
-And bigger than that—
-
-Can Jamar take home the Stop Lee Classic at The Rock two years straight?
-
-Or will somebody finally knock the champ off the throne?
-
-After the turn on the front nine…
+After the turn…
 
 One thing became crystal clear:
 
