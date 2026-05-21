@@ -9,6 +9,588 @@ export default async function PostPage({
   const { slug } = await params
 
   const posts = [
+
+    {
+      slug: "legacy",
+      title: "Legacy Built at The Rock",
+      author: "by: Ralph Shorty Crawford",
+      content: `
+     The anticipation was brewing.
+
+New faces.
+People coming to honor you.
+Non-league guests stepping into the atmosphere for the first time.
+And a very welcoming host—the staff at <strong>Rock Manor Golf Course</strong>—who extended themselves in a real way for us.
+
+Thank you.
+
+A lot of jaw jacking heading into this new season.
+
+New attitudes.
+New bravado.
+Guys honing their craft.
+
+A lot of repetitions.
+A lot of early mornings.
+A lot of guys quietly putting work in.
+
+All you hear in the group chat is:
+
+“18Birdies dropped.”
+“Who out there now?”
+“Who playing today?”
+
+Some guys moving private with it.
+
+“Oh yeah… I played that course the other day.”
+Hint. Hint. Wink.
+
+Yeah… we know.
+
+Everybody out there trying to sharpen their game.
+
+Because this thing?
+
+It’s getting real.
+
+The competition is rising.
+
+The bar is being set.
+
+You either gonna go hard…
+or go home.
+
+Going into the round, the leaderboard was tight.
+
+Only a few strokes separating everybody.
+
+Questions floating everywhere:
+
+Will somebody fall off?
+Can Tyrin win back-to-back?
+Will the hometown guys defend their turf?
+Is dominance starting to brew?
+Will last year’s champ make another statement?
+Everybody jockeying for position.
+
+Who’s gonna land in Flight A?
+Who’s gonna fall into Flight B?
+
+Guest appearances everywhere.
+
+Stone pulled up.
+Young brother Nick came in from Florida.
+Our old head Geoff showed face.
+
+And then outta nowhere…
+
+Old Head Grecco.
+
+All he do is talk shit and light cigars like he already won before the scorecard even opens.
+
+The group chat was completely out of control.
+
+Commish had to step in:
+
+“Keep it brotherly. Keep it clean.”
+
+Man… yeah right.
+
+We talk shit.
+That’s what we do.
+
+But it ain’t disrespect.
+
+It’s fellowship through competition.
+
+Banter. Pride. Energy.
+
+And underneath all of it?
+
+Love.
+
+What did The Rock have waiting for us?
+
+That was the real question.
+
+We couldn’t have asked for a better day.
+
+80 degrees.
+A light haze sitting over the course.
+
+Beautiful.
+
+The Rock had us lined up perfectly.
+
+Carts staged like NASCAR.
+
+Pole positions ready.
+
+Guys trickling in one by one.
+
+Greetings. Handshakes. Smirks.
+
+“What you shooting today?”
+“You better not fold.”
+“You been practicing too much to choke now.”
+
+Some guys on the range.
+
+Some chipping.
+
+Some putting.
+
+Some pretending they calm when everybody know they nervous.
+
+Yeah…
+
+It was here.
+
+The Battle of The Rock.
+
+But there was one thing everybody forgot:
+
+The Rock got its own personality too.
+
+The greens looked good.
+
+The course looked beautiful.
+
+But easy?
+
+Not even close.
+
+Birdies turned into bogeys.
+
+Bogeys turned into doubles.
+
+Doubles turned into triple bogeys.
+
+Putts sliding past the cup like the hole moved overnight.
+
+The course was talking back to everybody:
+
+“Y’all may be battling each other…
+but this is The Rock.”
+
+And The Rock stood firm.
+
+Now the question became:
+
+What were the new guys gonna do?
+
+Stand tall?
+
+Or fold under pressure?
+
+But from the look of it…
+
+LJ had something to say.
+
+You could see it.
+
+Quiet confidence.
+
+And young up-and-coming rookie Isaiah—even though he didn’t make this one—you know his time coming too.
+
+Another day.
+
+Another battle.
+
+And Steph?
+
+Steph gonna always bring personality to the game.
+
+Always.
+
+But once them scorecards start filling up…
+
+Friendship pauses for a few hours.
+
+Now it’s:
+
+Me against everybody.
+
+At least in everybody’s mind.
+
+But at the center of all of it…
+
+This still wasn’t just golf.
+
+This was still about you.
+
+<strong>Stop Lee</strong>.
+
+A memorial.
+
+A legacy.
+
+A fellowship carrying your name.
+
+So now the pressure changes.
+
+It ain’t just about winning.
+
+It becomes:
+
+“Who gonna stand strong in honor of Stop?”
+
+Then suddenly…
+
+You hear whispers:
+
+“Oh shit…”
+
+Does the South have something to say?
+
+In the words of André 3000…
+
+“The South got something to say.”
+
+Because Lamont rolled up from D.C. looking like he came ready for war.
+
+But Baltimore?
+
+Baltimore wasn’t coming quietly either.
+
+Tyrin—the defending champ from last month—is carrying confidence into The Rock.
+And now there’s a new wildcard entering the mix:
+
+Eric from Baltimore.
+
+New to league play.
+Still unread.
+Still untested.
+
+But sometimes the most dangerous player…
+
+Is the one nobody has a scouting report on.
+
+So now the question becomes:
+
+What does Eric have to bring to the table?
+
+And bigger than that—
+
+Can Jamar take home the Stop Lee Classic at The Rock two years straight?
+
+Or will somebody finally knock the champ off the throne?
+
+After the turn on the front nine…
+
+One thing became crystal clear:
+
+The Rock was winning.
+
+Points were few and far between.
+
+At this point, nobody knew if we signed up for league play…
+
+Or accidentally walked into the U.S. Open.
+
+Because whoever set these pin locations?
+
+They chose violence.
+
+Three-putting became the norm.
+
+Birdie chances turned into survival missions.
+
+Guys standing over putts looking confident…
+
+Only to watch the ball drift past the hole like the greens had a personal issue with everybody.
+
+The greens crew basically said:
+
+“Y’all wanted competition?
+Here you go.”
+
+And The Rock?
+
+It just sat back laughing at all of us.
+
+Meanwhile…
+
+Old Head Greco still talking reckless.
+
+Cigar lit.
+
+Walking around like he got insider information from the golf gods.
+
+Lamont trying to hold down D.C.
+
+Tyrin trying to defend Baltimore’s honor.
+
+The Commish, Erik, carrying the pressure of being the defending Stop Lee Classic champion from last year.
+
+And everybody else?
+
+Trying not to mentally collapse under the pressure of The Rock.
+
+Because by the back nine…
+
+This wasn’t just golf anymore.
+
+This became survival.
+
+Guys recalculating strategy.
+
+Playing safer.
+
+Trying not to give away strokes.
+
+You could see frustration building.
+
+But you could also see growth.
+
+Because tough courses reveal real character.
+
+Some players folded.
+
+Some players adjusted.
+
+Some started realizing:
+
+“You can’t overpower this course.
+You gotta respect it.”
+
+And honestly…
+
+That sounded a lot like life.
+
+Once the dust finally cleared…
+
+The South had something to say after all.
+
+And Baltimore?
+
+They came down I-95 and made sure they left with hardware.
+
+Newcomer Eric—still fresh to league play, still unknown to most of the field—edged out last month’s tour winner, Tyrin, in a battle that stayed tight all the way through the end.
+
+Statement made.
+
+No more “new guy” talk after this one.
+
+The hardware was heading back down 95 South.
+
+And then…
+
+Like all great golf days—
+
+The real fellowship began at the 19th hole.
+
+Not inside the clubhouse.
+
+But out in the parking lot.
+
+Cigars lit.
+Music playing.
+Scorecards still being debated like courtroom evidence.
+
+Guys reliving shots they wish they had back.
+
+And shots they’ll probably exaggerate for the next year.
+
+But the best surprise of the day?
+
+The kids.
+
+Their first chance to truly witness what this day means.
+
+To see grown men honor brotherhood.
+Competition.
+Legacy.
+And one another.
+
+Not through speeches…
+
+But through presence.
+
+Through laughter.
+Trash talk.
+Handshakes.
+Stories.
+
+Then came the ride back to the neighborhood.
+
+Back to familiar ground.
+
+Back to family and friends.
+
+Back to The Bench.
+
+Where celebrations always feel a little more real.
+
+Where the stories get louder.
+The laughs get deeper.
+And the memories settle in.
+
+And sitting there in that moment…
+
+You could feel it.
+
+This wasn’t just a golf outing anymore.
+
+This was culture.
+
+This was community.
+
+This was a tradition that keeps growing every single year.
+
+And the season?
+
+Oh… it still has a lot left to offer.
+
+Because while everybody was focused on trophies, leaderboards, and who was taking hardware home down 95…
+
+One of the best moments of the day came quietly.
+
+Young bull LJ.
+
+LJ came to surprise people.
+
+Not with loud talk.
+Not with bravado.
+
+But with growth.
+
+Real growth.
+
+Somewhere in the middle of battling The Rock, fighting tough greens, pressure putts, and surviving one of the hardest outings of the season so far…
+
+LJ achieved something personal.
+
+Something meaningful.
+
+He broke 100 on the scorecard for the first time.
+
+Personal best.
+
+And on a day where The Rock was humbling almost everybody…
+
+That accomplishment hit even harder.
+
+Because sometimes the biggest victory…
+
+Ain’t winning the tournament.
+
+It’s beating the version of yourself from yesterday.
+
+And watching that happen in real time?
+
+That’s what this league is really about.
+
+Growth.
+
+Competition.
+
+Brotherhood.
+
+Confidence being built one round at a time.
+
+So while the veterans battled for position…
+
+And the heavy hitters fought over hardware…
+
+The future quietly announced itself too.
+
+And LJ?
+
+He let everybody know:
+
+“I’m coming.”
+
+Stop…
+
+Your people showed up for you again.
+
+And from The Rock…
+to the parking lot…
+to The Bench…
+
+Your name carried the entire day.
+
+By the end of the day, scorecards looked battle-tested.
+
+Nobody walked away untouched.
+
+But everybody walked away remembering.
+
+The laughs.
+
+The trash talk.
+
+The pressure.
+
+The moments.
+
+The fellowship.
+
+And underneath all the competition…
+
+One thing stayed true:
+
+This whole thing still belonged to Stop Lee.
+
+Every swing.
+
+Every joke.
+
+Every blown putt.
+
+Every loud celebration.
+
+Every story told afterward in the clubhouse.
+
+Because what started as grief…
+
+Has now turned into tradition.
+
+What started as loss…
+
+Turned into legacy.
+
+And The Rock?
+
+It became more than just a course that day.
+
+It became a proving ground.
+
+For pride.
+
+For brotherhood.
+
+For memory.
+
+For legacy.
+
+Closing Reflection
+
+<strong>Stop</strong>
+
+You would’ve loved this one.
+
+The jaw jacking.
+The pressure.
+The personalities.
+The cigars.
+The debates over scorecards.
+
+You would’ve been right in the middle of it all.
+
+Loud too.
+
+Probably accusing somebody of cheating with absolutely no evidence at all.
+
+And somehow…
+
+That would’ve made the day even better.
+
+🛑
+
+      `
+    },
     {
       slug: "baltimore-pressure",
       title: "🏆 Rock Manor Recap - Birthday, Battles and Baltimore Pressure",
