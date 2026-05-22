@@ -36,7 +36,7 @@ const players: Player[] = [
     name: "Aaron",
     scores: [
       { event: "Broad Run", points:  20, strokes: 95, isOfficial: true, is_winner: false },
-      { event: "Rock Manor", points: 0, strokes: 0, isOfficial: true, is_winner: false }    ]
+      { event: "Rock Manor", points: 19, strokes: 93, isOfficial: true, is_winner: false }    ]
   },
     {
     id: "4",
@@ -120,7 +120,7 @@ const players: Player[] = [
     name: "Isaiah",
     scores: [
       { event: "Broad Run", points:  3, strokes: 119, isOfficial: true, is_winner: false },
-      { event: "Rock Manor", points: 0, strokes: 0, isOfficial: true, is_winner: false }     ]
+      { event: "Rock Manor", points: 5, strokes: 123, isOfficial: true, is_winner: false }     ]
   },
     {
     id: "16",
