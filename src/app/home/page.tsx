@@ -1,12 +1,14 @@
 "use client"
 
 import { useRouter } from "next/navigation"
+import { useState } from "react"
 import BackButton from "@/src/components/BackButton"
 import SocialFooter from "@/src/components/Socials"
 
 export default function HomePage() {
 
   const router = useRouter()
+  const [selectedMonth, setSelectedMonth] = useState("All Posts")
 
   const styles = {
   text: {
@@ -34,6 +36,34 @@ export default function HomePage() {
 }
 
 
+const archiveOptions = [
+  "All Posts",
+  ...new Set(
+    posts.map((post) => {
+      const date = new Date(post.date)
+
+      return date.toLocaleString("default", {
+        month: "long",
+        year: "numeric",
+      })
+    })
+  ),
+]
+
+const filteredPosts =
+  selectedMonth === "All Posts"
+    ? posts
+    : posts.filter((post) => {
+        const date = new Date(post.date)
+
+        const formatted = date.toLocaleString("default", {
+          month: "long",
+          year: "numeric",
+        })
+
+        return formatted === selectedMonth
+      })
+
   
   return (
 
@@ -49,23 +79,59 @@ export default function HomePage() {
 
 
       {/* HERO */}
-      <div style={{ textAlign: "center", marginBottom: "24px" }}>
-        <h1 style={{
-          fontSize: "32px",
-          fontWeight: "bold",
-          marginBottom: "10px"
-        }}>
-          League News
-        </h1>
+{/* HERO */}
+<div style={{ textAlign: "center", marginBottom: "24px" }}>
+  
+  <h1
+    style={{
+      fontSize: "32px",
+      fontWeight: "bold",
+      marginBottom: "10px",
+    }}
+  >
+    League News
+  </h1>
 
-        <p style={{
-          fontSize: "16px",
-          color: "#555",
-          lineHeight: "1.5"
-        }}>
-          Stay updated with the latest league news, matchups, and stories.
-        </p>
-      </div>
+  <p
+    style={{
+      fontSize: "16px",
+      color: "#555",
+      lineHeight: "1.5",
+      marginBottom: "20px",
+    }}
+  >
+    Stay updated with the latest league news, matchups, and stories.
+  </p>
+
+  {/* DROPDOWN ROW */}
+  <div
+    style={{
+      display: "flex",
+      justifyContent: "flex-end",
+    }}
+  >
+    <select
+      value={selectedMonth}
+      onChange={(e) => setSelectedMonth(e.target.value)}
+      style={{
+        padding: "10px 16px",
+        borderRadius: "12px",
+        border: "1px solid #ddd",
+        background: "#fff",
+        fontSize: "14px",
+        fontWeight: "600",
+        cursor: "pointer",
+        minWidth: "180px",
+      }}
+    >
+      {archiveOptions.map((option) => (
+        <option key={option} value={option}>
+          {option}
+        </option>
+      ))}
+    </select>
+  </div>
+</div>
 
       {/* FEATURED CARD */}
       <div style={{
@@ -120,7 +186,7 @@ export default function HomePage() {
 
 <div style={{ display: "flex", flexDirection: "column", gap: "28px" }}>
 
-  {posts.map((post) => (
+  {filteredPosts.map((post) => (
   <div key={post.id} 
         onClick={() => router.push(`/news/${post.slug}`)}
         style={styles.card}>
