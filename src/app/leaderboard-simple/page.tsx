@@ -175,7 +175,7 @@ const players: Player[] = [
     id: "23",
     name: "Eric B",
     scores: [
-      { event: "Broad Run", points: 105, strokes: 8, isOfficial: false, is_winner: false  },
+      { event: "Broad Run", points: 8, strokes: 105, isOfficial: false, is_winner: false  },
       { event: "Rock Manor", points: 16, strokes: 95, isOfficial: true, is_winner: true }     ]
   },
     {
