@@ -9,7 +9,49 @@ export default async function PostPage({
   const { slug } = await params
 
   const posts = [
+    {
+      slug: "pregame-mercer",
+      title: "Mercer Oaks West: Where Flights Will Be Decided",
+      content: `
 
+Four Saturdays.
+
+That’s all that remains before the SLGC Juneteenth Classic tees off at Mercer Oaks West in Trenton, New Jersey.
+
+And after two rounds, the league is beginning to reveal itself.
+
+Some players are rising.
+Some are fading.
+Some are realizing tournament golf is different when every swing starts to matter.
+
+Mercer Oaks West won’t hand out anything easy.
+
+Long par 4s. Fast greens. Strategic fairways. Water lurking. Pressure building with every hole. This isn’t a course where you survive off talent alone. You have to think your way around it.
+
+At the top of the standings, Tyrin continues to set the pace after back-to-back strong performances. Jamar stays right on his heels, quietly becoming one of the steadiest players in the league. Aaron remains dangerous anytime he tees it up.
+
+But the gap isn’t closed yet.
+
+Andre and Keivon remain within striking distance heading into Round 3, with both players searching for the type of round that can completely shift the season.
+
+Elsewhere in the league, momentum is beginning to build.
+
+LJ showed flashes at Rock Manor with one of the strongest front nines of the weekend. Eric B shocked the field in his debut appearance, taking home the Rock Manor trophy with a 95. Veterans like Spurg, Erik L, and Larry continue fighting to stay in the mix as flights begin to take shape.
+
+And that’s what makes Mercer Oaks feel different.
+
+After this round, flights will officially be chosen.
+
+The standings are tightening.
+The pressure is rising.
+And every player now understands the season has entered a different phase.
+
+This is where contenders separate from the pack.
+
+The countdown to the Juneteenth Classic has officially begun. 🏌🏾‍♂️🔥
+
+      `
+    },
     {
       slug: "legacy",
       title: "Legacy Built at The Rock",
