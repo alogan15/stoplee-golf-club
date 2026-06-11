@@ -8,7 +8,7 @@ export default function TeeSheetPage() {
     event: "Mercer Oaks West Course",
     date: "June 20, 2026",
     price: "$72",
-    weather: "77° ☀️",
+    weather: "77°",
 
     groups: [
       {
@@ -79,7 +79,7 @@ export default function TeeSheetPage() {
         }}>
           <div>📅 {teeSheet.date}</div>
           <div>💵 {teeSheet.price}</div>
-          <div>🌤️ {teeSheet.weather}</div>
+          <div>☀️ {teeSheet.weather}</div>
           <div>⛳ Tee Times</div>
         </div>
 
