@@ -13,23 +13,23 @@ export default function TeeSheetPage() {
     groups: [
       {
         time: "11:00",
-        players: ["Player 1", "Player 2", "Player 3", "Player 4"]
+        players: ["Andre", "Walt", "Keivon", "Rickey"]
       },
       {
         time: "11:10",
-        players: ["Player 1", "Player 2", "Player 3", "Player 4"]
+        players: ["Julian", "Jamar", "Eric B", "Short"]
       },
       {
         time: "11:20",
-        players: ["Player 1", "Player 2", "Player 3", "Player 4"]
+        players: ["Anthony", "Tyrin", "Steph", "LJ"]
       },
       {
         time: "11:30",
-        players: ["Player 1", "Player 2", "Player 3", "Player 4"]
+        players: ["Greg", "Isaiah", "Danny", "Jay"]
       },
       {
         time: "11:40",
-        players: ["Player 1", "Player 2", "Player 3", "Player 4"]
+        players: ["James", "Jay Simms", "Spurg", "Erik L"]
       }
     ]
   }
