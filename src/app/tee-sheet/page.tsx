@@ -7,8 +7,8 @@ export default function TeeSheetPage() {
   const teeSheet = {
     event: "Mercer Oaks West Course",
     date: "June 20, 2026",
-    price: "TBD",
-    weather: "TBD",
+    price: "$72",
+    weather: "77° ☀️",
 
     groups: [
       {
