@@ -22,175 +22,201 @@ const players: Player[] = [
     name: "Andre",
     scores: [
       { event: "Broad Run", points: 17, strokes: 102, isOfficial: true, is_winner: false },
-      { event: "Rock Manor", points: 14, strokes: 100, isOfficial: true, is_winner: false }  ]
+      { event: "Rock Manor", points: 14, strokes: 100, isOfficial: true, is_winner: false },
+      { event: "Mercer Oaks(West)", points: 16, strokes: 105, isOfficial: true, is_winner: false }]
   },
   {
     id: "2",
     name: "Malcolm",
     scores: [
       { event: "Broad Run", points: 14, strokes: 100, isOfficial: true, is_winner: false },
-      { event: "Rock Manor", points: 0, strokes: 0, isOfficial: true, is_winner: false }     ]
+      { event: "Rock Manor", points: 0, strokes: 0, isOfficial: true, is_winner: false },
+      { event: "Mercer Oaks(West)", points: 0, strokes: 0, isOfficial: true, is_winner: false }
+      ]
   },
   {
     id: "3",
     name: "Aaron",
     scores: [
       { event: "Broad Run", points:  20, strokes: 95, isOfficial: true, is_winner: false },
-      { event: "Rock Manor", points: 19, strokes: 93, isOfficial: true, is_winner: false }    ]
+      { event: "Rock Manor", points: 19, strokes: 93, isOfficial: true, is_winner: false },
+      { event: "Mercer Oaks(West)", points: 0, strokes: 0, isOfficial: true, is_winner: false }]
   },
     {
     id: "4",
     name: "Julian",
     scores: [
       { event: "Broad Run", points:  5, strokes: 120, isOfficial: true, is_winner: false },
-      { event: "Rock Manor", points: 12, strokes: 102, isOfficial: true, is_winner: false }     ]
+      { event: "Rock Manor", points: 12, strokes: 102, isOfficial: true, is_winner: false },
+      { event: "Mercer Oaks(West)", points: 6, strokes: 120, isOfficial: true, is_winner: false }]
   },
   {
     id: "5",
     name: "Greg",
     scores: [
       { event: "Broad Run", points: 1, strokes: 127, isOfficial: true, is_winner: false },
-      { event: "Rock Manor", points: 10, strokes: 115, isOfficial: true, is_winner: false }     ]
+      { event: "Rock Manor", points: 10, strokes: 115, isOfficial: true, is_winner: false },
+      { event: "Mercer Oaks(West)", points: 0, strokes: 0, isOfficial: true, is_winner: false }]
   },
   {
     id: "6",
     name: "LJ",
     scores: [
       { event: "Broad Run", points:  11, strokes: 113, isOfficial: true, is_winner: false },
-      { event: "Rock Manor", points: 11, strokes: 98, isOfficial: true, is_winner: false }     ]
+      { event: "Rock Manor", points: 11, strokes: 98, isOfficial: true, is_winner: false },
+      { event: "Mercer Oaks(West)", points: 9, strokes: 107, isOfficial: true, is_winner: false }]
   },
     {
     id: "7",
     name: "Steph",
     scores: [
       { event: "Broad Run", points: 9, strokes: 112, isOfficial: true, is_winner: false },
-      { event: "Rock Manor", points: 8, strokes: 108, isOfficial: true, is_winner: false }     ]
+      { event: "Rock Manor", points: 8, strokes: 108, isOfficial: true, is_winner: false },
+      { event: "Mercer Oaks(West)", points: 9, strokes: 115, isOfficial: true, is_winner: false }]
   },
   {
     id: "8",
     name: "Walt",
     scores: [
       { event: "Broad Run", points: 4, strokes: 108, isOfficial: true, is_winner: false },
-      { event: "Rock Manor", points: 2, strokes: 113, isOfficial: true, is_winner: false }     ]
+      { event: "Rock Manor", points: 2, strokes: 113, isOfficial: true, is_winner: false },
+      { event: "Mercer Oaks(West)", points: 6, strokes: 112, isOfficial: true, is_winner: false }]
   },
   {
     id: "9",
     name: "James",
     scores: [
       { event: "Broad Run", points:  6, strokes: 115, isOfficial: true, is_winner: false },
-      { event: "Rock Manor", points: 8, strokes: 107, isOfficial: false, is_winner: false }     ]
+      { event: "Rock Manor", points: 8, strokes: 107, isOfficial: false, is_winner: false },
+      { event: "Mercer Oaks(West)", points: 9, strokes: 110, isOfficial: true, is_winner: false }]
   },
     {
     id: "10",
     name: "Jamar",
     scores: [
       { event: "Broad Run", points: 23, strokes: 95, isOfficial: true, is_winner: false },
-      { event: "Rock Manor", points: 17, strokes: 98, isOfficial: true, is_winner: false }     ]
+      { event: "Rock Manor", points: 17, strokes: 98, isOfficial: true, is_winner: false },
+      { event: "Mercer Oaks(West)", points: 25, strokes: 97, isOfficial: true, is_winner: false }]
   },
   {
     id: "11",
     name: "Larry",
     scores: [
       { event: "Broad Run", points: 13, strokes: 104, isOfficial: true, is_winner: false },
-      { event: "Rock Manor", points: 9, strokes: 104, isOfficial: true, is_winner: false }     ]
+      { event: "Rock Manor", points: 9, strokes: 104, isOfficial: true, is_winner: false },
+      { event: "Mercer Oaks(West)", points: 8, strokes: 106, isOfficial: true, is_winner: false }]
   },
   {
     id: "12",
     name: "Greeco",
     scores: [
       { event: "Broad Run", points:  10, strokes: 119, isOfficial: true, is_winner: false },
-      { event: "Rock Manor", points: 11, strokes: 109, isOfficial: true, is_winner: false }     ]
+      { event: "Rock Manor", points: 11, strokes: 109, isOfficial: true, is_winner: false },
+      { event: "Mercer Oaks(West)", points: 6, strokes: 111, isOfficial: true, is_winner: false }]
   },
     {
     id: "13",
     name: "Danny",
     scores: [
       { event: "Broad Run", points: 4 , strokes: 122, isOfficial: true, is_winner: false },
-      { event: "Rock Manor", points: 6, strokes: 115, isOfficial: true, is_winner: false }     ]
+      { event: "Rock Manor", points: 6, strokes: 115, isOfficial: true, is_winner: false },
+      { event: "Mercer Oaks(West)", points: 0, strokes: 0, isOfficial: true, is_winner: false }     ]
   },
   {
     id: "14",
     name: "Erik L",
     scores: [
       { event: "Broad Run", points: 14, strokes: 106, isOfficial: true, is_winner: false },
-      { event: "Rock Manor", points: 11, strokes: 99, isOfficial: true, is_winner: false }     ]
+      { event: "Rock Manor", points: 11, strokes: 99, isOfficial: true, is_winner: false },
+      { event: "Mercer Oaks(West)", points: 12, strokes: 105, isOfficial: true, is_winner: false }     ]
   },
   {
     id: "15",
     name: "Isaiah",
     scores: [
       { event: "Broad Run", points:  3, strokes: 119, isOfficial: true, is_winner: false },
-      { event: "Rock Manor", points: 5, strokes: 123, isOfficial: true, is_winner: false }     ]
+      { event: "Rock Manor", points: 5, strokes: 123, isOfficial: true, is_winner: false },
+      { event: "Mercer Oaks(West)", points: 5, strokes: 119, isOfficial: true, is_winner: false }     ]
   },
     {
     id: "16",
     name: "Tyrin",
     scores: [
       { event: "Broad Run", points: 21, strokes: 93, isOfficial: true, is_winner: true },
-      { event: "Rock Manor", points: 20, strokes: 95, isOfficial: true, is_winner: false }     ]
+      { event: "Rock Manor", points: 20, strokes: 95, isOfficial: true, is_winner: false },
+      { event: "Mercer Oaks(West)", points: 27, strokes: 91, isOfficial: true, is_winner: true }     ]
   },
   {
     id: "17",
     name: "Short",
     scores: [
       { event: "Broad Run", points: 9, strokes: 110, isOfficial: true, is_winner: false },
-      { event: "Rock Manor", points: 10, strokes: 104, isOfficial: true, is_winner: false }     ]
+      { event: "Rock Manor", points: 10, strokes: 104, isOfficial: true, is_winner: false },
+      { event: "Mercer Oaks(West)", points: 20, strokes: 99, isOfficial: true, is_winner: false }     ]
   },
   {
     id: "18",
     name: "Spurg",
     scores: [
       { event: "Broad Run", points:  13, strokes: 0, isOfficial: true, is_winner: false },
-      { event: "Rock Manor", points: 15, strokes: 99, isOfficial: true, is_winner: false }     ]
+      { event: "Rock Manor", points: 15, strokes: 99, isOfficial: true, is_winner: false }, 
+      { event: "Mercer Oaks(West)", points: 17, strokes: 94, isOfficial: true, is_winner: false }     ]
   },
     {
     id: "19",
     name: "Cuffy",
     scores: [
       { event: "Broad Run", points: 0, strokes: 0, isOfficial: true, is_winner: false },
-      { event: "Rock Manor", points: 0, strokes: 0, isOfficial: true, is_winner: false }     ]
+      { event: "Rock Manor", points: 0, strokes: 0, isOfficial: true, is_winner: false },   
+      { event: "Mercer Oaks(West)", points: 0, strokes: 0, isOfficial: true, is_winner: false }     ]
   },
   {
     id: "20",
     name: "Jay",
     scores: [
       { event: "Broad Run", points: 6, strokes: 122, isOfficial: false, is_winner: false },
-      { event: "Rock Manor", points: 14, strokes: 99, isOfficial: false, is_winner: false }     ]
+      { event: "Rock Manor", points: 14, strokes: 99, isOfficial: false, is_winner: false },  
+      { event: "Mercer Oaks(West)", points: 4, strokes: 109, isOfficial: true, is_winner: false }     ]
   },
   {
     id: "21",
     name: "Keivon",
     scores: [
       { event: "Broad Run", points:  16, strokes: 106, isOfficial: false, is_winner: false },
-      { event: "Rock Manor", points: 15, strokes: 105, isOfficial: false, is_winner: false }     ]
+      { event: "Rock Manor", points: 15, strokes: 105, isOfficial: false, is_winner: false }, 
+      { event: "Mercer Oaks(West)", points: 0, strokes: 0, isOfficial: true, is_winner: false }     ]
   },
     {
     id: "22",
     name: "Anthony",
     scores: [
       { event: "Broad Run", points:  9, strokes: 111, isOfficial: false, is_winner: false  },
-      { event: "Rock Manor", points: 7, strokes: 107, isOfficial: false, is_winner: false }     ]
+      { event: "Rock Manor", points: 7, strokes: 107, isOfficial: false, is_winner: false },  
+      { event: "Mercer Oaks(West)", points: 5, strokes: 120, isOfficial: true, is_winner: false }     ]
   },
   {
     id: "23",
     name: "Eric B",
     scores: [
       { event: "Broad Run", points: 8, strokes: 105, isOfficial: false, is_winner: false  },
-      { event: "Rock Manor", points: 16, strokes: 95, isOfficial: true, is_winner: true }     ]
+      { event: "Rock Manor", points: 16, strokes: 95, isOfficial: true, is_winner: true },  
+      { event: "Mercer Oaks(West)", points: 16, strokes: 101, isOfficial: true, is_winner: false }     ]
   },
     {
     id: "24",
     name: "Rickey",
     scores: [
       { event: "Broad Run", points: 5, strokes: 0, isOfficial: true, is_winner: false  },
-      { event: "Rock Manor", points: 3, strokes: 118, isOfficial: true, is_winner: false }     ]
+      { event: "Rock Manor", points: 3, strokes: 118, isOfficial: true, is_winner: false }, 
+      { event: "Mercer Oaks(West)", points: 0, strokes: 0, isOfficial: true, is_winner: false }     ]
   },
     {
     id: "24",
     name: "Justin",
     scores: [
       { event: "Broad Run", points: 7, strokes: 118, isOfficial: false, is_winner: false  },
-      { event: "Rock Manor", points: 5, strokes: 117, isOfficial: false, is_winner: false }     ]
+      { event: "Rock Manor", points: 5, strokes: 117, isOfficial: false, is_winner: false },
+      { event: "Mercer Oaks(West)", points: 4, strokes: 117, isOfficial: true, is_winner: false }     ]
   },
 ]
 
