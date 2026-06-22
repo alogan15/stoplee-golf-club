@@ -99,6 +99,19 @@ function getTrendDisplay(trend: string, change: number) {
             </div>
         )
       })}
+
+      <div
+          style={{
+            textAlign: "right",
+            fontSize: "12px",
+            color: "#666",
+            fontStyle: "italic",
+            marginTop: "20px",
+            marginBottom: "10px",
+          }}
+        >
+            * Rankings determined by recent stroke-play performance, consistency, and momentum.
+        </div>
                   <SocialFooter />
 
     </div>
