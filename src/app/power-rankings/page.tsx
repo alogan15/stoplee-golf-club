@@ -7,14 +7,14 @@ export default function PowerRankingsPage() {
 const rankings = [
   { name: "Tyrin", rank: 1, trend: "up", change: 1 },
   { name: "Jamar", rank: 2, trend: "steady", change: 0 },
-  { name: "Aaron", rank: 3, trend: "up", change: 2 },
+  { name: "Spurg", rank: 3, trend: "up", change: 2 },
   { name: "Andre", rank: 4, trend: "up", change: 1 },
   { name: "Eric B", rank: 5, trend: "down", change: -1 },
-  { name: "Keivon", rank: 6, trend: "down", change: -1 },
-  { name: "Erik L", rank: 7, trend: "steady", change: 0 },
-  { name: "Spurg", rank: 8, trend: "steady", change: 0 },
-  { name: "LJ", rank: 9, trend: "steady", change: 0 },
-  { name: "Larry", rank: 10, trend: "steady", change: 0 }
+  { name: "Aaron", rank: 6, trend: "down", change: -1 },
+  { name: "Short", rank: 7, trend: "steady", change: 0 },
+  { name: "Erik L", rank: 8, trend: "steady", change: 0 },
+  { name: "Keivon", rank: 9, trend: "steady", change: 0 },
+  { name: "LJ", rank: 10, trend: "steady", change: 0 }
 ]
 
 
