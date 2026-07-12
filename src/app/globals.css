@@ -16,3 +16,9 @@ input {
     display: none;
   }
 }
+
+input::placeholder {
+  font-size: 14px;
+  color: #9ca3af;
+  font-weight: 500;
+}

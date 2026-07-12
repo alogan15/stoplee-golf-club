@@ -108,25 +108,36 @@ const [loading,setLoading] = useState(true)
 
 
 
-<h1 style={{
-  textAlign: "center",
-  fontSize: "34px",
-  fontWeight: "800",
-  background: "linear-gradient(90deg, #166534, #22c55e)",
-  WebkitBackgroundClip: "text",
-  WebkitTextFillColor: "transparent"
-}}>
-  The Clubhouse
-</h1>
+<div
+  style={{
+    textAlign: "center",
+    marginBottom: "28px",
+  }}
+>
+  <h1
+    style={{
+      fontSize: "40px",
+      fontWeight: "800",
+      marginBottom: "8px",
+      background: "linear-gradient(90deg,#166534,#22c55e)",
+      WebkitBackgroundClip: "text",
+      WebkitTextFillColor: "transparent",
+      letterSpacing: "-1px",
+    }}
+  >
+    The Clubhouse
+  </h1>
 
-<p style={{
-  textAlign: "center",
-  color: "#666",
-  fontSize: "14px",
-  marginTop: "-10px"
-}}>
-  Your league. Your competition.
-</p>
+  <p
+    style={{
+      color: "#6b7280",
+      fontSize: "16px",
+      margin: 0,
+    }}
+  >
+    Your league. Your competition.
+  </p>
+</div>
 
             <div style={{marginTop:"20px"}}>
 

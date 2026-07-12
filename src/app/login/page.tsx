@@ -63,15 +63,15 @@ return(
   alignItems: "center",
   justifyContent: "center",
   padding: "16px",
-  background: "#f5f5f5"
+  background:"linear-gradient(180deg,#f8faf7,#eef7ef)"
 }}>
   <div style={{
     width: "100%",
     maxWidth: "400px",
-    background: "white",
+    background: "#ffffff",
     padding: "24px",
-    borderRadius: "16px",
-    boxShadow: "0 4px 12px rgba(0,0,0,0.08)",
+    borderRadius: "24px",
+    boxShadow: "0 12px 40px rgba(0,0,0,0.12)",
     textAlign: "center"
   }}>
 
@@ -81,7 +81,7 @@ return(
       alt="Stoplee Golfer"
       style={{
         width: "100%",
-        maxWidth: "200px",
+        maxWidth: "240px",
         marginBottom: "20px"
       }}
     />
@@ -110,12 +110,15 @@ return(
       placeholder="Email"
       value={email}
       onChange={(e) => setEmail(e.target.value)}
-      style={{
-        width: "100%",
-        padding: "12px",
-        marginBottom: "12px",
-        borderRadius: "8px",
-        border: "1px solid #ddd"
+     style={{
+        width: "90%",
+        padding: "16px",
+        fontSize: "16px",
+        borderRadius: "12px",
+        border: "1px solid #d9d9d9",
+        outline: "none",
+        marginBottom: "16px",
+        color: "#222",
       }}
     />
 
@@ -124,12 +127,15 @@ return(
       placeholder="Password"
         value={password}
         onChange={(e) => setPassword(e.target.value)}
-      style={{
-        width: "100%",
-        padding: "12px",
+     style={{
+        width: "90%",
+        padding: "16px",
+        fontSize: "16px",
+        borderRadius: "12px",
+        border: "1px solid #d9d9d9",
+        outline: "none",
         marginBottom: "16px",
-        borderRadius: "8px",
-        border: "1px solid #ddd"
+        color: "#222",
       }}
     />
 
@@ -168,7 +174,7 @@ return(
       fontSize: "16px",
       cursor: "pointer"
     }}>
-      Login
+      Enter Clubhouse →
     </button>
 
     <p 
@@ -192,7 +198,9 @@ return(
     color: "#888",
     marginTop: "12px"
     }}>
-    “Play like a champion.”
+    Compete.
+    Honor.
+    Build Legacy.
     </p>
 
   </div>
