@@ -1,11 +1,13 @@
 "use client"
 
 import BackButton from "@/src/components/BackButton"
+import { useState } from "react"
 
 
 type Player = {
   id: string
   name: string
+  flight: "A" | "B"
   scores: {
     event: string
     points: number
@@ -20,6 +22,7 @@ const players: Player[] = [
   {
     id: "1",
     name: "Andre",
+    flight: "A",
     scores: [
       { event: "Broad Run", points: 17, strokes: 102, isOfficial: true, is_winner: false },
       { event: "Rock Manor", points: 14, strokes: 100, isOfficial: true, is_winner: false },
@@ -28,6 +31,7 @@ const players: Player[] = [
   {
     id: "2",
     name: "Malcolm",
+    flight: "A",
     scores: [
       { event: "Broad Run", points: 14, strokes: 100, isOfficial: true, is_winner: false },
       { event: "Rock Manor", points: 0, strokes: 0, isOfficial: true, is_winner: false },
@@ -37,6 +41,7 @@ const players: Player[] = [
   {
     id: "3",
     name: "Aaron",
+    flight: "A",
     scores: [
       { event: "Broad Run", points:  20, strokes: 95, isOfficial: true, is_winner: false },
       { event: "Rock Manor", points: 19, strokes: 93, isOfficial: true, is_winner: false },
@@ -45,6 +50,7 @@ const players: Player[] = [
     {
     id: "4",
     name: "Julian",
+    flight: "B",
     scores: [
       { event: "Broad Run", points:  5, strokes: 120, isOfficial: true, is_winner: false },
       { event: "Rock Manor", points: 12, strokes: 102, isOfficial: true, is_winner: false },
@@ -53,6 +59,7 @@ const players: Player[] = [
   {
     id: "5",
     name: "Greg",
+    flight: "B",
     scores: [
       { event: "Broad Run", points: 1, strokes: 127, isOfficial: true, is_winner: false },
       { event: "Rock Manor", points: 10, strokes: 115, isOfficial: true, is_winner: false },
@@ -61,6 +68,7 @@ const players: Player[] = [
   {
     id: "6",
     name: "LJ",
+    flight: "B",
     scores: [
       { event: "Broad Run", points:  11, strokes: 113, isOfficial: true, is_winner: false },
       { event: "Rock Manor", points: 11, strokes: 98, isOfficial: true, is_winner: false },
@@ -69,6 +77,7 @@ const players: Player[] = [
     {
     id: "7",
     name: "Steph",
+    flight: "B",
     scores: [
       { event: "Broad Run", points: 9, strokes: 112, isOfficial: true, is_winner: false },
       { event: "Rock Manor", points: 8, strokes: 108, isOfficial: true, is_winner: false },
@@ -77,6 +86,7 @@ const players: Player[] = [
   {
     id: "8",
     name: "Walt",
+    flight: "B",
     scores: [
       { event: "Broad Run", points: 4, strokes: 108, isOfficial: true, is_winner: false },
       { event: "Rock Manor", points: 2, strokes: 113, isOfficial: true, is_winner: false },
@@ -85,6 +95,7 @@ const players: Player[] = [
   {
     id: "9",
     name: "James",
+    flight: "A",
     scores: [
       { event: "Broad Run", points:  6, strokes: 115, isOfficial: true, is_winner: false },
       { event: "Rock Manor", points: 8, strokes: 107, isOfficial: false, is_winner: false },
@@ -93,6 +104,7 @@ const players: Player[] = [
     {
     id: "10",
     name: "Jamar",
+    flight: "A",
     scores: [
       { event: "Broad Run", points: 23, strokes: 95, isOfficial: true, is_winner: false },
       { event: "Rock Manor", points: 17, strokes: 98, isOfficial: true, is_winner: false },
@@ -101,6 +113,7 @@ const players: Player[] = [
   {
     id: "11",
     name: "Larry",
+    flight: "A",
     scores: [
       { event: "Broad Run", points: 13, strokes: 104, isOfficial: true, is_winner: false },
       { event: "Rock Manor", points: 9, strokes: 104, isOfficial: true, is_winner: false },
@@ -109,6 +122,7 @@ const players: Player[] = [
   {
     id: "12",
     name: "Greeco",
+    flight: "B",
     scores: [
       { event: "Broad Run", points:  10, strokes: 119, isOfficial: true, is_winner: false },
       { event: "Rock Manor", points: 11, strokes: 109, isOfficial: true, is_winner: false },
@@ -117,6 +131,7 @@ const players: Player[] = [
     {
     id: "13",
     name: "Danny",
+    flight: "B",
     scores: [
       { event: "Broad Run", points: 4 , strokes: 122, isOfficial: true, is_winner: false },
       { event: "Rock Manor", points: 6, strokes: 115, isOfficial: true, is_winner: false },
@@ -125,6 +140,7 @@ const players: Player[] = [
   {
     id: "14",
     name: "Erik L",
+    flight: "A",
     scores: [
       { event: "Broad Run", points: 14, strokes: 106, isOfficial: true, is_winner: false },
       { event: "Rock Manor", points: 11, strokes: 99, isOfficial: true, is_winner: false },
@@ -133,6 +149,7 @@ const players: Player[] = [
   {
     id: "15",
     name: "Isaiah",
+    flight: "B",
     scores: [
       { event: "Broad Run", points:  3, strokes: 119, isOfficial: true, is_winner: false },
       { event: "Rock Manor", points: 5, strokes: 123, isOfficial: true, is_winner: false },
@@ -141,6 +158,7 @@ const players: Player[] = [
     {
     id: "16",
     name: "Tyrin",
+    flight: "A",
     scores: [
       { event: "Broad Run", points: 21, strokes: 93, isOfficial: true, is_winner: true },
       { event: "Rock Manor", points: 20, strokes: 95, isOfficial: true, is_winner: false },
@@ -148,7 +166,8 @@ const players: Player[] = [
   },
   {
     id: "17",
-    name: "Short",
+    name: "Short", 
+    flight: "A",
     scores: [
       { event: "Broad Run", points: 9, strokes: 110, isOfficial: true, is_winner: false },
       { event: "Rock Manor", points: 10, strokes: 104, isOfficial: true, is_winner: false },
@@ -157,6 +176,7 @@ const players: Player[] = [
   {
     id: "18",
     name: "Spurg",
+    flight: "A",
     scores: [
       { event: "Broad Run", points:  13, strokes: 0, isOfficial: true, is_winner: false },
       { event: "Rock Manor", points: 15, strokes: 99, isOfficial: true, is_winner: false }, 
@@ -165,6 +185,7 @@ const players: Player[] = [
     {
     id: "19",
     name: "Cuffy",
+    flight: "B",
     scores: [
       { event: "Broad Run", points: 0, strokes: 0, isOfficial: true, is_winner: false },
       { event: "Rock Manor", points: 0, strokes: 0, isOfficial: true, is_winner: false },   
@@ -173,6 +194,7 @@ const players: Player[] = [
   {
     id: "20",
     name: "Jay",
+    flight: "A",
     scores: [
       { event: "Broad Run", points: 6, strokes: 122, isOfficial: false, is_winner: false },
       { event: "Rock Manor", points: 14, strokes: 99, isOfficial: false, is_winner: false },  
@@ -181,6 +203,7 @@ const players: Player[] = [
   {
     id: "21",
     name: "Keivon",
+    flight: "A",
     scores: [
       { event: "Broad Run", points:  16, strokes: 106, isOfficial: false, is_winner: false },
       { event: "Rock Manor", points: 15, strokes: 105, isOfficial: false, is_winner: false }, 
@@ -189,6 +212,7 @@ const players: Player[] = [
     {
     id: "22",
     name: "Anthony",
+    flight: "B",
     scores: [
       { event: "Broad Run", points:  9, strokes: 111, isOfficial: false, is_winner: false  },
       { event: "Rock Manor", points: 7, strokes: 107, isOfficial: false, is_winner: false },  
@@ -197,6 +221,7 @@ const players: Player[] = [
   {
     id: "23",
     name: "Eric B",
+    flight: "A",
     scores: [
       { event: "Broad Run", points: 8, strokes: 105, isOfficial: false, is_winner: false  },
       { event: "Rock Manor", points: 16, strokes: 95, isOfficial: true, is_winner: true },  
@@ -205,6 +230,7 @@ const players: Player[] = [
     {
     id: "24",
     name: "Rickey",
+    flight: "B",
     scores: [
       { event: "Broad Run", points: 5, strokes: 0, isOfficial: true, is_winner: false  },
       { event: "Rock Manor", points: 3, strokes: 118, isOfficial: true, is_winner: false }, 
@@ -213,6 +239,7 @@ const players: Player[] = [
     {
     id: "24",
     name: "Justin",
+    flight: "B",
     scores: [
       { event: "Broad Run", points: 7, strokes: 118, isOfficial: false, is_winner: false  },
       { event: "Rock Manor", points: 5, strokes: 117, isOfficial: false, is_winner: false },
@@ -242,28 +269,30 @@ function calculatepoints(points: number, par: number) {
 }
 
 export default function LeaderboardSimple() {
-  
 
-const leaderboard = players
-  .map(player => {
-    let total = 0
-    let roundsPlayed = 0
+  const [flight, setFlight] = useState<"A" | "B">("A")
 
-    // ✅ convert array → object
-    const scoreMap: Record<string, number> = {}
+  const filteredPlayers = players.filter(p => p.flight === flight)
 
-    player.scores.forEach(s => {
-      scoreMap[s.event] = s.points
-    })
+  const leaderboard = filteredPlayers
+    .map(player => {
+      let total = 0
+      let roundsPlayed = 0
 
-    events.forEach(event => {
-      const score = scoreMap[event]
+      const scoreMap: Record<string, number> = {}
 
-      if (score !== undefined) {
-        total += score
-        roundsPlayed++
-      }
-    })
+      player.scores.forEach(s => {
+        scoreMap[s.event] = s.points
+      })
+
+      events.forEach(event => {
+        const score = scoreMap[event]
+
+        if (score !== undefined) {
+          total += score
+          roundsPlayed++
+        }
+      })
 
     const avg =
       roundsPlayed > 0
@@ -331,6 +360,47 @@ events.forEach(event => {
       }}>
         🏆 League Leaderboard
       </h1>
+
+      <div
+  style={{
+    display: "flex",
+    justifyContent: "center",
+    gap: "10px",
+    marginBottom: "20px",
+  }}
+>
+  <button
+    onClick={() => setFlight("A")}
+    style={{
+      padding: "10px 20px",
+      borderRadius: "999px",
+      border: "none",
+      cursor: "pointer",
+      background: flight === "A" ? "#166534" : "#e5e7eb",
+      color: flight === "A" ? "white" : "#374151",
+      fontWeight: 700,
+      transition: "0.2s",
+    }}
+  >
+    Flight A
+  </button>
+
+  <button
+    onClick={() => setFlight("B")}
+    style={{
+      padding: "10px 20px",
+      borderRadius: "999px",
+      border: "none",
+      cursor: "pointer",
+      background: flight === "B" ? "#166534" : "#e5e7eb",
+      color: flight === "B" ? "white" : "#374151",
+      fontWeight: 700,
+      transition: "0.2s",
+    }}
+  >
+    Flight B
+  </button>
+</div>
 
       <div style={{
         background: "white",
