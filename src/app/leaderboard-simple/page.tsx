@@ -95,7 +95,7 @@ const players: Player[] = [
   {
     id: "9",
     name: "James",
-    flight: "A",
+    flight: "B",
     scores: [
       { event: "Broad Run", points:  6, strokes: 115, isOfficial: true, is_winner: false },
       { event: "Rock Manor", points: 8, strokes: 107, isOfficial: false, is_winner: false },

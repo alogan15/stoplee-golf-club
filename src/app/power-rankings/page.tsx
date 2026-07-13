@@ -2,9 +2,13 @@
 
 import BackButton from "@/src/components/BackButton"
 import SocialFooter from "@/src/components/Socials"
+import { useState } from "react"
 
 export default function PowerRankingsPage() {
-const rankings = [
+
+
+const [flight, setFlight] = useState<"A" | "B">("A")
+const flightARankings = [
   { name: "Tyrin", rank: 1, trend: "up", change: 1 },
   { name: "Jamar", rank: 2, trend: "steady", change: 0 },
   { name: "Spurg", rank: 3, trend: "up", change: 2 },
@@ -14,8 +18,25 @@ const rankings = [
   { name: "Short", rank: 7, trend: "steady", change: 0 },
   { name: "Erik L", rank: 8, trend: "steady", change: 0 },
   { name: "Keivon", rank: 9, trend: "steady", change: 0 },
-  { name: "LJ", rank: 10, trend: "steady", change: 0 }
+  { name: "Larry", rank: 10, trend: "steady", change: 0 }
 ]
+
+const flightBRankings = [
+  { name: "LJ", rank: 1, trend: "up", change: 1 },
+  { name: "Greeco", rank: 2, trend: "steady", change: 0 },
+  { name: "Steph", rank: 3, trend: "up", change: 2 },
+  { name: "James", rank: 4, trend: "up", change: 1 },
+  { name: "Julian", rank: 5, trend: "down", change: -1 },
+  { name: "Anthony", rank: 6, trend: "down", change: -1 },
+  { name: "Justin", rank: 7, trend: "steady", change: 0 },
+  { name: "Isaiah", rank: 8, trend: "steady", change: 0 },
+  { name: "Walt", rank: 9, trend: "steady", change: 0 },
+  { name: "Greg", rank: 10, trend: "steady", change: 0 }
+]
+const rankings =
+  flight === "A"
+    ? flightARankings
+    : flightBRankings
 
 
 function getTrendDisplay(trend: string, change: number) {
@@ -55,6 +76,45 @@ function getTrendDisplay(trend: string, change: number) {
         ⚡ SLGC Power Rankings
       </h1>
 
+      <div
+  style={{
+    display: "flex",
+    justifyContent: "center",
+    gap: "10px",
+    marginBottom: "24px",
+  }}
+>
+  <button
+    onClick={() => setFlight("A")}
+    style={{
+      padding: "10px 20px",
+      border: "none",
+      borderRadius: "999px",
+      background: flight === "A" ? "#166534" : "#e5e7eb",
+      color: flight === "A" ? "white" : "#374151",
+      fontWeight: "700",
+      cursor: "pointer",
+    }}
+  >
+    Flight A
+  </button>
+
+    <button
+      onClick={() => setFlight("B")}
+      style={{
+        padding: "10px 20px",
+        border: "none",
+        borderRadius: "999px",
+        background: flight === "B" ? "#166534" : "#e5e7eb",
+        color: flight === "B" ? "white" : "#374151",
+        fontWeight: "700",
+        cursor: "pointer",
+      }}
+    >
+      Flight B
+    </button>
+  </div>
+
       {rankings.map((player, i) => {
         let borderColor = "#444"
 
@@ -66,15 +126,16 @@ function getTrendDisplay(trend: string, change: number) {
             <div
             key={player.name}
             style={{
-                background: "#1e293b",
+                background: "#1f5133",
                 padding: "18px",
                 borderRadius: "14px",
+                borderLeft: "6px solid #d4af37",
                 marginBottom: "14px",
                 display: "flex",
                 justifyContent: "center",
                 alignItems: "center",
                 color: "white",
-                borderLeft: `4px solid ${borderColor}`,
+                // borderLeft: `4px solid ${borderColor}`,
                 boxShadow: i < 3 ? "0 0 10px rgba(255,215,0,0.3)" : "none",
             }}
             >

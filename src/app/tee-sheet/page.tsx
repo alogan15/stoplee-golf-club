@@ -5,31 +5,23 @@ import BackButton from "@/src/components/BackButton"
 export default function TeeSheetPage() {
 
   const teeSheet = {
-    event: "Mercer Oaks West Course",
-    date: "June 20, 2026",
-    price: "$72",
-    weather: "77°",
+    event: "Moccassin Run",
+    date: "July 18, 2026",
+    price: "$89",
+    weather: "89°",
 
     groups: [
       {
-        time: "11:00",
-        players: ["Andre", "Walt", "Short", "Greeco"]
+        time: "9:54",
+        players: ["Julian", "Danny", "LJ", "Ricky"]
       },
       {
-        time: "11:10",
-        players: ["Julian", "Jamar", "Eric B", "Jay"]
+        time: "10:03",
+        players: ["Erik L", "Malc", "Aaron", "Keivon"]
       },
       {
-        time: "11:20",
-        players: ["Anthony", "Tyrin", "Steph", "LJ"]
-      },
-      {
-        time: "11:30",
-        players: ["Larry", "Isaiah", "Spurg"]
-      },
-      {
-        time: "11:40",
-        players: ["James", "Jay Simms", "Erik L"]
+        time: "10:12",
+        players: ["Eric B", "Short", "Steph", "Walt"]
       }
     ]
   }
@@ -53,7 +45,7 @@ export default function TeeSheetPage() {
         marginBottom: "10px",
         textAlign: "center"
       }}>
-        🏌🏽 Juneteenth Classic
+        🏌🏽 La Fiesta
       </h1>
 
       {/* EVENT CARD */}
