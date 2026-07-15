@@ -139,12 +139,12 @@ const [loading,setLoading] = useState(true)
   </p>
   <div
   style={{
-    background: "white",
-    borderRadius: "18px",
-    padding: "20px",
+    background: "#f5f8f4",
+    borderRadius: "20px",
+    padding: "18px",
     marginTop: "28px",
-    marginBottom: "28px",
-    boxShadow: "0 10px 30px rgba(0,0,0,.08)",
+    marginBottom: "22px",
+    boxShadow: "0 12px 24px rgba(0,0,0,.08)",
     border: "1px solid #ecf0ec",
   }}
 >
@@ -176,16 +176,26 @@ const [loading,setLoading] = useState(true)
       color: "#555",
     }}
   >
-    Saturday • July 19
+    📅 Saturday • July 19
   </p>
+
 
   <p
     style={{
       marginBottom: "18px",
       color: "#555",
+      fontWeight: "800",
     }}
   >
-    Moccasin Run Golf Club
+    📍Moccasin Run Golf Club
+  </p>
+      <p
+    style={{
+      margin: "8px 0",
+      color: "#555",
+    }}
+  >
+    👥 10 Players Registered
   </p>
 
   <button
@@ -229,6 +239,61 @@ const [loading,setLoading] = useState(true)
 
 
 </div>
+
+<div
+  style={{
+    marginTop: "30px",
+    background: "white",
+    borderRadius: "20px",
+    padding: "20px",
+    boxShadow: "0 8px 20px rgba(0,0,0,.08)",
+    border: "1px solid #ecf0ec",
+  }}
+>
+  <h2
+    style={{
+      color: "#166534",
+      fontSize: "24px",
+      fontWeight: "800",
+      marginBottom: "18px",
+    }}
+  >
+    📰 Latest News
+  </h2>
+
+  <NewsItem
+    title="La Fiesta Tee Sheet Released"
+    subtitle="Groups and tee times are now live."
+    time="Today"
+  />
+
+  <NewsItem
+    title="Flight A & Flight B Announced"
+    subtitle="Power Rankings now separated by flights."
+    time="Yesterday"
+  />
+
+  <NewsItem
+    title="Moccasin Run Preview"
+    subtitle="Everything you need to know before Saturday."
+    time="2 days ago"
+  />
+
+  <button
+    onClick={() => router.push("/home")}
+    style={{
+      marginTop: "12px",
+      background: "transparent",
+      border: "none",
+      color: "#166534",
+      fontWeight: "700",
+      cursor: "pointer",
+      fontSize: "16px",
+    }}
+  >
+    View All News →
+  </button>
+</div>
 </div>
 
 
@@ -258,6 +323,59 @@ function ActionCard({ title, onClick }: { title: string, onClick: () => void }) 
                 >
                 {title}
                 </div>
+  )
+}
+
+function NewsItem({
+  title,
+  subtitle,
+  time,
+}: {
+  title: string
+  subtitle: string
+  time: string
+}) {
+  return (
+    <div
+      style={{
+        display: "flex",
+        justifyContent: "space-between",
+        alignItems: "center",
+        padding: "14px 0",
+        borderBottom: "1px solid #f1f5f9",
+      }}
+    >
+      <div>
+        <div
+          style={{
+            fontWeight: "700",
+            marginBottom: "4px",
+          }}
+        >
+          {title}
+        </div>
+
+        <div
+          style={{
+            color: "#6b7280",
+            fontSize: "14px",
+          }}
+        >
+          {subtitle}
+        </div>
+      </div>
+
+      <div
+        style={{
+          fontSize: "13px",
+          color: "#9ca3af",
+          whiteSpace: "nowrap",
+          marginLeft: "12px",
+        }}
+      >
+        {time}
+      </div>
+    </div>
   )
 }
 
