@@ -178,7 +178,7 @@ const latestPosts = posts.slice(0, 3)
       color: "#555",
     }}
   >
-    📅 Saturday • July 19
+    📅 Saturday • July 18
   </p>
 
 
