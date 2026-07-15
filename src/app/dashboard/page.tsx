@@ -119,9 +119,9 @@ const [loading,setLoading] = useState(true)
       fontSize: "40px",
       fontWeight: "800",
       marginBottom: "8px",
-      background: "linear-gradient(90deg,#166534,#22c55e)",
-      WebkitBackgroundClip: "text",
-      WebkitTextFillColor: "transparent",
+      padding: "10px",
+      borderRadius: "24px",
+      color: "#1f8f45",
       letterSpacing: "-1px",
     }}
   >
@@ -137,21 +137,83 @@ const [loading,setLoading] = useState(true)
   >
     Your league. Your competition.
   </p>
+  <div
+  style={{
+    background: "white",
+    borderRadius: "18px",
+    padding: "20px",
+    marginTop: "28px",
+    marginBottom: "28px",
+    boxShadow: "0 10px 30px rgba(0,0,0,.08)",
+    border: "1px solid #ecf0ec",
+  }}
+>
+  <div
+    style={{
+      color: "#166534",
+      fontWeight: "700",
+      fontSize: "14px",
+      marginBottom: "10px",
+    }}
+  >
+    Upcoming Round
+  </div>
+
+
+  <h2
+    style={{
+      margin: 0,
+      fontSize: "28px",
+      fontWeight: "800",
+    }}
+  >
+    La Fiesta
+  </h2>
+
+  <p
+    style={{
+      margin: "8px 0",
+      color: "#555",
+    }}
+  >
+    Saturday • July 19
+  </p>
+
+  <p
+    style={{
+      marginBottom: "18px",
+      color: "#555",
+    }}
+  >
+    Moccasin Run Golf Club
+  </p>
+
+  <button
+    onClick={() => router.push("/tee-sheet")}
+    style={{
+      background: "#166534",
+      color: "white",
+      border: "none",
+      padding: "12px 18px",
+      borderRadius: "999px",
+      fontWeight: "700",
+      cursor: "pointer",
+    }}
+  >
+    View Tee Sheet →
+  </button>
 </div>
-
-            <div style={{marginTop:"20px"}}>
-
-                <div style={{
-                display: "grid",
-                gridTemplateColumns: "1fr 1fr",
-                gap: "12px",
-                background: "linear-gradient(135deg, #166534, #22c55e)",
-                padding: "12px",
-                borderRadius: "20px",
-                backgroundColor: "black",
-                marginBottom: "30px"
-                }}>
-
+  <div
+  style={{
+    display: "grid",
+    gridTemplateColumns: "1fr 1fr",
+    gap: "12px",
+    background: "linear-gradient(135deg,#166534,#22c55e)",
+    padding: "12px",
+    borderRadius: "20px",
+    marginBottom: "30px",
+  }}
+>
                 <ActionCard title="📣 League News" onClick={() => router.push("/home")} />
                 <ActionCard title="🏆 Champions" onClick={() => router.push("/champions")} />
                 <ActionCard title="🥇 Leaderboard" onClick={() => router.push("/leaderboard-simple")} />
@@ -163,11 +225,13 @@ const [loading,setLoading] = useState(true)
                 <ActionCard title="📊 2026 Stats" onClick={() => router.push("/records")} />
                 <ActionCard title="👕 Merch" onClick={() => router.push("/merch")} />
                 <ActionCard title="📜 Rules" onClick={() => router.push("/rules")} />
-                {/* <ActionCard title="🤝 Sponsorship" onClick={() => router.push("/sponsors")} /> */}
-                </div>
-                
+            {/* <ActionCard title="🤝 Sponsorship" onClick={() => router.push("/sponsors")} /> */}
 
-    </div>
+
+</div>
+</div>
+
+
 
     </div>
      <div>
@@ -176,6 +240,7 @@ const [loading,setLoading] = useState(true)
     </div>
 
 )
+}
 
 function ActionCard({ title, onClick }: { title: string, onClick: () => void }) {
         return (
@@ -196,4 +261,3 @@ function ActionCard({ title, onClick }: { title: string, onClick: () => void }) 
   )
 }
 
-}
