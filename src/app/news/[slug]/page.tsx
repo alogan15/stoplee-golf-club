@@ -10,6 +10,47 @@ export default async function PostPage({
 
   const posts = [
     {
+      slug: "moccasin-run-preview",
+      title: "La Fiesta: Flight Battles Begin at Moccasin Run",
+      content: `For the first time this season, everyone knows exactly where they stand.
+
+        The flights have been decided.
+
+        Now the real race begins.
+
+        This Saturday, the StopLee Golf Club heads to Moccasin Run Golf Course for La Fiesta, where every point matters a little more and every group has something to prove.
+
+        The early-season leaderboard is officially behind us.
+
+        From this point forward, players aren't competing against the entire league—they're battling the golfers standing beside them in their own flight.
+
+        Flight A features the league's top contenders, where every round could shift the championship picture. One bad nine can send a player tumbling, while one hot streak can separate someone from the pack.
+
+        Flight B brings its own storyline.
+
+        Several players enter with momentum and a chance to build confidence, collect victories, and prove they belong among the league's best. Every tournament is another opportunity to climb.
+
+        Moccasin Run rewards patience more than power.
+
+        Accurate drives, smart course management, and a reliable short game will likely determine who leaves with the trophy. The course has enough trouble waiting to punish aggressive mistakes, making every decision important.
+
+        One great round could change the season.
+
+        Will the Flight A favorites continue their dominance?
+
+        Can someone in Flight B begin a championship run?
+
+        Or will a new name emerge and steal the spotlight?
+
+        Saturday marks the beginning of the next chapter.
+
+        The flights are set.
+
+        Now it's time to find out who truly owns them.
+
+        See everyone at La Fiesta.`
+    },
+    {
       slug: "pregame-mercer",
       title: "Mercer Oaks West: Where Flights Will Be Decided",
       content: `

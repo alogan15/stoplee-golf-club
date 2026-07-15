@@ -6,6 +6,7 @@ import { supabase } from "../../lib/supabase"
 import PlayerSelector from "@/src/components/PlayerSelector"
 import ResumeRound from "@/src/components/ResumeRound"
 import SocialFooter from "@/src/components/Socials"
+import { posts } from "@/src/data/posts"
 
 
 
@@ -81,6 +82,7 @@ const [loading,setLoading] = useState(true)
 
 })
 
+const latestPosts = posts.slice(0, 3)
 
 
     if(loading){
@@ -240,7 +242,13 @@ const [loading,setLoading] = useState(true)
 
 </div>
 
-<div
+
+</div>
+
+
+
+    </div>
+    <div
   style={{
     marginTop: "30px",
     background: "white",
@@ -255,50 +263,66 @@ const [loading,setLoading] = useState(true)
       color: "#166534",
       fontSize: "24px",
       fontWeight: "800",
-      marginBottom: "18px",
+      marginBottom: "20px",
     }}
   >
     📰 Latest News
   </h2>
 
-  <NewsItem
-    title="La Fiesta Tee Sheet Released"
-    subtitle="Groups and tee times are now live."
-    time="Today"
-  />
+  {latestPosts.map((post) => (
+    <div
+      key={post.id}
+      onClick={() => router.push(`/news/${post.slug}`)}
+      style={{
+        padding: "16px 0",
+        borderBottom: "1px solid #e5e7eb",
+        cursor: "pointer",
+      }}
+    >
+      <div
+        style={{
+          fontWeight: "700",
+          fontSize: "18px",
+          marginBottom: "6px",
+        }}
+      >
+        {post.title}
+      </div>
 
-  <NewsItem
-    title="Flight A & Flight B Announced"
-    subtitle="Power Rankings now separated by flights."
-    time="Yesterday"
-  />
+      <div
+        style={{
+          color: "#6b7280",
+          fontSize: "14px",
+          marginBottom: "6px",
+        }}
+      >
+        {post.description}
+      </div>
 
-  <NewsItem
-    title="Moccasin Run Preview"
-    subtitle="Everything you need to know before Saturday."
-    time="2 days ago"
-  />
+      <div
+        style={{
+          color: "#9ca3af",
+          fontSize: "13px",
+        }}
+      >
+        {post.date}
+      </div>
+    </div>
+  ))}
 
-  <button
+  <div
     onClick={() => router.push("/home")}
     style={{
-      marginTop: "12px",
-      background: "transparent",
-      border: "none",
+      marginTop: "18px",
       color: "#166534",
       fontWeight: "700",
       cursor: "pointer",
-      fontSize: "16px",
+      textAlign: "right",
     }}
   >
     View All News →
-  </button>
+  </div>
 </div>
-</div>
-
-
-
-    </div>
      <div>
      <SocialFooter />
      </div>
