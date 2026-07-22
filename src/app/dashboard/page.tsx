@@ -178,7 +178,7 @@ const latestPosts = posts.slice(0, 3)
       color: "#555",
     }}
   >
-    📅 Saturday • July 18
+    📅 Saturday • July 25
   </p>
 
 
@@ -197,7 +197,7 @@ const latestPosts = posts.slice(0, 3)
       color: "#555",
     }}
   >
-    👥 10 Players Registered
+    👥 12 Players Registered
   </p>
 
   <button
