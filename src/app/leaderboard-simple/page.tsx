@@ -54,7 +54,8 @@ const players: Player[] = [
     scores: [
       { event: "Broad Run", points:  5, strokes: 120, isOfficial: true, is_winner: false },
       { event: "Rock Manor", points: 12, strokes: 102, isOfficial: true, is_winner: false },
-      { event: "Mercer Oaks(West)", points: 6, strokes: 120, isOfficial: true, is_winner: false }]
+      { event: "Mercer Oaks(West)", points: 6, strokes: 120, isOfficial: true, is_winner: false },
+      { event: "Moccasin Run", points: 11, strokes: 108, isOfficial: true, is_winner: false }]
   },
   {
     id: "5",
@@ -72,7 +73,8 @@ const players: Player[] = [
     scores: [
       { event: "Broad Run", points:  11, strokes: 113, isOfficial: true, is_winner: false },
       { event: "Rock Manor", points: 11, strokes: 98, isOfficial: true, is_winner: false },
-      { event: "Mercer Oaks(West)", points: 9, strokes: 107, isOfficial: true, is_winner: false }]
+      { event: "Mercer Oaks(West)", points: 9, strokes: 107, isOfficial: true, is_winner: false },
+      { event: "Moccasin Run", points: 12, strokes: 108, isOfficial: true, is_winner: false }]
   },
     {
     id: "7",
@@ -81,7 +83,8 @@ const players: Player[] = [
     scores: [
       { event: "Broad Run", points: 9, strokes: 112, isOfficial: true, is_winner: false },
       { event: "Rock Manor", points: 8, strokes: 108, isOfficial: true, is_winner: false },
-      { event: "Mercer Oaks(West)", points: 9, strokes: 115, isOfficial: true, is_winner: false }]
+      { event: "Mercer Oaks(West)", points: 9, strokes: 115, isOfficial: true, is_winner: false },
+      { event: "Moccasin Run", points: 2, strokes: 119, isOfficial: true, is_winner: false }]
   },
   {
     id: "8",
@@ -171,7 +174,8 @@ const players: Player[] = [
     scores: [
       { event: "Broad Run", points: 9, strokes: 110, isOfficial: true, is_winner: false },
       { event: "Rock Manor", points: 10, strokes: 104, isOfficial: true, is_winner: false },
-      { event: "Mercer Oaks(West)", points: 20, strokes: 99, isOfficial: true, is_winner: false }     ]
+      { event: "Mercer Oaks(West)", points: 20, strokes: 99, isOfficial: true, is_winner: false },
+      { event: "Moccasin Run", points: 12, strokes: 104, isOfficial: true, is_winner: false }]
   },
   {
     id: "18",

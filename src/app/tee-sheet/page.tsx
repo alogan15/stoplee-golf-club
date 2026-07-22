@@ -6,22 +6,22 @@ export default function TeeSheetPage() {
 
   const teeSheet = {
     event: "Moccassin Run",
-    date: "July 18, 2026",
+    date: "July 25, 2026",
     price: "$89",
-    weather: "89°",
+    weather: "85°",
 
     groups: [
       {
-        time: "9:54",
-        players: ["Julian", "Danny", "LJ", "Rickey"]
+        time: "8:15",
+        players: ["Tyrin", "Jamar", "Andre", "Rickey"]
       },
       {
-        time: "10:03",
-        players: ["Erik L", "Malc", "Eric B"]
+        time: "8:24",
+        players: ["Jay S", "Anthony", "Jay H", "James"]
       },
       {
-        time: "10:12",
-        players: ["Short", "Steph", "Walt"]
+        time: "8:33",
+        players: ["Isaiah", "Greg", "Greeco" , "Cuffy"]
       }
     ]
   }
