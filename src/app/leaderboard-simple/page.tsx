@@ -97,7 +97,7 @@ const players: Player[] = [
       { event: "Broad Run", points: 4, strokes: 108, isOfficial: true, is_winner: false },
       { event: "Rock Manor", points: 2, strokes: 113, isOfficial: true, is_winner: false },
       { event: "Mercer Oaks(West)", points: 6, strokes: 112, isOfficial: true, is_winner: false },
-      { event: "Moccasin Run", points: 0, strokes: 0, isOfficial: true, is_winner: false }]
+      { event: "Moccasin Run", points: 5, strokes: 112, isOfficial: true, is_winner: false }]
   },
   {
     id: "9",
@@ -158,7 +158,7 @@ const players: Player[] = [
       { event: "Broad Run", points: 14, strokes: 106, isOfficial: true, is_winner: false },
       { event: "Rock Manor", points: 11, strokes: 99, isOfficial: true, is_winner: false },
       { event: "Mercer Oaks(West)", points: 12, strokes: 105, isOfficial: true, is_winner: false },
-      { event: "Moccasin Run", points: 0, strokes: 0, isOfficial: true, is_winner: false }]
+      { event: "Moccasin Run", points: 13, strokes: 102, isOfficial: true, is_winner: false }]
   },
   {
     id: "15",
@@ -239,7 +239,7 @@ const players: Player[] = [
       { event: "Broad Run", points:  9, strokes: 111, isOfficial: false, is_winner: false  },
       { event: "Rock Manor", points: 7, strokes: 107, isOfficial: false, is_winner: false },  
       { event: "Mercer Oaks(West)", points: 5, strokes: 120, isOfficial: true, is_winner: false },
-      { event: "Moccasin Run", points: 0, strokes: 0, isOfficial: true, is_winner: false }]
+      { event: "Moccasin Run", points: 8, strokes: 110, isOfficial: true, is_winner: false }]
   },
   {
     id: "23",
@@ -249,7 +249,7 @@ const players: Player[] = [
       { event: "Broad Run", points: 8, strokes: 105, isOfficial: false, is_winner: false  },
       { event: "Rock Manor", points: 16, strokes: 95, isOfficial: true, is_winner: true },  
       { event: "Mercer Oaks(West)", points: 16, strokes: 101, isOfficial: true, is_winner: false },
-      { event: "Moccasin Run", points: 0, strokes: 0, isOfficial: true, is_winner: false }]
+      { event: "Moccasin Run", points: 22, strokes: 92, isOfficial: true, is_winner: false }]
   },
     {
     id: "24",
