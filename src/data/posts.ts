@@ -3,7 +3,7 @@ export const posts = [
     id: 0,
     slug: "moccasin-run-recap",
     title: "Moccasin Run Shakes Up Both Flights",
-    image: "/blog/moccasin1.jpg",
+    image: "/blog/Moccasin1.jpg",
     date: "2026-08-02",
     description: "Jay erupts for the round of the season, Tyrin extends his lead, and Flight B tightens after an exciting weekend at Moccasin Run.",
     readMore: "Read More..."
