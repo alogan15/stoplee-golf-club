@@ -10,6 +10,78 @@ export default async function PostPage({
 
   const posts = [
     {
+      slug: "moccasin-run-recap",
+      title: "Moccasin Run Shakes Up Both Flights",
+      content: `Moccasin Run delivered exactly what everyone expected.
+
+Pressure.
+
+Momentum swings.
+
+And a few performances that completely changed the championship picture.
+
+While Tyrin continued to strengthen his grip on Flight A, the biggest story of the day belonged to <strong>Jay</strong>.
+
+After spending the first three tournaments near the bottom of the standings, Jay exploded for an incredible 33-point performance—the highest Stableford score of the season—and captured the Moccasin Run trophy.
+
+It wasn't just a tournament victory.
+
+It completely transformed his season.
+
+Jay jumped from the bottom half of the standings into the Top 6, proving just how quickly one great round can change everything in <strong>StopLee Golf Club</strong>.
+
+If there was ever proof that no lead is safe and no season is over, Moccasin Run was it.
+
+At the top of Flight A, however, Tyrin continues to separate himself from the field.
+
+Another outstanding performance pushed his season total to 102 points, making him the first player to break the 100-point mark this year.
+
+With victories already at Broad Run and Mercer Oaks, plus another strong finish at Moccasin Run, Tyrin has officially opened the largest lead of the season.
+
+The chase isn't over—but the target on his back just keeps getting bigger.
+
+Behind him, the battle remains intense.
+
+Jamar continues to hold second place, while Eric B and Andre remain within striking distance as the championship race begins to take shape.
+
+Flight B officially entered its first week of competition, and the standings already show just how unpredictable this division could become.
+
+<strong>LJ</strong> currently sits on top after another consistent performance, but his advantage is anything but comfortable.
+
+One breakout round from Grecco, Justin, Julian, James—or anyone else in the top group—could completely flip the leaderboard in a single Saturday.
+
+Unlike Flight A, where Tyrin has begun creating separation, Flight B feels wide open.
+
+One great weekend can put a player in first.
+
+One rough weekend could send the leader tumbling several spots.
+
+That's what makes this flight so dangerous.
+
+With Moccasin Run now in the books, every player understands what lies ahead.
+
+The championship races have officially begun.
+
+Every point matters.
+
+Every finish matters.
+
+And if Moccasin Run taught us anything...
+
+Never count anyone out.
+
+Next, the league travels to **Stewartsville, New Jersey**, where another challenge awaits at <strong>The Architects Golf Club</strong>.
+
+A new course.
+
+Another opportunity.
+
+And another chance to change the standings.
+
+We'll see everyone on the first tee.
+`
+    },
+    {
       slug: "moccasin-run-preview",
       title: "La Fiesta: Flight Battles Begin at Moccasin Run",
       content: `For the first time this season, everyone knows exactly where they stand.
