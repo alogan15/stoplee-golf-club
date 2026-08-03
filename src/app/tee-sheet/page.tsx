@@ -5,23 +5,27 @@ import BackButton from "@/src/components/BackButton"
 export default function TeeSheetPage() {
 
   const teeSheet = {
-    event: "Moccassin Run",
-    date: "July 25, 2026",
-    price: "$89",
-    weather: "85°",
+    event: "The Architects",
+    date: "TBD",
+    price: "TBD",
+    weather: "TBD",
 
     groups: [
       {
-        time: "8:15",
-        players: ["Tyrin", "Jamar", "Andre", "Rickey"]
+        time: "",
+        players: ["", "", "", ""]
       },
       {
-        time: "8:24",
-        players: ["Jay S", "Anthony", "Jay H", "James"]
+        time: "",
+        players: ["", "", "", ""]
       },
       {
-        time: "8:33",
-        players: ["Isaiah", "Greg", "Greeco" , "Cuffy"]
+        time: "",
+        players: ["", "", "" , ""]
+      },
+      {
+        time: "",
+        players: ["", "", "" , ""]
       }
     ]
   }
@@ -45,7 +49,7 @@ export default function TeeSheetPage() {
         marginBottom: "10px",
         textAlign: "center"
       }}>
-        🏌🏽 La Fiesta
+        🏌🏽 Augusta in August
       </h1>
 
       {/* EVENT CARD */}

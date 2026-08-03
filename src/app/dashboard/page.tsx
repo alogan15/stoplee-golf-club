@@ -169,7 +169,7 @@ const latestPosts = posts.slice(0, 3)
       fontWeight: "800",
     }}
   >
-    La Fiesta
+      Augusta in August  
   </h2>
 
   <p
@@ -178,7 +178,7 @@ const latestPosts = posts.slice(0, 3)
       color: "#555",
     }}
   >
-    📅 Saturday • July 25
+    📅 TBD
   </p>
 
 
@@ -189,7 +189,7 @@ const latestPosts = posts.slice(0, 3)
       fontWeight: "800",
     }}
   >
-    📍Moccasin Run Golf Club
+    📍The Architects Golf Club
   </p>
       <p
     style={{
@@ -197,7 +197,7 @@ const latestPosts = posts.slice(0, 3)
       color: "#555",
     }}
   >
-    👥 12 Players Registered
+    👥 TBD
   </p>
 
   <button
