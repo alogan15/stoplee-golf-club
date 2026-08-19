@@ -178,7 +178,7 @@ const latestPosts = posts.slice(0, 3)
       color: "#555",
     }}
   >
-    📅 TBD
+    📅 8/22/26
   </p>
 
 
@@ -197,7 +197,7 @@ const latestPosts = posts.slice(0, 3)
       color: "#555",
     }}
   >
-    👥 TBD
+    👥 13 players confirmed
   </p>
 
   <button
@@ -236,9 +236,9 @@ const latestPosts = posts.slice(0, 3)
                 <ActionCard title="👑 Tour Winners" onClick={() => router.push("/winners")} />
                 <ActionCard title="📊 2026 Stats" onClick={() => router.push("/records")} />
                 <ActionCard title="👕 Merch" onClick={() => router.push("/merch")} />
-                <ActionCard title="📜 Rules" onClick={() => router.push("/rules")} />
-            {/* <ActionCard title="🤝 Sponsorship" onClick={() => router.push("/sponsors")} /> */}
-
+                  <ActionCard title="📈 Prediction Center" onClick={() => router.push("/betting-lines")} />
+                {/* <ActionCard title="📜 Rules" onClick={() => router.push("/rules")} /> */}
+                {/* <ActionCard title="🤝 Sponsorship" onClick={() => router.push("/sponsors")} /> */}
 
 </div>
 

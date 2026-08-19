@@ -6,27 +6,27 @@ export default function TeeSheetPage() {
 
   const teeSheet = {
     event: "The Architects",
-    date: "TBD",
-    price: "TBD",
-    weather: "TBD",
+    date: "8/22/26",
+    price: "$80-150",
+    weather: "Sunny",
 
     groups: [
       {
-        time: "",
-        players: ["", "", "", ""]
+        time: "8:10",
+        players: ["Steph", "Danny"]
       },
       {
-        time: "",
-        players: ["", "", "", ""]
+        time: "9:40",
+        players: ["Tyrin", "Jay H", "Eric B", "Erik L"]
       },
       {
-        time: "",
-        players: ["", "", "" , ""]
+        time: "9:50",
+        players: ["Jamar", "LJ", "Spurg", "Larry"]
       },
       {
-        time: "",
-        players: ["", "", "" , ""]
-      }
+        time: "3:00",
+        players: ["Andre", "Justin", "James" , ""]
+      },
     ]
   }
 
