@@ -1,9 +1,48 @@
-"use client"
+"use client";
 
-import { useState } from "react"
-import BackButton from "@/src/components/BackButton"
+import { useState } from "react";
+import BackButton from "@/src/components/BackButton";
 import SocialFooter from "@/src/components/Socials"
-import { bettingLines } from "@/src/data/bettingLines"
+import { bettingLines } from "@/src/data/bettingLines";
+
+function StatCard({
+  title,
+  value,
+}: {
+  title: string;
+  value: string | number;
+}) {
+  return (
+    <div
+      style={{
+        background: "#f8fafc",
+        borderRadius: "12px",
+        padding: "14px",
+        textAlign: "center",
+      }}
+    >
+      <div
+        style={{
+          fontSize: "12px",
+          color: "#6b7280",
+          marginBottom: "6px",
+        }}
+      >
+        {title}
+      </div>
+
+      <div
+        style={{
+          fontSize: "20px",
+          fontWeight: "800",
+          color: "#166534",
+        }}
+      >
+        {value}
+      </div>
+    </div>
+  );
+}
 
 function InsightCard({
   icon,
@@ -11,10 +50,10 @@ function InsightCard({
   player,
   description,
 }: {
-  icon: string
-  title: string
-  player: string
-  description: string
+  icon: string;
+  title: string;
+  player: string;
+  description: string;
 }) {
   return (
     <div
@@ -23,7 +62,7 @@ function InsightCard({
         borderRadius: "18px",
         padding: "18px",
         boxShadow: "0 6px 18px rgba(0,0,0,.08)",
-        borderLeft: "6px solid #166534",
+        border: "1px solid #e5e7eb",
       }}
     >
       <div
@@ -39,7 +78,7 @@ function InsightCard({
         <span
           style={{
             fontWeight: "800",
-            fontSize: "18px",
+            fontSize: "17px",
           }}
         >
           {title}
@@ -49,8 +88,9 @@ function InsightCard({
       <div
         style={{
           color: "#166534",
-          fontWeight: "700",
-          marginBottom: "8px",
+          fontWeight: "800",
+          fontSize: "20px",
+          marginBottom: "6px",
         }}
       >
         {player}
@@ -59,66 +99,27 @@ function InsightCard({
       <div
         style={{
           color: "#6b7280",
-          lineHeight: "24px",
+          lineHeight: "22px",
         }}
       >
         {description}
       </div>
     </div>
-  )
-}
-
-function StatCard({
-  title,
-  value,
-}: {
-  title: string
-  value: string | number
-}) {
-  return (
-    <div
-      style={{
-        background: "#f8fafc",
-        borderRadius: "14px",
-        padding: "16px",
-        textAlign: "center",
-      }}
-    >
-      <div
-        style={{
-          color: "#6b7280",
-          fontSize: "13px",
-          marginBottom: "8px",
-        }}
-      >
-        {title}
-      </div>
-
-      <div
-        style={{
-          fontSize: "28px",
-          fontWeight: "800",
-          color: "#166534",
-        }}
-      >
-        {value}
-      </div>
-    </div>
-  )
+  );
 }
 
 export default function PredictionCenterPage() {
-  const [flight, setFlight] = useState<"A" | "B">("A")
+  const [flight, setFlight] = useState<"A" | "B">("A");
 
   const players =
     flight === "A"
       ? bettingLines.flightA
-      : bettingLines.flightB
+      : bettingLines.flightB;
 
   const insights =
-  flight === "A"
-    ? bettingLines.insights.A
-    : bettingLines.insights.B
+    flight === "A"
+      ? bettingLines.insights.A
+      : bettingLines.insights.B;
 
   return (
     <div
@@ -132,7 +133,6 @@ export default function PredictionCenterPage() {
       <BackButton />
 
       {/* Header */}
-
       <div
         style={{
           textAlign: "center",
@@ -170,7 +170,6 @@ export default function PredictionCenterPage() {
       </div>
 
       {/* Flight Toggle */}
-
       <div
         style={{
           display: "flex",
@@ -187,14 +186,8 @@ export default function PredictionCenterPage() {
             border: "none",
             cursor: "pointer",
             fontWeight: "700",
-            background:
-              flight === "A"
-                ? "#166534"
-                : "#e5e7eb",
-            color:
-              flight === "A"
-                ? "white"
-                : "#374151",
+            background: flight === "A" ? "#166534" : "#e5e7eb",
+            color: flight === "A" ? "white" : "#374151",
           }}
         >
           Flight A
@@ -208,176 +201,172 @@ export default function PredictionCenterPage() {
             border: "none",
             cursor: "pointer",
             fontWeight: "700",
-            background:
-              flight === "B"
-                ? "#166534"
-                : "#e5e7eb",
-            color:
-              flight === "B"
-                ? "white"
-                : "#374151",
+            background: flight === "B" ? "#166534" : "#e5e7eb",
+            color: flight === "B" ? "white" : "#374151",
           }}
         >
           Flight B
         </button>
       </div>
 
+      {/* League Insights */}
       <div
-  style={{
-    marginBottom: "28px",
-  }}
->
-  <h2
-    style={{
-      color: "#166534",
-      fontSize: "22px",
-      fontWeight: "800",
-      marginBottom: "16px",
-      textAlign: "center"
-    }}
-  >
-    📊 League Insights
-  </h2>
+        style={{
+          marginBottom: "28px",
+        }}
+      >
+        <h2
+          style={{
+            textAlign: "center",
+            color: "#166534",
+            fontSize: "22px",
+            fontWeight: "800",
+            marginBottom: "16px",
+          }}
+        >
+          📊 League Insights
+        </h2>
 
-  <div
-    style={{
-      display: "grid",
-      gap: "14px",
-    }}
-  >
-    {insights.map((insight) => (
-      <InsightCard
-        key={insight.title}
-        icon={insight.icon}
-        title={insight.title}
-        player={insight.player}
-        description={insight.description}
-      />
-    ))}
-  </div>
-</div>
-
+        <div
+          style={{
+            display: "grid",
+            gap: "14px",
+          }}
+        >
+          {insights.map((insight) => (
+            <InsightCard
+              key={`${insight.title}-${insight.player}`}
+              icon={insight.icon}
+              title={insight.title}
+              player={insight.player}
+              description={insight.description}
+            />
+          ))}
+        </div>
+      </div>
 
       {/* Player Cards */}
-
-{players.map((player) => (
-        <div
-        key={player.player}
-        style={{
-            background: "white",
-            borderRadius: "20px",
-            padding: "20px",
-            marginBottom: "24px",
-            boxShadow: "0 8px 24px rgba(0,0,0,.08)",
-            border: "1px solid #e5e7eb",
-        }}
-        >
-
-    <div
-      style={{
-        display: "flex",
-        justifyContent: "space-between",
-        alignItems: "center",
-        marginBottom: "18px",
-      }}
-    >
       <div>
-        <div
-          style={{
-            fontSize: "24px",
-            fontWeight: "800",
-          }}
-        >
-          {player.player}
-        </div>
+        {players.map((player) => (
+          <div
+            key={player.player}
+            style={{
+              background: "white",
+              borderRadius: "20px",
+              padding: "20px",
+              marginBottom: "24px",
+              boxShadow: "0 8px 24px rgba(0,0,0,.08)",
+              border: "1px solid #e5e7eb",
+            }}
+          >
+            {/* Player Header */}
+            <div
+              style={{
+                display: "flex",
+                justifyContent: "space-between",
+                alignItems: "center",
+                marginBottom: "18px",
+              }}
+            >
+              <div>
+                <div
+                  style={{
+                    fontSize: "24px",
+                    fontWeight: "800",
+                  }}
+                >
+                  {player.player}
+                </div>
 
-        <div
-          style={{
-            color: "#6b7280",
-            fontSize: "14px",
-          }}
-        >
-          {flight === "A" ? "Flight A" : "Flight B"}
-        </div>
+                <div
+                  style={{
+                    color: "#6b7280",
+                    fontSize: "14px",
+                  }}
+                >
+                  {flight === "A" ? "Flight A" : "Flight B"}
+                </div>
+              </div>
+
+              <div
+                style={{
+                  background:
+                    player.pick === "OVER"
+                      ? "#dc2626"
+                      : "#166534",
+                  color: "white",
+                  padding: "10px 18px",
+                  borderRadius: "999px",
+                  fontWeight: "700",
+                }}
+              >
+                {player.pick}
+              </div>
+            </div>
+
+            {/* Stats */}
+            <div
+              style={{
+                display: "grid",
+                gridTemplateColumns: "1fr 1fr",
+                gap: "16px",
+                marginBottom: "20px",
+              }}
+            >
+              <StatCard
+                title="Projected"
+                value={player.projected}
+              />
+
+              <StatCard
+                title="O / U"
+                value={player.overUnder}
+              />
+
+              <StatCard
+                title="Line"
+                value={player.line}
+              />
+            </div>
+
+            {/* Confidence */}
+            <div
+              style={{
+                marginBottom: "18px",
+              }}
+            >
+              <div
+                style={{
+                  fontWeight: "700",
+                  marginBottom: "6px",
+                }}
+              >
+                Confidence
+              </div>
+
+              <div
+                style={{
+                  fontSize: "22px",
+                }}
+              >
+                {"⭐".repeat(player.confidence)}
+              </div>
+            </div>
+
+            {/* Analysis */}
+            <div
+              style={{
+                color: "#6b7280",
+                lineHeight: "24px",
+              }}
+            >
+              {player.note}
+            </div>
+          </div>
+        ))}
       </div>
 
-      <div
-        style={{
-          background: "#166534",
-          color: "white",
-          padding: "10px 18px",
-          borderRadius: "999px",
-          fontWeight: "700",
-        }}
-      >
-        {player.pick}
-      </div>
+      <SocialFooter />
     </div>
-
-    {/* Stats */}
-
-    <div
-      style={{
-        display: "grid",
-        gridTemplateColumns: "1fr 1fr",
-        gap: "16px",
-        marginBottom: "20px",
-      }}
-    >
-      <StatCard
-        title="Projected"
-        value={player.projected}
-      />
-
-      <StatCard
-        title="O / U"
-        value={player.overUnder}
-      />
-
-      <StatCard
-      title="Line"
-      value={player.line}
-      />
-    </div>
-
-    {/* Confidence */}
-
-    <div
-      style={{
-        marginBottom: "18px",
-      }}
-    >
-      <div
-        style={{
-          fontWeight: "700",
-          marginBottom: "6px",
-        }}
-      >
-        Confidence
-      </div>
-
-      <div
-        style={{
-          fontSize: "22px",
-        }}
-      >
-        {"⭐".repeat(player.confidence)}
-      </div>
-    </div>
-
-    {/* Analysis */}
-
-    <div
-      style={{
-        color: "#6b7280",
-        lineHeight: "24px",
-      }}
-    >
-      {player.note}
-    </div>
-  </div>
-))}
-<SocialFooter />
-</div>
-)
+  );
 }
