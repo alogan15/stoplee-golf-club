@@ -27,7 +27,7 @@ const players: Player[] = [
       { event: "Broad Run", points: 17, strokes: 102, isOfficial: true, is_winner: false },
       { event: "Rock Manor", points: 14, strokes: 100, isOfficial: true, is_winner: false },
       { event: "Mercer Oaks(West)", points: 16, strokes: 105, isOfficial: true, is_winner: false },
-      { event: "Moccasin Run", points: 14, strokes: 103, isOfficial: true, is_winner: false }]
+      { event: "Moccasin Run", points: 14, strokes: 103, isOfficial: true, is_winner: false }],
     },
   {
     id: "2",
@@ -229,7 +229,8 @@ const players: Player[] = [
       { event: "Broad Run", points:  16, strokes: 106, isOfficial: false, is_winner: false },
       { event: "Rock Manor", points: 15, strokes: 105, isOfficial: false, is_winner: false }, 
       { event: "Mercer Oaks(West)", points: 0, strokes: 0, isOfficial: true, is_winner: false },
-      { event: "Moccasin Run", points: 0, strokes: 0, isOfficial: true, is_winner: false }]
+      { event: "Moccasin Run", points: 0, strokes: 0, isOfficial: true, is_winner: false },
+    ]
   },
     {
     id: "22",
