@@ -5,27 +5,27 @@ import BackButton from "@/src/components/BackButton"
 export default function TeeSheetPage() {
 
   const teeSheet = {
-    event: "The Architects",
-    date: "8/22/26",
-    price: "$80-150",
-    weather: "Sunny",
+    event: "Wyncote Golf Club",
+    date: "9/19/26",
+    price: "$123",
+    weather: "TBD",
 
     groups: [
       {
-        time: "8:10",
-        players: ["Steph", "Danny"]
+        time: "",
+        players: ["", ""]
       },
-      {
-        time: "9:40",
-        players: ["Tyrin", "Jay H", "Eric B", "Erik L"]
+   {
+        time: "",
+        players: ["", ""]
       },
-      {
-        time: "9:50",
-        players: ["Jamar", "LJ", "Spurg", "Larry"]
+     {
+        time: "",
+        players: ["", ""]
       },
-      {
-        time: "3:00",
-        players: ["Andre", "Justin", "James" , ""]
+    {
+        time: "",
+        players: ["", ""]
       },
     ]
   }

@@ -169,7 +169,7 @@ const latestPosts = posts.slice(0, 3)
       fontWeight: "800",
     }}
   >
-      Augusta in August  
+      Tour Championship 
   </h2>
 
   <p
@@ -178,7 +178,7 @@ const latestPosts = posts.slice(0, 3)
       color: "#555",
     }}
   >
-    📅 8/22/26
+    📅 9/19/26
   </p>
 
 
@@ -189,7 +189,7 @@ const latestPosts = posts.slice(0, 3)
       fontWeight: "800",
     }}
   >
-    📍The Architects Golf Club
+    📍Wyncote Golf Club
   </p>
       <p
     style={{
@@ -197,7 +197,7 @@ const latestPosts = posts.slice(0, 3)
       color: "#555",
     }}
   >
-    👥 13 players confirmed
+    👥 0 players confirmed
   </p>
 
   <button
