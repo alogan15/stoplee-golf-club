@@ -85,19 +85,19 @@ export default function CourseDetail() {
       link: "https://www.thearchitectsclub.com/"
     },
     { 
-      id:"town-country",
-      name: "Town & Country Golf Links", 
+      id:"wyncote",
+      name: "Wyncote Golf Club", 
       holes: 18,
       type: "Public Course",
       vibe: "18-hole public course designed to separate consistent players from the rest of the field.",
-      price: "$75",
-      yards: "5797",
-      rating: "68.2",
-      slope: "117",
-      image:"/courses/town.jpg",
-      description: "Prepare yourself for an unparalleled golfing experience. Our course is a pleasure for golfers of any skill Town & Country Golf Links offers a traditional links-style front nine featuring generous fairways and wide greens, and a more challenging back nine favoring accuracy and geared towards shot makers. All 18 holes are rye grass fairways and bent grass greens lined with deep rough and tall fescue. The links-style layout also invites the elements – wind, water and sand – to present occasional obstacles. Seven ponds and numerous bunkers are strategically placed throughout the course, providing both scenic splendor and considerable challenges.",
-      location: "Woodstown, NJ",
-      link: "https://foreupsoftware.com/index.php/booking/20899/6135#/teetimes"
+      price: "$123",
+      yards: "6132",
+      rating: "70.5",
+      slope: "126",
+      image:"/courses/wyncote.jpeg",
+      description: "Prepare yourself for an unparalleled golfing experience. Our course is a pleasure for golfers of any skill Wyncote Golf Club offers a traditional links-style front nine featuring generous fairways and wide greens, and a more challenging back nine favoring accuracy and geared towards shot makers. All 18 holes are rye grass fairways and bent grass greens lined with deep rough and tall fescue. The links-style layout also invites the elements – wind, water and sand – to present occasional obstacles. Seven ponds and numerous bunkers are strategically placed throughout the course, providing both scenic splendor and considerable challenges.",
+      location: "Oxford, Pa",
+      link: "https://golfback.com/?utm_source=wyncote&utm_medium=website&utm_campaign=tee-times#/course/e2e234c1-6df5-4b65-9124-9efbc83dc145/date/2026-08-24"
     }
   ]
 

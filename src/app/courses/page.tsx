@@ -45,11 +45,11 @@ export default function CoursesPage() {
       location: "Stewartsville, NJ",
     },
       { 
-      id:"town-country",
-      name: "Town & Country Golf Links", 
-      image:"/courses/town.jpg",
+      id:"wyncote",
+      name: "Wycote Golf Club", 
+      image:"/courses/wyncote.jpeg",
       title:"Tour Championship",
-      location: "Woodstown, NJ",
+      location: "Oxford, Pa",
     }
   ]
 
