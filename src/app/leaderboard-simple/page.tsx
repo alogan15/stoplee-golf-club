@@ -27,7 +27,8 @@ const players: Player[] = [
       { event: "Broad Run", points: 17, strokes: 102, isOfficial: true, is_winner: false },
       { event: "Rock Manor", points: 14, strokes: 100, isOfficial: true, is_winner: false },
       { event: "Mercer Oaks(West)", points: 16, strokes: 105, isOfficial: true, is_winner: false },
-      { event: "Moccasin Run", points: 14, strokes: 103, isOfficial: true, is_winner: false }]
+      { event: "Moccasin Run", points: 14, strokes: 103, isOfficial: true, is_winner: false },
+      { event: "The Architects", points: 34, strokes: 84, isOfficial: true, is_winner: false }]
     },
   {
     id: "2",
@@ -37,7 +38,8 @@ const players: Player[] = [
       { event: "Broad Run", points: 14, strokes: 100, isOfficial: true, is_winner: false },
       { event: "Rock Manor", points: 0, strokes: 0, isOfficial: true, is_winner: false },
       { event: "Mercer Oaks(West)", points: 0, strokes: 0, isOfficial: true, is_winner: false },
-      { event: "Moccasin Run", points: 0, strokes: 0, isOfficial: true, is_winner: false }]
+      { event: "Moccasin Run", points: 0, strokes: 0, isOfficial: true, is_winner: false },
+      { event: "The Architects", points: 0, strokes: 0, isOfficial: true, is_winner: false }]
   },
   {
     id: "3",
@@ -47,7 +49,8 @@ const players: Player[] = [
       { event: "Broad Run", points:  20, strokes: 95, isOfficial: true, is_winner: false },
       { event: "Rock Manor", points: 19, strokes: 93, isOfficial: true, is_winner: false },
       { event: "Mercer Oaks(West)", points: 0, strokes: 0, isOfficial: true, is_winner: false },
-      { event: "Moccasin Run", points: 0, strokes: 0, isOfficial: true, is_winner: false }]
+      { event: "Moccasin Run", points: 0, strokes: 0, isOfficial: true, is_winner: false },
+      { event: "The Architects", points: 0, strokes: 0, isOfficial: true, is_winner: false }]
   },
     {
     id: "4",
@@ -57,7 +60,8 @@ const players: Player[] = [
       { event: "Broad Run", points:  5, strokes: 120, isOfficial: true, is_winner: false },
       { event: "Rock Manor", points: 12, strokes: 102, isOfficial: true, is_winner: false },
       { event: "Mercer Oaks(West)", points: 6, strokes: 120, isOfficial: true, is_winner: false },
-      { event: "Moccasin Run", points: 11, strokes: 108, isOfficial: true, is_winner: false }]
+      { event: "Moccasin Run", points: 11, strokes: 108, isOfficial: true, is_winner: false },
+      { event: "The Architects", points: 13, strokes: 106, isOfficial: true, is_winner: false }]
   },
   {
     id: "5",
@@ -67,7 +71,8 @@ const players: Player[] = [
       { event: "Broad Run", points: 1, strokes: 127, isOfficial: true, is_winner: false },
       { event: "Rock Manor", points: 10, strokes: 115, isOfficial: true, is_winner: false },
       { event: "Mercer Oaks(West)", points: 0, strokes: 0, isOfficial: true, is_winner: false},
-      { event: "Moccasin Run", points: 7, strokes: 121, isOfficial: true, is_winner: false }]
+      { event: "Moccasin Run", points: 7, strokes: 121, isOfficial: true, is_winner: false },
+      { event: "The Architects", points: 3, strokes: 122, isOfficial: true, is_winner: false }]
     },
   {
     id: "6",
@@ -77,7 +82,8 @@ const players: Player[] = [
       { event: "Broad Run", points:  11, strokes: 113, isOfficial: true, is_winner: false },
       { event: "Rock Manor", points: 11, strokes: 98, isOfficial: true, is_winner: false },
       { event: "Mercer Oaks(West)", points: 9, strokes: 107, isOfficial: true, is_winner: false },
-      { event: "Moccasin Run", points: 12, strokes: 108, isOfficial: true, is_winner: false }]
+      { event: "Moccasin Run", points: 12, strokes: 108, isOfficial: true, is_winner: false },
+      { event: "The Architects", points: 13, strokes: 103, isOfficial: true, is_winner: false }]
   },
     {
     id: "7",
@@ -87,7 +93,8 @@ const players: Player[] = [
       { event: "Broad Run", points: 9, strokes: 112, isOfficial: true, is_winner: false },
       { event: "Rock Manor", points: 8, strokes: 108, isOfficial: true, is_winner: false },
       { event: "Mercer Oaks(West)", points: 9, strokes: 115, isOfficial: true, is_winner: false },
-      { event: "Moccasin Run", points: 2, strokes: 119, isOfficial: true, is_winner: false }]
+      { event: "Moccasin Run", points: 2, strokes: 119, isOfficial: true, is_winner: false },
+      { event: "The Architects", points: 7, strokes: 111, isOfficial: true, is_winner: false }]
   },
   {
     id: "8",
@@ -97,7 +104,9 @@ const players: Player[] = [
       { event: "Broad Run", points: 4, strokes: 108, isOfficial: true, is_winner: false },
       { event: "Rock Manor", points: 2, strokes: 113, isOfficial: true, is_winner: false },
       { event: "Mercer Oaks(West)", points: 6, strokes: 112, isOfficial: true, is_winner: false },
-      { event: "Moccasin Run", points: 5, strokes: 112, isOfficial: true, is_winner: false }]
+      { event: "Moccasin Run", points: 5, strokes: 112, isOfficial: true, is_winner: false },
+      { event: "The Architects", points: 1, strokes: 120, isOfficial: true, is_winner: false }]
+
   },
   {
     id: "9",
@@ -108,7 +117,7 @@ const players: Player[] = [
       { event: "Rock Manor", points: 8, strokes: 107, isOfficial: false, is_winner: false },
       { event: "Mercer Oaks(West)", points: 9, strokes: 110, isOfficial: true, is_winner: false },
       { event: "Moccasin Run", points: 8, strokes: 106, isOfficial: true, is_winner: false },
-    ]
+      { event: "The Architects", points: 10, strokes: 104, isOfficial: true, is_winner: false }]
   },
     {
     id: "10",
@@ -118,7 +127,8 @@ const players: Player[] = [
       { event: "Broad Run", points: 23, strokes: 95, isOfficial: true, is_winner: false },
       { event: "Rock Manor", points: 17, strokes: 98, isOfficial: true, is_winner: false },
       { event: "Mercer Oaks(West)", points: 25, strokes: 97, isOfficial: true, is_winner: false },
-      { event: "Moccasin Run", points: 14, strokes: 100, isOfficial: true, is_winner: false }]
+      { event: "Moccasin Run", points: 14, strokes: 100, isOfficial: true, is_winner: false },
+      { event: "The Architects", points: 36, strokes: 81, isOfficial: true, is_winner: true }]
   },
   {
     id: "11",
@@ -128,7 +138,8 @@ const players: Player[] = [
       { event: "Broad Run", points: 13, strokes: 104, isOfficial: true, is_winner: false },
       { event: "Rock Manor", points: 9, strokes: 104, isOfficial: true, is_winner: false },
       { event: "Mercer Oaks(West)", points: 8, strokes: 106, isOfficial: true, is_winner: false },
-      { event: "Moccasin Run", points: 13, strokes: 106, isOfficial: true, is_winner: false }]
+      { event: "Moccasin Run", points: 13, strokes: 106, isOfficial: true, is_winner: false },
+      { event: "The Architects", points: 10, strokes: 102, isOfficial: true, is_winner: false }]
   },
   {
     id: "12",
@@ -138,7 +149,8 @@ const players: Player[] = [
       { event: "Broad Run", points:  10, strokes: 119, isOfficial: true, is_winner: false },
       { event: "Rock Manor", points: 11, strokes: 109, isOfficial: true, is_winner: false },
       { event: "Mercer Oaks(West)", points: 6, strokes: 111, isOfficial: true, is_winner: false},
-      { event: "Moccasin Run", points: 10, strokes: 115, isOfficial: true, is_winner: false }]
+      { event: "Moccasin Run", points: 10, strokes: 115, isOfficial: true, is_winner: false },
+      { event: "The Architects", points: 0, strokes: 0, isOfficial: true, is_winner: false }]
   },
   {
     id: "13",
@@ -148,7 +160,8 @@ const players: Player[] = [
       { event: "Broad Run", points: 4 , strokes: 122, isOfficial: true, is_winner: false },
       { event: "Rock Manor", points: 6, strokes: 115, isOfficial: true, is_winner: false },
       { event: "Mercer Oaks(West)", points: 0, strokes: 0, isOfficial: true, is_winner: false },
-      { event: "Moccasin Run", points: 0, strokes: 0, isOfficial: true, is_winner: false }]
+      { event: "Moccasin Run", points: 0, strokes: 0, isOfficial: true, is_winner: false },
+      { event: "The Architects", points: 11, strokes: 101, isOfficial: true, is_winner: false }]
   },
   {
     id: "14",
@@ -158,7 +171,8 @@ const players: Player[] = [
       { event: "Broad Run", points: 14, strokes: 106, isOfficial: true, is_winner: false },
       { event: "Rock Manor", points: 11, strokes: 99, isOfficial: true, is_winner: false },
       { event: "Mercer Oaks(West)", points: 12, strokes: 105, isOfficial: true, is_winner: false },
-      { event: "Moccasin Run", points: 13, strokes: 102, isOfficial: true, is_winner: false }]
+      { event: "Moccasin Run", points: 13, strokes: 102, isOfficial: true, is_winner: false },
+      { event: "The Architects", points: 10, strokes: 105, isOfficial: true, is_winner: false }]
   },
   {
     id: "15",
@@ -168,7 +182,8 @@ const players: Player[] = [
       { event: "Broad Run", points:  3, strokes: 119, isOfficial: true, is_winner: false },
       { event: "Rock Manor", points: 5, strokes: 123, isOfficial: true, is_winner: false },
       { event: "Mercer Oaks(West)", points: 5, strokes: 119, isOfficial: true, is_winner: false},
-      { event: "Moccasin Run", points: 8, strokes: 120, isOfficial: true, is_winner: false }]
+      { event: "Moccasin Run", points: 8, strokes: 120, isOfficial: true, is_winner: false },
+      { event: "The Architects", points: 0, strokes: 0, isOfficial: true, is_winner: false }]
   },
   {
     id: "16",
@@ -178,7 +193,8 @@ const players: Player[] = [
       { event: "Broad Run", points: 21, strokes: 93, isOfficial: true, is_winner: true },
       { event: "Rock Manor", points: 20, strokes: 95, isOfficial: true, is_winner: false },
       { event: "Mercer Oaks(West)", points: 27, strokes: 91, isOfficial: true, is_winner: true },
-      { event: "Moccasin Run", points: 34, strokes: 85, isOfficial: true, is_winner: false }]
+      { event: "Moccasin Run", points: 34, strokes: 85, isOfficial: true, is_winner: false },
+      { event: "The Architects", points: 17, strokes: 96, isOfficial: true, is_winner: false }]
   },
   {
     id: "17",
@@ -188,7 +204,8 @@ const players: Player[] = [
       { event: "Broad Run", points: 9, strokes: 110, isOfficial: true, is_winner: false },
       { event: "Rock Manor", points: 10, strokes: 104, isOfficial: true, is_winner: false },
       { event: "Mercer Oaks(West)", points: 20, strokes: 99, isOfficial: true, is_winner: false },
-      { event: "Moccasin Run", points: 12, strokes: 104, isOfficial: true, is_winner: false }]
+      { event: "Moccasin Run", points: 12, strokes: 104, isOfficial: true, is_winner: false },
+      { event: "The Architects", points: 11, strokes: 101, isOfficial: true, is_winner: false }]
   },
   {
     id: "18",
@@ -198,7 +215,8 @@ const players: Player[] = [
       { event: "Broad Run", points:  13, strokes: 0, isOfficial: true, is_winner: false },
       { event: "Rock Manor", points: 15, strokes: 99, isOfficial: true, is_winner: false }, 
       { event: "Mercer Oaks(West)", points: 17, strokes: 94, isOfficial: true, is_winner: false },
-      { event: "Moccasin Run", points: 13, strokes: 98, isOfficial: true, is_winner: false }]
+      { event: "Moccasin Run", points: 13, strokes: 98, isOfficial: true, is_winner: false },
+      { event: "The Architects", points: 12, strokes: 92, isOfficial: true, is_winner: false }]
   },
   // {
   //   id: "19",
@@ -219,7 +237,7 @@ const players: Player[] = [
       { event: "Rock Manor", points: 14, strokes: 99, isOfficial: false, is_winner: false },  
       { event: "Mercer Oaks(West)", points: 4, strokes: 109, isOfficial: true, is_winner: false },
       { event: "Moccasin Run", points: 33, strokes: 84, isOfficial: true, is_winner: true },
-    ]
+      { event: "The Architects", points: 24, strokes: 90, isOfficial: true, is_winner: false }]
   },
   {
     id: "21",
@@ -229,7 +247,8 @@ const players: Player[] = [
       { event: "Broad Run", points:  16, strokes: 106, isOfficial: false, is_winner: false },
       { event: "Rock Manor", points: 15, strokes: 105, isOfficial: false, is_winner: false }, 
       { event: "Mercer Oaks(West)", points: 0, strokes: 0, isOfficial: true, is_winner: false },
-      { event: "Moccasin Run", points: 0, strokes: 0, isOfficial: true, is_winner: false }]
+      { event: "Moccasin Run", points: 0, strokes: 0, isOfficial: true, is_winner: false },
+      { event: "The Architects", points: 13, strokes: 110, isOfficial: true, is_winner: false }]
   },
     {
     id: "22",
@@ -239,7 +258,8 @@ const players: Player[] = [
       { event: "Broad Run", points:  9, strokes: 111, isOfficial: false, is_winner: false  },
       { event: "Rock Manor", points: 7, strokes: 107, isOfficial: false, is_winner: false },  
       { event: "Mercer Oaks(West)", points: 5, strokes: 120, isOfficial: true, is_winner: false },
-      { event: "Moccasin Run", points: 8, strokes: 110, isOfficial: true, is_winner: false }]
+      { event: "Moccasin Run", points: 8, strokes: 110, isOfficial: true, is_winner: false },
+      { event: "The Architects", points: 0, strokes: 0, isOfficial: true, is_winner: false }]
   },
   {
     id: "23",
@@ -249,7 +269,8 @@ const players: Player[] = [
       { event: "Broad Run", points: 8, strokes: 105, isOfficial: false, is_winner: false  },
       { event: "Rock Manor", points: 16, strokes: 95, isOfficial: true, is_winner: true },  
       { event: "Mercer Oaks(West)", points: 16, strokes: 101, isOfficial: true, is_winner: false },
-      { event: "Moccasin Run", points: 22, strokes: 92, isOfficial: true, is_winner: false }]
+      { event: "Moccasin Run", points: 22, strokes: 92, isOfficial: true, is_winner: false },
+      { event: "The Architects", points: 23, strokes: 96, isOfficial: true, is_winner: false }]
   },
     {
     id: "24",
@@ -259,7 +280,8 @@ const players: Player[] = [
       { event: "Broad Run", points: 5, strokes: 0, isOfficial: true, is_winner: false  },
       { event: "Rock Manor", points: 3, strokes: 118, isOfficial: true, is_winner: false }, 
       { event: "Mercer Oaks(West)", points: 0, strokes: 0, isOfficial: true, is_winner: false },
-      { event: "Moccasin Run", points: 6, strokes: 120, isOfficial: true, is_winner: false }]
+      { event: "Moccasin Run", points: 6, strokes: 120, isOfficial: true, is_winner: false },
+      { event: "The Architects", points: 0, strokes: 0, isOfficial: true, is_winner: false }]
   },
     {
     id: "24",
@@ -269,7 +291,8 @@ const players: Player[] = [
       { event: "Broad Run", points: 7, strokes: 118, isOfficial: false, is_winner: false  },
       { event: "Rock Manor", points: 5, strokes: 117, isOfficial: false, is_winner: false },
       { event: "Mercer Oaks(West)", points: 4, strokes: 117, isOfficial: true, is_winner: false },
-      { event: "Moccasin Run", points: 20, strokes: 95, isOfficial: true, is_winner: false }]
+      { event: "Moccasin Run", points: 20, strokes: 95, isOfficial: true, is_winner: false },
+      { event: "The Architects", points: 5, strokes: 109, isOfficial: true, is_winner: false }]
   },
 ]
 
