@@ -4,7 +4,7 @@ export const posts = [
   {
     id:0,
     slug: "augusta-in-august",
-      title: "🏆 STOPLEE GOLF CLUB — THE ARCHITECTS RECAP",
+      title: "THE ARCHITECTS RECAP",
     image: "/blog/Jamar.jpeg",
     date: "2026-08-24",
     description: "Jamar answers the call and Andre finally breaks through..",
