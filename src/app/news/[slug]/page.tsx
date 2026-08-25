@@ -10,6 +10,164 @@ export default async function PostPage({
 
   const posts = [
     {
+      slug: "augusta-in-august",
+      title: "🏆 STOPLEE GOLF CLUB — THE ARCHITECTS RECAP",
+      content: `The Race Is Officially Coming Down to One Final Round
+
+The penultimate round of the Stoplee Golf Club season is officially in the books, and The Architects Golf Club delivered exactly what we needed this late in the season — drama, big performances, and a leaderboard that is coming down to the wire.
+
+With only ONE ROUND REMAINING, there is still plenty left to decide.
+
+🔥 JAMAR ANSWERS THE CALL
+
+Coming into The Architects, Tyrin had all the momentum.
+
+After his wild performance at Moccasin Run, Ty had put himself firmly in control of the Flight A championship race.
+
+But Jamar wasn't going to let him run away with it.
+
+Jamar showed up and DROPPED AN 81.
+
+That's not just a good round.
+
+That's the lowest score we've seen all season.
+
+Jamar answered the call in a major way and now sits at 115 Stableford points, just FOUR points behind Tyrin's 119.
+
+That's it.
+
+Four. Points.
+
+One final course.
+
+One final opportunity.
+
+Tyrin vs. Jamar for the Flight A championship.
+
+The race couldn't be tighter.
+
+💥 ANDRE FINALLY BREAKS THROUGH
+
+And then there's Andre.
+
+After spending the season hovering around the top of the leaderboard, fighting to stay in the conversation, The Architects was the breakout round we've been waiting for.
+
+Andre fired an 84, his best round of the season, with:
+
+⛳ 2 Birdies
+⛳ 6 Pars
+🔥 34 Stableford Points
+
+
+For once this season, Andre didn't have to pick which part of his game was going to show up.
+
+It all showed up.
+
+And the timing couldn't have been better.
+
+That 34-point performance moved Andre to 95 Stableford points, putting him firmly in third place in Flight A and giving him some breathing room over the players chasing him.
+
+But make no mistake...
+
+THIRD PLACE IS NOT SAFE.
+🥉 THE BATTLE FOR THIRD
+
+While Tyrin and Jamar are battling for the top spot, there's another fight happening right behind them.
+
+Andre — 95
+
+Eric B — 85
+
+Jay — 81
+
+Spurg — 70
+
+That means the battle for the final podium position is still alive.
+
+Andre has created some separation, but with one round left, anything can happen.
+
+One bad round.
+
+One breakout round.
+
+One big Stableford performance.
+
+And suddenly the entire podium can change.
+
+✈️ FLIGHT B IS JUST AS CRAZY
+
+And don't think Flight B is sitting quietly watching all this happen.
+
+LJ is sitting at the top of Flight B, with Grecco right behind him and Justin holding third.
+
+And just like Flight A, the championship race isn't the only thing worth watching.
+
+The battle for third is wide open.
+
+There are several Flight B players still within striking distance of that third-place position, meaning the final round could completely reshuffle the podium.
+
+So while Flight A has Tyrin vs. Jamar at the top...
+
+Flight B has its own championship drama unfolding.
+
+🏁 ONE. ROUND. LEFT.
+
+That's what makes this season so good.
+
+We've gone from early-season positioning...
+
+to mid-season momentum swings...
+
+to Moccasin Run changing the complexion of the standings...
+
+and now The Architects has set the stage for the finale.
+
+Flight A Championship:
+
+🥇 Tyrin — 119
+🥈 Jamar — 115
+
+4-point difference.
+
+Flight A Podium Race:
+
+🥉 Andre — 95
+Eric B — 85
+Jay — 81
+
+And Flight B has its own championship and podium battles waiting to be settled.
+
+🎬 THE FINALE
+
+There is only ONE COURSE LEFT.
+
+And we haven't decided where we're going yet.
+
+After taking a look at the options, Town & Country is officially off the table. A $100+ round needs to be worth the price, and we've played some much better courses for considerably less.
+
+So the final destination is still TBD.
+
+Andre and his brother have a few options on the table, and the final decision is coming soon.
+
+One course.
+
+One final round.
+
+Championships on the line.
+
+Podiums still up for grabs.
+
+The season has come down to this.
+
+🏆 STOPLEE GOLF CLUB
+THE FINAL ROUND — COMING SOON.
+
+Course: TBD.
+
+Stay tuned. 🏌🏾‍♂️🔥`
+
+    },
+    {
       slug: "moccasin-run-recap",
       title: "Moccasin Run Shakes Up Both Flights",
       content: `Moccasin Run delivered exactly what everyone expected.

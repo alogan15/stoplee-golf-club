@@ -11,28 +11,28 @@ const [flight, setFlight] = useState<"A" | "B">("A")
 const flightARankings = [
   { name: "Tyrin", rank: 1, trend: "up", change: 1 },
   { name: "Jamar", rank: 2, trend: "steady", change: 0 },
-  { name: "Spurg", rank: 3, trend: "up", change: 2 },
-  { name: "Andre", rank: 4, trend: "up", change: 1 },
-  { name: "Eric B", rank: 5, trend: "down", change: -1 },
-  { name: "Aaron", rank: 6, trend: "down", change: -1 },
+  { name: "Andre", rank: 3, trend: "up", change: 1 },
+  { name: "Jay", rank: 4, trend: "up", change: 2 },
+  { name: "Eric B", rank: 5, trend: "down", change: -2 },
+  { name: "Spurg", rank: 6, trend: "down", change: -1 },
   { name: "Short", rank: 7, trend: "steady", change: 0 },
   { name: "Erik L", rank: 8, trend: "steady", change: 0 },
-  { name: "Keivon", rank: 9, trend: "steady", change: 0 },
-  { name: "Larry", rank: 10, trend: "steady", change: 0 }
-]
+  { name: "Larry", rank: 9, trend: "steady", change: 0 },
+  { name: "Keivon", rank: 10, trend: "steady", change: 0 },
+];
 
 const flightBRankings = [
   { name: "LJ", rank: 1, trend: "up", change: 1 },
-  { name: "Greeco", rank: 2, trend: "steady", change: 0 },
-  { name: "Steph", rank: 3, trend: "up", change: 2 },
+  { name: "Julian", rank: 2, trend: "steady", change: 0 },
+  { name: "Justin", rank: 3, trend: "up", change: 2 },
   { name: "James", rank: 4, trend: "up", change: 1 },
-  { name: "Julian", rank: 5, trend: "down", change: -1 },
-  { name: "Anthony", rank: 6, trend: "down", change: -1 },
-  { name: "Justin", rank: 7, trend: "steady", change: 0 },
+  { name: "Steph", rank: 5, trend: "down", change: -1 },
+  { name: "Greeco", rank: 6, trend: "down", change: -1 },
+  { name: "Anthony", rank: 7, trend: "steady", change: 0 },
   { name: "Isaiah", rank: 8, trend: "steady", change: 0 },
-  { name: "Walt", rank: 9, trend: "steady", change: 0 },
-  { name: "Greg", rank: 10, trend: "steady", change: 0 }
-]
+  { name: "Danny", rank: 9, trend: "steady", change: 0 },
+  { name: "Greg", rank: 10, trend: "steady", change: 0 },
+];
 const rankings =
   flight === "A"
     ? flightARankings

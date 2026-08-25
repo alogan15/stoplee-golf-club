@@ -49,7 +49,7 @@ export default function TeeSheetPage() {
         marginBottom: "10px",
         textAlign: "center"
       }}>
-        🏌🏽 Augusta in August
+      🏆 Tour Championship 🏆
       </h1>
 
       {/* EVENT CARD */}

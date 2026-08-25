@@ -7,6 +7,12 @@ import PlayerSelector from "@/src/components/PlayerSelector"
 import ResumeRound from "@/src/components/ResumeRound"
 import SocialFooter from "@/src/components/Socials"
 import { posts } from "@/src/data/posts"
+import { Dancing_Script } from "next/font/google";
+
+const dancingScript = Dancing_Script({
+  subsets: ["latin"],
+  weight: "400",
+});
 
 
 
@@ -161,16 +167,16 @@ const latestPosts = posts.slice(0, 3)
     Upcoming Round
   </div>
 
-
-  <h2
-    style={{
-      margin: 0,
-      fontSize: "28px",
-      fontWeight: "800",
-    }}
-  >
-      Tour Championship 
-  </h2>
+<h2
+  className={dancingScript.className}
+  style={{
+    margin: 0,
+    fontSize: "32px",
+    fontWeight: 400,
+  }}
+>
+  🏆 Tour Championship 🏆
+</h2>
 
   <p
     style={{
