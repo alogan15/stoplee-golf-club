@@ -18,9 +18,9 @@ The penultimate round of the Stoplee Golf Club season is officially in the books
 
 With only ONE ROUND REMAINING, there is still plenty left to decide.
 
-🔥 JAMAR ANSWERS THE CALL
+🔥 <strong>JAMAR ANSWERS THE CALL</strong>
 
-Coming into The Architects, Tyrin had all the momentum.
+Coming into The Architects, <strong>Tyrin</strong> had all the momentum.
 
 After his wild performance at Moccasin Run, Ty had put himself firmly in control of the Flight A championship race.
 
@@ -46,18 +46,13 @@ Tyrin vs. Jamar for the Flight A championship.
 
 The race couldn't be tighter.
 
-💥 ANDRE FINALLY BREAKS THROUGH
+💥 <strong>ANDRE FINALLY BREAKS THROUGH</strong>
 
 And then there's Andre.
 
 After spending the season hovering around the top of the leaderboard, fighting to stay in the conversation, The Architects was the breakout round we've been waiting for.
 
-Andre fired an 84, his best round of the season, with:
-
-⛳ 2 Birdies
-⛳ 6 Pars
-🔥 34 Stableford Points
-
+Andre fired an 84, his best round of the season.
 
 For once this season, Andre didn't have to pick which part of his game was going to show up.
 
@@ -69,18 +64,17 @@ That 34-point performance moved Andre to 95 Stableford points, putting him firml
 
 But make no mistake...
 
-THIRD PLACE IS NOT SAFE.
-🥉 THE BATTLE FOR THIRD
+<strong>THIRD PLACE IS NOT SAFE. 🥉 THE BATTLE FOR THIRD</strong>
 
 While Tyrin and Jamar are battling for the top spot, there's another fight happening right behind them.
 
-Andre — 95
+<strong>Andre — 95
 
 Eric B — 85
 
 Jay — 81
 
-Spurg — 70
+Spurg — 70</strong>
 
 That means the battle for the final podium position is still alive.
 
@@ -94,23 +88,31 @@ One big Stableford performance.
 
 And suddenly the entire podium can change.
 
-✈️ FLIGHT B IS JUST AS CRAZY
+<strong>✈️ FLIGHT B — THE PODIUM RACE IS WIDE OPEN</strong>
 
-And don't think Flight B is sitting quietly watching all this happen.
+And Flight B has just as much drama heading into the finale.
 
-LJ is sitting at the top of Flight B, with Grecco right behind him and Justin holding third.
+<strong>LJ</strong> currently leads Flight B, but behind him, <strong>Julian</strong> has moved into second place and has put himself in a very interesting position heading into the final round.
 
-And just like Flight A, the championship race isn't the only thing worth watching.
+Julian currently has a 10-point cushion over <strong>Greeco</strong>, who has yet to play his Architects round.
 
-The battle for third is wide open.
+That makes the second-place battle one to watch.
 
-There are several Flight B players still within striking distance of that third-place position, meaning the final round could completely reshuffle the podium.
+Greeco has been averaging around 9 Stableford points per round, so on paper, Julian has created some valuable breathing room. But with one round remaining, Greeco still has the opportunity to close that gap — especially once his Architects result is added to the standings.
 
-So while Flight A has Tyrin vs. Jamar at the top...
+And then there's the battle for third place.
 
-Flight B has its own championship drama unfolding.
+There are multiple Flight B players still within striking distance, meaning the final round at Wyncote could completely change the podium.
 
-🏁 ONE. ROUND. LEFT.
+So Flight B isn't just about who's going to finish first.
+
+It's:
+
+Can LJ hold the top spot?
+Can Greeco make up ground on Julian?
+And who is going to emerge from the pack and steal third?
+
+🏁 <strong>ONE. ROUND. LEFT.</strong>
 
 That's what makes this season so good.
 
@@ -122,32 +124,28 @@ to Moccasin Run changing the complexion of the standings...
 
 and now The Architects has set the stage for the finale.
 
-Flight A Championship:
+<strong>Flight A Championship:
 
 🥇 Tyrin — 119
-🥈 Jamar — 115
+🥈 Jamar — 115 </strong>
 
 4-point difference.
 
-Flight A Podium Race:
+<strong>Flight A Podium Race:
 
 🥉 Andre — 95
 Eric B — 85
-Jay — 81
+Jay — 81</strong>
 
 And Flight B has its own championship and podium battles waiting to be settled.
 
-🎬 THE FINALE
+🎬 <strong>THE FINALE</strong>
 
 There is only ONE COURSE LEFT.
 
-And we haven't decided where we're going yet.
+<strong>The Tour Championship</strong> will be the final stop of the <strong>Stoplee Golf Club</strong> season.
 
-After taking a look at the options, Town & Country is officially off the table. A $100+ round needs to be worth the price, and we've played some much better courses for considerably less.
-
-So the final destination is still TBD.
-
-Andre and his brother have a few options on the table, and the final decision is coming soon.
+We're going out with <strong>Oxford, Pa</strong> to <strong>Wyncote Golf Club</strong> for the finale.
 
 One course.
 
@@ -159,10 +157,11 @@ Podiums still up for grabs.
 
 The season has come down to this.
 
-🏆 STOPLEE GOLF CLUB
-THE FINAL ROUND — COMING SOON.
+🏆 <strong> STOPLEE GOLF CLUB - The Tour Championship </strong> awaits 🏆
 
-Course: TBD.
+One course. One final round. Everything on the line.
+
+<strong> September 19th. Wyncote Golf Club.</strong>
 
 Stay tuned. 🏌🏾‍♂️🔥`
 
