@@ -164,7 +164,7 @@ const latestPosts = posts.slice(0, 3)
       marginBottom: "10px",
     }}
   >
-    Upcoming Round
+    Final Round
   </div>
 
 <h2
