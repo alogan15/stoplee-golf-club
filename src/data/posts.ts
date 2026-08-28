@@ -2,16 +2,16 @@ import { title } from "process";
 
 export const posts = [
   {
-    id:0,
+    id: 1,
     slug: "augusta-in-august",
-      title: "THE ARCHITECTS RECAP",
+    title: "THE ARCHITECTS RECAP",
     image: "/blog/Jamar.jpeg",
     date: "2026-08-24",
     description: "Jamar answers the call and Andre finally breaks through..",
     readMore: "Read More..."
   },
   {
-    id: 1,
+    id: 2,
     slug: "moccasin-run-recap",
     title: "Moccasin Run Shakes Up Both Flights",
     image: "/blog/Moccasin1.jpg",
@@ -20,7 +20,7 @@ export const posts = [
     readMore: "Read More..."
   },
   {
-    id: 2,
+    id: 3,
     slug: "moccasin-run-preview",
     title: "La Fiesta: Flight Battles Begin at Moccasin Run",
     image: "/blog/moccasin-run.jpg",
@@ -29,7 +29,7 @@ export const posts = [
     readMore: "Read More..."
     },
   {
-    id: 3,
+    id: 4,
     slug: "pregame-mercer",
     title: "Mercer Oaks West: Where Flights Will Be Decided",
     image: "/blog/Mercer1.jpg",
@@ -38,7 +38,7 @@ export const posts = [
     readMore: "Read More..."
   },
     {
-    id: 4,
+    id: 5,
     slug: "legacy",
     title: "Legacy Built at The Rock",
     image: "/blog/RockGroup.JPEG",
@@ -47,7 +47,7 @@ export const posts = [
     readMore: "Read More..."
   },
   {
-    id: 5,
+    id: 6,
     slug: "baltimore-pressure",
     title: "Birthday, Battles and Baltimore Pressure",
     image: "/blog/Eric.JPEG",
@@ -56,7 +56,7 @@ export const posts = [
     readMore: "Read More..."
   },
   {
-    id: 6,
+    id: 7,
     slug: "power-rankings-in-motion",
     title: "Power Rankings In Motion",
     image: "/blog/Tyrin.png",
@@ -65,7 +65,7 @@ export const posts = [
     readMore: "Read More..."
   },
   {
-    id: 7,
+    id: 8,
     slug: "twp-opener-recap",
     title: "Twp-Opener: Built From Loss. Driven By Brotherhood",
     image: "/blog/twp-opener.jpg",
@@ -74,7 +74,7 @@ export const posts = [
     readMore: "Read More..."
   },
   {
-    id: 8,
+    id: 9,
     slug:"twp-opener",
     title:"2026 Twp Opener",
     image:"/blog/broadrun.jpg",
@@ -83,7 +83,7 @@ export const posts = [
     readMore:"Read More..."
   },
   {
-    id: 9,
+    id: 10,
     slug: "season-recap-2025",
     title: "2025 Season Recap",
     image: "/blog/group.png",
@@ -92,7 +92,7 @@ export const posts = [
     readMore:"Read More..."
   },
   {
-    id: 10,
+    id: 11,
     slug: "rivalries-2026",
     title: "2026 Rivalry",
     image: "/blog/rivalry.png",
@@ -102,7 +102,7 @@ export const posts = [
 
   },
   {
-    id: 11,
+    id: 12,
     slug: "jamar-threepeat",
     title: "Watch The Throne",
     image: "/blog/Jamar2025.png",
@@ -112,7 +112,7 @@ export const posts = [
 
   },
     {
-    id: 12,
+    id: 13,
     slug: "rookies-2025",
     title: "Rookie Class of 2025",
     image: "/blog/rookies.png",
