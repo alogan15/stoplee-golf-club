@@ -21,9 +21,9 @@ export const insights = {
     {
       icon: "⚠️",
       title: "Pressure Pick",
-      player: "Andre",
+      player: "Jamar",
       description:
-        "An 84 at The Architects moved him to 95 points and third place. He's still within striking distance of Jamar and has a chance to make a major move in the Tour Championship.",
+      "Only four points behind Tyrin heading into the championship. The pressure is on, but he's close enough to make a run at the title.",
     },
 
   ],
