@@ -1,49 +1,59 @@
 export const insights = {
+
   A: [
+
     {
       icon: "🔥",
       title: "Lock of the Week",
       player: "Tyrin",
       description:
-        "Two wins this season and coming off an 85. The safest bet in Flight A.",
+        "Coming off a 96 at The Architects, but still sitting comfortably atop Flight A with 119 points and a 23.8 average. Two wins make him the safest play at Wyncote.",
     },
+
     {
       icon: "📈",
       title: "Hottest Golfer",
       player: "Jay",
       description:
-        "Fresh off a season-best 84 and 33 Stableford points. Can he stay hot?",
+        "Just posted an 84 at The Architects, his best round. He's carrying serious momentum into Wyncote.",
     },
+
     {
       icon: "⚠️",
       title: "Pressure Pick",
-      player: "Jamar",
+      player: "Andre",
       description:
-        "Quietly putting together one of the most consistent seasons. A win keeps him in the title chase.",
+        "An 84 at The Architects moved him to 95 points and third place. He's still within striking distance of Jamar and has a chance to make a major move in the Tour Championship.",
     },
+
   ],
 
   B: [
+
     {
       icon: "⭐",
       title: "Favorite",
       player: "LJ",
       description:
-        "Still the man to beat in Flight B. His consistency keeps him atop the betting board.",
+        "Still the man to beat in Flight B with 56 points and a 11.2 average. His consistency has kept him on top all season, making him the favorite at Wyncote.",
     },
+
     {
       icon: "🔥",
       title: "Trending Up",
-      player: "Justin",
+      player: "James",
       description:
-        "A breakout 95 at Moccasin Run has everyone paying attention heading into Architects.",
+        "James remains right in the mix after another solid 104 at The Architects. He's tied for third with Justin and only six points behind Julian heading into Wyncote.",
     },
+
     {
       icon: "💎",
       title: "Best Value",
-      player: "James",
+      player: "Julian",
       description:
-        "One of Flight B's most reliable scorers. A strong value pick with legitimate winning upside.",
+        "Sitting second in Flight B with 47 points, Julian has quietly put himself in position to challenge LJ. A strong Wyncote round could close the gap quickly.",
     },
+
   ],
+
 };
