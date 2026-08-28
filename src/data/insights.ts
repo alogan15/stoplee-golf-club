@@ -15,7 +15,7 @@ export const insights = {
       title: "Hottest Golfer",
       player: "Jay",
       description:
-        "Just posted an 84 at The Architects, his best round. He's carrying serious momentum into Wyncote.",
+    "Jay has quietly turned things around late in the season. After a strong 33-point performance at Moccasin Run, he followed it with a solid 90 at The Architects. He's playing some of his better golf heading into Wyncote.",
     },
 
     {
