@@ -4,7 +4,7 @@ export const posts = [
   {
     id: 1,
     slug: "augusta-in-august",
-    title: "THE ARCHITECTS RECAP",
+    title: "The Architects Recap",
     image: "/blog/Jamar.jpeg",
     date: "2026-08-24",
     description: "Jamar answers the call and Andre finally breaks through..",
