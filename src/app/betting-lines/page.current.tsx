@@ -153,7 +153,7 @@ export default function PredictionCenterPage() {
             marginBottom: "6px",
           }}
         >
-          Architects Golf Club
+          Wyncote Golf Club
         </p>
 
         <p
@@ -162,7 +162,7 @@ export default function PredictionCenterPage() {
             fontSize: "14px",
           }}
         >
-          Round 5 • Stewartsville, NJ
+          Round 6 • Oxford, Pa
         </p>
       </div>
 

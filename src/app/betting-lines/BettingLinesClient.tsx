@@ -1,647 +1,956 @@
-"use client";
+"use client"
 
-import { useEffect, useState } from "react";
-import { useRouter } from "next/navigation";
-import { bettingLines } from "@/src/data/bettingLines";
-import BackButton from "@/src/components/BackButton";
+import { useEffect, useState } from "react"
+import { useRouter } from "next/navigation"
+import BackButton from "@/src/components/BackButton"
+import SocialFooter from "@/src/components/Socials"
+import { bettingLines } from "@/src/data/bettingLines"
 
 type Player = {
-  player: string;
-  projected: number;
-  overUnder: number;
-  pick: string;
-  line: string;
-  confidence: number;
-  note: string;
-};
+  player: string
+  projected: number
+  overUnder: number
+  pick: string
+  line: string
+  confidence: number
+  note: string
+}
 
 type BetSelection = {
-  player: string;
-  projected: number;
-  overUnder: number;
-  pick: "OVER" | "UNDER";
-  line: string;
-  confidence: number;
-  note: string;
-  wager: number;
-};
+  player: string
+  projected: number
+  overUnder: number
+  pick: "OVER" | "UNDER"
+  line: string
+  confidence: number
+  note: string
+  wager: number
+}
 
 type SavedTicket = {
-  round: number;
-  flight: "A" | "B";
-  bets: BetSelection[];
-  totalWagered: number;
-  balanceAfterBets: number;
-  createdAt: string;
-  locked: boolean;
-};
+  round: number
+  flight: "A" | "B"
+  bets: BetSelection[]
+  totalWagered: number
+  balanceAfterBets: number
+  createdAt: string
+  locked: boolean
+}
 
-const BALANCE_KEY = "stoplee_balance";
-const TICKET_KEY = "stoplee_betting_ticket";
+const BALANCE_KEY = "stoplee_balance"
+const TICKETS_KEY = "stoplee_betting_tickets"
+
+const ROUND = 6
+
+function StatCard({
+  title,
+  value,
+}: {
+  title: string
+  value: string | number
+}) {
+  return (
+    <div
+      style={{
+        background: "#f8fafc",
+        borderRadius: "14px",
+        padding: "16px",
+        textAlign: "center",
+      }}
+    >
+      <div
+        style={{
+          color: "#6b7280",
+          fontSize: "13px",
+          marginBottom: "8px",
+        }}
+      >
+        {title}
+      </div>
+
+      <div
+        style={{
+          fontSize: "28px",
+          fontWeight: "800",
+          color: "#166534",
+        }}
+      >
+        {value}
+      </div>
+    </div>
+  )
+}
 
 export default function BettingLinesClient() {
-  const router = useRouter();
+  const router = useRouter()
 
-  const [flight, setFlight] = useState<"A" | "B">("A");
+  const [flight, setFlight] =
+    useState<"A" | "B">("A")
 
-  const [balance, setBalance] = useState<number>(50);
+  const [balance, setBalance] =
+    useState<number>(50)
 
-  const [selections, setSelections] = useState<
-    Record<string, "OVER" | "UNDER">
-  >({});
+  const [selections, setSelections] =
+    useState<
+      Record<string, "OVER" | "UNDER">
+    >({})
 
-  const [wagers, setWagers] = useState<Record<string, number>>({});
+  const [wagers, setWagers] =
+    useState<Record<string, number>>({})
 
-  const [ticket, setTicket] = useState<SavedTicket | null>(null);
+  const [isLoaded, setIsLoaded] =
+    useState(false)
 
-  const [isLoaded, setIsLoaded] = useState(false);
+  const [lastPlacedTicket, setLastPlacedTicket] =
+    useState<SavedTicket | null>(null)
+
+  const [wagerErrors, setWagerErrors] =
+    useState<Record<string, string>>({})
 
   const players: Player[] =
     flight === "A"
       ? bettingLines.flightA
-      : bettingLines.flightB;
+      : bettingLines.flightB
 
   /*
-   * LOAD SAVED BALANCE + TICKET
-   */
-useEffect(() => {
-  try {
-    const savedBalance = localStorage.getItem(BALANCE_KEY);
-
-    if (savedBalance !== null) {
-      const parsedBalance = Number(savedBalance);
-
-      if (
-        Number.isFinite(parsedBalance) &&
-        parsedBalance >= 0
-      ) {
-        setBalance(parsedBalance);
-      }
-    }
-
-    const savedTicket = localStorage.getItem(TICKET_KEY);
-
-    if (savedTicket) {
-      const parsedTicket: SavedTicket =
-        JSON.parse(savedTicket);
-
-      // Only lock the page if this is the current Round 5 ticket.
-      if (parsedTicket.round === 5) {
-        setTicket(parsedTicket);
-
-        const savedSelections: Record<
-          string,
-          "OVER" | "UNDER"
-        > = {};
-
-        const savedWagers: Record<string, number> = {};
-
-        parsedTicket.bets.forEach((bet) => {
-          savedSelections[bet.player] = bet.pick;
-          savedWagers[bet.player] = bet.wager;
-        });
-
-        setSelections(savedSelections);
-        setWagers(savedWagers);
-      }
-    }
-  } catch (error) {
-    console.error(
-      "Unable to load betting information:",
-      error
-    );
-  } finally {
-    setIsLoaded(true);
-  }
-}, []);
-
-  /*
-   * CURRENT BETS
-   */
-  const selectedPlayers: BetSelection[] = players
-    .filter(
-      (player) =>
-        selections[player.player] &&
-        Number(wagers[player.player]) > 0
-    )
-    .map((player) => ({
-      player: player.player,
-      projected: player.projected,
-      overUnder: player.overUnder,
-      pick: selections[player.player],
-      line: player.line,
-      confidence: player.confidence,
-      note: player.note,
-      wager: Number(wagers[player.player]),
-    }));
-
-  /*
-   * TOTAL WAGERED
-   */
-  const totalWagered = selectedPlayers.reduce(
-    (total, bet) => total + bet.wager,
-    0
-  );
-
-  /*
-   * IMPORTANT BALANCE FIX
+   * -----------------------------------------
+   * LOAD BALANCE
+   * -----------------------------------------
    *
-   * Never allow the displayed balance to go negative.
+   * We DO NOT load an old ticket here.
+   *
+   * A confirmed ticket is locked forever,
+   * but the user must still be able to create
+   * another ticket.
    */
-    const balanceAfterBets = ticket?.locked
-    ? Math.max(0, ticket.balanceAfterBets)
-    : Math.max(0, balance - totalWagered);
 
-    const hasEnoughBalance = ticket?.locked
-    ? true
-    : totalWagered <= balance;
+  useEffect(() => {
+    try {
+      const savedBalance =
+        localStorage.getItem(
+          BALANCE_KEY
+        )
+
+      if (savedBalance !== null) {
+        const parsedBalance =
+          Number(savedBalance)
+
+        if (
+          Number.isFinite(
+            parsedBalance
+          ) &&
+          parsedBalance >= 0
+        ) {
+          setBalance(
+            parsedBalance
+          )
+        }
+      }
+    } catch (error) {
+      console.error(
+        "Unable to load betting balance:",
+        error
+      )
+    } finally {
+      setIsLoaded(true)
+    }
+  }, [])
 
   /*
-   * CHANGE PICK
+   * -----------------------------------------
+   * CURRENT SELECTIONS
+   * -----------------------------------------
    */
+
+  const selectedPlayers: BetSelection[] =
+    players
+      .filter(
+        (player) =>
+          selections[
+            player.player
+          ] &&
+          Number(
+            wagers[player.player]
+          ) > 0
+      )
+      .map((player) => ({
+        player:
+          player.player,
+
+        projected:
+          player.projected,
+
+        overUnder:
+          player.overUnder,
+
+        pick:
+          selections[
+            player.player
+          ],
+
+        line:
+          player.line,
+
+        confidence:
+          player.confidence,
+
+        note:
+          player.note,
+
+        wager:
+          Number(
+            wagers[
+              player.player
+            ]
+          ),
+      }))
+
+  /*
+   * -----------------------------------------
+   * TOTAL CURRENT WAGER
+   * -----------------------------------------
+   */
+
+  const totalWagered =
+    selectedPlayers.reduce(
+      (total, bet) =>
+        total + bet.wager,
+      0
+    )
+
+  /*
+   * -----------------------------------------
+   * BALANCE AFTER CURRENT BET
+   * -----------------------------------------
+   */
+
+  const balanceAfterBets =
+    Math.max(
+      0,
+      balance - totalWagered
+    )
+
+  /*
+   * -----------------------------------------
+   * BALANCE VALIDATION
+   * -----------------------------------------
+   */
+
+  const hasEnoughBalance =
+    totalWagered <= balance
+
+  /*
+   * -----------------------------------------
+   * CHANGE OVER / UNDER
+   * -----------------------------------------
+   */
+
   const handlePickChange = (
     player: string,
     pick: "OVER" | "UNDER"
   ) => {
-    if (ticket?.locked) return;
+    setSelections(
+      (previous) => ({
+        ...previous,
+        [player]: pick,
+      })
+    )
 
-    setSelections((previous) => ({
-      ...previous,
-      [player]: pick,
-    }));
-  };
+    /*
+     * If the user changes a selection
+     * after seeing a previous error,
+     * clear that error.
+     */
+
+    setWagerErrors(
+      (previous) => ({
+        ...previous,
+        [player]: "",
+      })
+    )
+  }
 
   /*
+   * -----------------------------------------
    * CHANGE WAGER
+   * -----------------------------------------
    */
+
   const handleWagerChange = (
     player: string,
     value: string
   ) => {
-    if (ticket?.locked) return;
-
     const numericValue =
       value === ""
         ? 0
-        : Math.max(0, Number(value));
+        : Number(value)
 
-    setWagers((previous) => ({
-      ...previous,
-      [player]: numericValue,
-    }));
-  };
+    if (
+      !Number.isFinite(
+        numericValue
+      ) ||
+      numericValue < 0
+    ) {
+      setWagers(
+        (previous) => ({
+          ...previous,
+          [player]: 0,
+        })
+      )
 
-  /*
-   * PLACE ALL BETS
-   */
-  const handlePlaceBet = () => {
-    if (ticket?.locked) {
-      return;
-    }
-
-    if (selectedPlayers.length === 0) {
-      alert("Please select at least one bet.");
-      return;
+      return
     }
 
     /*
-     * DO NOT ALLOW A BET THAT EXCEEDS THE BALANCE.
-     *
-     * IMPORTANT:
-     * totalWagered === balance IS ALLOWED.
+     * Maximum wager is the user's
+     * current available balance.
      */
+
+    if (
+      numericValue > balance
+    ) {
+      setWagerErrors(
+        (previous) => ({
+          ...previous,
+          [player]:
+            `You cannot wager more than your $${balance.toFixed(
+              2
+            )} balance.`,
+        })
+      )
+
+      setWagers(
+        (previous) => ({
+          ...previous,
+          [player]: numericValue,
+        })
+      )
+
+      return
+    }
+
+    setWagerErrors(
+      (previous) => ({
+        ...previous,
+        [player]: "",
+      })
+    )
+
+    setWagers(
+      (previous) => ({
+        ...previous,
+        [player]:
+          numericValue,
+      })
+    )
+  }
+
+  /*
+   * -----------------------------------------
+   * CONFIRM BET SLIP
+   * -----------------------------------------
+   *
+   * This is the new logic.
+   *
+   * Every confirmed ticket gets APPENDED
+   * to the ticket history.
+   *
+   * Nothing gets overwritten.
+   */
+
+  const handlePlaceBet = () => {
+    if (
+      selectedPlayers.length === 0
+    ) {
+      alert(
+        "Please select at least one bet."
+      )
+
+      return
+    }
+
     if (!hasEnoughBalance) {
       alert(
         "Your selections exceed your available balance."
-      );
-      return;
+      )
+
+      return
     }
 
-    const newBalance = Math.max(
-      0,
-      balance - totalWagered
-    );
+    /*
+     * Create the new locked ticket.
+     */
+
+    const newBalance =
+      Math.max(
+        0,
+        balance - totalWagered
+      )
 
     const newTicket: SavedTicket = {
-    round: 5,
+      round: ROUND,
+
       flight,
-      bets: selectedPlayers,
+
+      bets:
+        selectedPlayers,
+
       totalWagered,
-      balanceAfterBets: newBalance,
-      createdAt: new Date().toISOString(),
+
+      balanceAfterBets:
+        newBalance,
+
+      createdAt:
+        new Date().toISOString(),
+
       locked: true,
-    };
+    }
 
     /*
-     * SAVE BALANCE
+     * ---------------------------------------
+     * LOAD EXISTING TICKETS
+     * ---------------------------------------
      */
+
+    let existingTickets:
+      SavedTicket[] = []
+
+    try {
+      const savedTickets =
+        localStorage.getItem(
+          TICKETS_KEY
+        )
+
+      if (savedTickets) {
+        const parsed =
+          JSON.parse(
+            savedTickets
+          )
+
+        if (
+          Array.isArray(
+            parsed
+          )
+        ) {
+          existingTickets =
+            parsed
+        } else if (
+          parsed &&
+          typeof parsed ===
+            "object"
+        ) {
+          /*
+           * Backward compatibility with
+           * the old single-ticket format.
+           */
+
+          existingTickets =
+            [parsed]
+        }
+      }
+    } catch (error) {
+      console.error(
+        "Unable to load existing tickets:",
+        error
+      )
+    }
+
+    /*
+     * ---------------------------------------
+     * APPEND NEW TICKET
+     * ---------------------------------------
+     */
+
+    const updatedTickets = [
+      ...existingTickets,
+      newTicket,
+    ]
+
+    localStorage.setItem(
+      TICKETS_KEY,
+      JSON.stringify(
+        updatedTickets
+      )
+    )
+
+    /*
+     * ---------------------------------------
+     * SAVE BALANCE
+     * ---------------------------------------
+     */
+
     localStorage.setItem(
       BALANCE_KEY,
-      newBalance.toString()
-    );
+      String(newBalance)
+    )
 
     /*
-     * SAVE TICKET
+     * ---------------------------------------
+     * UPDATE UI
+     * ---------------------------------------
      */
-    localStorage.setItem(
-      TICKET_KEY,
-      JSON.stringify(newTicket)
-    );
+
+    setBalance(
+      newBalance
+    )
+
+    setLastPlacedTicket(
+      newTicket
+    )
 
     /*
-     * UPDATE PAGE
+     * ---------------------------------------
+     * CLEAR CURRENT BET SLIP
+     * ---------------------------------------
+     *
+     * This is what allows the user to
+     * immediately make another bet.
      */
-    setBalance(newBalance);
-    setTicket(newTicket);
-  };
+
+    setSelections({})
+    setWagers({})
+    setWagerErrors({})
+
+    /*
+     * We intentionally do NOT lock the
+     * Prediction Center.
+     *
+     * The ticket itself is locked in storage.
+     */
+
+    alert(
+      "Bet slip confirmed!"
+    )
+  }
 
   /*
-   * VIEW TICKET
+   * -----------------------------------------
+   * LOADING
+   * -----------------------------------------
    */
-  const handleViewTicket = () => {
-    router.push("/betting-lines/ticket");
-  };
 
-  /*
-   * WAIT UNTIL LOCAL STORAGE HAS BEEN READ
-   */
   if (!isLoaded) {
     return (
       <main
         style={{
           minHeight: "100vh",
-          background: "#f8fafc",
-          padding: "24px",
-          fontFamily: "Arial, sans-serif",
+          padding: "20px",
+          fontFamily:
+            "Inter, sans-serif",
         }}
       >
         <div
           style={{
-            maxWidth: "650px",
-            margin: "0 auto",
             textAlign: "center",
             paddingTop: "80px",
             color: "#6b7280",
           }}
         >
-          Loading betting center...
+          Loading Prediction Center...
         </div>
       </main>
-    );
+    )
   }
 
+  /*
+   * -----------------------------------------
+   * PAGE
+   * -----------------------------------------
+   */
+
   return (
-    <main
+    <div
       style={{
-        minHeight: "100vh",
-        background: "#f8fafc",
-        padding: "24px",
-        fontFamily: "Arial, sans-serif",
+        padding: "20px",
+        maxWidth: "600px",
+        margin: "0 auto",
+        fontFamily:
+          "Inter, sans-serif",
         color: "#111827",
       }}
     >
+      <BackButton />
+
+            {/* ===================================== */}
+      {/* HEADER */}
+      {/* ===================================== */}
+
       <div
         style={{
-          maxWidth: "650px",
-          margin: "0 auto",
+          textAlign: "center",
+          marginBottom: "30px",
         }}
       >
-        <BackButton />
+        <h1
+          style={{
+            fontSize: "34px",
+            fontWeight: "800",
+            color: "#166534",
+            marginBottom: "8px",
+          }}
+        >
+          📈 Prediction Center
+        </h1>
 
-        {/* HEADER */}
+        <p
+          style={{
+            color: "#6b7280",
+            marginBottom: "6px",
+          }}
+        >
+          Wyncote Golf Club
+        </p>
+
+        <p
+          style={{
+            color: "#9ca3af",
+            fontSize: "14px",
+          }}
+        >
+          Round 6 • Oxford, Pa
+        </p>
+      </div>
+
+      {/* ===================================== */}
+      {/* BALANCE CARD */}
+      {/* ===================================== */}
+
+      <div
+        style={{
+          background: "#166534",
+          color: "white",
+          borderRadius: "20px",
+          padding: "22px",
+          marginBottom: "28px",
+          boxShadow:
+            "0 8px 24px rgba(0,0,0,.12)",
+          textAlign: "center",
+        }}
+      >
         <div
           style={{
-            textAlign: "center",
-            marginBottom: "30px",
+            fontSize: "13px",
+            fontWeight: "700",
+            letterSpacing: "1px",
+            opacity: 0.85,
+            marginBottom: "5px",
           }}
         >
-          <h1
-            style={{
-              fontSize: "34px",
-              fontWeight: "900",
-              color: "#166534",
-              margin: "0 0 8px",
-              letterSpacing: "-0.8px",
-            }}
-          >
-            🏌🏾‍♂️ Prediction Center
-          </h1>
-
-          <p
-            style={{
-              margin: "0 0 5px",
-              color: "#166534",
-              fontWeight: "700",
-            }}
-          >
-            Architects Golf Club
-          </p>
-
-          <p
-            style={{
-              margin: 0,
-              color: "#9ca3af",
-              fontSize: "14px",
-            }}
-          >
-            Round 5 • Stewartsville, NJ
-          </p>
+          SPORTSBOOK BALANCE
         </div>
 
-        {/* BALANCE */}
         <div
           style={{
-            background: "#ffffff",
-            border: "1px solid #e5e7eb",
-            borderRadius: "18px",
-            padding: "20px",
-            marginBottom: "25px",
-            boxShadow: "0 6px 18px rgba(0,0,0,0.06)",
-            textAlign: "center",
+            fontSize: "38px",
+            fontWeight: "900",
+            marginBottom: "4px",
           }}
         >
-          <div
-            style={{
-              fontSize: "13px",
-              color: "#9ca3af",
-              fontWeight: "700",
-              marginBottom: "5px",
-              textTransform: "uppercase",
-            }}
-          >
-            Available Balance
-          </div>
-
-          <div
-            style={{
-              fontSize: "32px",
-              fontWeight: "900",
-              color:
-                balance > 0
-                  ? "#166534"
-                  : "#6b7280",
-            }}
-          >
-            ${balance.toFixed(2)}
-          </div>
-
-          {totalWagered > 0 && (
-            <div
-              style={{
-                marginTop: "10px",
-                color: "#6b7280",
-                fontSize: "14px",
-              }}
-            >
-              After current selections:{" "}
-              <strong
-                style={{
-                  color:
-                    hasEnoughBalance
-                      ? "#166534"
-                      : "#991b1b",
-                }}
-              >
-                ${balanceAfterBets.toFixed(2)}
-              </strong>
-            </div>
-          )}
+          $
+          {balance.toFixed(2)}
         </div>
 
-        {/* FLIGHT BUTTONS */}
         <div
           style={{
-            display: "flex",
-            justifyContent: "center",
-            gap: "12px",
-            marginBottom: "30px",
+            fontSize: "13px",
+            opacity: 0.85,
           }}
         >
-          <button
-            onClick={() => setFlight("A")}
-            disabled={ticket?.locked}
-            style={{
-              border: "none",
-              borderRadius: "999px",
-              padding: "12px 26px",
-              fontWeight: "700",
-              cursor: ticket?.locked
-                ? "not-allowed"
-                : "pointer",
-              background:
-                flight === "A"
-                  ? "#166534"
-                  : "#e5e7eb",
-              color:
-                flight === "A"
-                  ? "#ffffff"
-                  : "#374151",
-              opacity: ticket?.locked ? 0.7 : 1,
-            }}
-          >
-            Flight A
-          </button>
-
-          <button
-            onClick={() => setFlight("B")}
-            disabled={ticket?.locked}
-            style={{
-              border: "none",
-              borderRadius: "999px",
-              padding: "12px 26px",
-              fontWeight: "700",
-              cursor: ticket?.locked
-                ? "not-allowed"
-                : "pointer",
-              background:
-                flight === "B"
-                  ? "#166534"
-                  : "#e5e7eb",
-              color:
-                flight === "B"
-                  ? "#ffffff"
-                  : "#374151",
-              opacity: ticket?.locked ? 0.7 : 1,
-            }}
-          >
-            Flight B
-          </button>
+          Available to bet
         </div>
+      </div>
 
-        {/* FLIGHT TITLE */}
-        <h2
+      {/* ===================================== */}
+      {/* FLIGHT TOGGLE */}
+      {/* ===================================== */}
+
+      <div
+        style={{
+          display: "flex",
+          justifyContent:
+            "center",
+          gap: "12px",
+          marginBottom: "30px",
+        }}
+      >
+        <button
+          onClick={() =>
+            setFlight("A")
+          }
           style={{
-            textAlign: "center",
-            fontSize: "24px",
-            marginBottom: "20px",
+            padding:
+              "10px 22px",
+            borderRadius:
+              "999px",
+            border: "none",
+            cursor:
+              "pointer",
+            fontWeight:
+              "700",
+            background:
+              flight === "A"
+                ? "#166534"
+                : "#e5e7eb",
+            color:
+              flight === "A"
+                ? "white"
+                : "#374151",
           }}
         >
-          Flight {flight}
-        </h2>
+          Flight A
+        </button>
 
-        {/* PLAYER CARDS */}
-        {players.map((player) => {
+        <button
+          onClick={() =>
+            setFlight("B")
+          }
+          style={{
+            padding:
+              "10px 22px",
+            borderRadius:
+              "999px",
+            border: "none",
+            cursor:
+              "pointer",
+            fontWeight:
+              "700",
+            background:
+              flight === "B"
+                ? "#166534"
+                : "#e5e7eb",
+            color:
+              flight === "B"
+                ? "white"
+                : "#374151",
+          }}
+        >
+          Flight B
+        </button>
+      </div>
+
+      {/* ===================================== */}
+      {/* FLIGHT TITLE */}
+      {/* ===================================== */}
+
+      {/* <h2
+        style={{
+          fontSize: "24px",
+          fontWeight: "800",
+          color: "#166534",
+          marginBottom: "18px",
+        }}
+      >
+        Flight {flight}
+      </h2> */}
+
+      {/* ===================================== */}
+      {/* PLAYER CARDS */}
+      {/* ===================================== */}
+
+      {players.map(
+        (player) => {
           const selectedPick =
-            selections[player.player];
+            selections[
+              player.player
+            ]
 
           const wager =
-            wagers[player.player] || 0;
+            wagers[
+              player.player
+            ] ?? 0
+
+          const error =
+            wagerErrors[
+              player.player
+            ]
+
+          const playerHasSelection =
+            Boolean(
+              selectedPick
+            )
+
+          const playerHasWager =
+            Number(wager) > 0
 
           return (
             <div
-              key={player.player}
+              key={
+                player.player
+              }
               style={{
-                background: "#ffffff",
-                border: "1px solid #e5e7eb",
-                borderRadius: "18px",
-                padding: "20px",
-                marginBottom: "18px",
+                background:
+                  "white",
+                borderRadius:
+                  "20px",
+                padding:
+                  "20px",
+                marginBottom:
+                  "24px",
                 boxShadow:
-                  "0 6px 18px rgba(0,0,0,0.07)",
+                  "0 8px 24px rgba(0,0,0,.08)",
+                border:
+                  "1px solid #e5e7eb",
               }}
             >
-              {/* PLAYER */}
+
+              {/* PLAYER HEADER */}
+
               <div
                 style={{
-                  display: "flex",
+                  display:
+                    "flex",
                   justifyContent:
                     "space-between",
-                  alignItems: "center",
-                  marginBottom: "16px",
+                  alignItems:
+                    "center",
+                  marginBottom:
+                    "18px",
                 }}
               >
                 <div>
                   <div
                     style={{
-                      fontSize: "23px",
-                      fontWeight: "800",
+                      fontSize:
+                        "24px",
+                      fontWeight:
+                        "800",
                     }}
                   >
-                    {player.player}
+                    {
+                      player.player
+                    }
                   </div>
 
                   <div
                     style={{
-                      color: "#6b7280",
-                      fontSize: "14px",
-                      marginTop: "3px",
+                      color:
+                        "#6b7280",
+                      fontSize:
+                        "14px",
                     }}
                   >
-                    Projected:{" "}
-                    {player.projected}
+                    Flight{" "}
+                    {flight}
                   </div>
                 </div>
 
+                {/* RECOMMENDATION */}
+
                 <div
                   style={{
-                    padding: "8px 13px",
-                    borderRadius: "999px",
-                    fontWeight: "800",
                     background:
-                      player.pick === "UNDER"
-                        ? "#dcfce7"
-                        : "#fee2e2",
+                      "#166534",
                     color:
-                      player.pick === "UNDER"
-                        ? "#166534"
-                        : "#991b1b",
+                      "white",
+                    padding:
+                      "10px 18px",
+                    borderRadius:
+                      "999px",
+                    fontWeight:
+                      "700",
                   }}
                 >
-                  {player.pick}
+                  {
+                    player.pick
+                  }
                 </div>
               </div>
 
-              {/* BETTING NUMBERS */}
+              {/* ================================= */}
+              {/* STATS */}
+              {/* ================================= */}
+
               <div
                 style={{
-                  display: "grid",
+                  display:
+                    "grid",
                   gridTemplateColumns:
-                    "repeat(3, 1fr)",
-                  gap: "10px",
-                  marginBottom: "16px",
+                    "1fr 1fr",
+                  gap:
+                    "16px",
+                  marginBottom:
+                    "20px",
+                }}
+              >
+                <StatCard
+                  title="Projected"
+                  value={
+                    player.projected
+                  }
+                />
+
+                <StatCard
+                  title="O / U"
+                  value={
+                    player.overUnder
+                  }
+                />
+
+                <StatCard
+                  title="Line"
+                  value={
+                    player.line
+                  }
+                />
+
+                <StatCard
+                  title="Confidence"
+                  value={
+                    `${player.confidence}/5`
+                  }
+                />
+              </div>
+
+              {/* ================================= */}
+              {/* CONFIDENCE STARS */}
+              {/* ================================= */}
+
+              <div
+                style={{
+                  marginBottom:
+                    "18px",
                 }}
               >
                 <div
                   style={{
-                    background: "#f8fafc",
-                    borderRadius: "12px",
-                    padding: "12px",
-                    textAlign: "center",
+                    fontWeight:
+                      "700",
+                    marginBottom:
+                      "6px",
                   }}
                 >
-                  <div
-                    style={{
-                      fontSize: "11px",
-                      color: "#9ca3af",
-                    }}
-                  >
-                    OVER / UNDER
-                  </div>
-
-                  <strong>
-                    {player.overUnder}
-                  </strong>
+                  Confidence
                 </div>
 
                 <div
                   style={{
-                    background: "#f8fafc",
-                    borderRadius: "12px",
-                    padding: "12px",
-                    textAlign: "center",
+                    fontSize:
+                      "22px",
                   }}
                 >
-                  <div
-                    style={{
-                      fontSize: "11px",
-                      color: "#9ca3af",
-                    }}
-                  >
-                    LINE
-                  </div>
-
-                  <strong>
-                    {player.line}
-                  </strong>
-                </div>
-
-                <div
-                  style={{
-                    background: "#f8fafc",
-                    borderRadius: "12px",
-                    padding: "12px",
-                    textAlign: "center",
-                  }}
-                >
-                  <div
-                    style={{
-                      fontSize: "11px",
-                      color: "#9ca3af",
-                    }}
-                  >
-                    CONFIDENCE
-                  </div>
-
-                  <strong>
-                    {"⭐".repeat(
-                      player.confidence
-                    )}
-                  </strong>
+                  {"⭐".repeat(
+                    player.confidence
+                  )}
                 </div>
               </div>
 
-              {/* OVER / UNDER SELECTION */}
+              {/* ================================= */}
+              {/* OVER / UNDER */}
+              {/* ================================= */}
+
               <div
                 style={{
-                  display: "grid",
+                  display:
+                    "grid",
                   gridTemplateColumns:
-                    "repeat(2, 1fr)",
-                  gap: "10px",
-                  marginBottom: "18px",
+                    "1fr 1fr",
+                  gap:
+                    "12px",
+                  marginBottom:
+                    "18px",
                 }}
               >
                 <button
-                  disabled={ticket?.locked}
                   onClick={() =>
                     handlePickChange(
                       player.player,
@@ -649,33 +958,37 @@ useEffect(() => {
                     )
                   }
                   style={{
-                    padding: "14px 10px",
-                    borderRadius: "14px",
+                    padding:
+                      "14px",
+                    borderRadius:
+                      "12px",
                     border:
-                      selectedPick === "OVER"
-                        ? "3px solid #166534"
-                        : "2px solid #e5e7eb",
+                      selectedPick ===
+                      "OVER"
+                        ? "2px solid #166534"
+                        : "1px solid #d1d5db",
                     background:
-                      selectedPick === "OVER"
+                      selectedPick ===
+                      "OVER"
                         ? "#dcfce7"
-                        : "#ffffff",
+                        : "white",
                     color:
-                      selectedPick === "OVER"
-                        ? "#166534"
-                        : "#374151",
-                    fontWeight: "800",
-                    fontSize: "16px",
+                      "#166534",
+                    fontWeight:
+                      "800",
+                    fontSize:
+                      "15px",
                     cursor:
-                      ticket?.locked
-                        ? "not-allowed"
-                        : "pointer",
+                      "pointer",
                   }}
                 >
-                  OVER {player.overUnder}
+                  OVER{" "}
+                  {
+                    player.overUnder
+                  }
                 </button>
 
                 <button
-                  disabled={ticket?.locked}
                   onClick={() =>
                     handlePickChange(
                       player.player,
@@ -683,43 +996,55 @@ useEffect(() => {
                     )
                   }
                   style={{
-                    padding: "14px 10px",
-                    borderRadius: "14px",
+                    padding:
+                      "14px",
+                    borderRadius:
+                      "12px",
                     border:
-                      selectedPick === "UNDER"
-                        ? "3px solid #166534"
-                        : "2px solid #e5e7eb",
+                      selectedPick ===
+                      "UNDER"
+                        ? "2px solid #166534"
+                        : "1px solid #d1d5db",
                     background:
-                      selectedPick === "UNDER"
+                      selectedPick ===
+                      "UNDER"
                         ? "#dcfce7"
-                        : "#ffffff",
+                        : "white",
                     color:
-                      selectedPick === "UNDER"
-                        ? "#166534"
-                        : "#374151",
-                    fontWeight: "800",
-                    fontSize: "16px",
+                      "#166534",
+                    fontWeight:
+                      "800",
+                    fontSize:
+                      "15px",
                     cursor:
-                      ticket?.locked
-                        ? "not-allowed"
-                        : "pointer",
+                      "pointer",
                   }}
                 >
-                  UNDER {player.overUnder}
+                  UNDER{" "}
+                  {
+                    player.overUnder
+                  }
                 </button>
               </div>
 
+              {/* ================================= */}
               {/* WAGER */}
+              {/* ================================= */}
+
               <div
                 style={{
-                  marginBottom: "16px",
+                  marginBottom:
+                    "18px",
                 }}
               >
                 <label
                   style={{
-                    display: "block",
-                    fontWeight: "700",
-                    marginBottom: "8px",
+                    display:
+                      "block",
+                    fontWeight:
+                      "700",
+                    marginBottom:
+                      "8px",
                   }}
                 >
                   Wager Amount
@@ -727,19 +1052,26 @@ useEffect(() => {
 
                 <div
                   style={{
-                    position: "relative",
+                    position:
+                      "relative",
                   }}
                 >
                   <span
                     style={{
-                      position: "absolute",
-                      left: "14px",
-                      top: "50%",
+                      position:
+                        "absolute",
+                      left:
+                        "14px",
+                      top:
+                        "50%",
                       transform:
                         "translateY(-50%)",
-                      fontSize: "20px",
-                      color: "#9ca3af",
-                      fontWeight: "700",
+                      fontSize:
+                        "16px",
+                      fontWeight:
+                        "700",
+                      color:
+                        "#6b7280",
                     }}
                   >
                     $
@@ -748,361 +1080,507 @@ useEffect(() => {
                   <input
                     type="number"
                     min="0"
-                    step="1"
+                    step="0.01"
                     value={
-                      wager === 0
+                      wager ===
+                      0
                         ? ""
                         : wager
                     }
-                    disabled={
-                      ticket?.locked ||
-                      !selectedPick
-                    }
-                    onChange={(event) =>
+                    onChange={(
+                      event
+                    ) =>
                       handleWagerChange(
                         player.player,
-                        event.target.value
+                        event
+                          .target
+                          .value
                       )
                     }
-                    placeholder="0"
+                    placeholder="0.00"
                     style={{
-                      width: "100%",
-                      boxSizing: "border-box",
+                      width:
+                        "100%",
+                      boxSizing:
+                        "border-box",
                       padding:
-                        "16px 16px 16px 38px",
-                      borderRadius: "14px",
+                        "14px 14px 14px 30px",
+                      borderRadius:
+                        "12px",
                       border:
-                        "2px solid #e5e7eb",
-                      fontSize: "20px",
-                      fontWeight: "700",
-                      outline: "none",
-                      background:
-                        ticket?.locked ||
-                        !selectedPick
-                          ? "#f3f4f6"
-                          : "#ffffff",
+                        error
+                          ? "2px solid #dc2626"
+                          : "1px solid #d1d5db",
+                      fontSize:
+                        "16px",
+                      fontWeight:
+                        "700",
+                      outline:
+                        "none",
                     }}
                   />
                 </div>
 
                 <div
                   style={{
-                    marginTop: "8px",
-                    color: "#9ca3af",
-                    fontSize: "14px",
+                    marginTop:
+                      "6px",
+                    fontSize:
+                      "12px",
+                    color:
+                      "#9ca3af",
                   }}
                 >
                   Maximum wager: $
-                  {balance.toFixed(2)}
+                  {balance.toFixed(
+                    2
+                  )}
                 </div>
+
+                {error && (
+                  <div
+                    style={{
+                      marginTop:
+                        "6px",
+                      color:
+                        "#dc2626",
+                      fontSize:
+                        "13px",
+                      fontWeight:
+                        "700",
+                    }}
+                  >
+                    {error}
+                  </div>
+                )}
               </div>
 
-              {/* NOTE */}
+              {/* ================================= */}
+              {/* CURRENT SELECTION INDICATOR */}
+              {/* ================================= */}
+
+              {playerHasSelection &&
+                playerHasWager && (
+                  <div
+                    style={{
+                      background:
+                        "#f0fdf4",
+                      color:
+                        "#166534",
+                      borderRadius:
+                        "12px",
+                      padding:
+                        "12px",
+                      marginBottom:
+                        "14px",
+                      textAlign:
+                        "center",
+                      fontSize:
+                        "14px",
+                      fontWeight:
+                        "800",
+                    }}
+                  >
+                    {selectedPick}{" "}
+                    • $
+                    {Number(
+                      wager
+                    ).toFixed(
+                      2
+                    )}
+                  </div>
+                )}
+
+              {/* ================================= */}
+              {/* ANALYSIS */}
+              {/* ================================= */}
+
               <div
                 style={{
-                  background: "#f0fdf4",
-                  borderRadius: "12px",
-                  padding: "14px",
-                  fontSize: "14px",
-                  lineHeight: "1.5",
-                  color: "#374151",
+                  background:
+                    "#f0fdf4",
+                  borderRadius:
+                    "12px",
+                  padding:
+                    "14px",
+                  fontSize:
+                    "14px",
+                  lineHeight:
+                    "1.5",
+                  color:
+                    "#374151",
                 }}
               >
-                <strong>Analysis:</strong>{" "}
-                {player.note}
+                <strong>
+                  Analysis:
+                </strong>{" "}
+                {
+                  player.note
+                }
               </div>
             </div>
-          );
-        })}
+          )
+        }
+      )}
 
-        {/* BET SUMMARY */}
+      {/* ===================================== */}
+      {/* CURRENT BET SLIP */}
+      {/* ===================================== */}
+
+      {selectedPlayers.length >
+        0 && (
         <div
           style={{
-            background: "#ffffff",
-            border: "2px solid #166534",
-            borderRadius: "20px",
-            padding: "24px",
-            marginTop: "30px",
-            marginBottom: "30px",
+            background:
+              "white",
+            border:
+              "2px solid #166534",
+            borderRadius:
+              "20px",
+            padding:
+              "20px",
+            marginBottom:
+              "20px",
             boxShadow:
-              "0 8px 24px rgba(0,0,0,0.08)",
+              "0 8px 24px rgba(0,0,0,.08)",
           }}
         >
-          <div
+          <h3
             style={{
-              display: "flex",
-              justifyContent:
-                "space-between",
-              alignItems: "center",
-              marginBottom: "20px",
+              margin:
+                "0 0 16px",
+              fontSize:
+                "22px",
+              fontWeight:
+                "800",
+              color:
+                "#166534",
             }}
           >
-            <div
-              style={{
-                fontSize: "28px",
-                fontWeight: "900",
-                color: "#166534",
-              }}
-            >
-              🧾 Bet Slip
-            </div>
+            Current Bet Slip
+          </h3>
 
-            {ticket?.locked && (
+          {selectedPlayers.map(
+            (bet) => (
               <div
+                key={
+                  bet.player
+                }
                 style={{
-                  background: "#dcfce7",
-                  color: "#166534",
-                  padding: "10px 16px",
-                  borderRadius: "999px",
-                  fontWeight: "800",
+                  display:
+                    "flex",
+                  justifyContent:
+                    "space-between",
+                  alignItems:
+                    "center",
+                  padding:
+                    "12px 0",
+                  borderBottom:
+                    "1px solid #e5e7eb",
                 }}
               >
-                LOCKED
-              </div>
-            )}
-          </div>
-
-          <div
-            style={{
-              color: "#6b7280",
-              marginBottom: "20px",
-            }}
-          >
-            Architects Golf Club • Round 5
-          </div>
-
-          {selectedPlayers.length === 0 ? (
-            <div
-              style={{
-                background: "#f8fafc",
-                borderRadius: "12px",
-                padding: "18px",
-                textAlign: "center",
-                color: "#9ca3af",
-              }}
-            >
-              Select your bets above.
-            </div>
-          ) : (
-            <>
-              {selectedPlayers.map((bet) => (
-                <div
-                  key={bet.player}
-                  style={{
-                    display: "flex",
-                    justifyContent:
-                      "space-between",
-                    alignItems: "center",
-                    padding:
-                      "14px 0",
-                    borderBottom:
-                      "1px solid #e5e7eb",
-                  }}
-                >
-                  <div>
-                    <div
-                      style={{
-                        fontSize: "18px",
-                        fontWeight: "800",
-                      }}
-                    >
-                      {bet.player}
-                    </div>
-
-                    <div
-                      style={{
-                        color:
-                          bet.pick ===
-                          "OVER"
-                            ? "#991b1b"
-                            : "#166534",
-                        fontWeight: "800",
-                        marginTop: "3px",
-                      }}
-                    >
-                      {bet.pick}{" "}
-                      {bet.overUnder}
-                    </div>
+                <div>
+                  <div
+                    style={{
+                      fontWeight:
+                        "800",
+                    }}
+                  >
+                    {
+                      bet.player
+                    }
                   </div>
 
                   <div
                     style={{
-                      fontSize: "20px",
-                      fontWeight: "800",
+                      color:
+                        bet.pick ===
+                        "OVER"
+                          ? "#991b1b"
+                          : "#166534",
+                      fontWeight:
+                        "800",
+                      marginTop:
+                        "3px",
                     }}
                   >
-                    $
-                    {bet.wager.toFixed(2)}
+                    {
+                      bet.pick
+                    }{" "}
+                    {
+                      bet.overUnder
+                    }
                   </div>
                 </div>
-              ))}
-
-              <div
-                style={{
-                  marginTop: "20px",
-                  paddingTop: "16px",
-                  borderTop:
-                    "3px solid #e5e7eb",
-                }}
-              >
-                <div
-                  style={{
-                    display: "flex",
-                    justifyContent:
-                      "space-between",
-                    fontSize: "20px",
-                    marginBottom: "10px",
-                  }}
-                >
-                  <span>
-                    Total Wagered
-                  </span>
-
-                  <strong>
-                    $
-                    {totalWagered.toFixed(
-                      2
-                    )}
-                  </strong>
-                </div>
 
                 <div
                   style={{
-                    display: "flex",
-                    justifyContent:
-                      "space-between",
-                    fontSize: "20px",
+                    fontSize:
+                      "20px",
+                    fontWeight:
+                      "800",
                   }}
                 >
-                  <span>
-                    Balance After Bets
-                  </span>
-
-                  <strong
-                    style={{
-                      color:
-                        hasEnoughBalance
-                          ? "#166534"
-                          : "#991b1b",
-                    }}
-                  >
-                    $
-                    {balanceAfterBets.toFixed(
-                      2
-                    )}
-                  </strong>
+                  $
+                  {bet.wager.toFixed(
+                    2
+                  )}
                 </div>
               </div>
-            </>
+            )
           )}
 
-          {/* INSUFFICIENT BALANCE */}
-          {selectedPlayers.length > 0 &&
-            !hasEnoughBalance &&
-            !ticket?.locked && (
-              <div
-                style={{
-                  background: "#fee2e2",
-                  color: "#991b1b",
-                  padding: "15px",
-                  borderRadius: "14px",
-                  marginTop: "20px",
-                  fontWeight: "800",
-                  textAlign: "center",
-                }}
-              >
-                Your selections exceed your
-                available balance.
-              </div>
-            )}
+          {/* TOTAL */}
 
-          {/* PLACE BET */}
-          {!ticket?.locked && (
-            <button
-              onClick={handlePlaceBet}
-              disabled={
-                selectedPlayers.length ===
-                  0 ||
-                !hasEnoughBalance
-              }
+          <div
+            style={{
+              marginTop:
+                "20px",
+              paddingTop:
+                "16px",
+              borderTop:
+                "3px solid #e5e7eb",
+            }}
+          >
+            <div
               style={{
-                width: "100%",
-                marginTop: "22px",
-                padding: "18px",
-                borderRadius: "16px",
-                border: "none",
-                background:
-                  selectedPlayers.length >
-                    0 &&
-                  hasEnoughBalance
-                    ? "#166534"
-                    : "#d1d5db",
-                color: "#ffffff",
-                fontSize: "20px",
-                fontWeight: "900",
-                cursor:
-                  selectedPlayers.length >
-                    0 &&
-                  hasEnoughBalance
-                    ? "pointer"
-                    : "not-allowed",
+                display:
+                  "flex",
+                justifyContent:
+                  "space-between",
+                fontSize:
+                  "20px",
+                marginBottom:
+                  "10px",
               }}
             >
-              ✓ PLACE BET
-            </button>
-          )}
+              <span>
+                Total Wagered
+              </span>
 
-          {/* LOCKED CONFIRMATION */}
-          {ticket?.locked && (
-            <>
-              <div
+              <strong>
+                $
+                {totalWagered.toFixed(
+                  2
+                )}
+              </strong>
+            </div>
+
+            <div
+              style={{
+                display:
+                  "flex",
+                justifyContent:
+                  "space-between",
+                fontSize:
+                  "20px",
+              }}
+            >
+              <span>
+                Balance After Bets
+              </span>
+
+              <strong
                 style={{
-                  background: "#dcfce7",
-                  color: "#166534",
-                  padding: "20px",
-                  borderRadius: "16px",
-                  marginTop: "22px",
-                  textAlign: "center",
-                  fontWeight: "800",
+                  color:
+                    hasEnoughBalance
+                      ? "#166534"
+                      : "#991b1b",
                 }}
               >
-                <div
-                  style={{
-                    fontSize: "22px",
-                    marginBottom: "6px",
-                  }}
-                >
-                  ✓ BETS PLACED
-                </div>
-
-                <div>
-                  Your ticket is locked and
-                  final.
-                </div>
-              </div>
-
-              <button
-                onClick={handleViewTicket}
-                style={{
-                  width: "100%",
-                  marginTop: "16px",
-                  padding: "18px",
-                  borderRadius: "16px",
-                  border:
-                    "3px solid #166534",
-                  background: "#ffffff",
-                  color: "#166534",
-                  fontSize: "20px",
-                  fontWeight: "900",
-                  cursor: "pointer",
-                }}
-              >
-                🧾 VIEW MY TICKET
-              </button>
-            </>
-          )}
+                $
+                {balanceAfterBets.toFixed(
+                  2
+                )}
+              </strong>
+            </div>
+          </div>
         </div>
-      </div>
-    </main>
-  );
+      )}
+
+      {/* ===================================== */}
+      {/* INSUFFICIENT BALANCE */}
+      {/* ===================================== */}
+
+      {selectedPlayers.length >
+        0 &&
+        !hasEnoughBalance && (
+          <div
+            style={{
+              background:
+                "#fee2e2",
+              color:
+                "#991b1b",
+              padding:
+                "15px",
+              borderRadius:
+                "14px",
+              marginBottom:
+                "20px",
+              fontWeight:
+                "800",
+              textAlign:
+                "center",
+            }}
+          >
+            Your selections
+            exceed your
+            available
+            balance.
+          </div>
+        )}
+
+      {/* ===================================== */}
+      {/* CONFIRM BET SLIP */}
+      {/* ===================================== */}
+
+      <button
+        onClick={
+          handlePlaceBet
+        }
+        disabled={
+          selectedPlayers.length ===
+            0 ||
+          !hasEnoughBalance
+        }
+        style={{
+          width:
+            "100%",
+          marginTop:
+            "5px",
+          padding:
+            "18px",
+          borderRadius:
+            "16px",
+          border:
+            "none",
+          background:
+            selectedPlayers.length >
+              0 &&
+            hasEnoughBalance
+              ? "#166534"
+              : "#d1d5db",
+          color:
+            "#ffffff",
+          fontSize:
+            "20px",
+          fontWeight:
+            "900",
+          cursor:
+            selectedPlayers.length >
+              0 &&
+            hasEnoughBalance
+              ? "pointer"
+              : "not-allowed",
+        }}
+      >
+        ✓ CONFIRM BET SLIP
+      </button>
+
+      {/* ===================================== */}
+      {/* LAST PLACED CONFIRMATION */}
+      {/* ===================================== */}
+
+      {lastPlacedTicket && (
+        <div
+          style={{
+            background:
+              "#dcfce7",
+            color:
+              "#166534",
+            padding:
+              "18px",
+            borderRadius:
+              "16px",
+            marginTop:
+              "18px",
+            textAlign:
+              "center",
+            fontWeight:
+              "800",
+          }}
+        >
+          <div
+            style={{
+              fontSize:
+                "21px",
+              marginBottom:
+                "6px",
+            }}
+          >
+            ✓ BET SLIP CONFIRMED
+          </div>
+
+          <div
+            style={{
+              fontSize:
+                "14px",
+              fontWeight:
+                "600",
+            }}
+          >
+            Ticket locked and
+            saved.
+          </div>
+
+          <div
+            style={{
+              marginTop:
+                "8px",
+              fontSize:
+                "14px",
+            }}
+          >
+            $
+            {lastPlacedTicket.totalWagered.toFixed(
+              2
+            )}{" "}
+            wagered • $
+            {lastPlacedTicket.balanceAfterBets.toFixed(
+              2
+            )}{" "}
+            remaining
+          </div>
+        </div>
+      )}
+
+      {/* ===================================== */}
+      {/* VIEW BET SLIPS */}
+      {/* ===================================== */}
+
+      <button
+        onClick={() =>
+          router.push(
+            "/betting-lines/ticket"
+          )
+        }
+        style={{
+          width:
+            "100%",
+          marginTop:
+            "14px",
+          padding:
+            "15px",
+          borderRadius:
+            "14px",
+          border:
+            "2px solid #166534",
+          background:
+            "white",
+          color:
+            "#166534",
+          fontSize:
+            "16px",
+          fontWeight:
+            "800",
+          cursor:
+            "pointer",
+        }}
+      >
+        🎟️ VIEW MY BET SLIPS
+      </button>
+
+      <SocialFooter />
+    </div>
+  )
 }
