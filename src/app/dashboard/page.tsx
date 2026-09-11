@@ -7,12 +7,6 @@ import PlayerSelector from "@/src/components/PlayerSelector"
 import ResumeRound from "@/src/components/ResumeRound"
 import SocialFooter from "@/src/components/Socials"
 import { posts } from "@/src/data/posts"
-import { Dancing_Script } from "next/font/google";
-
-const dancingScript = Dancing_Script({
-  subsets: ["latin"],
-  weight: "400",
-});
 
 
 
@@ -145,77 +139,120 @@ const latestPosts = posts.slice(0, 3)
   >
     Your league. Your competition.
   </p>
-  <div
-  style={{
-    background: "#f5f8f4",
-    borderRadius: "20px",
-    padding: "18px",
-    marginTop: "28px",
-    marginBottom: "22px",
-    boxShadow: "0 12px 24px rgba(0,0,0,.08)",
-    border: "1px solid #ecf0ec",
-  }}
->
+ {/* Upcoming Round Card */}
   <div
     style={{
-      color: "#166534",
-      fontWeight: "700",
-      fontSize: "14px",
-      marginBottom: "10px",
+      background:
+        "linear-gradient(135deg, #fffef8 0%, #f5f8f4 100%)",
+      borderRadius: "20px",
+      padding: "28px 18px",
+      marginTop: "28px",
+      marginBottom: "22px",
+      boxShadow: "0 12px 30px rgba(0,0,0,.08)",
+      border: "1px solid #e3e6df",
     }}
   >
-    Final Round
-  </div>
-
-<h2
-  className={dancingScript.className}
-  style={{
-    margin: 0,
-    fontSize: "32px",
-    fontWeight: 400,
-  }}
->
-  🏆 Tour Championship 🏆
-</h2>
-
-  <p
-    style={{
-      margin: "8px 0",
-      color: "#555",
-    }}
-  >
-    📅 9/19/26
-  </p>
+    {/* Section Label */}
+    <div
+      style={{
+        color: "#166534",
+        fontWeight: "700",
+        fontSize: "13px",
+        letterSpacing: "3px",
+        textTransform: "uppercase",
+        marginBottom: "14px",
+      }}
+    >
+      Final Round
+    </div>
 
 
-  <p
-    style={{
-      marginBottom: "18px",
-      color: "#555",
-      fontWeight: "800",
-    }}
-  >
-    📍Wyncote Golf Club
-  </p>
-      <p
-    style={{
-      margin: "8px 0",
-      color: "#555",
-    }}
-  >
-    👥 0 players confirmed
-  </p>
+    {/* Trophy */}
+    <div
+      style={{
+        fontSize: "42px",
+        lineHeight: 1,
+        marginBottom: "10px",
+      }}
+    >
+      🏆
+    </div>
+
+    {/* Championship Title */}
+    <h2
+      style={{
+        margin: 0,
+        fontFamily: "Georgia, 'Times New Roman', serif",
+        fontSize: "clamp(30px, 6vw, 44px)",
+        fontWeight: "700",
+        letterSpacing: "1px",
+        color: "#111827",
+        textTransform: "uppercase",
+        textShadow: "0 2px 3px rgba(0,0,0,.12)",
+      }}
+    >
+      Tour Championship
+    </h2>
+
+    {/* Gold Divider */}
+    <div
+      style={{
+        width: "110px",
+        height: "2px",
+        background: "#c9a227",
+        margin: "14px auto 18px",
+      }}
+    />
+
+    {/* Date */}
+    <p
+      style={{
+        margin: "8px 0",
+        color: "#555",
+        fontSize: "16px",
+        fontWeight: "600",
+      }}
+    >
+      📅 9/19/26
+    </p>
+
+
+    {/* Course */}
+    <p
+      style={{
+        margin: "8px 0",
+        color: "#555",
+        fontWeight: "800",
+        fontSize: "16px",
+      }}
+    >
+      📍 Wyncote Golf Club
+    </p>
+
+    {/* Players */}
+    <p
+      style={{
+        margin: "8px 0 20px",
+        color: "#555",
+        fontSize: "16px",
+        fontWeight: "600",
+      }}
+    >
+      👥 19 players confirmed
+    </p>
 
   <button
     onClick={() => router.push("/tee-sheet")}
     style={{
-      background: "#166534",
-      color: "white",
-      border: "none",
-      padding: "12px 18px",
-      borderRadius: "999px",
-      fontWeight: "700",
-      cursor: "pointer",
+        background: "#166534",
+        color: "white",
+        border: "1px solid #14532d",
+        padding: "13px 24px",
+        borderRadius: "999px",
+        fontWeight: "700",
+        fontSize: "15px",
+        cursor: "pointer",
+        boxShadow: "0 5px 12px rgba(22,101,52,.2)",
     }}
   >
     View Tee Sheet →
@@ -242,7 +279,7 @@ const latestPosts = posts.slice(0, 3)
                 <ActionCard title="👑 Tour Winners" onClick={() => router.push("/winners")} />
                 <ActionCard title="📊 2026 Stats" onClick={() => router.push("/records")} />
                 <ActionCard title="👕 Merch" onClick={() => router.push("/merch")} />
-                <ActionCard title="📈 Prediction Center" onClick={() => router.push("/betting-lines")} />
+                  <ActionCard title="📈 Prediction Center" onClick={() => router.push("/betting-lines")} />
                 {/* <ActionCard title="📜 Rules" onClick={() => router.push("/rules")} /> */}
                 {/* <ActionCard title="🤝 Sponsorship" onClick={() => router.push("/sponsors")} /> */}
 
