@@ -281,7 +281,7 @@ const events = [
   "Mercer Oaks(West)",
   "Moccasin Run",
   "The Architects",
-  "Town & Country"
+  "Wyncote"
 ]
 
 function calculatepoints(points: number, par: number) {

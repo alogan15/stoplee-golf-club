@@ -184,7 +184,7 @@ const seasonOrder = [
   "Moccasin Run",
   "Mercer Oaks(West)",
   "The Architects",
-  "Town & Country"
+  "Wyncote"
 ]
 
 const events = seasonOrder

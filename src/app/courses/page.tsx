@@ -46,10 +46,10 @@ export default function CoursesPage() {
     },
       { 
       id:"town-country",
-      name: "Town & Country Golf Links", 
+      name: "Wyncote Golf Club", 
       image:"/courses/town.jpg",
       title:"Tour Championship",
-      location: "Woodstown, NJ",
+      location: "Oxford, Pa",
     }
   ]
 

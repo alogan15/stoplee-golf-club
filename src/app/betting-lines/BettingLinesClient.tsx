@@ -40,7 +40,7 @@ type SavedTicket = {
 const BALANCE_KEY = "stoplee_balance"
 const TICKETS_KEY = "stoplee_betting_tickets"
 
-const ROUND = 6
+const ROUND = 5
 
 function StatCard({
   title,
@@ -728,20 +728,6 @@ export default function BettingLinesClient() {
         </button>
       </div>
 
-      {/* ===================================== */}
-      {/* FLIGHT TITLE */}
-      {/* ===================================== */}
-
-      {/* <h2
-        style={{
-          fontSize: "24px",
-          fontWeight: "800",
-          color: "#166534",
-          marginBottom: "18px",
-        }}
-      >
-        Flight {flight}
-      </h2> */}
 
       {/* ===================================== */}
       {/* PLAYER CARDS */}

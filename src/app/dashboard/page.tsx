@@ -139,77 +139,120 @@ const latestPosts = posts.slice(0, 3)
   >
     Your league. Your competition.
   </p>
-  <div
-  style={{
-    background: "#f5f8f4",
-    borderRadius: "20px",
-    padding: "18px",
-    marginTop: "28px",
-    marginBottom: "22px",
-    boxShadow: "0 12px 24px rgba(0,0,0,.08)",
-    border: "1px solid #ecf0ec",
-  }}
->
+ {/* Upcoming Round Card */}
   <div
     style={{
-      color: "#166534",
-      fontWeight: "700",
-      fontSize: "14px",
-      marginBottom: "10px",
+      background:
+        "linear-gradient(135deg, #fffef8 0%, #f5f8f4 100%)",
+      borderRadius: "20px",
+      padding: "28px 18px",
+      marginTop: "28px",
+      marginBottom: "22px",
+      boxShadow: "0 12px 30px rgba(0,0,0,.08)",
+      border: "1px solid #e3e6df",
     }}
   >
-    Upcoming Round
-  </div>
+    {/* Section Label */}
+    <div
+      style={{
+        color: "#166534",
+        fontWeight: "700",
+        fontSize: "13px",
+        letterSpacing: "3px",
+        textTransform: "uppercase",
+        marginBottom: "14px",
+      }}
+    >
+      Final Round
+    </div>
 
 
-  <h2
-    style={{
-      margin: 0,
-      fontSize: "28px",
-      fontWeight: "800",
-    }}
-  >
-      Augusta in August  
-  </h2>
+    {/* Trophy */}
+    <div
+      style={{
+        fontSize: "42px",
+        lineHeight: 1,
+        marginBottom: "10px",
+      }}
+    >
+      🏆
+    </div>
 
-  <p
-    style={{
-      margin: "8px 0",
-      color: "#555",
-    }}
-  >
-    📅 8/22/26
-  </p>
+    {/* Championship Title */}
+    <h2
+      style={{
+        margin: 0,
+        fontFamily: "Georgia, 'Times New Roman', serif",
+        fontSize: "clamp(30px, 6vw, 44px)",
+        fontWeight: "700",
+        letterSpacing: "1px",
+        color: "#111827",
+        textTransform: "uppercase",
+        textShadow: "0 2px 3px rgba(0,0,0,.12)",
+      }}
+    >
+      Tour Championship
+    </h2>
+
+    {/* Gold Divider */}
+    <div
+      style={{
+        width: "110px",
+        height: "2px",
+        background: "#c9a227",
+        margin: "14px auto 18px",
+      }}
+    />
+
+    {/* Date */}
+    <p
+      style={{
+        margin: "8px 0",
+        color: "#555",
+        fontSize: "16px",
+        fontWeight: "600",
+      }}
+    >
+      📅 9/19/26
+    </p>
 
 
-  <p
-    style={{
-      marginBottom: "18px",
-      color: "#555",
-      fontWeight: "800",
-    }}
-  >
-    📍The Architects Golf Club
-  </p>
-      <p
-    style={{
-      margin: "8px 0",
-      color: "#555",
-    }}
-  >
-    👥 13 players confirmed
-  </p>
+    {/* Course */}
+    <p
+      style={{
+        margin: "8px 0",
+        color: "#555",
+        fontWeight: "800",
+        fontSize: "16px",
+      }}
+    >
+      📍 Wyncote Golf Club
+    </p>
+
+    {/* Players */}
+    <p
+      style={{
+        margin: "8px 0 20px",
+        color: "#555",
+        fontSize: "16px",
+        fontWeight: "600",
+      }}
+    >
+      👥 19 players confirmed
+    </p>
 
   <button
     onClick={() => router.push("/tee-sheet")}
     style={{
-      background: "#166534",
-      color: "white",
-      border: "none",
-      padding: "12px 18px",
-      borderRadius: "999px",
-      fontWeight: "700",
-      cursor: "pointer",
+        background: "#166534",
+        color: "white",
+        border: "1px solid #14532d",
+        padding: "13px 24px",
+        borderRadius: "999px",
+        fontWeight: "700",
+        fontSize: "15px",
+        cursor: "pointer",
+        boxShadow: "0 5px 12px rgba(22,101,52,.2)",
     }}
   >
     View Tee Sheet →

@@ -86,7 +86,7 @@ export default function CourseDetail() {
     },
     { 
       id:"town-country",
-      name: "Town & Country Golf Links", 
+      name: "Wyncote Golf Club", 
       holes: 18,
       type: "Public Course",
       vibe: "18-hole public course designed to separate consistent players from the rest of the field.",
@@ -95,8 +95,8 @@ export default function CourseDetail() {
       rating: "68.2",
       slope: "117",
       image:"/courses/town.jpg",
-      description: "Prepare yourself for an unparalleled golfing experience. Our course is a pleasure for golfers of any skill Town & Country Golf Links offers a traditional links-style front nine featuring generous fairways and wide greens, and a more challenging back nine favoring accuracy and geared towards shot makers. All 18 holes are rye grass fairways and bent grass greens lined with deep rough and tall fescue. The links-style layout also invites the elements – wind, water and sand – to present occasional obstacles. Seven ponds and numerous bunkers are strategically placed throughout the course, providing both scenic splendor and considerable challenges.",
-      location: "Woodstown, NJ",
+      description: "Prepare yourself for an unparalleled golfing experience. Our course is a pleasure for golfers of any skill Wyncote Golf Club offers a traditional links-style front nine featuring generous fairways and wide greens, and a more challenging back nine favoring accuracy and geared towards shot makers. All 18 holes are rye grass fairways and bent grass greens lined with deep rough and tall fescue. The links-style layout also invites the elements – wind, water and sand – to present occasional obstacles. Seven ponds and numerous bunkers are strategically placed throughout the course, providing both scenic splendor and considerable challenges.",
+      location: "Oxford, Pa",
       link: "https://foreupsoftware.com/index.php/booking/20899/6135#/teetimes"
     }
   ]

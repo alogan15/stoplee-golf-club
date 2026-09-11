@@ -5,27 +5,31 @@ import BackButton from "@/src/components/BackButton"
 export default function TeeSheetPage() {
 
   const teeSheet = {
-    event: "The Architects",
-    date: "8/22/26",
-    price: "$80-150",
+    event: "Wyncote Golf Club",
+    date: "9/19/26",
+    price: "$123",
     weather: "Sunny",
 
     groups: [
       {
-        time: "8:10",
-        players: ["Steph", "Danny"]
+        time: "8:00",
+        players: ["Walt", "Greg", "Danny"]
       },
       {
-        time: "9:40",
-        players: ["Tyrin", "Jay H", "Eric B", "Erik L"]
+        time: "8:09",
+        players: ["Short", "Erik", "Larry", "Isaiah"]
       },
       {
-        time: "9:50",
-        players: ["Jamar", "LJ", "Spurg", "Larry"]
+        time: "8:18",
+        players: ["Justin", "James", "Steph", "Greeco"]
       },
       {
-        time: "3:00",
-        players: ["Andre", "Justin", "James" , ""]
+        time: "8:27",
+        players: ["Andre", "Jay", "Spurg", "Eric B"]
+      },
+      {
+        time: "8:36",
+        players: ["LJ", "Julian", "Tyrin" , "Jamar"]
       },
     ]
   }
@@ -49,7 +53,7 @@ export default function TeeSheetPage() {
         marginBottom: "10px",
         textAlign: "center"
       }}>
-        🏌🏽 Augusta in August
+        🏌🏽 Tour Championship
       </h1>
 
       {/* EVENT CARD */}
