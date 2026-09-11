@@ -8,24 +8,28 @@ export default function TeeSheetPage() {
     event: "Wyncote Golf Club",
     date: "9/19/26",
     price: "$123",
-    weather: "TBD",
+    weather: "Sunny",
 
     groups: [
       {
-        time: "",
-        players: ["", ""]
+        time: "8:00",
+        players: ["Walt", "Greg", "Danny"]
       },
-   {
-        time: "",
-        players: ["", ""]
+      {
+        time: "8:09",
+        players: ["Short", "Erik", "Larry", "Isaiah"]
       },
-     {
-        time: "",
-        players: ["", ""]
+      {
+        time: "8:18",
+        players: ["Justin", "James", "Steph", "Greeco"]
       },
-    {
-        time: "",
-        players: ["", ""]
+      {
+        time: "8:27",
+        players: ["Andre", "Jay", "Spurg", "Eric B"]
+      },
+      {
+        time: "8:36",
+        players: ["LJ", "Julian", "Tyrin" , "Jamar"]
       },
     ]
   }
@@ -49,7 +53,7 @@ export default function TeeSheetPage() {
         marginBottom: "10px",
         textAlign: "center"
       }}>
-      🏆 Tour Championship 🏆
+        🏌🏽 Tour Championship
       </h1>
 
       {/* EVENT CARD */}
