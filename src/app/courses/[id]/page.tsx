@@ -94,8 +94,10 @@ export default function CourseDetail() {
       yards: "6132",
       rating: "70.5",
       slope: "126",
-      image:"/courses/wyncote.jpeg",
-      description: "Prepare yourself for an unparalleled golfing experience. Our course is a pleasure for golfers of any skill Wyncote Golf Club offers a traditional links-style front nine featuring generous fairways and wide greens, and a more challenging back nine favoring accuracy and geared towards shot makers. All 18 holes are rye grass fairways and bent grass greens lined with deep rough and tall fescue. The links-style layout also invites the elements – wind, water and sand – to present occasional obstacles. Seven ponds and numerous bunkers are strategically placed throughout the course, providing both scenic splendor and considerable challenges.",
+      image:"/courses/wyncote1.jpg",
+      description: `A championship-caliber links-style course in the heart of the Pennsylvania countryside.
+                    Wyncote Golf Club delivers a challenging yet enjoyable round, featuring firm conditions, expansive greens, strategic bunkering, subtle elevation changes, and multiple tee options. The course rewards smart decision-making and creativity just as much as distance.
+                    Stretching to more than 7,000 yards from the back tees, Wyncote can test experienced golfers while remaining accessible from its forward tees. With its scenic countryside setting and carefully designed layout, every hole presents a different challenge—and another opportunity to make your mark.`,
       location: "Oxford, Pa",
       link: "https://golfback.com/?utm_source=wyncote&utm_medium=website&utm_campaign=tee-times#/course/e2e234c1-6df5-4b65-9124-9efbc83dc145/date/2026-08-24"
     }

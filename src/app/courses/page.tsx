@@ -47,7 +47,7 @@ export default function CoursesPage() {
       { 
       id:"wyncote",
       name: "Wyncote Golf Club", 
-      image:"/courses/wyncote.jpeg",
+      image:"/courses/wyncote1.jpg",
       title:"Tour Championship",
       location: "Oxford, Pa",
     }
