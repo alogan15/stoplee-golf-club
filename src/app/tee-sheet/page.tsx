@@ -21,7 +21,7 @@ export default function TeeSheetPage() {
       },
       {
         time: "8:18",
-        players: ["Justin", "James", "Steph", "Greeco"]
+        players: ["Justin", "James", "Steph"]
       },
       {
         time: "8:27",

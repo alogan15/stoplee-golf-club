@@ -238,7 +238,7 @@ const latestPosts = posts.slice(0, 3)
         fontWeight: "600",
       }}
     >
-      👥 19 players confirmed
+      👥 18 players confirmed
     </p>
 
   <button
