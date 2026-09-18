@@ -60,7 +60,7 @@ return (
           marginBottom: "6px",
         }}
       >
-        Architects Golf Club
+        Wyncote Golf Club
       </p>
 
       <p
@@ -69,7 +69,7 @@ return (
           fontSize: "14px",
         }}
       >
-        Round 5 • Stewartsville, NJ
+        Round 6 • Oxford, Pa
       </p>
     </div>
 
