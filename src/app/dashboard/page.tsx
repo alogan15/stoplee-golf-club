@@ -163,7 +163,7 @@ const latestPosts = posts.slice(0, 3)
         marginBottom: "14px",
       }}
     >
-      Final Round
+      See You Next Year!
     </div>
 
 
@@ -191,7 +191,7 @@ const latestPosts = posts.slice(0, 3)
         textShadow: "0 2px 3px rgba(0,0,0,.12)",
       }}
     >
-      Tour Championship
+      2027 Stoplee Tour
     </h2>
 
     {/* Gold Divider */}
@@ -213,7 +213,7 @@ const latestPosts = posts.slice(0, 3)
         fontWeight: "600",
       }}
     >
-      📅 9/19/26
+      📅 
     </p>
 
 
@@ -226,7 +226,7 @@ const latestPosts = posts.slice(0, 3)
         fontSize: "16px",
       }}
     >
-      📍 Wyncote Golf Club
+      📍
     </p>
 
     {/* Players */}
@@ -238,7 +238,7 @@ const latestPosts = posts.slice(0, 3)
         fontWeight: "600",
       }}
     >
-      👥 18 players confirmed
+      👥
     </p>
 
   <button
