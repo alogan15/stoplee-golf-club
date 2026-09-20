@@ -2,6 +2,15 @@ import { title } from "process";
 
 export const posts = [
   {
+    id: 0,
+    slug: "2026-season-finale",
+    title: "🏆 STOPLEE GOLF CLUB — 2026 SEASON FINALE 🏆",
+    image: "/blog/2026-Finale.PNG",
+    date: "2026-09-27",
+    description: "Six courses. One final boss. Two flights. A full season of storylines. And now… we have champions.",
+    readMore: "Read More..."
+  },
+  {
     id: 1,
     slug: "augusta-in-august",
     title: "The Architects Recap",

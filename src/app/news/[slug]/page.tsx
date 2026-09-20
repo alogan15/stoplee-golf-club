@@ -10,6 +10,114 @@ export default async function PostPage({
 
   const posts = [
     {
+      slug: "2026-season-finale",
+      title: "🏆 STOPLEE GOLF CLUB — 2026 SEASON FINALE 🏆",
+      content: `
+Six courses. One final boss. Two flights. A full season of storylines. And now… we have champions.
+
+The <strong>2026 StopLee Golf Club</strong>  season is officially in the books, and Wyncote Golf Club made sure nobody was getting handed anything on the way out.
+
+🥇 <strong>FLIGHT A — TYRIN CLAIMS THE CROWN</strong>
+
+<strong>Tyrin </strong> is your <strong>2026 Flight A Champion</strong>.
+
+And he had to take down a champion to do it.
+
+<strong>Jamar</strong>, the two-time defending champion, came into the season finale looking to make it three straight. But Tyrin had other plans. After six rounds of competition, Tyrin finished on top and officially ended Jamar’s reign.
+
+🥇 <strong>Tyrin</strong>(137) — 1st Place
+🥈 <strong>Jamar</strong>(125) — 2nd Place
+🥉 <strong>Andre</strong>(104) — 3rd Place
+
+And that third-place battle? ABSOLUTE CHAOS.
+
+<strong>Andre</strong> entered Wyncote sitting in third, with Jay and Eric B right behind him. The three went out together knowing there was no room to coast. Wyncote tested everybody, and when the final scores came in, Andre had done exactly what he needed to do — hold the line and secure third place.
+
+
+🏆 <strong>FLIGHT B — A NEW CHAPTER</strong>
+
+2026 also marked the first season of Flight B, and what a way to introduce it.
+
+When the dust settled:
+
+🥇 <strong>LJ</strong>(70) — 1st Place
+🥈 <strong>Justin</strong>(61) — 2nd Place
+🥉 <strong>James</strong>(52) — 3rd Place
+
+<strong>LJ</strong> made history as the inaugural <strong>Flight B Champion.</strong> 
+
+The first name officially etched into the Flight B championship record.
+
+And right behind him was newcomer Justin, who capped off his first season with one hell of a statement at Wyncote.
+
+🔥 <strong>JUSTIN’S FINAL-ROUND PERFORMANCE</strong>
+
+Justin posted the best round at Wyncote, shooting a 94.
+
+His card:
+
+🐦 <strong>1 Birdie</strong>
+⛳ <strong>4 Pars</strong>
+💥 <strong>9 Bogeys</strong>
+
+On a day when Wyncote was beating up most of the field, Justin found a way to put together the best score of the group.
+
+A newcomer finishing second in Flight B and owning the best final-round score? That’s a pretty strong introduction to the league.
+
+ <strong>THE FINAL BOSS</strong>
+
+And then there was Wyncote.
+
+The final boss.
+
+The course didn’t care about standings.
+It didn’t care about momentum.
+It didn’t care who was leading.
+
+It simply demanded that you play.
+
+And judging by the majority of the scorecards, Wyncote won plenty of battles.
+
+Firm conditions. Fast greens. Strategic bunkers. Tough holes. And just enough opportunities to make you think you could score before the course reminded you who was in charge.
+
+That’s what made the finale fitting.
+
+After a full season of Stableford battles, comebacks, breakout rounds, rivalries and leaderboard movement, the championship had to be settled on a course that made everybody earn it.
+
+🎬 <strong>THAT’S A WRAP ON 2026</strong>
+
+From Broad Run to Rock Manor, Mercer Oaks, Moccasin Run, The Architects, and finally Wyncote…
+
+The board moved.
+
+Champions were challenged.
+
+New contenders emerged.
+
+And when it was finally over:
+
+🥇 <strong>TYRIN</strong> — FLIGHT A CHAMPION
+🥈 <strong>JAMAR</strong> — RUNNER-UP
+🥉 <strong>ANDRE</strong> — THIRD PLACE
+
+🥇 <strong>LJ</strong> — INAUGURAL FLIGHT B CHAMPION
+🥈 <strong>JUSTIN</strong>  — RUNNER-UP
+🥉 <strong>JAMES</strong> — THIRD PLACE
+
+Six courses. One season. Six podium spots.
+
+<strong>The 2026 StopLee Golf Club</strong> season is officially complete.
+
+Congratulations to all six podium finishers — and to everybody who stepped onto the tee this season.
+
+2026 was one hell of a ride.
+
+See yall in 2027.
+
+🏆 <strong>STOPLEE GOLF CLUB
+SEASON 4 — OVER AND OUT!</strong>`
+    },
+    {
       slug: "augusta-in-august",
       title: "🏆 STOPLEE GOLF CLUB — THE ARCHITECTS RECAP",
       content: `The Race Is Officially Coming Down to One Final Round
