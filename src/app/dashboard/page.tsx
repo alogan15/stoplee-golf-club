@@ -163,7 +163,8 @@ const latestPosts = posts.slice(0, 3)
         marginBottom: "14px",
       }}
     >
-      See You Next Year!
+THE 2026 SEASON
+IS COMPLETE
     </div>
 
 
@@ -191,7 +192,7 @@ const latestPosts = posts.slice(0, 3)
         textShadow: "0 2px 3px rgba(0,0,0,.12)",
       }}
     >
-      2027 Stoplee Tour
+      See You In Next Year!!
     </h2>
 
     {/* Gold Divider */}
@@ -205,7 +206,7 @@ const latestPosts = posts.slice(0, 3)
     />
 
     {/* Date */}
-    <p
+    {/* <p
       style={{
         margin: "8px 0",
         color: "#555",
@@ -214,11 +215,11 @@ const latestPosts = posts.slice(0, 3)
       }}
     >
       📅 
-    </p>
+    </p> */}
 
 
     {/* Course */}
-    <p
+    {/* <p
       style={{
         margin: "8px 0",
         color: "#555",
@@ -227,10 +228,10 @@ const latestPosts = posts.slice(0, 3)
       }}
     >
       📍
-    </p>
+    </p> */}
 
     {/* Players */}
-    <p
+    {/* <p
       style={{
         margin: "8px 0 20px",
         color: "#555",
@@ -239,9 +240,9 @@ const latestPosts = posts.slice(0, 3)
       }}
     >
       👥
-    </p>
+    </p> */}
 
-  <button
+  {/* <button
     onClick={() => router.push("/tee-sheet")}
     style={{
         background: "#166534",
@@ -256,7 +257,7 @@ const latestPosts = posts.slice(0, 3)
     }}
   >
     View Tee Sheet →
-  </button>
+  </button> */}
 </div>
   <div
   style={{
