@@ -192,7 +192,7 @@ IS COMPLETE
         textShadow: "0 2px 3px rgba(0,0,0,.12)",
       }}
     >
-      See You In Next Year!!
+      See You Next Year!!
     </h2>
 
     {/* Gold Divider */}
