@@ -63,7 +63,7 @@ export const bettingLines = {
     {
       player: "Short",
       projected: 102,
-      overUnder: 12.5,
+      overUnder: 102.5,
       pick: "OVER",
       line: "+1800",
       confidence: 3,
@@ -185,7 +185,7 @@ export const bettingLines = {
     {
       player: "Walt",
       projected: 113,
-      overUnder: 13.5,
+      overUnder: 113.5,
       pick: "OVER",
       line: "+5000",
       confidence: 1,
