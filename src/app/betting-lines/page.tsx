@@ -321,14 +321,14 @@ return (
                 {player.player}
               </div>
 
-              <div
+              {/* <div
                 style={{
                   color: "#6b7280",
                   fontSize: "14px",
                 }}
               >
                 {flight === "A" ? "Flight A" : "Flight B"}
-              </div>
+              </div> */}
             </div>
 
             {/* Pick */}
