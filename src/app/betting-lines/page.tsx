@@ -19,6 +19,51 @@ const selectedInsights =
     ? bettingInsights.A
     : bettingInsights.B; 
 
+type BettingPlayer = {
+  player: string;
+  projected: number;
+  overUnder: number;
+  pick: string;
+  line: string;
+  confidence: number;
+  note: string;
+  actual?: number | null;
+};
+
+const getResult = (player: BettingPlayer) => {
+  if (player.actual === null || player.actual === undefined) {
+    return "DNP";
+  }
+
+  if (player.pick === "OVER") {
+    return player.actual > player.overUnder ? "HIT" : "MISS";
+  }
+
+  return player.actual < player.overUnder ? "HIT" : "MISS";
+};
+
+const allPlayers = [
+  ...bettingLines.flightA,
+  ...bettingLines.flightB,
+];
+
+const completedPredictions = allPlayers.filter(
+  (player) => player.actual !== null && player.actual !== undefined
+);
+
+const hits = completedPredictions.filter(
+  (player) => getResult(player) === "HIT"
+).length;
+
+const misses = completedPredictions.filter(
+  (player) => getResult(player) === "MISS"
+).length;
+
+const predictionPercentage =
+  completedPredictions.length > 0
+    ? ((hits / completedPredictions.length) * 100).toFixed(1)
+    : "0.0";
+
 return (
   <div
     style={{
@@ -72,6 +117,55 @@ return (
         Round 6 • Oxford, Pa
       </p>
     </div>
+
+    {/* <div
+  style={{
+    display: "flex",
+    justifyContent: "center",
+    gap: "10px",
+    marginTop: "18px",
+    flexWrap: "wrap",
+  }}
+>
+  <div
+    style={{
+      background: "#dcfce7",
+      color: "#166534",
+      padding: "8px 14px",
+      borderRadius: "999px",
+      fontWeight: "800",
+      fontSize: "14px",
+    }}
+  >
+    ✅ {hits} HIT
+  </div>
+
+  <div
+    style={{
+      background: "#fee2e2",
+      color: "#991b1b",
+      padding: "8px 14px",
+      borderRadius: "999px",
+      fontWeight: "800",
+      fontSize: "14px",
+    }}
+  >
+    ❌ {misses} MISS
+  </div>
+
+  <div
+    style={{
+      background: "#f3f4f6",
+      color: "#374151",
+      padding: "8px 14px",
+      borderRadius: "999px",
+      fontWeight: "800",
+      fontSize: "14px",
+    }}
+  >
+    🎯 {predictionPercentage}%
+  </div>
+</div> */}
 
     {/* Flight Toggle */}
     <div
@@ -350,6 +444,94 @@ return (
               </div>
             </div>
           </div>
+
+          {/* Result */}
+{(() => {
+  const result = getResult(player);
+
+  return (
+    <div
+      style={{
+        display: "grid",
+        gridTemplateColumns: "1fr 1fr",
+        gap: "12px",
+        marginBottom: "20px",
+      }}
+    >
+      <div
+        style={{
+          background: "#f8fafc",
+          borderRadius: "12px",
+          padding: "14px",
+          textAlign: "center",
+        }}
+      >
+        <div
+          style={{
+            fontSize: "12px",
+            color: "#6b7280",
+            marginBottom: "6px",
+          }}
+        >
+          Wyncote Score
+        </div>
+
+        <div
+          style={{
+            fontSize: "24px",
+            fontWeight: "800",
+            color: "#111827",
+          }}
+        >
+          {result === "DNP" ? "DNP" : player.actual}
+        </div>
+      </div>
+
+      <div
+        style={{
+          background:
+            result === "HIT"
+              ? "#dcfce7"
+              : result === "MISS"
+              ? "#fee2e2"
+              : "#f3f4f6",
+          borderRadius: "12px",
+          padding: "14px",
+          textAlign: "center",
+        }}
+      >
+        <div
+          style={{
+            fontSize: "12px",
+            color: "#6b7280",
+            marginBottom: "6px",
+          }}
+        >
+          Result
+        </div>
+
+        <div
+          style={{
+            fontSize: "20px",
+            fontWeight: "900",
+            color:
+              result === "HIT"
+                ? "#166534"
+                : result === "MISS"
+                ? "#b91c1c"
+                : "#6b7280",
+          }}
+        >
+          {result === "HIT"
+            ? "✅ HIT"
+            : result === "MISS"
+            ? "❌ MISS"
+            : "— DNP"}
+        </div>
+      </div>
+    </div>
+  );
+})()}
 
           {/* Confidence */}
           <div

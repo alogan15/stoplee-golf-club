@@ -7,6 +7,7 @@ export const bettingLines = {
       pick: "OVER",
       line: "-175",
       confidence: 5,
+      actual: 95,
       note: "Still the safest play in Flight A. Two wins and the league's most consistent scoring profile keep him at the top.",
     },
 
@@ -17,6 +18,7 @@ export const bettingLines = {
       pick: "UNDER",
       line: "+300",
       confidence: 5,
+      actual: 101,
       note: "Just fired an 81 at Architects. That kind of ceiling makes Jamar extremely dangerous heading into Wyncote.",
     },
 
@@ -27,6 +29,7 @@ export const bettingLines = {
       pick: "OVER",
       line: "+600",
       confidence: 4,
+      actual: 99,
       note: "Another solid 96 at Architects keeps him firmly in the contender conversation.",
     },
 
@@ -37,6 +40,7 @@ export const bettingLines = {
       pick: "UNDER",
       line: "+500",
       confidence: 5,
+      actual: 106,
       note: "An 84 at Architects changes the conversation. Andre is trending sharply upward and is now one of the most dangerous players in Flight A.",
     },
 
@@ -47,6 +51,7 @@ export const bettingLines = {
       pick: "UNDER",
       line: "+650",
       confidence: 4,
+      actual: 98,
       note: "Back-to-back strong rounds, including a 90 at Architects, keep Jay firmly in the mix.",
     },
 
@@ -57,6 +62,7 @@ export const bettingLines = {
       pick: "OVER",
       line: "+1000",
       confidence: 3,
+      actual: 103,
       note: "A respectable 92 at Architects, but Andre and Jay are gaining momentum faster heading into Wyncote.",
     },
 
@@ -67,6 +73,7 @@ export const bettingLines = {
       pick: "OVER",
       line: "+1800",
       confidence: 3,
+      actual: 108,
       note: "Shot 101 at Architects and remains capable of producing a strong round when the big numbers stay away.",
     },
 
@@ -77,6 +84,7 @@ export const bettingLines = {
       pick: "UNDER",
       line: "+2200",
       confidence: 2,
+      actual: 99,
       note: "Another 105 keeps him around his season average. A clean round could move him up the board.",
     },
 
@@ -87,8 +95,9 @@ export const bettingLines = {
       pick: "OVER",
       line: "+3000",
       confidence: 2,
+      actual: 110,
       note: "Consistency has been difficult, but he's still capable of beating the number with a complete round.",
-    }
+    },
   ],
 
   flightB: [
@@ -99,6 +108,7 @@ export const bettingLines = {
       pick: "OVER",
       line: "-150",
       confidence: 5,
+      actual: 107,
       note: "Still the clear favorite in Flight B. Another 103 keeps LJ's consistency at the center of the betting board.",
     },
 
@@ -109,6 +119,7 @@ export const bettingLines = {
       pick: "UNDER",
       line: "+275",
       confidence: 4,
+      actual: 100,
       note: "A 104 at Architects keeps James firmly in the title conversation and just behind LJ.",
     },
 
@@ -119,6 +130,7 @@ export const bettingLines = {
       pick: "OVER",
       line: "+350",
       confidence: 4,
+      actual: 117,
       note: "Another 106 keeps Julian within striking distance. He remains one good round away from making a serious move.",
     },
 
@@ -129,6 +141,7 @@ export const bettingLines = {
       pick: "UNDER",
       line: "+450",
       confidence: 4,
+      actual: 94,
       note: "A 109 at Architects was solid, and the 95 at Moccasin Run shows Justin has legitimate upside.",
     },
 
@@ -139,6 +152,7 @@ export const bettingLines = {
       pick: "UNDER",
       line: "+600",
       confidence: 3,
+      actual: 120,
       note: "Still a legitimate contender when his putting comes together. His season profile keeps him near the top of the value board.",
     },
 
@@ -149,6 +163,7 @@ export const bettingLines = {
       pick: "UNDER",
       line: "+750",
       confidence: 3,
+      actual: null,
       note: "Has shown enough consistency to remain dangerous, even with Architects marked as a DNP.",
     },
 
@@ -159,6 +174,7 @@ export const bettingLines = {
       pick: "OVER",
       line: "+1200",
       confidence: 3,
+      actual: 112,
       note: "A steady 111 at Architects keeps Steph in the mix, but he needs a breakout round to challenge the favorites.",
     },
 
@@ -169,6 +185,7 @@ export const bettingLines = {
       pick: "UNDER",
       line: "+2500",
       confidence: 2,
+      actual: 97,
       note: "The 101 at Architects shows Danny has considerably more upside than his overall record suggests.",
     },
 
@@ -179,6 +196,7 @@ export const bettingLines = {
       pick: "OVER",
       line: "+3500",
       confidence: 1,
+      actual: 118,
       note: "Limited recent results make Isaiah difficult to project, but he needs a major improvement to beat the favorites.",
     },
 
@@ -189,6 +207,7 @@ export const bettingLines = {
       pick: "OVER",
       line: "+5000",
       confidence: 1,
+      actual: 112,
       note: "A 120 at Architects shows the challenge, but Walt has enough upside to outperform the number.",
     },
 
@@ -199,6 +218,7 @@ export const bettingLines = {
       pick: "OVER",
       line: "+6000",
       confidence: 1,
+      actual: 115,
       note: "Still searching for consistency, but the right round could produce a significant upset.",
     },
 
@@ -209,6 +229,7 @@ export const bettingLines = {
       pick: "OVER",
       line: "+6500",
       confidence: 1,
+      actual: null,
       note: "Limited rounds make Rickey difficult to handicap. He'll need his best performance of the season to surprise.",
     },
   ],
