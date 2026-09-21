@@ -6,7 +6,7 @@ export const posts = [
     slug: "2026-season-finale",
     title: "🏆 STOPLEE GOLF CLUB — 2026 SEASON FINALE 🏆",
     image: "/blog/2026-Finale.PNG",
-    date: "2026-09-27",
+    date: "2026-09-19",
     description: "Six courses. One final boss. Two flights. A full season of storylines. And now… we have champions.",
     readMore: "Read More..."
   },
